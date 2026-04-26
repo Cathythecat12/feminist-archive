@@ -1407,8 +1407,8 @@ function App() {
           temporarily at:
         </p>
 
-        <a className="maintenance-email" href="mailto:Cathy-1234@outlook.com">
-          Cathy-1234@outlook.com
+        <a className="maintenance-email" href="mailto:submissions@feministarchivejournal.org">
+        submissions@feministarchivejournal.org
         </a>
 
         <div className="maintenance-footer">
