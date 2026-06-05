@@ -1,42 +1,94 @@
-/* import { useMemo, useState } from "react";
-import { articles } from "./data/articles";
+import { useEffect, useMemo, useState } from "react";
+import { articles as englishArticles } from "./data/articles-en";
+import { articles as chineseArticles } from "./data/articles-zh";
+import MonthlyThemePage from "./page/MonthlyThemePage";
+import ArchivePage from "./page/ArchivePage";
+import MagazinePage from "./page/MagazinePage";
+import ContactPage from "./page/ContactPage";
+import ArchiveHousePage from "./page/ArchiveHousePage";
+import OurStoryPage from "./page/OurStoryPage";
+import NewsletterPage from "./page/NewsletterPage";
+import NewsletterPrivacyPage from "./page/NewsletterPrivacyPage";
+import CoverSubmissionPage from "./page/CoverSubmissionPage";
+import ParlourPage from "./page/ParlourPage";
+import NewsPage from "./page/NewsPage";
+import SubmissionGuidelinesPage from "./page/SubmissionGuidelinesPage";
+import SubmissionPage from "./page/SubmissionPage";
+import MonthlyThemePageZh from "./page/MonthlyThemePageZh";
+import ReadingRoomPage from "./page/ReadingRoomPage";
+import { submitWebsiteForm } from "./utils/formSubmit";
+import HowWeEditPage from "./page/HowWeEditPage";
+const HOME_ARCHIVE_LIMIT = 6;
+// Temporarily hidden; switch to true when the Save the Elephant campaign should return to the homepage.
+const SHOW_SAVE_THE_ELEPHANT_ON_HOME = false;
+const IS_MAINTENANCE_MODE = import.meta.env.VITE_MAINTENANCE_MODE === "true";
+
+const getLanguageStorageKey = () => {
+  if (typeof window === "undefined") return "fa-language";
+  return `fa-language:${window.location.hostname || "local"}`;
+};
+
+const getInitialLanguage = () => {
+  if (typeof window === "undefined") return "en";
+
+  const savedLanguage = window.localStorage.getItem(getLanguageStorageKey());
+  if (savedLanguage === "en" || savedLanguage === "zh") {
+    return savedLanguage;
+  }
+
+  const hostname = window.location.hostname.toLowerCase();
+  const pathname = window.location.pathname.toLowerCase();
+
+  if (hostname.startsWith("zh.") || pathname === "/zh" || pathname.startsWith("/zh/")) {
+    return "zh";
+  }
+
+  return "en";
+};
 
 const text = {
   en: {
     siteName: "Feminist Archive",
-    siteTagline:
-      "A feminist platform for theory, essays, and archival writing.",
+    siteTagline: "A feminist platform for theory, essays, and archival writing.",
     navHome: "Home",
     navArchive: "Archive",
     navSubmit: "Submit",
     navContact: "Contact",
     navGuidelines: "Guidelines",
     navDonate: "Donate",
+
     heroEyebrow: "Independent feminist publication",
-    heroTitle: "Writing, theory, and archive for a searchable feminist public.",
+    heroTitle:
+      "Essays, criticism, archives, and long-form writing for feminist intellectual life.",
     heroText:
-      "Feminist Archive is conceived as both a magazine and a knowledge platform: a place for essays, critical interventions, research writing, translations, testimony, and long-form reflection.",
+      "An independent publication for theory, criticism, archival research, translations, and essays that refuse intellectual simplification.",
     heroSubmit: "Submit writing",
     heroBrowse: "Browse archive",
+
     themeLabel: "This month",
+    themeIssueLabel: "Monthly Issue",
     themeTitle: "Archive of Refusal",
     themeText:
       "On dissent, memory, and the forms of life that resist easy incorporation.",
+
     aboutLabel: "About the platform",
     aboutTitle: "A magazine in form, an archive in structure.",
     aboutText:
       "The aim is not only to publish texts, but to organise them by theme, concept, and keyword, so that feminist writing remains searchable, reusable, and historically meaningful.",
+
     archiveLabel: "Archive",
     archiveTitle: "Search and browse",
     archivePlaceholder: "Search by title, author, concept, or keyword...",
+
     submitLabel: "Submit",
     submitTitle: "Editorial review before publication",
     submitText:
-      "Submissions are reviewed manually. We welcome essays, theoretical fragments, interventions, translations, reviews, lecture texts, and archival notes.",
+      "Submissions are reviewed manually. We welcome essays, theoretical fragments, interventions, translations, reviews, lecture texts, and archival notes. Please fill in the form on the right; it will be sent directly to the editors.",
     submitNote1: "Chinese preferred, bilingual work welcome",
     submitNote2: "Pen names and anonymous publication possible on request",
     submitNote3: "Editorial outcomes: accept / revision / decline",
     submitGuidelines: "Submission guidelines: please read here",
+
     formTitle: "Title",
     formAuthor: "Author / Pen name",
     formEmail: "Email",
@@ -44,6 +96,7 @@ const text = {
     formAbstract: "Abstract / editorial note",
     formBody: "Paste your writing here...",
     formButton: "Submit",
+
     successTitle: "Submission received",
     successText1:
       "Your submission has been recorded. Please wait for editorial review.",
@@ -52,12 +105,14 @@ const text = {
     successText3:
       "We are sorry that not every submission will receive a reply.",
     successText4:
-      "To avoid delays and confusion in the review process, please do not submit the same piece repeatedly, though different submissions are always welcome. If you have any questions, please contact submissions@feministarchive.org. Thank you.",
+      "To avoid delays and confusion in the review process, please do not submit the same piece repeatedly, though different submissions are always welcome.",
+
     contactLabel: "Contact",
     contactTitle: "Contact and support",
     contactText:
-      "For editorial enquiries, collaboration, or donation support, you can later add your email and external funding links here.",
+      "For editorial enquiries, submissions, collaboration, or support, please contact us through the addresses below.",
     donationLink: "Donation link",
+
     guidelinesTitle: "Submission Guidelines",
     guidelinesIntro:
       "We welcome writing that is theoretically grounded, conceptually rigorous, and attentive to contemporary social reality.",
@@ -73,33 +128,32 @@ const text = {
       "We welcome essays, theoretical fragments, interventions, translations, reviews, lecture texts, and archival notes, provided that they are serious, readable, and intellectually responsible.",
     guidelines6:
       "Chinese submissions are especially welcome. Bilingual work is also welcome, and the platform may later support translation and parallel publication.",
+
     backToHome: "← Back to home",
+
     donateTitle: "Support us",
     donateText:
       "Feminist Archive is an independent project sustained by its readers. If you wish to support the continuation of this platform, you may do so through the following channels.",
-    donateAfdian: "Afdian (placeholder)",
-    donateCoffee: "Buy Me a Coffee (placeholder)",
+
     contactPageTitle: "Contact",
     contactPageIntro:
       "We are an independent platform for feminist writing and archiving. If you have any questions, please contact us through the addresses below.",
-    contactGeneral: "General enquiries: general@feministarchive.org",
-    contactSubmission: "Submission enquiries: submissions@feministarchive.org",
-    contactCritique: "Criticism and suggestions: criticism@feministarchive.org",
+    contactGeneral: "General enquiries: editorial@feministarchivejournal.org",
+    contactSubmission:
+      "Submission enquiries: submissions@feministarchivejournal.org",
+    contactCritique:
+      "Criticism and suggestions: editorial@feministarchivejournal.org",
     contactNote1:
-      "If you find factual errors in an article, or hold a different view, please contact the relevant address.",
+      "If you find factual errors in an article, or hold a different view, please contact the editorial address.",
     contactNote2:
       "If you have a systematic critique of an article, please submit it in the form of a serious written piece. If accepted, it may later be linked alongside the relevant article.",
-    monthlyPageTitle: "Archive of Refusal",
-    monthlyPageIntro:
-      "A monthly selection on dissent, memory, and forms of life that resist easy incorporation.",
-    monthlySection1: "Featured this month",
-    monthlySection2: "Critical Notes",
-    monthlySection3: "Reading Margins",
+
     footerHome: "Home",
     footerArchive: "Archive",
     footerSubmit: "Submit",
     footerContact: "Contact",
   },
+
   zh: {
     siteName: "Feminist Archive",
     siteTagline: "一个女性主义理论、文章与档案写作平台。",
@@ -109,30 +163,37 @@ const text = {
     navContact: "联系",
     navGuidelines: "投稿标准",
     navDonate: "捐助",
+
     heroEyebrow: "独立女性主义出版平台",
     heroTitle: "为可检索的女性主义公共写作而设的理论、文章与档案平台。",
     heroText:
       "Feminist Archive 既是一本杂志，也是一种知识平台：它容纳论文、批评性介入、研究型写作、翻译、证词与长篇思考。",
     heroSubmit: "我要投稿",
     heroBrowse: "浏览归档",
+
     themeLabel: "本月主题",
+    themeIssueLabel: "本月期刊",
     themeTitle: "拒绝的档案",
     themeText: "关于抵抗、记忆，以及那些拒绝被轻易收编的生活形式。",
+
     aboutLabel: "关于平台",
     aboutTitle: "形式上是杂志，结构上是档案库。",
     aboutText:
       "这个平台的目标不只是发布文章，而是按主题、概念与关键词组织文本，使女性主义写作可以被检索、再利用，并在历史中留下痕迹。",
+
     archiveLabel: "归档",
     archiveTitle: "搜索与浏览",
     archivePlaceholder: "按标题、作者、概念或关键词搜索……",
+
     submitLabel: "投稿",
     submitTitle: "发表前人工审核",
     submitText:
-      "所有投稿都将经过人工审核。我们欢迎论文、理论片段、批评性介入、翻译、书评、讲稿与档案性写作。请在右侧信息格式填写，并跳转到邮箱后点击发送。若操作失败，可手动发送至submissions@feministarchive.org，",
-    submitNote1: "同样欢迎英文写作，通过后，会刊登在Feminist Archive英文版块",
+      "所有投稿都将经过人工审核。我们欢迎论文、理论片段、批评性介入、翻译、书评、讲稿与档案性写作。请在右侧填写信息，提交后会直接发送给编辑部。",
+    submitNote1: "同样欢迎英文写作，通过后会刊登在 Feminist Archive 英文版块",
     submitNote2: "可使用笔名，必要时可匿名发表",
     submitNote3: "编辑结果：接受 / 修改后重投 / 拒绝",
     submitGuidelines: "投稿标准请看这里",
+
     formTitle: "标题",
     formAuthor: "作者 / 笔名",
     formEmail: "邮箱",
@@ -140,17 +201,22 @@ const text = {
     formAbstract: "摘要 / 给编辑的说明",
     formBody: "请把正文粘贴在这里……",
     formButton: "提交",
+
     successTitle: "投稿成功",
-    successText1: "你的稿件已被记录。接下来请等待人工审核。收到自动回复的确认邮件即代表发送成功。",
+    successText1:
+      "你的稿件已被记录。接下来请等待人工审核。收到自动回复的确认邮件即代表发送成功。",
     successText2:
       "如果稿件通过，或有值得进一步修改与讨论之处，我们会联系你。请耐心等待。",
-    successText3: "为避免造成更久的审稿和记录的混乱，请勿重复投稿，但欢迎投递不同文章。若有任何疑问，请联系general@feministarchive.org，非常感谢。",
-    successText4: "很抱歉，由于我们收到的投稿量巨大，并非每一份投稿都会收到回复。",
+    successText3:
+      "为避免造成更久的审稿和记录混乱，请勿重复投稿，但欢迎投递不同文章。",
+    successText4:
+      "很抱歉，由于我们收到的投稿量较大，并非每一份投稿都会收到回复。",
+
     contactLabel: "联系",
     contactTitle: "联系与支持",
-    contactText:
-      "之后你可以在这里加入编辑邮箱、合作方式和捐助链接。",
+    contactText: "你可以通过以下邮箱联系编辑部，或支持平台继续运行。",
     donationLink: "捐助链接",
+
     guidelinesTitle: "投稿标准",
     guidelinesIntro:
       "我们欢迎立论清楚、概念严谨、并且能够面对现实社会问题的写作。",
@@ -161,33 +227,29 @@ const text = {
     guidelines3:
       "凡涉及事实性判断，都应认真核对，并尽量提供准确可靠的信息来源。",
     guidelines4:
-      "例如：如果文章提出“汽车安全测试长期以来是按照男性人体模型设计的”，则需要核实这一说法，并引用可靠来源。",
+      "例如：如果文章提出某一社会现象或历史事实，应尽量核实这一说法，并引用可靠来源。",
     guidelines5:
-      "我们欢迎论文、理论片段、批评性介入、翻译、书评、讲稿与档案性文字，但它们都应当具有认真、可读且负责任的写作态度。作者名/笔名需稍微正式，谢谢。",
+      "我们欢迎论文、理论片段、批评性介入、翻译、书评、讲稿与档案性文字，但它们都应当具有认真、可读且负责任的写作态度。",
     guidelines6:
       "我们欢迎双语写作。未来平台可进一步支持译文与平行发布。",
+
     backToHome: "← 返回主页",
+
     donateTitle: "支持我们",
     donateText:
       "Feminist Archive 是一个由读者支持的独立项目。如果你希望支持平台持续运作，可以通过以下方式。",
-    donateAfdian: "爱发电（占位）",
-    donateCoffee: "Buy Me a Coffee（占位）",
+
     contactPageTitle: "联系",
     contactPageIntro:
       "我们是一个独立的女性主义写作与档案平台。如有任何问题，请通过以下邮箱联系。",
-    contactGeneral: "常规问题：general@feministarchive.org",
-    contactSubmission: "投稿问题：submissions@feministarchive.org",
-    contactCritique: "批评建议：criticism@feministarchive.org",
+    contactGeneral: "常规问题：editorial@feministarchivejournal.org",
+    contactSubmission: "投稿问题：submissions@feministarchivejournal.org",
+    contactCritique: "批评建议：editorial@feministarchivejournal.org",
     contactNote1:
-      "如果在文章中发现错误或有不同意见，请联系上述criticism@feministarchive.org邮箱。",
+      "如果在文章中发现事实错误，或有不同意见，请联系编辑邮箱。",
     contactNote2:
-      "若对相关文章有系统性的观点批判，请同样以专业文章方式写作发送至此邮箱；若通过审核，会连接在相关文章旁。",
-    monthlyPageTitle: "拒绝的档案",
-    monthlyPageIntro:
-      "一个关于抵抗、记忆与不可收编之生活形式的月度专题。",
-    monthlySection1: "本月精选",
-    monthlySection2: "批评札记",
-    monthlySection3: "阅读边栏",
+      "若对相关文章有系统性的观点批判，请同样以专业文章方式写作并发送；若通过审核，可连接在相关文章旁。",
+
     footerHome: "主页",
     footerArchive: "归档",
     footerSubmit: "投稿",
@@ -195,41 +257,168 @@ const text = {
   },
 };
 
-function App() {
+function MaintenancePage() {
+  return (
+    <main className="maintenance-page">
+      <section className="maintenance-card">
+        <div className="maintenance-label">FEMINIST ARCHIVE</div>
+
+        <h1>Site under maintenance</h1>
+
+        <p className="maintenance-intro">
+          Feminist Archive is currently being prepared and refined.
+        </p>
+
+        <p>
+          We are working on the full site and will return with a more complete
+          platform for feminist writing, critical reflection, and archival work.
+        </p>
+
+        <p>
+          For enquiries, submissions, or editorial matters, please contact us
+          temporarily at:
+        </p>
+
+        <a
+          className="maintenance-email"
+          href="mailto:submissions@feministarchivejournal.org"
+        >
+          submissions@feministarchivejournal.org
+        </a>
+
+        <div className="maintenance-footer">
+          Rigorous writing · Critical reflection · Archival work
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function MainApp() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState("main");
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState(getInitialLanguage);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [articleReturnPage, setArticleReturnPage] = useState("monthly-theme");
+  const [readingProgress, setReadingProgress] = useState(0);
+  const [donationType, setDonationType] = useState("monthly");
+  const [donationAmount, setDonationAmount] = useState("10");
+  const [donationEmail, setDonationEmail] = useState("");
+  const [showNewsletter, setShowNewsletter] = useState(false);
+  const [showArticleShare, setShowArticleShare] = useState(false);
+  const [articleShareVisible, setArticleShareVisible] = useState(false);
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+  const [isSubmittingArticle, setIsSubmittingArticle] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState("");
+  const [donationEmailStatus, setDonationEmailStatus] = useState("");
+  useEffect(() => {
+    window.localStorage.setItem(getLanguageStorageKey(), language);
+    document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+  }, [language]);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(".donation-reveal");
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+  
+    elements.forEach((element) => observer.observe(element));
+  
+    return () => observer.disconnect();
+  }, [currentPage]);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+
+      const docHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const progress =
+        docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+      setReadingProgress(progress);
+
+      if (currentPage === "article-detail" && selectedArticle) {
+        const articleBody = document.querySelector(".mag-article-body");
+
+        if (articleBody) {
+          const rect = articleBody.getBoundingClientRect();
+          const hasEnteredArticle = rect.top < window.innerHeight * 0.62;
+          const hasNotReachedEnd = rect.bottom > window.innerHeight * 0.38;
+
+          setArticleShareVisible(hasEnteredArticle && hasNotReachedEnd);
+        }
+      } else {
+        setArticleShareVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [currentPage, selectedArticle]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "auto",
+      });
+    }, 0);
+  
+    return () => clearTimeout(timer);
+  }, [currentPage, selectedArticle?.id]);
 
   const t = text[language];
 
-  const categories =
-    language === "zh"
-      ? ["All", "Essay", "Archive", "Intervention"]
-      : ["All", "Essay", "Archive", "Intervention"];
+  const categories = ["All", "Writing", "Reviews", "Archive"];
 
-  const filteredArticles = useMemo(() => {
-    return articles.filter((article) => {
-      const matchesCategory =
-        activeCategory === "All" || article.category === activeCategory;
+  const currentArticles =
+  language === "en" ? englishArticles : chineseArticles;
 
-      const haystack = [
-        article.title,
-        article.author,
-        article.category,
-        article.excerpt,
-        ...article.tags,
-      ]
-        .join(" ")
-        .toLowerCase();
+  const visibleArticles = useMemo(
+    () => currentArticles.filter((article) => !article.hidden),
+    [currentArticles]
+  );
+	
+const filteredArticles = useMemo(() => {
+  return visibleArticles.filter((article) => {
+    const matchesCategory =
+      activeCategory === "All" || article.category === activeCategory;
 
-      const matchesSearch = haystack.includes(search.toLowerCase());
+    const haystack = [
+      article.title,
+      article.author,
+      article.category,
+      article.excerpt,
+      ...(article.tags || []),
+    ]
+      .join(" ")
+      .toLowerCase();
 
-      return matchesCategory && matchesSearch;
-    });
-  }, [search, activeCategory]);
+    return matchesCategory && haystack.includes(search.toLowerCase());
+  });
+}, [search, activeCategory, visibleArticles]);
+
+const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
   const navButtonStyle = {
     background: "none",
@@ -240,17 +429,32 @@ function App() {
     font: "inherit",
   };
 
-  const footerButtonStyle = {
-    background: "none",
-    border: "none",
-    padding: 0,
-    color: "inherit",
-    cursor: "pointer",
-    font: "inherit",
+  const footerButtonStyle = navButtonStyle;
+
+  const openArticleFrom = (article, returnPage = currentPage) => {
+    setSelectedArticle(article);
+    setArticleReturnPage(returnPage);
+    setCurrentPage("article-detail");
   };
 
-  const themeCardStyle = {
-    cursor: "pointer",
+  const getArticleReturnLabel = () => {
+    if (articleReturnPage === "reading-room") {
+      return language === "zh" ? "← 阅读室" : "← READING ROOM";
+    }
+
+    if (articleReturnPage === "magazine") {
+      return "← MAGAZINE";
+    }
+
+    if (articleReturnPage === "archive-page") {
+      return language === "zh" ? "← 归档" : "← ARCHIVE";
+    }
+
+    if (articleReturnPage === "main") {
+      return "← HOME";
+    }
+
+    return "← ISSUE";
   };
 
   const specialPageBoxStyle = {
@@ -262,41 +466,88 @@ function App() {
     lineHeight: 1.9,
   };
 
-  if (currentPage === "guidelines") {
+  function Header({ simple = false, hideLanguage = false }) {
+    return (
+      <header className="site-header">
+        <div className="brand-block">
+        <button
+  className="site-name logo-button"
+  onClick={() => setCurrentPage("archive-house")}
+>
+  {t.siteName}
+</button>
+          <div className="site-tagline">{t.siteTagline}</div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: simple ? "row" : "column",
+            gap: "14px",
+            alignItems: "flex-end",
+            flexWrap: "wrap",
+          }}
+        >
+          {!simple && (
+            <nav className="top-nav">
+              <button
+                style={navButtonStyle}
+                onClick={() => setCurrentPage("main")}
+              >
+                {t.navHome}
+              </button>
+              <a href="#archive">{t.navArchive}</a>
+              <a href="#submit">{t.navSubmit}</a>
+              <button
+                style={navButtonStyle}
+                onClick={() => setCurrentPage("contact-page")}
+              >
+                {t.navContact}
+              </button>
+            </nav>
+          )}
+{!hideLanguage && (
+  <div className="language-dropdown">
+    <button
+      className="language-trigger"
+      onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+    >
+      Language
+    </button>
+
+    {showLanguageMenu && (
+      <div className="language-menu">
+        <button
+          onClick={() => {
+            setLanguage("en");
+            setShowLanguageMenu(false);
+          }}
+        >
+          English
+        </button>
+
+        <button
+          onClick={() => {
+            setLanguage("zh");
+            setShowLanguageMenu(false);
+          }}
+        >
+          中文
+        </button>
+      </div>
+    )}
+  </div>
+)}
+        </div>
+      </header>
+    );
+  }
+
+  function renderGuidelinesPage() {
+  
     return (
       <div className="site-shell">
-        <header className="site-header">
-          <div className="brand-block">
-            <div className="site-name">{t.siteName}</div>
-            <div className="site-tagline">{t.siteTagline}</div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <button
-              className={
-                language === "en" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              className={
-                language === "zh" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("zh")}
-            >
-              中文
-            </button>
-          </div>
-        </header>
+        <Header simple />
 
         <main>
           <section className="archive-section" style={{ borderTop: "none" }}>
@@ -307,381 +558,1612 @@ function App() {
               </div>
             </div>
 
-            <div style={specialPageBoxStyle}>
-              <p style={{ color: "var(--muted)", marginTop: 0 }}>
-                {t.guidelinesIntro}
-              </p>
+            <div className="guidelines-editorial-page">
+  <section className="guidelines-opening">
+    <p>{t.guidelinesIntro}</p>
+  </section>
 
-              <ul style={{ paddingLeft: "20px", color: "var(--muted)" }}>
-                <li>{t.guidelines1}</li>
-                <li>{t.guidelines2}</li>
-                <li>{t.guidelines3}</li>
-                <li>{t.guidelines4}</li>
-                <li>{t.guidelines5}</li>
-                <li>{t.guidelines6}</li>
-              </ul>
+  <section className="guidelines-principles">
+    <div className="guideline-row">
+      <span>01</span>
+      <h3>Argument</h3>
+      <p>{t.guidelines1}</p>
+    </div>
 
-              <div style={{ marginTop: "28px" }}>
-              <button
-  className="button button-light"
-  onClick={() => setCurrentPage("main")}
->
-  {language === "zh" ? "← 返回归档" : "← Back to archive"}
-</button>
-              </div>
-            </div>
+    <div className="guideline-row">
+      <span>02</span>
+      <h3>Reality</h3>
+      <p>{t.guidelines2}</p>
+    </div>
+
+    <div className="guideline-row">
+      <span>03</span>
+      <h3>Verification</h3>
+      <p>{t.guidelines3}</p>
+    </div>
+
+    <div className="guideline-row">
+      <span>04</span>
+      <h3>Sources</h3>
+      <p>{t.guidelines4}</p>
+    </div>
+
+    <div className="guideline-row">
+      <span>05</span>
+      <h3>Form</h3>
+      <p>{t.guidelines5}</p>
+    </div>
+
+    <div className="guideline-row">
+      <span>06</span>
+      <h3>Language</h3>
+      <p>{t.guidelines6}</p>
+    </div>
+  </section>
+
+  <section className="guidelines-note">
+    <p>
+      Submissions are read manually. We value seriousness, clarity,
+      intellectual responsibility, and writing that is willing to sustain
+      its own claims.
+    </p>
+  </section>
+  <section className="submission-deep-guidance">
+  <div className="submission-deep-line"></div>
+
+  <p>
+    {language === "zh"
+      ? "如果你希望获得更细致的写作指导、编辑建议与 Feminist Archive 的完整写作方法，可以进入我们的写作指南。"
+      : "If you would like more detailed guidance on writing, editing, structure, and the editorial philosophy of Feminist Archive, you may enter our writing guide."}
+  </p>
+
+  <button
+    className="submission-deep-button"
+    onClick={() => setCurrentPage("submission-guidelines")}
+  >
+    {language === "zh"
+      ? "进入写作指南"
+      : "Enter the Writing Guide"}
+  </button>
+</section>
+  <button
+    className="contact-home-link"
+    onClick={() => setCurrentPage("main")}
+  >
+    {t.backToHome}
+  </button>
+</div>
           </section>
         </main>
       </div>
     );
   }
-
-  if (currentPage === "monthly-theme") {
-
-    return renderMonthlyTheme();
-  
-  }
-  if (currentPage === "article-detail") {
-
-    return renderArticleDetail();
-  
-  }
-
-  function renderMonthlyTheme() {
-    const featuredSet =
-      language === "zh"
-        ? [
-            {
-              title: "拒绝作为中断形式",
-              excerpt:
-                "拒绝并非单纯退出，而是一种对连续性的中断。它迫使我们重新思考：哪些生活形式还能继续，哪些叙事必须被打断。",
-              linkText: "阅读文章",
-              image: "/images/2.png",
-            },
-            {
-              title: "记忆如何逃离制度化",
-              excerpt:
-                "当一切经验都被归档、管理与命名时，记忆本身如何仍保留其不驯性，仍维持一种无法被完全翻译的剩余。",
-              linkText: "阅读文章",
-              image: "/images/3.png",
-            },
-            {
-              title: "不可收编的写作",
-              excerpt:
-                "有些写作并不寻求被整合进既有知识秩序，而是在语言内部保留裂缝，使思想保持一种开放而危险的状态。",
-              linkText: "阅读文章",
-              image: "/images/4.png",
-            },
-          ]
-        : [
-            {
-              title: "Refusal as Interruption",
-              excerpt:
-                "Refusal is not merely withdrawal but a break within continuity, forcing us to ask what forms of life may still continue and which narratives must be interrupted.",
-              linkText: "Read article",
-              image: "/images/2.png",
-            },
-            {
-              title: "How Memory Escapes Administration",
-              excerpt:
-                "When experience is endlessly classified and managed, memory may still preserve an unruly remainder that resists full translation.",
-              linkText: "Read article",
-              image: "/images/3.png",
-            },
-            {
-              title: "Writing Against Incorporation",
-              excerpt:
-                "Certain forms of writing do not seek integration into existing knowledge systems, but preserve a crack within language itself.",
-              linkText: "Read article",
-              image: "/images/4.png",
-            },
-          ];
-  
-    const fragment =
-      language === "zh"
-        ? {
-            year: "1913",
-            title: "英国妇女参政游行",
-            text: "1913年，英国妇女社会与政治联盟（WSPU）在伦敦发起大规模游行，争取女性选举权。该行动展示了女性以集体力量挑战法律和政治排斥的早期现代图景。",
-            image:
-              "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80",
-          }
-        : {
-            year: "1913",
-            title: "Suffrage Procession in Britain",
-            text: "In 1913, members of the WSPU organised major public processions in London demanding women’s suffrage, marking an early modern scene of collective resistance to legal and political exclusion.",
-            image:
-              "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80",
-          };
-  
-    const topics =
-      language === "zh"
-        ? [
-            "羞耻与女性可见性",
-            "平台时代的意识形态依附",
-            "家务劳动与历史书写",
-          ]
-        : [
-            "Shame and feminine visibility",
-            "Ideological attachment in platform culture",
-            "Domestic labour and historical writing",
-          ];
-  
-    const margins =
-      language === "zh"
-        ? [
-            "档案并不是静止仓库，而是不断决定什么可被记住、什么被排除的机制。",
-            "并非所有可见之物都会进入历史；很多经验恰恰因为过于日常而消失。",
-          ]
-        : [
-            "An archive is never a neutral storehouse, but a mechanism deciding what may be remembered and what is excluded.",
-            "Not everything visible enters history; much disappears precisely because it is too ordinary.",
-          ];
-  
-    return (
-      <div className="site-shell monthly-gallery-shell">
-        <header className="site-header monthly-gallery-header">
-          <div className="brand-block">
-            <div className="site-name">{t.siteName}</div>
-            <div className="site-tagline">
-              {language === "zh"
-                ? "当女性书写历史"
-                : "When women write history"}
-            </div>
-          </div>
-  
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <button
-              className={
-                language === "en" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              className={
-                language === "zh" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("zh")}
-            >
-              中文
-            </button>
-          </div>
-        </header>
-  
-        <main className="monthly-gallery-page">
-          <section className="monthly-gallery-hero">
-            <div className="monthly-gallery-hero-copy">
-              <div className="monthly-gallery-kicker">
-                {language === "zh" ? "本月主题 / MONTHLY THEME" : "MONTHLY THEME"}
-              </div>
-  
-              <h1 className="monthly-gallery-title">
-                {language === "zh" ? "拒绝作为\n中断形式" : "REFUSAL AS\nINTERRUPTION"}
-              </h1>
-  
-              <div className="monthly-gallery-subtitle">
-                {language === "zh"
-                  ? "REFUSAL AS INTERRUPTION"
-                  : "A CURATED READING OF REFUSAL"}
-              </div>
-  
-              <p className="monthly-gallery-summary">
-                {language === "zh"
-                  ? "拒绝并不是退出，而是一种对秩序的中断。它迫使我们重新思考：哪些生活形式还能继续，哪些叙事必须被改写。"
-                  : "Refusal is not retreat, but an interruption of order. It asks what forms of life may still continue, and which narratives must be rewritten."}
-              </p>
-  
-              <div className="monthly-gallery-date">
-                {language === "zh" ? "03 / 2026" : "03 / 2026"}
-              </div>
-            </div>
-  
-            <div className="monthly-gallery-hero-image" />
-          </section>
-  
-          <section className="monthly-curated-section">
-            <div className="monthly-gallery-kicker">
-              {language === "zh" ? "精选文章 / CURATED READINGS" : "CURATED READINGS"}
-            </div>
-  
-            <div className="monthly-curated-grid">
-              {featuredSet.map((item, index) => (
-                <article key={index} className="monthly-curated-card">
-                  <div
-                    className="monthly-curated-card-image"
-                    style={{ backgroundImage: `url(${item.image})` }}
-                  />
-                  <div className="monthly-curated-card-body">
-                    <div className="monthly-curated-number">
-                      {String(index + 1).padStart(2, "0")}
-                    </div>
-                    <h2>{item.title}</h2>
-                    <p>{item.excerpt}</p>
-                    <div className="monthly-curated-link">{item.linkText} ⟶</div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-  
-          <section className="monthly-curatorial-band">
-            <div className="monthly-curatorial-copy">
-              <div className="monthly-gallery-kicker">
-                {language === "zh" ? "策展导语 / CURATORIAL NOTE" : "CURATORIAL NOTE"}
-              </div>
-  
-              <h2>
-                {language === "zh"
-                  ? "拒绝并不是退出，\n而是一种对秩序的中断。"
-                  : "Refusal is not retreat,\nbut an interruption of order."}
-              </h2>
-  
-              <p>
-                {language === "zh"
-                  ? "本月专题试图以更缓慢、更具展览感的阅读方式，重新组织“拒绝”的意义。它并不只是政治口号，而是与记忆、羞耻、制度、照护劳动以及主体的形成方式交织在一起。"
-                  : "This month’s section reconsiders refusal through a slower, more exhibition-like mode of reading, linking it to memory, shame, institutions, care labour, and subject formation."}
-              </p>
-  
-              <p>
-                {language === "zh"
-                  ? "因此，这一页并不是普通的信息列表，而更像一册专题画册：图像、文章与边注共同构成一种被策划的阅读路径。"
-                  : "This page is less an information list than a visual dossier, where image, essay, and marginal note form a curated path of reading."}
-              </p>
-            </div>
-  
-            <div className="monthly-curatorial-image-wrap">
-              <div className="monthly-curatorial-image monthly-curatorial-image-top" />
-              <div className="monthly-curatorial-image monthly-curatorial-image-bottom" />
-            </div>
-          </section>
-  
-          <section className="monthly-appendix-grid">
-            <div className="monthly-appendix-card">
-              <div className="monthly-gallery-kicker">
-                {language === "zh" ? "热门议题 / POPULAR DISCUSSIONS" : "POPULAR DISCUSSIONS"}
-              </div>
-              <ul className="monthly-appendix-list">
-                {topics.map((item, index) => (
-                  <li key={index}>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-  
-            <div className="monthly-appendix-card">
-              <div className="monthly-gallery-kicker">
-                {language === "zh" ? "阅读边栏 / READING MARGINS" : "READING MARGINS"}
-              </div>
-              <div className="monthly-margins-stack">
-                {margins.map((item, index) => (
-                  <p key={index}>{item}</p>
-                ))}
-              </div>
-            </div>
-  
-            <div className="monthly-appendix-card monthly-fragment-single">
-              <div className="monthly-gallery-kicker">
-                {language === "zh" ? "历史碎片 / HISTORICAL FRAGMENT" : "HISTORICAL FRAGMENT"}
-              </div>
-  
-              <div className="monthly-fragment-layout">
-                <div
-                  className="monthly-fragment-thumb"
-                  style={{ backgroundImage: `url(${fragment.image})` }}
-                />
-                <div className="monthly-fragment-text">
-                  <div className="monthly-fragment-year">{fragment.year}</div>
-                  <h3>{fragment.title}</h3>
-                  <p>{fragment.text}</p>
-                </div>
-              </div>
-            </div>
-          </section>
-  
-          <div className="monthly-gallery-back-row">
-            <button
-              className="button button-dark"
-              onClick={() => setCurrentPage("main")}
-            >
-              {language === "zh" ? "返回首页 / BACK TO HOME" : "BACK TO HOME"}
-            </button>
-          </div>
-        </main>
-      </div>
-    );
-  }
-  function renderAllArticlesPage() {
+  function renderDonatePage() {
     return (
       <div className="site-shell">
-        <header className="site-header">
-          <div className="brand-block">
-            <div className="site-name">{t.siteName}</div>
-            <div className="site-tagline">{t.siteTagline}</div>
-          </div>
-  
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <button
-              className={
-                language === "en" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              className={
-                language === "zh" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("zh")}
-            >
-              中文
-            </button>
-          </div>
-        </header>
+        <Header simple />
   
         <main>
           <section className="archive-section" style={{ borderTop: "none" }}>
             <div className="section-heading">
               <div>
-                <div className="section-label">
-                  {language === "zh" ? "全部文章" : "All Articles"}
-                </div>
-                <h2>
-                  {language === "zh" ? "文章索引与检索" : "Article Index and Search"}
-                </h2>
+                <div className="section-label">{t.navDonate}</div>
+                <h2>{t.donateTitle}</h2>
               </div>
             </div>
   
+            <div className="donation-editorial-layout">
+              <div className="donation-editorial-copy">
+                <div className="section-label">
+                  {language === "zh" ? "读者支持" : "READER SUPPORTED"}
+                </div>
+  
+                <h3>
+                  {language === "zh"
+                    ? "让女性主义写作保持公共开放。"
+                    : "Keep feminist writing public."}
+                </h3>
+  
+                <p>
+                  {language === "zh"
+                    ? "Feminist Archive 以缓慢、独立、非广告化的方式维持运行。"
+                    : "Feminist Archive is sustained slowly, independently, and without institutional advertising."}
+                </p>
+  
+                <p>
+                  {language === "zh"
+                    ? "我们坚持让文章、档案与编辑工作保持免费阅读，因为我们相信女性主义思想应当属于公共知识生活，而不应被隐藏在付费墙之后。"
+                    : "We keep our essays, archives, and editorial work freely accessible because we believe feminist thought should remain part of public intellectual life, not hidden behind paywalls."}
+                </p>
+  
+                <p>
+                  {language === "zh"
+                    ? "如果这个平台对你的阅读与思考有意义，你可以通过小额捐助支持它继续存在。"
+                    : "If this platform matters to your reading life, you may help support its continuation."}
+                </p>
+              </div>
+  
+              <div className="donation-methods">
+              {language === "zh" && (
+  <a
+    href="https://www.ifdian.net/a/FeministArchive"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="donation-link-card"
+  >
+    <span>爱发电</span>
+    <em>适合中国读者支持</em>
+  </a>
+)}
+
+                <a
+                  href="https://buymeacoffee.com/feministarchive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="donation-link-card"
+                >
+                  <span>Buy Me a Coffee</span>
+                  <em>{language === "zh" ? "小额独立支持" : "Small independent support"}</em>
+                </a>
+  
+                <a
+                  href="https://ko-fi.com/feministarchive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="donation-link-card"
+                >
+                  <span>Ko-fi</span>
+                  <em>{language === "zh" ? "国际捐助通道" : "International donations"}</em>
+                </a>
+              </div>
+            </div>
+  
+            <div className="donation-note">
+              {language === "zh"
+                ? "Feminist Archive 将继续保持免费阅读。捐助将用于网站维护、编辑工作、印刷实验与长篇女性主义出版。"
+                : "Feminist Archive remains free to read. Donations support hosting, editorial work, print experiments, and long-form feminist publishing."}
+            </div>
+  
+            <button
+              className="contact-home-link"
+              onClick={() => setCurrentPage("main")}
+            >
+              {language === "zh" ? "← 返回主页" : "← Back to home"}
+            </button>
+          </section>
+        </main>
+      </div>
+    );
+  }
+  function renderDonationDrivePage() {
+    return (
+
+      <div className="donate-page-shell">
+  
+  <header className="donate-page-header">
+
+<div className="donate-header-left">
+
+  <button className="donate-menu-button">
+    ☰
+  </button>
+
+  <button
+    className="donate-header-link"
+    onClick={() => setShowNewsletter(true)}
+  >
+    {language === "zh" ? "通讯" : "Newsletter"}
+  </button>
+
+  <button
+    className="donate-header-link"
+    onClick={() => setCurrentPage("donate")}
+  >
+    {language === "zh" ? "捐助" : "Donate"}
+  </button>
+
+</div>
+
+<div
+  className="donate-logo"
+  onClick={() => setCurrentPage("main")}
+>
+  Feminist Archive
+
+  <span>
+    keep feminist writing public
+  </span>
+</div>
+
+<button
+  className="donate-signin"
+  onClick={() => setCurrentPage("main")}
+>
+  {language === "zh" ? "返回" : "Back"}
+</button>
+
+</header>
+  
+        <main className="donate-page-main">
+  
+          <section className="donate-form-panel">
+  
+            <div className="donate-form-label">
+  
+              {language === "zh" ? "我想支持" : "I would like to donate"}
+  
+            </div>
+  
+            <div className="donate-tabs">
+  
+              <button
+  
+                className={donationType === "monthly" ? "active" : ""}
+  
+                onClick={() => setDonationType("monthly")}
+  
+              >
+  
+                {language === "zh" ? "每月" : "Monthly"}
+  
+              </button>
+  
+              <button
+  
+                className={donationType === "annually" ? "active" : ""}
+  
+                onClick={() => setDonationType("annually")}
+  
+              >
+  
+                {language === "zh" ? "每年" : "Annually"}
+  
+              </button>
+  
+              <button
+  
+                className={donationType === "one-time" ? "active" : ""}
+  
+                onClick={() => setDonationType("one-time")}
+  
+              >
+  
+                {language === "zh" ? "一次性" : "One time"}
+  
+              </button>
+  
+            </div>
+  
+            <div className="donate-form-label">
+  
+              {language === "zh" ? "选择金额" : "Select amount RMB"}
+  
+            </div>
+  
+            <div className="donate-amount-grid">
+  
+            {[
+  language === "zh" ? "5" : "5",
+  language === "zh" ? "10" : "10",
+  language === "zh" ? "20" : "25",
+].map((amount) => (
+  
+                <button
+  
+                  key={amount}
+  
+                  className={donationAmount === amount ? "active" : ""}
+  
+                  onClick={() => setDonationAmount(amount)}
+  
+                >
+  
+  {language === "zh" ? "¥" : "£"}{amount}
+  
+                  {donationType === "monthly" && language !== "zh" ? " per month" : ""}
+  
+                  {donationType === "monthly" && language === "zh" ? " / 月" : ""}
+  
+                </button>
+  
+              ))}
+  
+              <button
+  
+                className={donationAmount === "other" ? "active" : ""}
+  
+                onClick={() => setDonationAmount("other")}
+  
+              >
+  
+                {language === "zh" ? "其它" : "Other"}
+  
+              </button>
+  
+            </div>
+  
+            {donationAmount === "other" && (
+  
+              <input
+  
+                className="donate-input"
+  
+                placeholder={language === "zh" ? "输入金额" : "Enter amount"}
+  
+              />
+  
+            )}
+  
+  <div className="donate-form-label">
+
+{language === "zh" ? "邮箱地址" : "Email address"}
+
+</div>
+
+<div className="donation-email-row">
+
+<input
+  className="donate-input"
+  type="email"
+  value={donationEmail}
+  onChange={(e) => {
+    setDonationEmail(e.target.value);
+    setDonationEmailStatus("");
+  }}
+  placeholder={
+    language === "zh"
+      ? "输入邮箱地址"
+      : "Enter email address"
+  }
+/>
+
+<button
+  className="donation-email-send"
+  onClick={async () => {
+    if (!donationEmail) return;
+
+    setDonationEmailStatus(language === "zh" ? "正在发送..." : "Sending...");
+
+    try {
+      await submitWebsiteForm({
+        type: "Donation email",
+        email: donationEmail,
+        donationType,
+        amount: donationAmount,
+        language,
+      });
+
+      setDonationEmailStatus(
+        language === "zh"
+          ? "已收到你的邮箱，谢谢。"
+          : "Your email has been received. Thank you."
+      );
+    } catch {
+      setDonationEmailStatus(
+        language === "zh"
+          ? "发送失败，请稍后再试。"
+          : "Could not send. Please try again later."
+      );
+    }
+  }}
+>
+  →
+</button>
+
+</div>
+
+{donationEmailStatus && (
+  <p className="donate-helper">{donationEmailStatus}</p>
+)}
+
+<p className="donate-helper">
+
+  {language === "zh"
+
+    ? "这是可选的。你将会收到 Feminist Archive 的捐助确认与感谢信件。"
+
+    : "Optional. You will receive a donation confirmation and a letter of thanks from Feminist Archive."}
+
+</p>
+  
+            <div className="donate-note-box">
+  
+              <strong>
+  
+                {language === "zh"
+  
+                  ? "你的捐助将支持 Feminist Archive。"
+  
+                  : "Your donation will support Feminist Archive."}
+  
+              </strong>
+  
+              <p>
+  
+                {language === "zh"
+  
+                  ? "捐助将用于网站维护、编辑工作、印刷实验与长篇女性主义出版。"
+  
+                  : "Donations support hosting, editorial work, print experiments, and long-form feminist publishing."}
+  
+              </p>
+  
+            </div>
+  
+            <a
+  className="donate-submit"
+  href={
+    language === "zh"
+      ? "https://www.ifdian.net/a/FeministArchive"
+      : "https://ko-fi.com/feministarchive"
+  }
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  {language === "zh" ? "继续捐助" : "Continue donation"} →
+</a>
+  
+          </section>
+  
+          <section className="donate-copy-panel">
+  
+            <h1>
+  
+              {language === "zh"
+  
+                ? "你的支持让 Feminist Archive 保持开放。"
+  
+                : "Your support keeps Feminist Archive open to everyone."}
+  
+            </h1>
+  
+            <p>
+  
+              {language === "zh"
+  
+                ? "Feminist Archive 是一个独立女性主义出版平台。我们不设置付费墙，也不依赖广告，而是通过读者支持来维持文章、档案、理论与长篇写作的公共可读性。"
+  
+                : "Feminist Archive is an independent feminist publication. We do not place our writing behind a paywall, and we do not rely on advertising. Reader support helps us keep essays, archives, theory and long-form writing publicly available."}
+  
+            </p>
+  
+            <p>
+  
+              {language === "zh"
+  
+                ? "无论金额多少，每一份支持都会帮助这个平台继续生长。"
+  
+                : "Whatever you can give, no matter how small, helps this platform continue to grow."}
+  
+            </p>
+  
+            <div className="donate-illustration">
+  
+              ✦
+  
+            </div>
+  
+          </section>
+
+        </main>
+
+        {showNewsletter && (
+  <div
+    className="newsletter-overlay"
+    onClick={() => setShowNewsletter(false)}
+  >
+    <div
+      className="newsletter-modal"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        className="newsletter-close"
+        onClick={() => setShowNewsletter(false)}
+      >
+        ×
+      </button>
+
+      <div className="newsletter-modal-label">
+        {language === "zh" ? "通讯" : "NEWSLETTER"}
+      </div>
+
+      <h2>
+        {language === "zh" ? "与档案保持联系。" : "Stay with the archive."}
+      </h2>
+
+      <p>
+        {language === "zh"
+          ? "接收 Feminist Archive 偶尔发送的编辑通讯、新文章、档案片段与阅读推荐。"
+          : "Receive occasional editorial letters, newly published essays, archival fragments, and reading selections from Feminist Archive."}
+      </p>
+
+      <form
+        className="newsletter-modal-form"
+        onSubmit={async (e) => {
+          e.preventDefault();
+
+          const email = e.target.email.value;
+
+          setNewsletterStatus(language === "zh" ? "正在订阅..." : "Subscribing...");
+
+          try {
+            await submitWebsiteForm({
+              type: "Newsletter subscription",
+              email,
+              language,
+            });
+
+            setNewsletterStatus(
+              language === "zh"
+                ? "订阅成功，谢谢。"
+                : "Subscribed. Thank you."
+            );
+            e.target.reset();
+          } catch {
+            setNewsletterStatus(
+              language === "zh"
+                ? "订阅失败，请稍后再试。"
+                : "Could not subscribe. Please try again later."
+            );
+          }
+        }}
+      >
+        <input
+          name="email"
+          type="email"
+          placeholder={language === "zh" ? "你的邮箱地址" : "Your email address"}
+          required
+        />
+
+        <button type="submit">
+          {language === "zh" ? "订阅" : "Subscribe"}
+        </button>
+      </form>
+
+      {newsletterStatus && (
+        <div className="newsletter-modal-note">{newsletterStatus}</div>
+      )}
+
+      <div className="newsletter-modal-note">
+        {language === "zh"
+          ? "确认订阅后，即表示你同意接收 Feminist Archive 的邮件。你可以随时取消订阅。"
+          : "By subscribing, you agree to receive emails from Feminist Archive. You can unsubscribe at any time."}
+      </div>
+    </div>
+  </div>
+)}
+  
+        
+      </div>
+    );
+  }
+  function renderContactPage() {
+    return (
+      <div className="site-shell">
+        <Header simple hideLanguage />
+  
+        <main>
+          <section className="archive-section" style={{ borderTop: "none" }}>
+            <div className="section-heading">
+              <div>
+                <div className="section-label">{t.navContact}</div>
+                <h2>{t.contactPageTitle}</h2>
+              </div>
+            </div>
+  
+            <div className="contact-editorial-page">
+              <div className="contact-masthead-page">
+                <section className="contact-masthead-intro">
+                  <p>
+                    {language === "zh"
+                      ? "Feminist Archive 是一个独立女性主义出版平台，关注论文、档案写作、批评与长篇思想写作。我们缓慢出版、认真编辑，并欢迎严肃的来信与讨论。"
+                      : "Feminist Archive is an independent publication for essays, archival writing, criticism, and long-form feminist thought. We publish slowly, edit carefully, and remain open to serious correspondence."}
+                  </p>
+                </section>
+  
+                <section className="contact-correspondence">
+                  <div className="contact-row">
+                    <div>
+                      <span>{language === "zh" ? "编辑部" : "Editorial"}</span>
+                      <h3>editorial@feministarchivejournal.org</h3>
+                    </div>
+  
+                    <p>
+                      {language === "zh"
+                        ? "编辑问题、修正、合作、访谈与一般通信。"
+                        : "Editorial questions, corrections, collaborations, interviews, and general correspondence."}
+                    </p>
+                  </div>
+  
+                  <div className="contact-row">
+                    <div>
+                      <span>{language === "zh" ? "投稿" : "Submissions"}</span>
+                      <h3>submissions@feministarchivejournal.org</h3>
+                    </div>
+  
+                    <p>
+                      {language === "zh"
+                        ? "论文、理论片段、翻译、档案文本、评论与批评性介入。"
+                        : "Essays, theoretical fragments, translations, archive texts, reviews, and interventions."}
+                    </p>
+                  </div>
+  
+                  <div className="contact-row">
+                    <div>
+                      <span>{language === "zh" ? "一般问询" : "General"}</span>
+                      <h3>general@feministarchivejournal.org</h3>
+                    </div>
+  
+                    <p>
+                      {language === "zh"
+                        ? "一般问题、技术问题、newsletter 相关问题、读者支持与其他通信。"
+                        : "General enquiries, technical issues, newsletter questions, reader support, and other correspondence."}
+                    </p>
+                  </div>
+                </section>
+  
+                <section className="contact-publishing-model">
+                  <div>
+                    <span>
+                      {language === "zh" ? "出版模式" : "Publishing model"}
+                    </span>
+                    <p>{language === "zh" ? "免费阅读" : "Free to read"}</p>
+                  </div>
+  
+                  <div>
+                    <span>
+                      {language === "zh" ? "读者支持" : "Supported by readers"}
+                    </span>
+                    <p>{language === "zh" ? "无付费墙" : "No paywall"}</p>
+                  </div>
+  
+                  <div>
+                    <span>
+                      {language === "zh"
+                        ? "编辑原则"
+                        : "Editorial principle"}
+                    </span>
+                    <p>
+                      {language === "zh"
+                        ? "缓慢、认真、公共"
+                        : "Slow, careful, public"}
+                    </p>
+                  </div>
+                </section>
+  
+                <section className="contact-protocol-note">
+                  <p>
+                    {language === "zh"
+                      ? "我们欢迎严肃的不同意见。如果你的回应构成一篇具有实质论证的文章，我们鼓励你正式投稿。若被接受，相关回应可在之后连接至对应文章旁。"
+                      : "Serious disagreements are welcome. If your response takes the form of a substantial argument, we encourage formal submission. Accepted responses may later be linked alongside the relevant article."}
+                  </p>
+                </section>
+              </div>
+  
+              <div className="contact-editorial-protocol">
+                <div className="section-label">
+                  {language === "zh" ? "编辑说明" : "Editorial protocol"}
+                </div>
+  
+                <p>
+                  {language === "zh"
+                    ? "如果你在文章中发现事实错误，或持有不同观点，请在来信中提供清晰的出处与语境。"
+                    : "If you find factual errors in an article, or hold a different view, please write to us with clear references and context."}
+                </p>
+  
+                <p>
+                  {language === "zh"
+                    ? "如果你对某篇文章有系统性的批评，我们鼓励你将其写成一篇严肃文章进行投稿。若被接受，它可在之后连接至相关文章旁。"
+                    : "If you have a systematic critique of an article, we encourage you to submit it as a serious written piece. If accepted, it may later be linked alongside the relevant article."}
+                </p>
+              </div>
+  
+              <div className="contact-socials">
+                <span>{language === "zh" ? "你也可以在这里找到我们" : "Find us elsewhere"}</span>
+  
+                <div className="contact-social-icons">
+                  <a
+                    href="https://x.com/FeministArchiv"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X"
+                  >
+                    <i className="fa-brands fa-x-twitter"></i>
+                  </a>
+  
+                  <a
+                    href="https://bsky.app/profile/feministarchive.bsky.social"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Bluesky"
+                  >
+                    <span className="bluesky-icon">🦋</span>
+                  </a>
+  
+                  <a
+                    href="https://www.linkedin.com/in/feminist-archive-3b110b405"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <i className="fa-brands fa-linkedin-in"></i>
+                  </a>
+  
+                  <a
+                    href="https://www.instagram.com/feministarchivejournal/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                  >
+                    <i className="fa-brands fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
+  
+              <button
+                className="contact-home-link"
+                onClick={() => setCurrentPage("main")}
+              >
+                {language === "zh" ? "← 返回主页" : "← Return to homepage"}
+              </button>
+            </div>
+          </section>
+        </main>
+      </div>
+    );
+  }
+
+  function renderPrintEditionPage() {
+    return (
+      <div className="site-shell">
+        <Header simple />
+  
+        <main className="print-edition-page">
+          <div className="section-label text-reveal">
+            {language === "zh" ? "印刷出版" : "PRINT EDITION"}
+          </div>
+  
+          <h1 className="print-edition-title text-reveal reveal-delay-1">
+            {language === "zh"
+              ? "Feminist Archive 正在准备第一本印刷出版物。"
+              : "Feminist Archive is preparing its first print publication."}
+          </h1>
+  
+          <p className="print-edition-intro text-reveal reveal-delay-2">
+            {language === "zh"
+              ? "我们正在筹备一本小型印刷集，收录 Feminist Archive 的文章、档案片段、视觉材料与精选写作。"
+              : "We are currently developing a small printed volume that gathers essays, archival fragments, visual materials, and selected writing from Feminist Archive."}
+          </p>
+  
+          <div className="print-edition-grid">
+            <div className="text-reveal reveal-delay-3">
+              <h3>{language === "zh" ? "为什么印刷？" : "Why print?"}</h3>
+              <p>
+                {language === "zh"
+                  ? "有些写作值得被更慢地阅读、被物质性地保存，并在数字流通的速度之外继续存在。"
+                  : "Some writing deserves slower reading, physical preservation, and a life beyond the speed of digital circulation."}
+              </p>
+            </div>
+  
+            <div className="text-reveal reveal-delay-4">
+              <h3>{language === "zh" ? "给支持者" : "For supporters"}</h3>
+              <p>
+                {language === "zh"
+                  ? "支持 Feminist Archive 的读者将优先收到印刷计划的进展更新，并在第一期开放时获得优先信息。"
+                  : "Readers who support Feminist Archive will receive early updates and priority access when the first issue becomes available."}
+              </p>
+            </div>
+  
+            <div className="text-reveal reveal-delay-5">
+              <h3>{language === "zh" ? "如何进行" : "How it works"}</h3>
+              <p>
+                {language === "zh"
+                  ? "我们计划根据读者需求制作限量印刷版本，让生产规模保持可持续，也保持这个项目的独立性。"
+                  : "We plan to release limited printed editions based on reader demand, keeping production sustainable and independent."}
+              </p>
+            </div>
+          </div>
+  
+          <div className="print-edition-note text-reveal reveal-delay-6">
+            {language === "zh"
+              ? "这个项目仍然会保持线上免费阅读。印刷是一种额外的保存形式，而不是付费墙。"
+              : "This project remains free to read online. Print exists as an additional form of preservation — not a paywall."}
+          </div>
+  
+          <button
+            className="button button-dark text-reveal reveal-delay-6"
+            onClick={() => setCurrentPage("main")}
+          >
+            {language === "zh" ? "← 返回主页" : "← Back to home"}
+          </button>
+        </main>
+      </div>
+    );
+  }
+  
+
+  function renderArticleDetail() {
+    if (selectedArticle.id === "save-the-elephant") {
+      return (
+        <>
+          <div
+            className="reading-progress-bar"
+            style={{ width: `${readingProgress}%` }}
+          />
+    
+          <div className="urgent-report-shell">
+            <header className="mag-article-header">
+              <button
+                className="issue-menu-button"
+                onClick={() => setCurrentPage("main")}
+              >
+                ← HOME
+              </button>
+    
+              <div
+                className="mag-article-logo"
+                onClick={() => setCurrentPage("main")}
+              >
+                Feminist Archive
+              </div>
+    
+              <button
+                className="issue-menu-button"
+                onClick={() => setCurrentPage("main")}
+              >
+                CLOSE
+              </button>
+            </header>
+    
+            <section
+              className="urgent-report-hero"
+              style={{
+                backgroundImage: `url(${selectedArticle.image || "/images/文章素材图4.png"})`,
+              }}
+            >
+              <div className="urgent-report-overlay">
+                <div className="urgent-report-label">LIVE DOSSIER / URGENT APPEAL</div>
+    
+                <h1>{selectedArticle.title}</h1>
+    
+                <p>{selectedArticle.excerpt}</p>
+    
+                <div className="urgent-report-meta">
+                  <span>{selectedArticle.date}</span>
+                  <span>Animal ethics</span>
+                  <span>Developing record</span>
+                </div>
+              </div>
+            </section>
+    
+            <main className="urgent-report-layout">
+              <aside className="urgent-report-sidebar">
+                <div className="urgent-status-box">
+                  <span>Status</span>
+                  <strong>Ongoing documentation</strong>
+                </div>
+    
+                <div className="urgent-status-box">
+                  <span>Region</span>
+                  <strong>Nepal</strong>
+                </div>
+    
+                <div className="urgent-status-box">
+                  <span>Focus</span>
+                  <strong>Captivity, exploitation, violence</strong>
+                </div>
+              </aside>
+    
+              <article className="urgent-report-body">
+                <div className="urgent-report-kicker">FIELD NOTE</div>
+    
+                {(selectedArticle.contentBlocks || []).map((block, index) => {
+
+if (block.type === "lead") {
+  return (
+    <p key={index} className="article-lead">
+      {block.text}
+    </p>
+  );
+}
+
+if (block.type === "paragraph") {
+  return (
+    <p key={index}>
+      {block.text}
+    </p>
+  );
+}
+
+if (block.type === "image") {
+  return (
+    <figure key={index} className="article-image-block">
+      <img src={block.src} alt="" />
+
+      <figcaption>
+        {block.caption}
+      </figcaption>
+    </figure>
+  );
+}
+
+if (block.type === "quote") {
+  return (
+    <blockquote key={index} className="article-pullquote">
+      {block.text}
+    </blockquote>
+  );
+}
+if (block.type === "highlight") {
+  return (
+    <p
+      key={index}
+      className="article-highlight"
+      style={{ "--article-highlight-color": block.color }}
+    >
+      {block.text}
+    </p>
+  );
+}
+if (block.type === "heading") {
+  return (
+    <h2
+      key={index}
+      className="article-section-heading"
+    >
+      {block.text}
+    </h2>
+  );
+}
+if (block.type === "statement") {
+  return (
+    <div
+      key={index}
+      className="article-statement"
+    >
+      {block.text}
+    </div>
+  );
+}
+return null;
+})}
+    
+                <section className="urgent-report-callout">
+                  <span>Why this matters</span>
+                  <p>
+                    Feminist Archive records this case as part of a broader concern
+                    with institutional violence, silenced suffering, and forms of
+                    life made invisible by tourism, profit, and inherited narratives.
+                  </p>
+                </section>
+    
+                <button
+                  className="contact-home-link"
+                  onClick={() => setCurrentPage("main")}
+                >
+                  ← Return to homepage
+                </button>
+              </article>
+            </main>
+          </div>
+        </>
+      );
+    }
+    if (!selectedArticle) {
+      return (
+        <>
+          <div
+            className="reading-progress-bar"
+            style={{ width: `${readingProgress}%` }}
+          />
+
+          <div className="site-shell">
+            <Header simple />
+            <main>
+              <section className="archive-section" style={{ borderTop: "none" }}>
+                <button
+                  className="button button-light"
+                  onClick={() => setCurrentPage("main")}
+                >
+                  {t.backToHome}
+                </button>
+              </section>
+            </main>
+          </div>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <div
+          className="reading-progress-bar"
+          style={{ width: `${readingProgress}%` }}
+        />
+{showArticleShare && (
+  <div
+    className="article-share-modal"
+    onClick={() => setShowArticleShare(false)}
+  >
+    <div
+      className="article-share-card"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        className="article-share-close"
+        onClick={() => setShowArticleShare(false)}
+      >
+        ×
+      </button>
+
+      <div className="article-share-modal-label">
+        {language === "zh" ? "转发 / 保存" : "SHARE / CIRCULATE"}
+      </div>
+
+      <h2>
+        {language === "zh"
+          ? "让这篇文章继续流动。"
+          : "Let this essay continue its journey."}
+      </h2>
+
+      <p>
+        {language === "zh"
+          ? "欢迎自由转发、保存与引用此文。Feminist Archive 为公共阅读而存在。"
+          : "You are warmly welcome to share, save, and quote this essay. Feminist Archive is built for public reading."}
+      </p>
+
+      <div className="article-share-modal-actions">
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(window.location.href);
+            alert(language === "zh" ? "链接已复制" : "Article link copied.");
+          }}
+        >
+          {language === "zh" ? "复制链接" : "Copy link"}
+        </button>
+
+        {language === "zh" ? (
+          <>
+            <a
+              href="https://www.xiaohongshu.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              小红书
+            </a>
+
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                alert("链接已复制。你可以粘贴到微信。");
+              }}
+            >
+              微信
+            </button>
+          </>
+        ) : (
+          <>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                selectedArticle.title
+              )}&url=${encodeURIComponent(window.location.href)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              X
+            </a>
+
+            <a
+              href={`https://bsky.app/intent/compose?text=${encodeURIComponent(
+                `${selectedArticle.title} ${window.location.href}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Bluesky
+            </a>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+)}
+        <div className="mag-article-shell">
+          <header className="mag-article-header">
+            <div className="mag-article-header-left">
+              <nav
+                className="mag-article-socials"
+                aria-label="Feminist Archive social links"
+              >
+                <a
+                  href="https://www.instagram.com/feministarchivejournal/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="4" y="4" width="16" height="16" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17" cy="7" r="0.8" />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://bsky.app/profile/feministarchive.bsky.social"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Bluesky"
+                >
+                  <svg className="mag-social-bluesky" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12.15c-1.06-2.06-3.18-5.02-5.38-6.6-1.54-1.1-2.66-.58-2.54 1.02.13 1.73 1.46 4.04 3.78 5.6 1.03.7 1.95 1.02 2.58 1.1-1.48.18-3.16.93-3.5 2.4-.36 1.56.86 3.18 2.48 3.18 1.22 0 2.22-.86 2.58-2.2.36 1.34 1.36 2.2 2.58 2.2 1.62 0 2.84-1.62 2.48-3.18-.34-1.47-2.02-2.22-3.5-2.4.63-.08 1.55-.4 2.58-1.1 2.32-1.56 3.65-3.87 3.78-5.6.12-1.6-.98-2.12-2.54-1.02-2.2 1.58-4.32 4.54-5.38 6.6Z" />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://x.com/FeministArchiv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X"
+                >
+                  <svg className="mag-social-x" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4.8 4.8h4.15l4.05 5.35 4.78-5.35h1.95l-5.82 6.52 6.02 7.88h-4.16l-4.38-5.75-5.12 5.75H4.35l6.24-7.02L4.8 4.8Z" />
+                  </svg>
+                </a>
+              </nav>
+
+              <button
+                className="issue-menu-button"
+                onClick={() =>
+                  setCurrentPage(articleReturnPage || "monthly-theme")
+                }
+              >
+                {getArticleReturnLabel()}
+              </button>
+            </div>
+
+            <div
+              className="mag-article-logo"
+              onClick={() => setCurrentPage("main")}
+            >
+              Feminist Archive
+            </div>
+
+            <button
+              className="issue-menu-button mag-article-donate-button"
+              onClick={() => setCurrentPage("donate")}
+            >
+              Donate
+            </button>
+          </header>
+
+          <section
+            className="mag-article-hero"
+            style={{
+              backgroundImage: `url(${selectedArticle.image || "/images/文章素材图4.png"})`,
+            }}
+          >
+            <div className="mag-article-hero-overlay">
+              <div className="mag-article-kicker">
+                {selectedArticle.category}
+              </div>
+
+              <h1>{selectedArticle.title}</h1>
+
+              <p>{selectedArticle.excerpt}</p>
+            </div>
+          </section>
+
+          <button
+            className={`article-floating-share ${
+              articleShareVisible ? "is-visible" : ""
+            }`}
+            type="button"
+            onClick={() => setShowArticleShare(true)}
+            aria-hidden={!articleShareVisible}
+            tabIndex={articleShareVisible ? 0 : -1}
+          >
+            <svg
+              className="article-floating-share-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M21 3 10.5 13.5" />
+              <path d="m21 3-6.8 19-3.7-8.5L2 9.8Z" />
+            </svg>
+            <span>{language === "zh" ? "分享" : "Share"}</span>
+          </button>
+          
+
+
+          <main className="mag-article-layout">
+          
+  <aside className="mag-article-sidebar">
+  <p>
+  {selectedArticle.sidebarText || (
+    <>
+      <strong>{selectedArticle.author}</strong> writes with Feminist Archive.
+      This essay appears in the monthly issue <em>Archive of Refusal</em>.
+    </>
+  )}
+</p>
+
+    <div className="mag-article-info">
+      <span>{selectedArticle.date}</span>
+      <span>{selectedArticle.readTime || "Essay"}</span>
+    </div>
+
+    <div className="mag-article-tags">
+      {(selectedArticle.tags || []).map((tag) => (
+        <span key={tag}>{tag}</span>
+      ))}
+    </div>
+
+    <button
+      className="mag-sidebar-button"
+      onClick={() => setCurrentPage("monthly-theme")}
+    >
+      Return to issue
+    </button>
+
+  </aside>
+
+  <article className="mag-article-body">
+    <div className="mag-article-content">
+      {selectedArticle.contentBlocks
+        ? selectedArticle.contentBlocks.map((block, index) => {
+            if (block.type === "paragraph") {
+              return <p key={index}>{block.text}</p>;
+            }
+
+            if (block.type === "lead") {
+              return (
+                <p key={index} className="article-lead">
+                  {block.text}
+                </p>
+              );
+            }
+
+            if (block.type === "heading") {
+              return (
+                <h2 key={index} className="article-section-heading">
+                  {block.text}
+                </h2>
+              );
+            }
+
+            if (block.type === "statement") {
+              return (
+                <div key={index} className="article-statement">
+                  {block.lines
+                    ? block.lines.map((line, lineIndex) => (
+                        <p key={lineIndex}>{line}</p>
+                      ))
+                    : block.text}
+                </div>
+              );
+            }
+
+            if (block.type === "quote") {
+              return (
+                <blockquote key={index} className="article-pullquote">
+                  {block.text}
+                </blockquote>
+              );
+            }
+
+            if (block.type === "highlight") {
+              return (
+                <p
+                  key={index}
+                  className="article-highlight"
+                  style={{ "--article-highlight-color": block.color }}
+                >
+                  {block.text}
+                </p>
+              );
+            }
+
+            if (block.type === "note") {
+              return (
+                <p key={index} className="article-inline-note">
+                  {block.text}
+                </p>
+              );
+            }
+
+            if (block.type === "image") {
+              return (
+                <figure key={index} className="article-image-block">
+                  <img src={block.src} alt="" />
+                  {block.caption && <figcaption>{block.caption}</figcaption>}
+                </figure>
+              );
+            }
+
+            return null;
+          })
+        : (selectedArticle.content || "")
+            .split("\n\n")
+            .map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+    </div>
+
+    {(selectedArticle.tags || []).some((tag) =>
+      ["性别麻烦", "Gender Trouble"].includes(tag)
+    ) && (
+      <section className="article-related-reading">
+        <button
+          className="article-related-card"
+          type="button"
+          onClick={() => {
+            setSelectedArticle(null);
+            setCurrentPage("reading-guides");
+          }}
+        >
+          <span className="article-related-label">
+            {language === "zh" ? "相关阅读" : "Related reading"}
+          </span>
+          <span className="article-related-title">
+            {language === "zh"
+              ? "《性别麻烦》导读全集"
+              : "Complete Gender Trouble Guide"}
+          </span>
+          <span className="article-related-desc">
+            {language === "zh"
+              ? "继续阅读 Feminist Archive 经典导读计划中的其它章节。"
+              : "Continue reading the other chapters in the Feminist Archive classic guide programme."}
+          </span>
+        </button>
+      </section>
+    )}
+
+  
+    <footer className="article-endnote">
+  <div>
+    <span>{language === "zh" ? "发布者" : "Published by"}</span>
+    <strong>
+      {language === "zh"
+        ? "Feminist Archive 编辑部"
+        : "Feminist Archive Editorial"}
+    </strong>
+  </div>
+
+  <p>
+    {language === "zh"
+      ? "Feminist Archive 是一个关注理论、档案写作与长篇女性主义思想的独立出版平台。"
+      : "Feminist Archive is an independent publication for theory, archival writing, and long-form feminist thought."}
+  </p>
+</footer>
+<section className="article-circulation">
+  
+
+  <div className="article-circulation-line bottom"></div>
+</section>
+<section className="article-support-block">
+  <div className="article-support-copy">
+    <div className="article-support-label">
+      {language === "zh"
+        ? "支持 FEMINIST ARCHIVE"
+        : "SUPPORT FEMINIST ARCHIVE"}
+    </div>
+
+    <h2 className="support-reveal">
+      {language === "zh"
+        ? "让女性主义写作保持开放。"
+        : "Keep feminist writing open."}
+    </h2>
+
+    <p className="support-reveal delay-1">
+      {language === "zh"
+        ? "Feminist Archive 是一个独立、非营利性的出版项目。我们希望文章、档案与编辑工作能够保持免费开放，因为严肃的女性主义思想应当继续属于公共阅读。"
+        : "Feminist Archive is an independent, non-profit publication. We keep our essays, archives, and editorial work freely accessible because we believe serious feminist thought should remain open to the public."}
+    </p>
+
+    <p className="support-reveal delay-2">
+      {language === "zh"
+        ? "如果这个平台对你的阅读生活有意义，你可以通过一份小额捐助支持它继续存在。"
+        : "If this platform matters to your reading life, you may support its continuation through a small donation."}
+    </p>
+  </div>
+
+  <div className="article-support-actions">
+    <a
+      href="https://ko-fi.com/feministarchive"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {language === "zh" ? "通过 Ko-fi 支持" : "Support on Ko-fi"}
+    </a>
+
+    <a
+      href="https://buymeacoffee.com/feministarchive"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {language === "zh" ? "通过 Buy Me a Coffee 支持" : "Buy Me a Coffee"}
+    </a>
+
+    <a
+      href="https://www.ifdian.net/a/FeministArchive"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {language === "zh" ? "通过爱发电支持" : "Support on Afdian"}
+    </a>
+  </div>
+</section>
+  </article>
+</main>
+        </div>
+      </>
+    );
+  }
+
+  function renderHomePage() {
+    return (
+      <div className="site-shell">
+        <Header />
+        {SHOW_SAVE_THE_ELEPHANT_ON_HOME && (
+        <section
+  className="urgent-campaign-strip"
+  onClick={() => {
+    setSelectedArticle({
+      id: "save-the-elephant",
+      title:
+        language === "zh"
+          ? "拯救大象！"
+          : "SAVE THE ELEPHANT!",
+      category:
+        language === "zh"
+          ? "紧急呼吁 / 动物伦理"
+          : "Urgent Appeal / Animal Ethics",
+      author: "Feminist Archive",
+      date: "May 2026",
+      readTime: "6 min read",
+      image: "/images/文章素材图4.png",
+      excerpt:
+        language === "zh"
+          ? "关于尼泊尔一头母象正在遭受囚禁、剥削与暴力对待的紧急记录。"
+          : "An urgent record concerning a female elephant in Nepal reportedly subjected to captivity, exploitation, and violence.",
+      tags: ["animal ethics", "captivity", "violence", "urgent appeal"],
+      content:
+        language === "zh"
+          ? `这是一篇紧急呼吁文章。
+
+尼泊尔一头母象正在遭受长期囚禁、剥削与暴力对待。我们希望通过记录、传播与公共关注，使她的处境被更多人看见。
+
+Feminist Archive 关注一切被制度化暴力掩盖的生命处境。动物的痛苦不应被旅游、商业利益或传统叙事所遮蔽。
+
+更多资料正在整理中。`
+          : `This is an urgent appeal.
+
+A female elephant in Nepal is reportedly being subjected to captivity, exploitation, and violence. We hope to make her situation visible through documentation, circulation, and public attention.
+
+Feminist Archive is concerned with forms of life whose suffering is hidden by institutional violence. The pain of animals should not be obscured by tourism, commercial interests, or inherited narratives.
+
+Further materials are being gathered.`
+    });
+
+    setArticleReturnPage("main");
+    setCurrentPage("article-detail");
+  }}
+>
+  <span>URGENT APPEAL</span>
+  <strong>SAVE THE ELEPHANT!</strong>
+  <em>{language === "zh" ? "点击阅读紧急记录" : "Read the urgent appeal"}</em>
+</section>
+        )}
+        <main>
+          <section id="home" className="hero">
+            <div className="hero-left">
+              <div className="eyebrow">{t.heroEyebrow}</div>
+              <h1 key={language} className="hero-title-enter">
+  {t.heroTitle}
+</h1>
+              <p className="hero-text">{t.heroText}</p>
+
+              <div className="hero-actions">
+                <a className="button button-dark" href="#submit">
+                  {t.heroSubmit}
+                </a>
+                <a className="button button-light" href="#archive">
+                  {t.heroBrowse}
+                </a>
+              </div>
+            </div>
+
+            <aside className="hero-right">
+  <div
+    className="theme-card"
+    onClick={() => setCurrentPage("monthly-theme")}
+  >
+    <div className="theme-card-content">
+      <div className="theme-issue-label">{t.themeIssueLabel}</div>
+      <h2>{t.themeTitle}</h2>
+      <p>{t.themeText}</p>
+    </div>
+  </div>
+
+  <div className="hero-mini-grid">
+    <div className="hero-mini-card">
+      <span>Editorial</span>
+      <h3>On publishing slowly</h3>
+      <p>
+        Why we reject algorithmic speed and build slower feminist archives.
+      </p>
+    </div>
+
+    <div className="hero-mini-card">
+      <span>Archive Note</span>
+      <h3>Recovered histories</h3>
+      <p>
+        Restoring forgotten texts, suppressed narratives, and lost records.
+      </p>
+    </div>
+  </div>
+</aside>
+          </section>
+
+          <section className="section-intro">
+            <div>
+              <div className="section-label">{t.aboutLabel}</div>
+              <h2>{t.aboutTitle}</h2>
+            </div>
+            <p>{t.aboutText}</p>
+          </section>
+          <section className="editorial-strip">
+  <div className="editorial-strip-header">
+    <span>{language === "zh" ? "推荐阅读" : "EDITORIAL HIGHLIGHTS"}</span>
+    <button onClick={() => setCurrentPage("magazine")}>
+      {language === "zh" ? "浏览全部 →" : "Browse all →"}
+    </button>
+  </div>
+
+  <div className="editorial-strip-grid">
+	    {visibleArticles.slice(0, 3).map((article) => (
+      <article
+        key={article.id}
+        className="editorial-strip-card"
+        onClick={() => openArticleFrom(article, "main")}
+      >
+        <div
+          className="editorial-strip-image"
+          style={{
+            backgroundImage: `url(${article.image || "/images/文章素材图4.png"})`,
+          }}
+        />
+
+        <div className="editorial-strip-meta">
+          {article.category}
+        </div>
+
+        <h3>{article.title}</h3>
+
+        <p>{article.excerpt}</p>
+
+        <span className="editorial-strip-author">
+          {article.author}
+        </span>
+      </article>
+    ))}
+  </div>
+</section>
+          <section id="archive" className="archive-section">
+            <div className="section-heading">
+              <div>
+                <div className="section-label">{t.archiveLabel}</div>
+                <h2>{t.archiveTitle}</h2>
+              </div>
+            </div>
+
             <div className="archive-tools">
               <input
                 className="search-input"
                 type="text"
-                placeholder={
-                  language === "zh"
-                    ? "按标题、作者、概念或关键词搜索……"
-                    : "Search by title, author, concept, or keyword..."
-                }
+                placeholder={t.archivePlaceholder}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-  
+
               <div className="category-row">
                 {categories.map((category) => (
                   <button
@@ -698,28 +2180,33 @@ function App() {
                 ))}
               </div>
             </div>
-  
-            <div className="all-articles-list">
-              {filteredArticles.map((article) => (
+
+            <div className="article-grid">
+              {homepageArchiveArticles.map((article) => (
                 <article
                   key={article.id}
-                  className="all-articles-item"
+                  className="article-card"
+                  style={{ cursor: "pointer" }}
                   onClick={() => {
-                    setSelectedArticle(article);
-                    setCurrentPage("article-detail");
+                    openArticleFrom(article, "main");
+                  
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth"
+                    });
                   }}
                 >
-                  <div className="all-articles-meta">
+                  <div className="article-meta">
                     <span>{article.category}</span>
                     <span>{article.date}</span>
                   </div>
-  
+
                   <h3>{article.title}</h3>
                   <p className="article-author">By {article.author}</p>
-                  <p className="all-articles-excerpt">{article.excerpt}</p>
-  
+                  <p className="article-excerpt">{article.excerpt}</p>
+
                   <div className="tag-row">
-                    {article.tags.map((tag) => (
+                    {(article.tags || []).map((tag) => (
                       <span key={tag} className="tag">
                         #{tag}
                       </span>
@@ -728,662 +2215,557 @@ function App() {
                 </article>
               ))}
             </div>
-  
-            <div style={{ marginTop: "30px" }}>
-              <button
-                className="button button-dark"
-                onClick={() => setCurrentPage("main")}
-              >
-                {language === "zh" ? "← 返回首页" : "← Back to home"}
-              </button>
-            </div>
+            <div className="archive-more">
+  <button
+    className="button button-light"
+    onClick={() => setCurrentPage("archive-page")}
+  >
+    Browse full archive
+  </button>
+</div>
+            
           </section>
-        </main>
-      </div>
-    );
-  }
-  function renderArticleDetail() {
-    if (!selectedArticle) return null;
-  
-    return (
-      <div className="site-shell">
-        <header className="site-header">
-          <div className="brand-block">
-            <div className="site-name">{t.siteName}</div>
-            <div className="site-tagline">{t.siteTagline}</div>
-          </div>
-  
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <button
-              className={
-                language === "en" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              className={
-                language === "zh" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("zh")}
-            >
-              中文
-            </button>
-          </div>
-        </header>
-  
-        <main>
-          <section className="archive-section" style={{ borderTop: "none" }}>
-            <div style={{ marginBottom: "28px" }}>
-              <button
-                className="button button-light"
-                onClick={() => setCurrentPage("main")}
-              >
-                {t.backToHome}
-              </button>
-            </div>
-  
-            <article className="article-detail-page">
-              <div className="article-meta">
-                <span>{selectedArticle.category}</span>
-                <span>{selectedArticle.date}</span>
-              </div>
-  
-              <h1 className="article-detail-title">{selectedArticle.title}</h1>
-  
-              <p className="article-author">By {selectedArticle.author}</p>
-  
-              <div className="tag-row" style={{ marginBottom: "26px" }}>
-                {selectedArticle.tags.map((tag) => (
-                  <span key={tag} className="tag">
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-  
-              <div className="article-detail-content">
-                {selectedArticle.content.split("\n\n").map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
-            </article>
-          </section>
-        </main>
-      </div>
-    );
-  }
 
+          <section id="submit" className="submit-section">
+            <div className="submit-left">
+              <div className="section-label">{t.submitLabel}</div>
+              <h2>{t.submitTitle}</h2>
+              <p>{t.submitText}</p>
 
-  if (currentPage === "donate") {
-    return (
-      <div className="site-shell">
-        <header className="site-header">
-          <div className="brand-block">
-            <div className="site-name">{t.siteName}</div>
-            <div className="site-tagline">{t.siteTagline}</div>
-          </div>
+              <ul className="submission-notes">
+                <li>{t.submitNote1}</li>
+                <li>{t.submitNote2}</li>
+                <li>{t.submitNote3}</li>
+              </ul>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <button
-              className={
-                language === "en" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              className={
-                language === "zh" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("zh")}
-            >
-              中文
-            </button>
-          </div>
-        </header>
-
-        <main>
-          <section className="archive-section" style={{ borderTop: "none" }}>
-            <div className="section-heading">
-              <div>
-                <div className="section-label">{t.navDonate}</div>
-                <h2>{t.donateTitle}</h2>
-              </div>
-            </div>
-
-            <div style={specialPageBoxStyle}>
-              <p style={{ color: "var(--muted)", marginTop: 0 }}>{t.donateText}</p>
-
-              <div
-                style={{
-                  display: "grid",
-                  gap: "14px",
-                  marginTop: "24px",
-                }}
-              >
-                <a
-  href="https://www.ifdian.net/a/FeministArchive"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="button button-light"
->
-  {language === "zh" ? "爱发电支持" : "Support on Afdian"}
-</a>
-
-<a
-  href="https://buymeacoffee.com/feministarchive"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="button button-light"
->
-  {language === "zh" ? "Buy Me a Coffee" : "Buy Me a Coffee"}
-</a>
-<a
-  href="https://ko-fi.com/feministarchive"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="button button-light"
->
-  {language === "zh" ? "Ko-fi 支持" : "Support on Ko-fi"}
-</a>
-              </div>
-
-              <div style={{ marginTop: "28px" }}>
+              <p style={{ marginTop: "18px", color: "var(--muted)" }}>
                 <button
-                  className="button button-dark"
-                  onClick={() => setCurrentPage("main")}
+                  onClick={() => setCurrentPage("guidelines")}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    color: "inherit",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    font: "inherit",
+                  }}
                 >
-                  {t.backToHome}
+                  {t.submitGuidelines}
                 </button>
-              </div>
-            </div>
-          </section>
-        </main>
-      </div>
-    );
-  }
-
-  if (currentPage === "contact-page") {
-    return (
-      <div className="site-shell">
-        <header className="site-header">
-          <div className="brand-block">
-            <div className="site-name">{t.siteName}</div>
-            <div className="site-tagline">{t.siteTagline}</div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <button
-              className={
-                language === "en" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              className={
-                language === "zh" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("zh")}
-            >
-              中文
-            </button>
-          </div>
-        </header>
-
-        <main>
-          <section className="archive-section" style={{ borderTop: "none" }}>
-            <div className="section-heading">
-              <div>
-                <div className="section-label">{t.navContact}</div>
-                <h2>{t.contactPageTitle}</h2>
-              </div>
-            </div>
-
-            <div style={specialPageBoxStyle}>
-              <p style={{ color: "var(--muted)", marginTop: 0 }}>
-                {t.contactPageIntro}
               </p>
+            </div>
 
-              <div
-                style={{
-                  display: "grid",
-                  gap: "14px",
-                  marginTop: "24px",
-                }}
-              >
-                <a href="mailto:general@feministarchive.org">
-                  {t.contactGeneral}
-                </a>
-                <a href="mailto:submissions@feministarchive.org">
-                  {t.contactSubmission}
-                </a>
-                <a href="mailto:criticism@feministarchive.org">
-                  {t.contactCritique}
-                </a>
-              </div>
+            {isSubmitted ? (
+              <div className="submit-form">
+                <div className="section-label">{t.submitLabel}</div>
+                <h2 style={{ marginTop: 0 }}>{t.successTitle}</h2>
 
-              <div
-                style={{
-                  marginTop: "24px",
-                  color: "var(--muted)",
-                  lineHeight: 1.9,
-                }}
-              >
-                <p>{t.contactNote1}</p>
-                <p>{t.contactNote2}</p>
-              </div>
-
-              <div style={{ marginTop: "28px" }}>
-                <button
-                  className="button button-dark"
-                  onClick={() => setCurrentPage("main")}
+                <div
+                  style={{
+                    marginTop: "12px",
+                    display: "grid",
+                    gap: "14px",
+                    color: "var(--muted)",
+                    lineHeight: 1.9,
+                  }}
                 >
-                  {t.backToHome}
-                </button>
+                  <p style={{ margin: 0 }}>{t.successText1}</p>
+                  <p style={{ margin: 0 }}>{t.successText2}</p>
+                  <p style={{ margin: 0 }}>{t.successText3}</p>
+                  <p style={{ margin: 0 }}>{t.successText4}</p>
+                </div>
+
+                <div style={{ marginTop: "22px" }}>
+                  <button
+                    type="button"
+                    className="button button-dark"
+                    onClick={() => setIsSubmitted(false)}
+                  >
+                    {language === "zh" ? "继续编辑" : "Edit again"}
+                  </button>
+                </div>
               </div>
-            </div>
-          </section>
-        </main>
-      </div>
-    );
-  }
+            ) : (
+              <form
+                className="submit-form"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setSubmissionError("");
+                  setIsSubmittingArticle(true);
 
-  return (
-    <div className="site-shell">
-      <header className="site-header">
-        <div className="brand-block">
-          <div className="site-name">{t.siteName}</div>
-          <div className="site-tagline">{t.siteTagline}</div>
-        </div>
+                  const formData = new FormData(e.target);
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "14px",
-            alignItems: "flex-end",
-          }}
-        >
-          <nav className="top-nav">
-            <button style={navButtonStyle} onClick={() => setCurrentPage("main")}>
-              {t.navHome}
-            </button>
-            <a href="#archive">{t.navArchive}</a>
-            <a href="#submit">{t.navSubmit}</a>
-            <button
-              style={navButtonStyle}
-              onClick={() => setCurrentPage("contact-page")}
-            >
-              {t.navContact}
-            </button>
-          </nav>
+                  const title = formData.get("title");
+                  const author = formData.get("author");
+                  const email = formData.get("email");
+                  const keywords = formData.get("keywords");
+                  const abstract = formData.get("abstract");
+                  const content = formData.get("content");
 
-          <div style={{ display: "flex", gap: "10px" }}>
-            <button
-              className={
-                language === "en" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              className={
-                language === "zh" ? "category-pill active" : "category-pill"
-              }
-              onClick={() => setLanguage("zh")}
-            >
-              中文
-            </button>
-          </div>
-        </div>
-      </header>
+                  try {
+                    await submitWebsiteForm({
+                      type: language === "zh" ? "新投稿" : "New submission",
+                      title,
+                      author,
+                      email,
+                      keywords,
+                      abstract,
+                      content,
+                      language,
+                    });
 
-      <main>
-        <section id="home" className="hero">
-          <div className="hero-left">
-            <div className="eyebrow">{t.heroEyebrow}</div>
-            <h1>{t.heroTitle}</h1>
-            <p className="hero-text">{t.heroText}</p>
-
-            <div className="hero-actions">
-              <a className="button button-dark" href="#submit">
-                {t.heroSubmit}
-              </a>
-              <a className="button button-light" href="#archive">
-                {t.heroBrowse}
-              </a>
-            </div>
-          </div>
-
-          <aside className="hero-right">
-
-            <div
-              className="theme-card"
-              style={themeCardStyle}
-              /*onClick={() => setCurrentPage("monthly-theme")}</aside>*/
-            /* >
-              <div className="theme-label">{t.themeLabel}</div>
-              <h2>{t.themeTitle}</h2>
-              <p>{t.themeText}</p>
-            </div>
-           
-          </aside>
-        </section>
-       
-        <section className="section-intro">
-          <div>
-            <div className="section-label">{t.aboutLabel}</div>
-            <h2>{t.aboutTitle}</h2>
-          </div>
-          <p>{t.aboutText}</p>
-        </section>
-
-        <section id="archive" className="archive-section">
-          <div className="section-heading">
-            <div>
-              <div className="section-label">{t.archiveLabel}</div>
-              <h2>{t.archiveTitle}</h2>
-            </div>
-          </div>
-
-          <div className="archive-tools">
-            <input
-              className="search-input"
-              type="text"
-              placeholder={t.archivePlaceholder}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-
-            <div className="category-row">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  className={
-                    activeCategory === category
-                      ? "category-pill active"
-                      : "category-pill"
+                    setIsSubmitted(true);
+                    e.target.reset();
+                  } catch {
+                    setSubmissionError(
+                      language === "zh"
+                        ? "提交失败，请稍后再试，或手动发送至 submissions@feministarchivejournal.org。"
+                        : "Submission failed. Please try again later, or email submissions@feministarchivejournal.org directly."
+                    );
+                  } finally {
+                    setIsSubmittingArticle(false);
                   }
-                  onClick={() => setActiveCategory(category)}
-                >
-                  {category}
+                }}
+              >
+                <div className="form-row">
+                  <input name="title" type="text" placeholder={t.formTitle} />
+                  <input name="author" type="text" placeholder={t.formAuthor} />
+                </div>
+
+                <div className="form-row">
+                  <input name="email" type="email" placeholder={t.formEmail} />
+                  <input
+                    name="keywords"
+                    type="text"
+                    placeholder={t.formKeywords}
+                  />
+                </div>
+
+                <textarea
+                  name="abstract"
+                  placeholder={t.formAbstract}
+                  rows="5"
+                />
+                <textarea name="content" placeholder={t.formBody} rows="10" />
+
+                <button type="submit" className="button button-dark">
+                  {isSubmittingArticle
+                    ? language === "zh"
+                      ? "提交中..."
+                      : "Submitting..."
+                    : t.formButton}
                 </button>
-              ))}
+
+                {submissionError && (
+                  <p style={{ color: "var(--muted)", lineHeight: 1.7 }}>
+                    {submissionError}
+                  </p>
+                )}
+              </form>
+            )}
+          </section>
+
+          <section id="contact" className="contact-section">
+            <div>
+              <div className="section-label">{t.contactLabel}</div>
+              <h2>{t.contactTitle}</h2>
+              <p>{t.contactText}</p>
             </div>
-          </div>
 
-          <div className="article-grid">
-            {filteredArticles.map((article) => (
-              <article
-              key={article.id}
-              className="article-card"
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setSelectedArticle(article);
-                setCurrentPage("article-detail");
-              }}
-            >
-                <div className="article-meta">
-                  <span>{article.category}</span>
-                  <span>{article.date}</span>
-                </div>
+            <div className="contact-links">
+              <a href="mailto:editorial@feministarchivejournal.org">
+                editorial@feministarchivejournal.org
+              </a>
 
-                <h3>{article.title}</h3>
-                <p className="article-author">By {article.author}</p>
-                <p className="article-excerpt">{article.excerpt}</p>
+              <a href="mailto:submissions@feministarchivejournal.org">
+                submissions@feministarchivejournal.org
+              </a>
 
-                <div className="tag-row">
-                  {article.tags.map((tag) => (
-                    <span key={tag} className="tag">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="submit" className="submit-section">
-          <div className="submit-left">
-            <div className="section-label">{t.submitLabel}</div>
-            <h2>{t.submitTitle}</h2>
-            <p>{t.submitText}</p>
-
-            <ul className="submission-notes">
-              <li>{t.submitNote1}</li>
-              <li>{t.submitNote2}</li>
-              <li>{t.submitNote3}</li>
-            </ul>
-
-            <p style={{ marginTop: "18px", color: "var(--muted)" }}>
               <button
-                onClick={() => setCurrentPage("guidelines")}
+                onClick={() => setCurrentPage("donate")}
                 style={{
-                  background: "none",
-                  border: "none",
-                  padding: 0,
-                  color: "inherit",
-                  textDecoration: "underline",
+                  textAlign: "left",
+                  padding: "14px 16px",
+                  border: "1px solid var(--line)",
+                  borderRadius: "18px",
+                  background: "var(--paper)",
                   cursor: "pointer",
                   font: "inherit",
                 }}
               >
-                {t.submitGuidelines}
+                {t.donationLink}
               </button>
-            </p>
-          </div>
 
-          {isSubmitted ? (
-            <div className="submit-form">
-            <div className="section-label">{t.submitLabel}</div>
-          
-            <h2 style={{ marginTop: 0 }}>{t.successTitle}</h2>
-          
-            <div
-              style={{
-                marginTop: "12px",
-                display: "grid",
-                gap: "14px",
-                color: "var(--muted)",
-                lineHeight: 1.9,
-              }}
-            >
-              <p style={{ margin: 0 }}>{t.successText1}</p>
-          
-              <p style={{ margin: 0 }}>{t.successText2}</p>
-          
-              <p style={{ margin: 0 }}>
-                {t.successText3}
-              </p>
-          
-              <p style={{ margin: 0 }}>
-                {t.successText4}
-              </p>
-            </div>
-          
-            <div style={{ marginTop: "22px" }}>
               <button
-                type="button"
-                className="button button-dark"
-                onClick={() => setIsSubmitted(false)}
+                onClick={() => setCurrentPage("guidelines")}
+                style={{
+                  textAlign: "left",
+                  padding: "14px 16px",
+                  border: "1px solid var(--line)",
+                  borderRadius: "18px",
+                  background: "var(--paper)",
+                  cursor: "pointer",
+                  font: "inherit",
+                }}
               >
-                {language === "zh" ? "继续编辑" : "Edit again"}
+                {t.navGuidelines}
               </button>
             </div>
-          </div>
-
-          ) : (
-            <form
-  className="submit-form"
-  onSubmit={(e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-
-    const title = formData.get("title");
-    const author = formData.get("author");
-    const email = formData.get("email");
-    const keywords = formData.get("keywords");
-    const abstract = formData.get("abstract");
-    const content = formData.get("content");
-
-    const subject =
-      language === "zh"
-        ? `新投稿：${title}`
-        : `New Submission: ${title}`;
-
-    const body =
-      language === "zh"
-        ? `标题：${title}
-
-作者 / 笔名：${author}
-
-邮箱：${email}
-
-关键词 / 标签：${keywords}
-
-摘要 / 给编辑的说明：
-${abstract}
-
-------------------------
-
-正文：
-${content}`
-        : `Title: ${title}
-
-Author / Pen name: ${author}
-
-Email: ${email}
-
-Keywords / Tags: ${keywords}
-
-Abstract / Editorial note:
-${abstract}
-
-------------------------
-
-Content:
-${content}`;
-
-    window.location.href = `mailto:cathy-1234@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    setIsSubmitted(true);
-  }}
->
-<div className="form-row">
-  <input name="title" type="text" placeholder={t.formTitle} />
-  <input name="author" type="text" placeholder={t.formAuthor} />
-</div>
-
-<div className="form-row">
-  <input name="email" type="email" placeholder={t.formEmail} />
-  <input name="keywords" type="text" placeholder={t.formKeywords} />
-</div>
-
-<textarea name="abstract" placeholder={t.formAbstract} rows="5" />
-<textarea name="content" placeholder={t.formBody} rows="10" />
-
-              <button type="submit" className="button button-dark">
-                {t.formButton}
-              </button>
-            </form>
-          )}
-        </section>
-
-        <section id="contact" className="contact-section">
-          <div>
-            <div className="section-label">{t.contactLabel}</div>
-            <h2>{t.contactTitle}</h2>
-            <p>{t.contactText}</p>
-          </div>
-
-          <div className="contact-links">
-            <a href="mailto:editor@feministarchive.org">
-              editor@feministarchive.org
-            </a>
-            <button
-              onClick={() => setCurrentPage("donate")}
-              style={{
-                textAlign: "left",
-                padding: "14px 16px",
-                border: "1px solid var(--line)",
-                borderRadius: "18px",
-                background: "var(--paper)",
-                cursor: "pointer",
-                font: "inherit",
-              }}
-            >
-              {t.donationLink}
-            </button>
-            <button
-              onClick={() => setCurrentPage("guidelines")}
-              style={{
-                textAlign: "left",
-                padding: "14px 16px",
-                border: "1px solid var(--line)",
-                borderRadius: "18px",
-                background: "var(--paper)",
-                cursor: "pointer",
-                font: "inherit",
-              }}
-            >
-              {t.navGuidelines}
-            </button>
-          </div>
-        </section>
-      </main>
-
-      <footer className="site-footer">
-        <div>© 2026 Feminist Archive</div>
-        <div className="footer-links">
-          <button style={footerButtonStyle} onClick={() => setCurrentPage("main")}>
-            {t.footerHome}
-          </button>
-          <a href="#archive">{t.footerArchive}</a>
-          <a href="#submit">{t.footerSubmit}</a>
-          <button
-            style={footerButtonStyle}
-            onClick={() => setCurrentPage("contact-page")}
-          >
-            {t.footerContact}
-          </button>
-        </div>
-      </footer>
+          </section>
+        </main>
+        <section className="home-donation-drive-full donation-reveal">
+        <div className="home-donation-inner donation-reveal">
+        <div className="home-donation-art donation-reveal-item delay-1">
+      <img src="/images/donation-drive-cover.png" alt="" />
     </div>
-  );
+
+    <div className="home-donation-copy donation-reveal-item delay-2">
+      <div className="donation-brand">Feminist Archive</div>
+
+      <h2>
+        {language === "zh"
+          ? "支持 Feminist Archive：让女性主义写作保持开放"
+          : "Donate to Feminist Archive: keep feminist writing open"}
+      </h2>
+
+      <p>
+        {language === "zh"
+          ? "Feminist Archive 坚持免费阅读，提供文章、档案写作、理论与长篇女性主义思想。"
+          : "Feminist Archive offers essays, archival writing, theory and long-form feminist thought, freely available to read."}
+      </p>
+
+      <p className="donation-strong">
+        {language === "zh"
+          ? "加入我们的读者支持计划，帮助这个独立出版平台继续存在。"
+          : "Join our reader-supported drive and help us keep this independent publication free."}
+      </p>
+    </div>
+
+    <div className="home-donation-panel donation-reveal-item delay-3">
+    <button
+  className={
+    donationType === "monthly"
+      ? "donation-choice active"
+      : "donation-choice"
+  }
+  onClick={() => setDonationType("monthly")}
+>
+  <span className="choice-radio"></span>
+  <strong>{language === "zh" ? "£10 / 月" : "£10 per month"}</strong>
+  <em>{language === "zh" ? "推荐" : "RECOMMENDED"}</em>
+</button>
+
+<button
+  className={
+    donationType === "one-time"
+      ? "donation-choice active"
+      : "donation-choice"
+  }
+  onClick={() => setDonationType("one-time")}
+>
+  <span className="choice-radio"></span>
+  <strong>{language === "zh" ? "一次性捐助" : "One time donation"}</strong>
+</button>
+
+<div className="donation-bottom-row">
+
+<button
+  className="donation-continue"
+  onClick={() => setCurrentPage("donation-drive")}
+>
+  <span>{language === "zh" ? "继续" : "Continue"}</span>
+  <span className="continue-arrow">→</span>
+</button>
+
+
+        <div className="donation-payment-icons">
+          <span className="pay-icon paypal">P</span>
+          <span className="pay-icon visa">VISA</span>
+          <span className="pay-icon mastercard">
+            <i></i>
+            <b></b>
+          </span>
+          <span className="pay-icon amex">AMEX</span>
+          <span className="pay-icon kofi" aria-label="Ko-fi">
+            <svg viewBox="0 0 74 34" role="img" aria-hidden="true">
+              <path d="M8 9h40c8 0 14 6 14 14s-6 14-14 14H29C17 37 8 28 8 16z" />
+              <path d="M49 14h6c6 0 10 4 10 9s-4 9-10 9h-6" />
+              <path d="M24 17c2-4 8-4 10 0 2-4 9-3 10 2 1 7-7 11-10 14-4-3-12-7-10-16z" />
+            </svg>
+          </span>
+          <span className="pay-icon coffee" aria-label="Buy Me a Coffee">
+            <svg viewBox="0 0 74 34" role="img" aria-hidden="true">
+              <path d="M22 13h29l-3 18c-1 5-4 7-10 7h-4c-6 0-9-2-10-7z" />
+              <path d="M18 8c8 2 28 2 36 0" />
+              <path d="M21 4c7-2 24-2 31 0" />
+              <path d="M19 8l-1 5c8 2 29 2 37 0l-1-5" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        <section
+  className="print-announcement-banner"
+  onClick={() => setCurrentPage("print-edition")}
+>
+  <div className="print-announcement-label">
+    PRINT ANNOUNCEMENT
+  </div>
+
+  <div className="print-announcement-text">
+    <span>Feminist Archive is preparing its first printed publication</span>
+    <em> supporters will receive early updates</em>
+  </div>
+
+  <div className="print-announcement-arrow">
+    →
+  </div>
+</section>
+
+        <footer className="site-footer">
+          <div>© 2026 Feminist Archive</div>
+
+          <div className="footer-links">
+            <button
+              style={footerButtonStyle}
+              onClick={() => setCurrentPage("main")}
+            >
+              {t.footerHome}
+            </button>
+            <a href="#archive">{t.footerArchive}</a>
+            <a href="#submit">{t.footerSubmit}</a>
+            <button
+              style={footerButtonStyle}
+              onClick={() => setCurrentPage("contact-page")}
+            >
+              {t.footerContact}
+            </button>
+          </div>
+        </footer>
+      </div>
+    );
+  }
+  if (currentPage === "magazine") {
+    return (
+      <MagazinePage
+        language={language}
+        onBack={() => setCurrentPage("main")}
+        setCurrentPage={setCurrentPage}
+        onOpenArticle={(article) => openArticleFrom(article, "magazine")}
+      />
+    );
+  }
+  if (currentPage === "monthly-theme-zh") {
+    return (
+      <MonthlyThemePageZh
+        onBack={() => setCurrentPage("main")}
+        onOpenArticle={(article) => openArticleFrom(article, "monthly-theme")}
+        setLanguage={setLanguage}
+      />
+    );
+  }
+  if (currentPage === "contact-page") {
+    return (
+      <ContactPage
+        language={language}
+        onBack={() => setCurrentPage("magazine")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "archive-house") {
+    return (
+      <ArchiveHousePage
+        language={language}
+        onBack={() => setCurrentPage("main")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "newsletter-page") {
+    return (
+      <NewsletterPage
+        language={language}
+        onBack={() => setCurrentPage("magazine")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "newsletter-privacy") {
+    return (
+      <NewsletterPrivacyPage
+        language={language}
+        onBack={() => setCurrentPage("newsletter-page")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "cover-submission") {
+    return (
+      <CoverSubmissionPage
+        language={language}
+        onBack={() => setCurrentPage("contact-page")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "submission-guidelines") {
+    return (
+      <SubmissionGuidelinesPage
+        language={language}
+        onBack={() => setCurrentPage("main")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "submission-page") {
+    return (
+      <SubmissionPage
+        language={language}
+        onBack={() => setCurrentPage("submission-guidelines")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "news-page") {
+    return (
+      <NewsPage
+        language={language}
+        onBack={() => setCurrentPage("main")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "parlour") {
+    return (
+      <ParlourPage
+        language={language}
+        onBack={() => setCurrentPage("magazine")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "our-story") {
+    return (
+      <OurStoryPage
+        language={language}
+        onBack={() => setCurrentPage("archive-house")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "how-we-edit") {
+    return (
+      <HowWeEditPage
+        language={language}
+        onBack={() => setCurrentPage("archive-house")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "reading-room") {
+    return (
+      <ReadingRoomPage
+        language={language}
+        onBack={() => setCurrentPage("archive-house")}
+        onOpenArticle={(article) => openArticleFrom(article, "reading-room")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "reading-guides") {
+    return (
+      <ReadingRoomPage
+        language={language}
+        initialShowGuides
+        onBack={() => setCurrentPage("reading-room")}
+        onOpenArticle={(article) => openArticleFrom(article, "reading-room")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "monthly-theme") {
+
+    if (language === "zh") {
+      return (
+        <MonthlyThemePageZh
+          setLanguage={setLanguage}
+          onBack={() => setCurrentPage("main")}
+          onOpenArticle={(article) => {
+            openArticleFrom(article, "monthly-theme");
+  
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          }}
+        />
+      );
+    }
+  
+    return (
+      <MonthlyThemePage
+        language={language}
+        setLanguage={setLanguage}
+        onBack={() => setCurrentPage("main")}
+        onOpenArticle={(article) => {
+          openArticleFrom(article, "monthly-theme");
+  
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }}
+      />
+    );
+  }
+
+  if (currentPage === "article-detail") {
+    return renderArticleDetail();
+  }
+
+  if (currentPage === "guidelines") {
+    return renderGuidelinesPage();
+  }
+
+  if (currentPage === "donate") {
+    return renderDonatePage();
+  }
+  if (currentPage === "donation-drive") return renderDonationDrivePage();
+  if (currentPage === "contact-page") {
+    return renderContactPage();
+  }
+
+  if (currentPage === "print-edition") {
+    return renderPrintEditionPage();
+  }
+
+  if (currentPage === "archive-page") {
+    return (
+      <ArchivePage
+  language={language}
+  articles={currentArticles}
+  onBack={() => setCurrentPage("main")}
+  onOpenArticle={(article) => openArticleFrom(article, "archive-page")}
+/>
+    );
+  }
+
+  return renderHomePage();
+}
+
+function App() {
+  return IS_MAINTENANCE_MODE ? <MaintenancePage /> : <MainApp />;
 }
 
 export default App;
 
-*/
-import "./index.css";
+
+
+/* import "./index.css";
 
 function App() {
   return (
@@ -1421,3 +2803,4 @@ function App() {
 
 export default App;
 
+*/

@@ -5,7 +5,7 @@ export const articles = [
       title: "On Shame, Visibility, and Feminine Social Life",
       author: "Lin",
       date: "April 2026",
-      category: "Essay",
+	      category: "Writing",
       tags: ["psychoanalysis", "visibility", "subjectivity"],
       excerpt:
         "A reflection on shame, the gaze, and the paradox of public self-exposure in contemporary life.",
@@ -45,7 +45,7 @@ export const articles = [
       title: "Negativity and the Structure of Ideological Attachment",
       author: "Xu",
       date: "February 2026",
-      category: "Essay",
+	      category: "Writing",
       tags: ["ideology", "negativity", "critical theory"],
       excerpt:
         "A short essay on why ideological attachment persists even where belief appears to have collapsed.",
@@ -67,7 +67,7 @@ export const articles = [
       title: "Notes Toward a Feminist Theory of Refusal",
       author: "Anonymous",
       date: "January 2026",
-      category: "Intervention",
+	      category: "Writing",
       tags: ["refusal", "politics", "feminism"],
       excerpt:
         "On refusal not as withdrawal, but as an active restructuring of political possibility.",
@@ -90,7 +90,7 @@ export const articles = [
         title: "Desire and Ideology in Digital Life",
         author: "Xuanran Zhang",
         date: "May 2026",
-        category: "Essay",
+	        category: "Writing",
         tags: ["desire", "ideology", "digital-life"],
         excerpt:
           "A reflection on how desire is structured and circulated under digital conditions.",
@@ -108,7 +108,7 @@ export const articles = [
   title: "Your Article Title",
   author: "Your Name",
   date: "May 2026",
-  category: "Essay",
+	  category: "Writing",
   tags: ["tag1", "tag2", "tag3"],
   excerpt:
     "A short summary of the article that will appear on the homepage and archive cards.",
