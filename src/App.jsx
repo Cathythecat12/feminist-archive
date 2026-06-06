@@ -555,6 +555,11 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     window.location.href = "weixin://";
   };
 
+  const shareToInstagram = async () => {
+    window.open("https://www.instagram.com/", "_blank", "noopener,noreferrer");
+    await copyArticleLink("Article link copied. Instagram does not support direct web sharing, so you can paste it there.");
+  };
+
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -1796,34 +1801,93 @@ return null;
           </button>
         </div>
       ) : (
-        <div className="article-share-modal-actions">
-          <button
-            onClick={copyArticleLink}
+        <div className="article-share-icon-grid article-share-icon-grid-en" aria-label="Share options">
+          <a
+            className="article-share-icon-button x-share-button"
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              selectedArticle.title
+            )}&url=${encodeURIComponent(getArticleShareUrl())}`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Copy link
+            <span className="article-share-logo x-share-logo" aria-hidden="true">
+              <span aria-hidden="true">X</span>
+            </span>
+            <strong>X</strong>
+            <em>Post link</em>
+          </a>
+
+          <a
+            className="article-share-icon-button bluesky-share-button"
+            href={`https://bsky.app/intent/compose?text=${encodeURIComponent(
+              `${selectedArticle.title} ${getArticleShareUrl()}`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="article-share-logo bluesky-share-logo" aria-hidden="true">
+              <i />
+              <i />
+            </span>
+            <strong>Bluesky</strong>
+            <em>Compose</em>
+          </a>
+
+          <button
+            className="article-share-icon-button instagram-share-button"
+            type="button"
+            onClick={shareToInstagram}
+          >
+            <span className="article-share-logo instagram-share-logo" aria-hidden="true">
+              <i />
+            </span>
+            <strong>Instagram</strong>
+            <em>Copy and open</em>
           </button>
 
-          <>
-            <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                selectedArticle.title
-              )}&url=${encodeURIComponent(getArticleShareUrl())}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              X
-            </a>
+          <a
+            className="article-share-icon-button whatsapp-share-button"
+            href={`https://wa.me/?text=${encodeURIComponent(
+              `${selectedArticle.title} ${getArticleShareUrl()}`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="article-share-logo whatsapp-share-logo" aria-hidden="true">
+              <i />
+            </span>
+            <strong>WhatsApp</strong>
+            <em>Send</em>
+          </a>
 
-            <a
-              href={`https://bsky.app/intent/compose?text=${encodeURIComponent(
-                `${selectedArticle.title} ${getArticleShareUrl()}`
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Bluesky
-            </a>
-          </>
+          <a
+            className="article-share-icon-button facebook-share-button"
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+              getArticleShareUrl()
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="article-share-logo facebook-share-logo" aria-hidden="true">
+              <span aria-hidden="true">f</span>
+            </span>
+            <strong>Facebook</strong>
+            <em>Share</em>
+          </a>
+
+          <button
+            className="article-share-icon-button more-share-button"
+            type="button"
+            onClick={() => shareSelectedArticle({ fallbackToModal: false })}
+          >
+            <span className="article-share-logo more-share-logo" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <strong>Other</strong>
+            <em>System share</em>
+          </button>
         </div>
       )}
     </div>
@@ -1919,14 +1983,7 @@ return null;
               articleShareVisible ? "is-visible" : ""
             }`}
             type="button"
-            onClick={() => {
-              if (articleShareUsesChinese) {
-                setShowArticleShare(true);
-                return;
-              }
-
-              shareSelectedArticle();
-            }}
+            onClick={() => setShowArticleShare(true)}
             aria-hidden={!articleShareVisible}
             tabIndex={articleShareVisible ? 0 : -1}
           >

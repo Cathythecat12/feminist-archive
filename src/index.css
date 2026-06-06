@@ -8678,6 +8678,7 @@ body {
   gap: 10px;
   font: inherit;
   text-align: center;
+  text-decoration: none;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.54);
   transition:
     transform 0.26s ease,
@@ -8744,6 +8745,134 @@ body {
   font-size: 1.85rem;
   font-weight: 800;
   letter-spacing: 0;
+}
+
+.x-share-logo {
+  border-radius: 50%;
+  background: #111111;
+  color: #f8f4ee;
+  box-shadow:
+    0 14px 30px rgba(17, 17, 17, 0.18),
+    inset 0 0 0 1px rgba(255,255,255,0.14);
+}
+
+.x-share-logo span {
+  font-size: 1.75rem;
+  font-weight: 760;
+  line-height: 1;
+}
+
+.bluesky-share-logo {
+  overflow: visible;
+}
+
+.bluesky-share-logo i {
+  position: absolute;
+  width: 30px;
+  height: 43px;
+  border-radius: 60% 40% 68% 32% / 54% 42% 58% 46%;
+  background: linear-gradient(180deg, #58b9ff, #1687e8);
+  box-shadow: 0 12px 26px rgba(22, 135, 232, 0.2);
+}
+
+.bluesky-share-logo i:first-child {
+  left: 10px;
+  transform: rotate(-28deg);
+  animation: blueskyWingLeft 2.6s ease-in-out infinite;
+}
+
+.bluesky-share-logo i:last-child {
+  right: 10px;
+  transform: rotate(28deg) scaleX(-1);
+  animation: blueskyWingRight 2.6s ease-in-out infinite;
+}
+
+.instagram-share-logo {
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 28% 95%, #ffd66b 0 18%, transparent 34%),
+    radial-gradient(circle at 12% 12%, #7a3cff 0 14%, transparent 32%),
+    linear-gradient(135deg, #7a3cff, #e5369a 48%, #ff7a3d);
+  box-shadow:
+    0 14px 30px rgba(229, 54, 154, 0.22),
+    inset 0 0 0 1px rgba(255,255,255,0.24);
+}
+
+.instagram-share-logo::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border: 4px solid #fff;
+  border-radius: 10px;
+  display: block;
+}
+
+.instagram-share-logo i {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 18px;
+  right: 18px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.whatsapp-share-logo {
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow:
+    0 14px 30px rgba(34, 197, 94, 0.2),
+    inset 0 0 0 1px rgba(255,255,255,0.22);
+}
+
+.whatsapp-share-logo::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  bottom: 7px;
+  width: 16px;
+  height: 16px;
+  background: #22c55e;
+  transform: rotate(38deg);
+}
+
+.whatsapp-share-logo i {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+}
+
+.whatsapp-share-logo i::after {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 7px;
+  left: 7px;
+  top: 10px;
+  border-left: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  transform: rotate(-42deg);
+  border-radius: 2px;
+}
+
+.facebook-share-logo {
+  border-radius: 18px;
+  background: linear-gradient(135deg, #1877f2, #0d4fb3);
+  color: #ffffff;
+  box-shadow:
+    0 14px 30px rgba(24, 119, 242, 0.22),
+    inset 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.facebook-share-logo span {
+  transform: translateY(6px);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .wechat-share-logo {
@@ -8867,6 +8996,26 @@ body {
 
   50% {
     transform: translate(2px, 3px);
+  }
+}
+
+@keyframes blueskyWingLeft {
+  0%, 100% {
+    transform: rotate(-28deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-34deg) translateY(-4px);
+  }
+}
+
+@keyframes blueskyWingRight {
+  0%, 100% {
+    transform: rotate(28deg) scaleX(-1) translateY(0);
+  }
+
+  50% {
+    transform: rotate(34deg) scaleX(-1) translateY(-4px);
   }
 }
 
