@@ -436,20 +436,32 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
   const footerButtonStyle = navButtonStyle;
 
+  const buildArticleUrl = (article, articleLanguage = language) => {
+    if (typeof window === "undefined" || !article?.id) return "";
+
+    const url = new URL(window.location.origin + window.location.pathname);
+    url.searchParams.set("article", article.id);
+    url.searchParams.set("lang", articleLanguage);
+    return url.toString();
+  };
+
+  const syncArticleUrl = (article, articleLanguage = language) => {
+    const url = buildArticleUrl(article, articleLanguage);
+
+    if (!url) return;
+
+    window.history.replaceState({}, "", url);
+  };
+
   const openArticleFrom = (article, returnPage = currentPage) => {
     setSelectedArticle(article);
     setArticleReturnPage(returnPage);
     setCurrentPage("article-detail");
+    syncArticleUrl(article);
   };
 
   const getArticleShareUrl = (article = selectedArticle) => {
-    if (typeof window === "undefined" || !article?.id) return "";
-
-    const url = new URL(window.location.href);
-    url.searchParams.set("article", article.id);
-    url.searchParams.set("lang", language);
-    url.hash = "";
-    return url.toString();
+    return buildArticleUrl(article);
   };
 
   const writeArticleLinkToClipboard = async () => {
@@ -551,6 +563,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     setSelectedArticle(article);
     setArticleReturnPage("archive-page");
     setCurrentPage("article-detail");
+    syncArticleUrl(article, urlLanguage === "en" || urlLanguage === "zh" ? urlLanguage : language);
   }, [currentArticles, language, selectedArticle?.id]);
 
   const getArticleReturnLabel = () => {
