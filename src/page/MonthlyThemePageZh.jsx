@@ -67,6 +67,7 @@ const currentIssueArticleIdsZh = [
   "barbie-capitalism-zh",
   "reproduction-is-labour",
   "self-objectification-beauty-myth",
+  "postfeminist-self-discipline-internalized-misogyny",
   "butler-women-subject-heterosexual-matrix",
   "butler-sex-natural-or-constructed",
   "butler-coalition-without-unified-women",
