@@ -2085,18 +2085,22 @@ Further materials are being gathered.`
 
   <div className="hero-mini-grid">
     <div className="hero-mini-card">
-      <span>Editorial</span>
-      <h3>On publishing slowly</h3>
+      <span>{language === "zh" ? "编者按" : "Editorial"}</span>
+      <h3>{language === "zh" ? "缓慢出版" : "On publishing slowly"}</h3>
       <p>
-        Why we reject algorithmic speed and build slower feminist archives.
+        {language === "zh"
+          ? "我们拒绝算法驱动的更新节奏，选择以更长的时间阅读、编辑与保存女性主义写作。"
+          : "Why we reject algorithmic speed and build slower feminist archives."}
       </p>
     </div>
 
     <div className="hero-mini-card">
-      <span>Archive Note</span>
-      <h3>Recovered histories</h3>
+      <span>{language === "zh" ? "档案笔记" : "Archive Note"}</span>
+      <h3>{language === "zh" ? "被找回的历史" : "Recovered histories"}</h3>
       <p>
-        Restoring forgotten texts, suppressed narratives, and lost records.
+        {language === "zh"
+          ? "重新整理被遗忘、被压制、被忽略的女性经验与思想记录。"
+          : "Restoring forgotten texts, suppressed narratives, and lost records."}
       </p>
     </div>
   </div>
