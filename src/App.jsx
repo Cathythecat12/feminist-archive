@@ -31,16 +31,21 @@ const getLanguageStorageKey = () => {
 const getInitialLanguage = () => {
   if (typeof window === "undefined") return "en";
 
-  const savedLanguage = window.localStorage.getItem(getLanguageStorageKey());
-  if (savedLanguage === "en" || savedLanguage === "zh") {
-    return savedLanguage;
-  }
-
   const hostname = window.location.hostname.toLowerCase();
   const pathname = window.location.pathname.toLowerCase();
 
   if (hostname.startsWith("zh.") || pathname === "/zh" || pathname.startsWith("/zh/")) {
     return "zh";
+  }
+
+  const isLocalPreview =
+    hostname === "localhost" || hostname === "127.0.0.1" || hostname === "";
+
+  if (isLocalPreview) {
+    const savedLanguage = window.localStorage.getItem(getLanguageStorageKey());
+    if (savedLanguage === "en" || savedLanguage === "zh") {
+      return savedLanguage;
+    }
   }
 
   return "en";
