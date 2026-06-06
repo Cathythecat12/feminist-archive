@@ -452,12 +452,10 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     return url.toString();
   };
 
-  const copyArticleLink = async (
-    message = language === "zh" ? "链接已复制" : "Article link copied."
-  ) => {
+  const writeArticleLinkToClipboard = async () => {
     const url = getArticleShareUrl();
 
-    if (!url) return;
+    if (!url) return false;
 
     try {
       await navigator.clipboard.writeText(url);
@@ -473,10 +471,20 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
       document.body.removeChild(textarea);
     }
 
+    return true;
+  };
+
+  const copyArticleLink = async (
+    message = language === "zh" ? "链接已复制" : "Article link copied."
+  ) => {
+    const copied = await writeArticleLinkToClipboard();
+
+    if (!copied) return;
+
     alert(message);
   };
 
-  const shareSelectedArticle = async () => {
+  const shareSelectedArticle = async ({ fallbackToModal = true } = {}) => {
     if (!selectedArticle) return;
 
     const shareUrl = getArticleShareUrl();
@@ -495,7 +503,31 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
       }
     }
 
-    setShowArticleShare(true);
+    if (fallbackToModal) {
+      setShowArticleShare(true);
+      return;
+    }
+
+    await copyArticleLink(
+      language === "zh"
+        ? "当前浏览器不支持系统分享，文章链接已复制。"
+        : "This browser does not support system sharing. Article link copied."
+    );
+  };
+
+  const shareToXiaohongshu = async () => {
+    window.open("https://www.xiaohongshu.com/explore", "_blank", "noopener,noreferrer");
+    await copyArticleLink("链接已复制。小红书打开后可以直接粘贴分享。");
+  };
+
+  const shareToWechat = async () => {
+    const copied = await writeArticleLinkToClipboard();
+
+    if (copied) {
+      alert("链接已复制。微信打开后可以粘贴给朋友或朋友圈。");
+    }
+
+    window.location.href = "weixin://";
   };
 
   useEffect(() => {
@@ -1696,32 +1728,55 @@ return null;
           : "You are warmly welcome to share, save, and quote this essay. Feminist Archive is built for public reading."}
       </p>
 
-      <div className="article-share-modal-actions">
-        <button
-          onClick={copyArticleLink}
-        >
-          {language === "zh" ? "复制链接" : "Copy link"}
-        </button>
+      {language === "zh" ? (
+        <div className="article-share-icon-grid" aria-label="分享选项">
+          <button
+            className="article-share-icon-button xhs-share-button"
+            type="button"
+            onClick={shareToXiaohongshu}
+          >
+            <span className="article-share-logo xhs-share-logo" aria-hidden="true">
+              <span>小</span>
+            </span>
+            <strong>小红书</strong>
+            <em>复制链接并打开</em>
+          </button>
 
-        {language === "zh" ? (
-          <>
-            <a
-              href="https://www.xiaohongshu.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              小红书
-            </a>
+          <button
+            className="article-share-icon-button wechat-share-button"
+            type="button"
+            onClick={shareToWechat}
+          >
+            <span className="article-share-logo wechat-share-logo" aria-hidden="true">
+              <i />
+              <i />
+            </span>
+            <strong>微信</strong>
+            <em>复制链接并唤起</em>
+          </button>
 
-            <button
-              onClick={async () => {
-                await copyArticleLink("链接已复制。你可以粘贴到微信。");
-              }}
-            >
-              微信
-            </button>
-          </>
-        ) : (
+          <button
+            className="article-share-icon-button more-share-button"
+            type="button"
+            onClick={() => shareSelectedArticle({ fallbackToModal: false })}
+          >
+            <span className="article-share-logo more-share-logo" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <strong>其它</strong>
+            <em>系统分享</em>
+          </button>
+        </div>
+      ) : (
+        <div className="article-share-modal-actions">
+          <button
+            onClick={copyArticleLink}
+          >
+            Copy link
+          </button>
+
           <>
             <a
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
@@ -1743,8 +1798,8 @@ return null;
               Bluesky
             </a>
           </>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   </div>
 )}
@@ -1838,7 +1893,14 @@ return null;
               articleShareVisible ? "is-visible" : ""
             }`}
             type="button"
-            onClick={shareSelectedArticle}
+            onClick={() => {
+              if (language === "zh") {
+                setShowArticleShare(true);
+                return;
+              }
+
+              shareSelectedArticle();
+            }}
             aria-hidden={!articleShareVisible}
             tabIndex={articleShareVisible ? 0 : -1}
           >
