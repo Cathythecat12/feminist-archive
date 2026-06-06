@@ -123,7 +123,7 @@ const issueArticlesZh = [
             <div className="issue-hero-overlay">
               <div className="issue-kicker">本月专题 / MONTHLY ISSUE</div>
   
-              <h1>写作、书评与女性主义探索</h1>
+              <h1>六月期刊</h1>
 
               <p>
                 从《性别麻烦》到商品女权，重新追问性别、主体、欲望与资本如何被生产出来。

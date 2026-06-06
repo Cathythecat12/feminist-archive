@@ -112,11 +112,7 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle }) {
               {language === "zh" ? "MONTHLY ISSUE / 本月专题" : "MONTHLY ISSUE"}
             </div>
 
-            <h1>
-              {language === "zh"
-                ? "Archive of Refusal"
-                : "Archive of Refusal"}
-            </h1>
+            <h1>{language === "zh" ? "六月期刊" : "June Issue"}</h1>
 
             <p>
               {language === "zh"

@@ -199,7 +199,11 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
       {language === "zh" ? "本月专题" : "THIS MONTH"}
     </div>
 
-    <h1>{heroArticle?.title}</h1>
+    <h1>
+      {language === "zh"
+        ? "写作、书评与女性主义探索"
+        : "Writing, Reviews, and Feminist Inquiry"}
+    </h1>
 
     <p>{heroArticle?.excerpt}</p>
   </div>
