@@ -8766,25 +8766,64 @@ body {
   overflow: visible;
 }
 
-.bluesky-share-logo i {
+.bluesky-wing {
   position: absolute;
-  width: 30px;
-  height: 43px;
-  border-radius: 60% 40% 68% 32% / 54% 42% 58% 46%;
+  display: block;
   background: linear-gradient(180deg, #58b9ff, #1687e8);
   box-shadow: 0 12px 26px rgba(22, 135, 232, 0.2);
 }
 
-.bluesky-share-logo i:first-child {
-  left: 10px;
-  transform: rotate(-28deg);
-  animation: blueskyWingLeft 2.6s ease-in-out infinite;
+.bluesky-wing-top-left,
+.bluesky-wing-top-right {
+  top: 7px;
+  width: 28px;
+  height: 38px;
+  border-radius: 68% 32% 72% 28% / 58% 44% 56% 42%;
 }
 
-.bluesky-share-logo i:last-child {
-  right: 10px;
-  transform: rotate(28deg) scaleX(-1);
-  animation: blueskyWingRight 2.6s ease-in-out infinite;
+.bluesky-wing-top-left {
+  left: 9px;
+  transform: rotate(-31deg);
+  animation: blueskyTopLeft 2.6s ease-in-out infinite;
+}
+
+.bluesky-wing-top-right {
+  right: 9px;
+  transform: rotate(31deg) scaleX(-1);
+  animation: blueskyTopRight 2.6s ease-in-out infinite;
+}
+
+.bluesky-wing-bottom-left,
+.bluesky-wing-bottom-right {
+  bottom: 9px;
+  width: 22px;
+  height: 27px;
+  border-radius: 34% 66% 28% 72% / 46% 58% 42% 54%;
+  background: linear-gradient(180deg, #2da5ff, #1379d6);
+  box-shadow: 0 10px 22px rgba(22, 135, 232, 0.16);
+}
+
+.bluesky-wing-bottom-left {
+  left: 15px;
+  transform: rotate(28deg);
+  animation: blueskyBottomLeft 2.6s ease-in-out infinite;
+}
+
+.bluesky-wing-bottom-right {
+  right: 15px;
+  transform: rotate(-28deg) scaleX(-1);
+  animation: blueskyBottomRight 2.6s ease-in-out infinite;
+}
+
+.bluesky-share-logo::after {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 20px;
+  width: 4px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(19, 121, 214, 0.28);
 }
 
 .instagram-share-logo {
@@ -8999,23 +9038,43 @@ body {
   }
 }
 
-@keyframes blueskyWingLeft {
+@keyframes blueskyTopLeft {
   0%, 100% {
-    transform: rotate(-28deg) translateY(0);
+    transform: rotate(-31deg) translate(0, 0);
   }
 
   50% {
-    transform: rotate(-34deg) translateY(-4px);
+    transform: rotate(-37deg) translate(-2px, -3px);
   }
 }
 
-@keyframes blueskyWingRight {
+@keyframes blueskyTopRight {
   0%, 100% {
-    transform: rotate(28deg) scaleX(-1) translateY(0);
+    transform: rotate(31deg) scaleX(-1) translate(0, 0);
   }
 
   50% {
-    transform: rotate(34deg) scaleX(-1) translateY(-4px);
+    transform: rotate(37deg) scaleX(-1) translate(2px, -3px);
+  }
+}
+
+@keyframes blueskyBottomLeft {
+  0%, 100% {
+    transform: rotate(28deg) translate(0, 0);
+  }
+
+  50% {
+    transform: rotate(20deg) translate(-1px, 3px);
+  }
+}
+
+@keyframes blueskyBottomRight {
+  0%, 100% {
+    transform: rotate(-28deg) scaleX(-1) translate(0, 0);
+  }
+
+  50% {
+    transform: rotate(-20deg) scaleX(-1) translate(1px, 3px);
   }
 }
 

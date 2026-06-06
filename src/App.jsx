@@ -1912,8 +1912,10 @@ return null;
             rel="noopener noreferrer"
           >
             <span className="article-share-logo bluesky-share-logo" aria-hidden="true">
-              <i />
-              <i />
+              <i className="bluesky-wing bluesky-wing-top-left" />
+              <i className="bluesky-wing bluesky-wing-top-right" />
+              <i className="bluesky-wing bluesky-wing-bottom-left" />
+              <i className="bluesky-wing bluesky-wing-bottom-right" />
             </span>
             <strong>Bluesky</strong>
             <em>Compose</em>
