@@ -205,7 +205,6 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
         : "Writing, Reviews, and Feminist Inquiry"}
     </h1>
 
-    <p>{heroArticle?.excerpt}</p>
   </div>
 </section>
       <section className="magazine-manifesto">
