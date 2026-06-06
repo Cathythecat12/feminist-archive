@@ -125,8 +125,8 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle }) {
 
             <h1>
               {language === "zh"
-                ? "写作、书评与女性主义探索"
-                : "Writing, Reviews, and Feminist Explorations"}
+                ? "六月期刊"
+                : "June Issue"}
             </h1>
 
             <p>
