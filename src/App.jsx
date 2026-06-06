@@ -442,6 +442,85 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     setCurrentPage("article-detail");
   };
 
+  const getArticleShareUrl = (article = selectedArticle) => {
+    if (typeof window === "undefined" || !article?.id) return "";
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("article", article.id);
+    url.searchParams.set("lang", language);
+    url.hash = "";
+    return url.toString();
+  };
+
+  const copyArticleLink = async (
+    message = language === "zh" ? "链接已复制" : "Article link copied."
+  ) => {
+    const url = getArticleShareUrl();
+
+    if (!url) return;
+
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = url;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+    }
+
+    alert(message);
+  };
+
+  const shareSelectedArticle = async () => {
+    if (!selectedArticle) return;
+
+    const shareUrl = getArticleShareUrl();
+    const shareData = {
+      title: selectedArticle.title,
+      text: selectedArticle.excerpt || selectedArticle.title,
+      url: shareUrl,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (error) {
+        if (error?.name === "AbortError") return;
+      }
+    }
+
+    setShowArticleShare(true);
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const params = new URLSearchParams(window.location.search);
+    const articleId = params.get("article");
+    const urlLanguage = params.get("lang");
+
+    if (!articleId) return;
+
+    if ((urlLanguage === "en" || urlLanguage === "zh") && urlLanguage !== language) {
+      setLanguage(urlLanguage);
+      return;
+    }
+
+    const article = currentArticles.find((entry) => entry.id === articleId);
+
+    if (!article || selectedArticle?.id === article.id) return;
+
+    setSelectedArticle(article);
+    setArticleReturnPage("archive-page");
+    setCurrentPage("article-detail");
+  }, [currentArticles, language, selectedArticle?.id]);
+
   const getArticleReturnLabel = () => {
     if (articleReturnPage === "reading-room") {
       return language === "zh" ? "← 阅读室" : "← READING ROOM";
@@ -1619,10 +1698,7 @@ return null;
 
       <div className="article-share-modal-actions">
         <button
-          onClick={() => {
-            navigator.clipboard.writeText(window.location.href);
-            alert(language === "zh" ? "链接已复制" : "Article link copied.");
-          }}
+          onClick={copyArticleLink}
         >
           {language === "zh" ? "复制链接" : "Copy link"}
         </button>
@@ -1638,9 +1714,8 @@ return null;
             </a>
 
             <button
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
-                alert("链接已复制。你可以粘贴到微信。");
+              onClick={async () => {
+                await copyArticleLink("链接已复制。你可以粘贴到微信。");
               }}
             >
               微信
@@ -1651,7 +1726,7 @@ return null;
             <a
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                 selectedArticle.title
-              )}&url=${encodeURIComponent(window.location.href)}`}
+              )}&url=${encodeURIComponent(getArticleShareUrl())}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1660,7 +1735,7 @@ return null;
 
             <a
               href={`https://bsky.app/intent/compose?text=${encodeURIComponent(
-                `${selectedArticle.title} ${window.location.href}`
+                `${selectedArticle.title} ${getArticleShareUrl()}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -1763,7 +1838,7 @@ return null;
               articleShareVisible ? "is-visible" : ""
             }`}
             type="button"
-            onClick={() => setShowArticleShare(true)}
+            onClick={shareSelectedArticle}
             aria-hidden={!articleShareVisible}
             tabIndex={articleShareVisible ? 0 : -1}
           >
