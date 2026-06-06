@@ -742,7 +742,7 @@ image: "/images/文章素材图9.png",
     title: "后女性主义叙事塑造女性的自我规训与内化厌女",
     category: "Writing",
     author: "Feminist Archive",
-    date: "2026年6月",
+    date: "2026年6月6日",
     readTime: "4 min read",
     image: "/images/后现代女性主义.PNG",
     excerpt:
