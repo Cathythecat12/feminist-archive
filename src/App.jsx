@@ -319,6 +319,7 @@ function MainApp() {
   const [submissionError, setSubmissionError] = useState("");
   const [newsletterStatus, setNewsletterStatus] = useState("");
   const [donationEmailStatus, setDonationEmailStatus] = useState("");
+  const [hasResolvedInitialUrl, setHasResolvedInitialUrl] = useState(false);
   useEffect(() => {
     window.localStorage.setItem(getLanguageStorageKey(), language);
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
@@ -449,6 +450,55 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
   const footerButtonStyle = navButtonStyle;
 
+  const routedPages = new Set([
+    "main",
+    "magazine",
+    "monthly-theme",
+    "monthly-theme-zh",
+    "archive-page",
+    "archive-house",
+    "reading-room",
+    "reading-guides",
+    "contact-page",
+    "newsletter-page",
+    "newsletter-privacy",
+    "cover-submission",
+    "submission-guidelines",
+    "submission-page",
+    "news-page",
+    "parlour",
+    "our-story",
+    "how-we-edit",
+    "guidelines",
+    "donate",
+    "donation-drive",
+    "print-edition",
+  ]);
+
+  const buildPageUrl = (page = currentPage, pageLanguage = language) => {
+    if (typeof window === "undefined") return "";
+
+    const url = new URL(window.location.origin + window.location.pathname);
+
+    if (page && page !== "main") {
+      url.searchParams.set("page", page);
+    }
+
+    if (pageLanguage === "zh" || page !== "main") {
+      url.searchParams.set("lang", pageLanguage);
+    }
+
+    return url.toString();
+  };
+
+  const syncPageUrl = (page = currentPage, pageLanguage = language) => {
+    const url = buildPageUrl(page, pageLanguage);
+
+    if (!url) return;
+
+    window.history.replaceState({}, "", url);
+  };
+
   const buildArticleUrl = (article, articleLanguage = getArticleLanguage(article)) => {
     if (typeof window === "undefined" || !article?.id) return "";
 
@@ -562,27 +612,63 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (hasResolvedInitialUrl) return;
 
     const params = new URLSearchParams(window.location.search);
     const articleId = params.get("article");
+    const pageName = params.get("page");
     const urlLanguage = params.get("lang");
-
-    if (!articleId) return;
 
     if ((urlLanguage === "en" || urlLanguage === "zh") && urlLanguage !== language) {
       setLanguage(urlLanguage);
       return;
     }
 
-    const article = currentArticles.find((entry) => entry.id === articleId);
+    if (articleId) {
+      const article =
+        currentArticles.find((entry) => entry.id === articleId) ||
+        chineseArticles.find((entry) => entry.id === articleId) ||
+        englishArticles.find((entry) => entry.id === articleId);
 
-    if (!article || selectedArticle?.id === article.id) return;
+      if (article) {
+        const articleLanguage =
+          urlLanguage === "en" || urlLanguage === "zh"
+            ? urlLanguage
+            : getArticleLanguage(article);
 
-    setSelectedArticle(article);
-    setArticleReturnPage("archive-page");
-    setCurrentPage("article-detail");
-    syncArticleUrl(article, urlLanguage === "en" || urlLanguage === "zh" ? urlLanguage : language);
-  }, [currentArticles, language, selectedArticle?.id]);
+        if (articleLanguage !== language) {
+          setLanguage(articleLanguage);
+          return;
+        }
+
+        setSelectedArticle(article);
+        setArticleReturnPage("archive-page");
+        setCurrentPage("article-detail");
+        syncArticleUrl(article, articleLanguage);
+        setHasResolvedInitialUrl(true);
+        return;
+      }
+    }
+
+    if (pageName && routedPages.has(pageName)) {
+      setCurrentPage(pageName);
+      setHasResolvedInitialUrl(true);
+      return;
+    }
+
+    setHasResolvedInitialUrl(true);
+  }, [currentArticles, language, hasResolvedInitialUrl]);
+
+  useEffect(() => {
+    if (!hasResolvedInitialUrl) return;
+
+    if (currentPage === "article-detail" && selectedArticle) {
+      syncArticleUrl(selectedArticle, getArticleLanguage(selectedArticle));
+      return;
+    }
+
+    syncPageUrl(currentPage);
+  }, [currentPage, selectedArticle?.id, language, hasResolvedInitialUrl]);
 
   const getArticleReturnLabel = () => {
     if (articleReturnPage === "reading-room") {
