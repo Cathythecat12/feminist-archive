@@ -4,6 +4,7 @@ import { articles as chineseArticles } from "../data/articles-zh";
 
 const localIssueArticlesZh = [
     {
+      hidden: true,
       id: "refusal-and-memory-zh",
       title: "拒绝与记忆的工作",
       category: "文章 / 记忆",
@@ -23,6 +24,7 @@ const localIssueArticlesZh = [
   拒绝有时正是在创造一种正式机构未能保存的档案。`,
     },
     {
+      hidden: true,
       id: "domestic-labour-zh",
       title: "家务劳动与不可见档案",
       category: "分析 / 劳动",
@@ -42,6 +44,7 @@ const localIssueArticlesZh = [
   然而，这些劳动却常常因为被女性化、日常化和自然化，而没有留下正式记录。`,
     },
     {
+      hidden: true,
       id: "ordinary-forms-of-refusal-zh",
       title: "拒绝的日常形式",
       category: "文章 / 生活",
@@ -60,9 +63,21 @@ const localIssueArticlesZh = [
     },
   ];
 
+const currentIssueArticleIdsZh = [
+  "barbie-capitalism-zh",
+  "butler-women-subject-heterosexual-matrix",
+  "butler-sex-natural-or-constructed",
+  "butler-coalition-without-unified-women",
+  "butler-gender-power-repetition-subversion",
+  "butler-repetition-subversion-gender-trouble",
+  "butler-origin-myth-sexual-order",
+];
+
 const issueArticlesZh = [
-  ...localIssueArticlesZh,
-  chineseArticles.find((article) => article.id === "barbie-capitalism-zh"),
+  ...localIssueArticlesZh.filter((article) => !article.hidden),
+  ...currentIssueArticleIdsZh.map((id) =>
+    chineseArticles.find((article) => article.id === id),
+  ),
 ].filter(Boolean);
   
   function MonthlyThemePageZh({ onBack, onOpenArticle, setLanguage }) {
@@ -108,31 +123,31 @@ const issueArticlesZh = [
             <div className="issue-hero-overlay">
               <div className="issue-kicker">本月专题 / MONTHLY ISSUE</div>
   
-              <h1>拒绝的档案</h1>
-  
+              <h1>写作、书评与女性主义探索</h1>
+
               <p>
-                一个关于拒绝、记忆、不可见劳动，以及那些抵抗被轻易吸纳的生活形式的专题。
+                从《性别麻烦》到商品女权，重新追问性别、主体、欲望与资本如何被生产出来。
               </p>
             </div>
           </section>
   
           <section className="issue-intro">
             <section className="issue-meta-strip">
-              <span>第 01 期</span>
-              <span>2026年3月</span>
-              <span>拒绝</span>
-              <span>记忆</span>
-              <span>劳动</span>
-              <span>档案</span>
+              <span>第 02 期</span>
+              <span>2026年6月</span>
+              <span>书评</span>
+              <span>女性主义</span>
+              <span>性别麻烦</span>
+              <span>资本主义</span>
             </section>
   
             <div>
               <div className="issue-section-label">编辑札记</div>
-              <h2>拒绝不是退场。</h2>
+              <h2>本期从巴特勒开始，也回到当代商品现场。</h2>
             </div>
   
             <p>
-              本期将拒绝理解为对秩序的中断，而不是简单的撤退。它汇集文章、理论片段与档案式反思，讨论记忆、劳动、语言，以及那些不容易进入公共记录的生活形式。
+              本期把 Feminist Archive 的《性别麻烦》导读与芭比文章放在同一条阅读路径里：一边追问“妇女”“身体”“性别”如何被权力生产，一边观察资本如何把女性主义符号重新包装成可消费的自由感。
             </p>
           </section>
   
@@ -142,19 +157,27 @@ const issueArticlesZh = [
   
               <div className="issue-preview-grid">
                 <div className="issue-preview-item">
-                  <h3>为什么拒绝不是沉默</h3>
+                  <h3>“妇女”这个主体是如何被法律、语言与制度生产出来的</h3>
                 </div>
   
                 <div className="issue-preview-item">
-                  <h3>家务劳动如何从历史中消失</h3>
+                  <h3>生理性别是否真的先于文化，还是早已被分类制度塑造</h3>
                 </div>
   
                 <div className="issue-preview-item">
-                  <h3>抵抗快速消费的写作</h3>
+                  <h3>如果没有统一的“妇女”，女性主义政治如何继续行动</h3>
                 </div>
   
                 <div className="issue-preview-item">
-                  <h3>未完成生活的政治</h3>
+                  <h3>性别秩序如何靠重复维持，又如何在重复中发生偏移</h3>
+                </div>
+
+                <div className="issue-preview-item">
+                  <h3>起源神话、自然/文化二元论与异性恋矩阵如何制造“自然”</h3>
+                </div>
+
+                <div className="issue-preview-item">
+                  <h3>当商品学会自我批判，女性主义如何被重新注入消费系统</h3>
                 </div>
               </div>
             </section>
@@ -193,10 +216,10 @@ const issueArticlesZh = [
           <section className="issue-bottom-note">
             <div className="issue-section-label">阅读路径</div>
   
-            <h2>慢慢阅读。反复返回。保存那些正在消失的东西。</h2>
+            <h2>从主体、身体、联盟，到重复与颠覆。</h2>
   
             <p>
-              Feminist Archive 将每一期专题视为一个阅读环境：一组暂时聚合的文章、札记、图像与历史片段。它的目标不是速度，而是返回。
+              你可以从《性别麻烦》的第一篇导读开始，也可以先进入芭比文章，观察理论如何在当代资本主义现场重新显影。本期不是给出一个封闭答案，而是搭建一条可以反复返回的思想路径。
             </p>
           </section>
   

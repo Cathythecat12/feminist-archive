@@ -10,6 +10,7 @@ const paragraphs = (text) =>
 export const articles = [
   {
     id: "archive-of-refusal",
+    hidden: true,
     title: "Archive of Refusal",
     category: "Writing",
     author: "Feminist Archive",
@@ -33,6 +34,7 @@ To preserve difficult thought is itself a feminist practice.`
 
   {
     id: "publishing-slowly",
+    hidden: true,
     title: "On Publishing Slowly",
     category: "Writing",
     author: "Editorial",
@@ -54,8 +56,7 @@ A slower archive allows writing to remain intellectually alive beyond visibility
 
   {
     id: "barbie-capitalism",
-    title:
-      "Patriarchal Capitalism Repackaged Barbie with Feminism… And Then They Made Even More Money?",
+    title: "Writing, Reviews, and Feminist Explorations",
     category: "Writing",
     author: "Feminist Archive",
     date: "20 May 2026",
