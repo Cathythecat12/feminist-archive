@@ -8769,49 +8769,55 @@ body {
 .bluesky-wing {
   position: absolute;
   display: block;
-  background: linear-gradient(180deg, #58b9ff, #1687e8);
-  box-shadow: 0 12px 26px rgba(22, 135, 232, 0.2);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.16), transparent 32%),
+    linear-gradient(180deg, #58b9ff, #1687e8);
+  box-shadow: 0 14px 30px rgba(22, 135, 232, 0.22);
 }
 
 .bluesky-wing-top-left,
 .bluesky-wing-top-right {
-  top: 7px;
-  width: 28px;
-  height: 38px;
-  border-radius: 68% 32% 72% 28% / 58% 44% 56% 42%;
+  top: 4px;
+  width: 31px;
+  height: 40px;
+  border-radius: 78% 22% 70% 30% / 62% 42% 58% 38%;
 }
 
 .bluesky-wing-top-left {
-  left: 9px;
-  transform: rotate(-31deg);
+  left: 5px;
+  transform: rotate(-38deg) skewY(-4deg);
+  transform-origin: 92% 86%;
   animation: blueskyTopLeft 2.6s ease-in-out infinite;
 }
 
 .bluesky-wing-top-right {
-  right: 9px;
-  transform: rotate(31deg) scaleX(-1);
+  right: 5px;
+  transform: rotate(38deg) scaleX(-1) skewY(-4deg);
+  transform-origin: 8% 86%;
   animation: blueskyTopRight 2.6s ease-in-out infinite;
 }
 
 .bluesky-wing-bottom-left,
 .bluesky-wing-bottom-right {
-  bottom: 9px;
-  width: 22px;
-  height: 27px;
-  border-radius: 34% 66% 28% 72% / 46% 58% 42% 54%;
+  bottom: 7px;
+  width: 23px;
+  height: 28px;
+  border-radius: 70% 30% 78% 22% / 42% 58% 42% 58%;
   background: linear-gradient(180deg, #2da5ff, #1379d6);
-  box-shadow: 0 10px 22px rgba(22, 135, 232, 0.16);
+  box-shadow: 0 10px 22px rgba(22, 135, 232, 0.14);
 }
 
 .bluesky-wing-bottom-left {
-  left: 15px;
-  transform: rotate(28deg);
+  left: 10px;
+  transform: rotate(34deg) skewY(8deg);
+  transform-origin: 88% 12%;
   animation: blueskyBottomLeft 2.6s ease-in-out infinite;
 }
 
 .bluesky-wing-bottom-right {
-  right: 15px;
-  transform: rotate(-28deg) scaleX(-1);
+  right: 10px;
+  transform: rotate(-34deg) scaleX(-1) skewY(8deg);
+  transform-origin: 12% 12%;
   animation: blueskyBottomRight 2.6s ease-in-out infinite;
 }
 
@@ -8819,11 +8825,11 @@ body {
   content: "";
   position: absolute;
   left: 30px;
-  top: 20px;
+  top: 19px;
   width: 4px;
-  height: 22px;
+  height: 26px;
   border-radius: 999px;
-  background: rgba(19, 121, 214, 0.28);
+  background: linear-gradient(180deg, rgba(19, 121, 214, 0.1), rgba(19, 121, 214, 0.34));
 }
 
 .instagram-share-logo {
@@ -9040,41 +9046,41 @@ body {
 
 @keyframes blueskyTopLeft {
   0%, 100% {
-    transform: rotate(-31deg) translate(0, 0);
+    transform: rotate(-38deg) skewY(-4deg) scaleX(1);
   }
 
   50% {
-    transform: rotate(-37deg) translate(-2px, -3px);
+    transform: rotate(-48deg) skewY(-4deg) scaleX(1.08) translate(-2px, -1px);
   }
 }
 
 @keyframes blueskyTopRight {
   0%, 100% {
-    transform: rotate(31deg) scaleX(-1) translate(0, 0);
+    transform: rotate(38deg) scaleX(-1) skewY(-4deg);
   }
 
   50% {
-    transform: rotate(37deg) scaleX(-1) translate(2px, -3px);
+    transform: rotate(48deg) scaleX(-1.08) skewY(-4deg) translate(2px, -1px);
   }
 }
 
 @keyframes blueskyBottomLeft {
   0%, 100% {
-    transform: rotate(28deg) translate(0, 0);
+    transform: rotate(34deg) skewY(8deg) scaleX(1);
   }
 
   50% {
-    transform: rotate(20deg) translate(-1px, 3px);
+    transform: rotate(24deg) skewY(8deg) scaleX(1.06) translate(-1px, 2px);
   }
 }
 
 @keyframes blueskyBottomRight {
   0%, 100% {
-    transform: rotate(-28deg) scaleX(-1) translate(0, 0);
+    transform: rotate(-34deg) scaleX(-1) skewY(8deg);
   }
 
   50% {
-    transform: rotate(-20deg) scaleX(-1) translate(1px, 3px);
+    transform: rotate(-24deg) scaleX(-1.06) skewY(8deg) translate(1px, 2px);
   }
 }
 
