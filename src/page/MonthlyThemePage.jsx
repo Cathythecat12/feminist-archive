@@ -4,6 +4,7 @@ import { submitWebsiteForm } from "../utils/formSubmit";
 
 const localIssueArticles = [
   {
+    hidden: true,
     id: "refusal-and-memory",
     title: "Refusal and the Work of Memory",
     category: "Essay / Memory",
@@ -24,6 +25,7 @@ To refuse is sometimes to create an archive that formal institutions failed to p
   },
 
   {
+    hidden: true,
     id: "domestic-labour",
     title: "Domestic Labour and Invisible Archives",
     category: "Analysis / Labour",
@@ -44,6 +46,7 @@ Yet these forms of labour frequently remain undocumented precisely because they 
   },
 
   {
+    hidden: true,
     id: "ordinary-forms-of-refusal",
     title: "The Ordinary Forms of Refusal",
     category: "Essay / Life",
@@ -62,9 +65,17 @@ These ordinary gestures are not outside history. They are often where history is
   },
 ];
 
+const currentIssueArticleIds = [
+  "barbie-capitalism",
+  "reproduction-is-labour",
+  "self-objectification-beauty-myth",
+];
+
 const issueArticles = [
-  ...localIssueArticles,
-  englishArticles.find((article) => article.id === "barbie-capitalism"),
+  ...localIssueArticles.filter((article) => !article.hidden),
+  ...currentIssueArticleIds.map((id) =>
+    englishArticles.find((article) => article.id === id),
+  ),
 ].filter(Boolean);
 
 function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle }) {
@@ -112,35 +123,40 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle }) {
               {language === "zh" ? "MONTHLY ISSUE / 本月专题" : "MONTHLY ISSUE"}
             </div>
 
-            <h1>{language === "zh" ? "六月期刊" : "June Issue"}</h1>
+            <h1>
+              {language === "zh"
+                ? "写作、书评与女性主义探索"
+                : "Writing, Reviews, and Feminist Explorations"}
+            </h1>
 
             <p>
               {language === "zh"
-                ? "A curated issue on refusal, memory, invisible labour, and forms of life that resist easy incorporation."
-                : "A curated issue on refusal, memory, invisible labour, and forms of life that resist easy incorporation."}
+                ? "A monthly issue on commodity feminism, reproductive labour, self-objectification, and the invisible structures that organize gendered life."
+                : "A monthly issue on commodity feminism, reproductive labour, self-objectification, and the invisible structures that organize gendered life."}
             </p>
           </div>
         </section>
 
         <section className="issue-intro">
         <section className="issue-meta-strip">
-  <span>ISSUE 01</span>
-  <span>MARCH 2026</span>
-  <span>REFUSAL</span>
-  <span>MEMORY</span>
+  <span>ISSUE 02</span>
+  <span>JUNE 2026</span>
+  <span>WRITING</span>
+  <span>REVIEWS</span>
+  <span>FEMINISM</span>
   <span>LABOUR</span>
-  <span>ARCHIVE</span>
 </section>
           <div>
             <div className="issue-section-label">EDITORIAL NOTE</div>
-            <h2>Refusal is not retreat.</h2>
+            <h2>This issue begins with the body, labour, and the politics of visibility.</h2>
           </div>
 
           <p>
-            This issue approaches refusal as an interruption of order rather
-            than a simple act of withdrawal. It gathers essays, theoretical
-            fragments, and archival reflections on memory, labour, language, and
-            the forms of life that do not easily enter public record.
+            This month brings together essays on commodity feminism,
+            reproductive labour, bodily discipline, and the invisible structures
+            that make gendered life feel natural. It follows how capitalism,
+            care work, beauty standards, and gender norms produce the conditions
+            through which women are seen, valued, and disciplined.
           </p>
         </section>
 
@@ -150,19 +166,19 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle }) {
 
   <div className="issue-preview-grid">
     <div className="issue-preview-item">
-      <h3>Why refusal is not silence</h3>
+      <h3>How commodity feminism turns critique into consumption</h3>
     </div>
 
     <div className="issue-preview-item">
-      <h3>How domestic labour disappears from history</h3>
+      <h3>Why reproductive labour remains outside economic visibility</h3>
     </div>
 
     <div className="issue-preview-item">
-      <h3>Writing that resists easy consumption</h3>
+      <h3>How beauty standards discipline women into self-surveillance</h3>
     </div>
 
     <div className="issue-preview-item">
-      <h3>The politics of unfinished lives</h3>
+      <h3>What feminist writing can recover from hidden forms of labour</h3>
     </div>
   </div>
 </section>
@@ -200,12 +216,13 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle }) {
         <section className="issue-bottom-note">
           <div className="issue-section-label">READING PATH</div>
 
-          <h2>Read slowly. Return often. Archive what disappears.</h2>
+          <h2>Read across commodities, bodies, labour, and gendered life.</h2>
 
           <p>
-            Feminist Archive treats each monthly issue as a reading environment:
-            a temporary constellation of essays, notes, images, and historical
-            fragments. The aim is not speed, but return.
+            This issue gathers essays that move between feminist theory and
+            contemporary cultural life: from Barbie and commodity feminism to
+            reproductive labour, beauty myths, and the gendered structures that
+            make power feel ordinary.
           </p>
         </section>
         <footer className="issue-footer">

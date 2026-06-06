@@ -65,6 +65,8 @@ const localIssueArticlesZh = [
 
 const currentIssueArticleIdsZh = [
   "barbie-capitalism-zh",
+  "reproduction-is-labour",
+  "self-objectification-beauty-myth",
   "butler-women-subject-heterosexual-matrix",
   "butler-sex-natural-or-constructed",
   "butler-coalition-without-unified-women",
@@ -147,7 +149,7 @@ const issueArticlesZh = [
             </div>
   
             <p>
-              本期把 Feminist Archive 的《性别麻烦》导读与芭比文章放在同一条阅读路径里：一边追问“妇女”“身体”“性别”如何被权力生产，一边观察资本如何把女性主义符号重新包装成可消费的自由感。
+              本期把 Feminist Archive 的《性别麻烦》导读、芭比文章、生育劳动与美貌神话放在同一条阅读路径里：一边追问“妇女”“身体”“性别”如何被权力生产，一边观察资本、劳动制度与美貌标准如何把女性主义问题重新带回日常生活。
             </p>
           </section>
   
@@ -178,6 +180,14 @@ const issueArticlesZh = [
 
                 <div className="issue-preview-item">
                   <h3>当商品学会自我批判，女性主义如何被重新注入消费系统</h3>
+                </div>
+
+                <div className="issue-preview-item">
+                  <h3>生育、照护与家务劳动如何被 GDP、工资与市场价值体系隐形化</h3>
+                </div>
+
+                <div className="issue-preview-item">
+                  <h3>美貌神话如何把外部控制转化为女性对身体的自我监控</h3>
                 </div>
               </div>
             </section>
@@ -217,9 +227,9 @@ const issueArticlesZh = [
             <div className="issue-section-label">阅读路径</div>
   
             <h2>从主体、身体、联盟，到重复与颠覆。</h2>
-  
+ 
             <p>
-              你可以从《性别麻烦》的第一篇导读开始，也可以先进入芭比文章，观察理论如何在当代资本主义现场重新显影。本期不是给出一个封闭答案，而是搭建一条可以反复返回的思想路径。
+              你可以从《性别麻烦》的第一篇导读开始，也可以先进入芭比、生育劳动与美貌神话的文章，观察理论如何在当代资本主义现场重新显影。本期不是给出一个封闭答案，而是搭建一条可以反复返回的思想路径。
             </p>
           </section>
   
