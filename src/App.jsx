@@ -1924,7 +1924,7 @@ return null;
   {selectedArticle.sidebarText || (
     <>
       <strong>{selectedArticle.author}</strong> writes with Feminist Archive.
-      This essay appears in the monthly issue <em>Archive of Refusal</em>.
+      This essay appears in the monthly issue <em>June Issue</em>.
     </>
   )}
 </p>
