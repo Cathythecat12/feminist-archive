@@ -425,6 +425,19 @@ const filteredArticles = useMemo(() => {
 
 const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
+  const hasChineseText = (value = "") => /[\u4e00-\u9fff]/.test(value);
+
+  const getArticleLanguage = (article = selectedArticle) => {
+    if (!article) return language;
+
+    return hasChineseText(`${article.title || ""} ${article.excerpt || ""}`)
+      ? "zh"
+      : "en";
+  };
+
+  const articleShareLanguage = getArticleLanguage(selectedArticle);
+  const articleShareUsesChinese = articleShareLanguage === "zh";
+
   const navButtonStyle = {
     background: "none",
     border: "none",
@@ -436,7 +449,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
   const footerButtonStyle = navButtonStyle;
 
-  const buildArticleUrl = (article, articleLanguage = language) => {
+  const buildArticleUrl = (article, articleLanguage = getArticleLanguage(article)) => {
     if (typeof window === "undefined" || !article?.id) return "";
 
     const url = new URL(window.location.origin + window.location.pathname);
@@ -457,7 +470,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     setSelectedArticle(article);
     setArticleReturnPage(returnPage);
     setCurrentPage("article-detail");
-    syncArticleUrl(article);
+    syncArticleUrl(article, getArticleLanguage(article));
   };
 
   const getArticleShareUrl = (article = selectedArticle) => {
@@ -487,7 +500,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
   };
 
   const copyArticleLink = async (
-    message = language === "zh" ? "链接已复制" : "Article link copied."
+    message = articleShareUsesChinese ? "链接已复制" : "Article link copied."
   ) => {
     const copied = await writeArticleLinkToClipboard();
 
@@ -521,7 +534,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     }
 
     await copyArticleLink(
-      language === "zh"
+      articleShareUsesChinese
         ? "当前浏览器不支持系统分享，文章链接已复制。"
         : "This browser does not support system sharing. Article link copied."
     );
@@ -1726,22 +1739,22 @@ return null;
       </button>
 
       <div className="article-share-modal-label">
-        {language === "zh" ? "转发 / 保存" : "SHARE / CIRCULATE"}
+        {articleShareUsesChinese ? "转发 / 保存" : "SHARE / CIRCULATE"}
       </div>
 
       <h2>
-        {language === "zh"
+        {articleShareUsesChinese
           ? "让这篇文章继续流动。"
           : "Let this essay continue its journey."}
       </h2>
 
       <p>
-        {language === "zh"
+        {articleShareUsesChinese
           ? "欢迎自由转发、保存与引用此文。Feminist Archive 为公共阅读而存在。"
           : "You are warmly welcome to share, save, and quote this essay. Feminist Archive is built for public reading."}
       </p>
 
-      {language === "zh" ? (
+      {articleShareUsesChinese ? (
         <div className="article-share-icon-grid" aria-label="分享选项">
           <button
             className="article-share-icon-button xhs-share-button"
@@ -1907,7 +1920,7 @@ return null;
             }`}
             type="button"
             onClick={() => {
-              if (language === "zh") {
+              if (articleShareUsesChinese) {
                 setShowArticleShare(true);
                 return;
               }
