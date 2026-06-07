@@ -8766,70 +8766,46 @@ body {
   overflow: visible;
 }
 
+.bluesky-butterfly {
+  width: 68px;
+  height: 68px;
+  overflow: visible;
+  filter: drop-shadow(0 14px 24px rgba(24, 135, 232, 0.2));
+}
+
 .bluesky-wing {
-  position: absolute;
-  display: block;
-  background:
-    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.16), transparent 32%),
-    linear-gradient(180deg, #58b9ff, #1687e8);
-  box-shadow: 0 14px 30px rgba(22, 135, 232, 0.22);
+  fill: #248fe8;
+  transform-box: view-box;
 }
 
-.bluesky-wing-top-left,
-.bluesky-wing-top-right {
-  top: 4px;
-  width: 31px;
-  height: 40px;
-  border-radius: 78% 22% 70% 30% / 62% 42% 58% 38%;
+.bluesky-wing-left-top,
+.bluesky-wing-right-top {
+  fill: #37a8f6;
 }
 
-.bluesky-wing-top-left {
-  left: 5px;
-  transform: rotate(-38deg) skewY(-4deg);
-  transform-origin: 92% 86%;
-  animation: blueskyTopLeft 2.6s ease-in-out infinite;
+.bluesky-wing-left-bottom,
+.bluesky-wing-right-bottom {
+  fill: #1687e8;
 }
 
-.bluesky-wing-top-right {
-  right: 5px;
-  transform: rotate(38deg) scaleX(-1) skewY(-4deg);
-  transform-origin: 8% 86%;
-  animation: blueskyTopRight 2.6s ease-in-out infinite;
+.bluesky-wing-left-top {
+  transform-origin: 31px 34px;
+  animation: blueskyLeftTop 2.45s ease-in-out infinite;
 }
 
-.bluesky-wing-bottom-left,
-.bluesky-wing-bottom-right {
-  bottom: 7px;
-  width: 23px;
-  height: 28px;
-  border-radius: 70% 30% 78% 22% / 42% 58% 42% 58%;
-  background: linear-gradient(180deg, #2da5ff, #1379d6);
-  box-shadow: 0 10px 22px rgba(22, 135, 232, 0.14);
+.bluesky-wing-right-top {
+  transform-origin: 33px 34px;
+  animation: blueskyRightTop 2.45s ease-in-out infinite;
 }
 
-.bluesky-wing-bottom-left {
-  left: 7px;
-  transform: rotate(34deg) skewY(8deg);
-  transform-origin: 88% 12%;
-  animation: blueskyBottomLeft 2.6s ease-in-out infinite;
+.bluesky-wing-left-bottom {
+  transform-origin: 32px 35px;
+  animation: blueskyLeftBottom 2.45s ease-in-out infinite;
 }
 
-.bluesky-wing-bottom-right {
-  right: 7px;
-  transform: rotate(-34deg) scaleX(-1) skewY(8deg);
-  transform-origin: 12% 12%;
-  animation: blueskyBottomRight 2.6s ease-in-out infinite;
-}
-
-.bluesky-share-logo::after {
-  content: "";
-  position: absolute;
-  left: 30px;
-  top: 19px;
-  width: 4px;
-  height: 26px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(19, 121, 214, 0.1), rgba(19, 121, 214, 0.34));
+.bluesky-wing-right-bottom {
+  transform-origin: 32px 35px;
+  animation: blueskyRightBottom 2.45s ease-in-out infinite;
 }
 
 .instagram-share-logo {
@@ -9044,43 +9020,43 @@ body {
   }
 }
 
-@keyframes blueskyTopLeft {
+@keyframes blueskyLeftTop {
   0%, 100% {
-    transform: rotate(-38deg) skewY(-4deg) scaleX(1);
+    transform: rotate(-1deg) translate(0, 0);
   }
 
   50% {
-    transform: rotate(-48deg) skewY(-4deg) scaleX(1.08) translate(-2px, -1px);
+    transform: rotate(-8deg) translate(-1.8px, -0.4px) scaleX(1.03);
   }
 }
 
-@keyframes blueskyTopRight {
+@keyframes blueskyRightTop {
   0%, 100% {
-    transform: rotate(38deg) scaleX(-1) skewY(-4deg);
+    transform: rotate(1deg) translate(0, 0);
   }
 
   50% {
-    transform: rotate(48deg) scaleX(-1.08) skewY(-4deg) translate(2px, -1px);
+    transform: rotate(8deg) translate(1.8px, -0.4px) scaleX(1.03);
   }
 }
 
-@keyframes blueskyBottomLeft {
+@keyframes blueskyLeftBottom {
   0%, 100% {
-    transform: rotate(22deg) skewY(8deg) scaleX(0.96) translate(2px, 1px);
+    transform: rotate(1deg) translate(0, 0);
   }
 
   50% {
-    transform: rotate(42deg) skewY(8deg) scaleX(1.08) translate(-3px, 3px);
+    transform: rotate(7deg) translate(-1.6px, 1.8px) scaleX(1.04);
   }
 }
 
-@keyframes blueskyBottomRight {
+@keyframes blueskyRightBottom {
   0%, 100% {
-    transform: rotate(-22deg) scaleX(-0.96) skewY(8deg) translate(-2px, 1px);
+    transform: rotate(-1deg) translate(0, 0);
   }
 
   50% {
-    transform: rotate(-42deg) scaleX(-1.08) skewY(8deg) translate(3px, 3px);
+    transform: rotate(-7deg) translate(1.6px, 1.8px) scaleX(1.04);
   }
 }
 

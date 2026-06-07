@@ -1912,10 +1912,24 @@ return null;
             rel="noopener noreferrer"
           >
             <span className="article-share-logo bluesky-share-logo" aria-hidden="true">
-              <i className="bluesky-wing bluesky-wing-top-left" />
-              <i className="bluesky-wing bluesky-wing-top-right" />
-              <i className="bluesky-wing bluesky-wing-bottom-left" />
-              <i className="bluesky-wing bluesky-wing-bottom-right" />
+              <svg className="bluesky-butterfly" viewBox="0 0 64 64" role="img" aria-hidden="true">
+                <path
+                  className="bluesky-wing bluesky-wing-left-top"
+                  d="M30.8 31.8C24.8 17 14.4 7.6 8.1 12.1 1.7 16.6 8.4 32.4 20.2 39.1c5.9 3.3 10.1 1 10.6-7.3Z"
+                />
+                <path
+                  className="bluesky-wing bluesky-wing-right-top"
+                  d="M33.2 31.8C39.2 17 49.6 7.6 55.9 12.1c6.4 4.5-.3 20.3-12.1 27-5.9 3.3-10.1 1-10.6-7.3Z"
+                />
+                <path
+                  className="bluesky-wing bluesky-wing-left-bottom"
+                  d="M30.5 34.1c-6.5 2.2-11.8 7.2-10.1 13.3 2 7.3 13.9 5.2 16.6-2.7 1.8-5.2-.8-9.1-6.5-10.6Z"
+                />
+                <path
+                  className="bluesky-wing bluesky-wing-right-bottom"
+                  d="M33.5 34.1c6.5 2.2 11.8 7.2 10.1 13.3-2 7.3-13.9 5.2-16.6-2.7-1.8-5.2.8-9.1 6.5-10.6Z"
+                />
+              </svg>
             </span>
             <strong>Bluesky</strong>
             <em>Compose</em>
