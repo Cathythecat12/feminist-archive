@@ -2198,11 +2198,23 @@ textarea {
   }
 
   .mag-article-hero {
-    min-height: 58vh;
+    min-height: 64vh;
+    align-items: flex-end;
   }
 
   .mag-article-hero-overlay {
-    padding: 0 24px 46px;
+    padding: 92px 24px 48px;
+  }
+
+  .mag-article-hero-overlay h1 {
+    font-size: clamp(2.85rem, 13vw, 4.15rem);
+    line-height: 0.98;
+  }
+
+  html[lang="zh-CN"] .mag-article-hero-overlay h1 {
+    font-size: clamp(2.6rem, 12vw, 3.8rem);
+    line-height: 1.04;
+    letter-spacing: 0;
   }
 
   .mag-article-layout {
@@ -2212,6 +2224,12 @@ textarea {
 
   .mag-article-content {
     font-size: 1.25rem;
+  }
+
+  .mag-article-content p:first-child::first-letter {
+    font-size: 4.4rem;
+    line-height: 0.86;
+    padding-right: 9px;
   }
 
   .article-highlight {
@@ -12004,5 +12022,302 @@ p {
 
   .how-edit-studio-process article:last-child {
     border-bottom: 0;
+  }
+}
+
+/* Mobile polish pass */
+html[lang="zh-CN"] body {
+  font-family: "Songti SC", "STSong", "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+}
+
+html[lang="zh-CN"] h1,
+html[lang="zh-CN"] h2,
+html[lang="zh-CN"] h3,
+html[lang="zh-CN"] .hero-title,
+html[lang="zh-CN"] .magazine-video-content h1,
+html[lang="zh-CN"] .reading-room-hero h1,
+html[lang="zh-CN"] .our-story-hero h1,
+html[lang="zh-CN"] .magazine-logo,
+html[lang="zh-CN"] .reading-room-logo,
+html[lang="zh-CN"] .archive-house-small-logo,
+html[lang="zh-CN"] .donation-brand {
+  font-family: "Songti SC", "STSong", "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+  letter-spacing: 0;
+}
+
+html[lang="zh-CN"] .magazine-video-content h1,
+html[lang="zh-CN"] .reading-room-hero h1,
+html[lang="zh-CN"] .our-story-hero h1 {
+  line-height: 1.06;
+}
+
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-shell {
+    padding-inline: 18px;
+  }
+
+  .site-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 22px;
+  }
+
+  .site-name {
+    font-size: 1.7rem;
+  }
+
+  .top-nav {
+    gap: 14px;
+    font-size: 0.92rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3.1rem, 14vw, 4.7rem);
+    line-height: 1.02;
+  }
+
+  html[lang="zh-CN"] .hero-title {
+    font-size: clamp(2.65rem, 12vw, 4.05rem);
+    line-height: 1.14;
+  }
+
+  .home-donation-drive-full {
+    width: 100%;
+    margin: 54px 0 58px;
+    padding: 26px 20px;
+  }
+
+  .home-donation-drive-full::before {
+    inset: 10px;
+  }
+
+  .home-donation-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home-donation-art img {
+    max-height: 320px;
+  }
+
+  .donation-brand {
+    font-size: clamp(2.4rem, 13vw, 3.8rem);
+    line-height: 0.95;
+    transform: none;
+  }
+
+  .home-donation-copy h2 {
+    max-width: 100%;
+    font-size: clamp(1.95rem, 9vw, 2.75rem);
+    line-height: 1.14;
+    letter-spacing: 0;
+  }
+
+  .home-donation-panel {
+    width: 100%;
+  }
+
+  .magazine-topbar {
+    height: auto;
+    min-height: 74px;
+    padding: 14px 18px;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+
+  .magazine-left {
+    grid-column: 1 / -1;
+    order: 2;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.88rem;
+  }
+
+  .magazine-logo {
+    grid-column: 1;
+    justify-self: start;
+    font-size: 2.15rem;
+    line-height: 1;
+  }
+
+  .magazine-right {
+    grid-column: 2;
+    justify-self: end;
+    gap: 10px;
+    font-size: 0.76rem;
+  }
+
+  .magazine-socials {
+    margin-left: 0;
+  }
+
+  .magazine-video-hero {
+    min-height: 560px !important;
+    height: calc(100vh - 116px) !important;
+  }
+
+  .magazine-hero-video {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .magazine-video-content {
+    width: min(330px, 88vw) !important;
+  }
+
+  .magazine-video-content h1 {
+    font-size: clamp(3.45rem, 16vw, 5rem) !important;
+    line-height: 0.95 !important;
+  }
+
+  html[lang="zh-CN"] .magazine-video-content h1 {
+    font-family: "Songti SC", "STSong", "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif !important;
+    font-size: clamp(2.9rem, 13vw, 4.2rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .magazine-manifesto {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 58px 22px;
+  }
+
+  .manifesto-right {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 9vw, 2.7rem);
+    line-height: 1.16;
+  }
+
+  .magazine-footer {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 54px 22px 46px;
+  }
+
+  .magazine-footer-logo {
+    font-size: clamp(2.8rem, 15vw, 4rem);
+    line-height: 0.95;
+  }
+
+  .reading-room-header {
+    height: auto;
+    min-height: 86px;
+    padding: 14px 18px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .reading-room-header button,
+  .reading-room-header button:last-child {
+    justify-self: center;
+  }
+
+  .reading-room-logo {
+    font-size: 2.1rem;
+    line-height: 1.02;
+  }
+
+  .reading-room-logo span {
+    font-size: 0.88rem;
+  }
+
+  .reading-room-main {
+    padding: 48px 18px 88px;
+  }
+
+  .reading-room-hero h1 {
+    font-size: clamp(2.55rem, 12vw, 4rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .reading-room-hero p {
+    margin-top: 22px;
+    font-size: 1.06rem;
+    line-height: 1.78;
+  }
+
+  .reading-room-paths {
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+  }
+
+  .reading-room-paths span {
+    border-right: 0;
+    border-bottom: 1px solid rgba(65,45,28,0.14);
+    padding: 15px 14px;
+  }
+
+  .reading-room-shelf-layout {
+    margin-top: 48px;
+    gap: 28px;
+  }
+
+  .reading-room-detail-card {
+    width: 100%;
+    padding: 24px 20px;
+  }
+
+  .reading-room-detail-card h2 {
+    font-size: 2.55rem;
+    line-height: 1;
+  }
+
+  .reading-room-bookshelf {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 18px;
+  }
+
+  .reading-book-info h3 {
+    font-size: 1.55rem;
+    line-height: 1.08;
+  }
+
+  .reading-room-note {
+    margin-top: 64px;
+    padding: 36px 22px;
+  }
+
+  .reading-room-garden {
+    margin-top: 80px;
+    padding: 70px 0 90px;
+  }
+
+  .reading-room-garden img {
+    width: min(220px, 70vw);
+  }
+
+  .our-story-main {
+    padding: 54px 22px 92px;
+  }
+
+  .our-story-hero h1 {
+    font-size: clamp(3.25rem, 14vw, 4.8rem);
+    line-height: 1.08;
+  }
+
+  .our-story-hero p {
+    font-size: 1.08rem;
+  }
+
+  .how-edit-photo-deco {
+    right: 0;
+    width: min(340px, 86vw);
+  }
+
+  .archive-house-page {
+    overflow: hidden;
   }
 }
