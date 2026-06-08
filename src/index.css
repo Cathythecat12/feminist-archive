@@ -12026,32 +12026,32 @@ p {
 }
 
 /* Mobile polish pass */
-html[lang="zh-CN"] body {
-  font-family: "Songti SC", "STSong", "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
-}
-
-html[lang="zh-CN"] h1,
-html[lang="zh-CN"] h2,
-html[lang="zh-CN"] h3,
-html[lang="zh-CN"] .hero-title,
-html[lang="zh-CN"] .magazine-video-content h1,
-html[lang="zh-CN"] .reading-room-hero h1,
-html[lang="zh-CN"] .our-story-hero h1,
-html[lang="zh-CN"] .magazine-logo,
-html[lang="zh-CN"] .reading-room-logo,
-html[lang="zh-CN"] .archive-house-small-logo,
-html[lang="zh-CN"] .donation-brand {
-  font-family: "Songti SC", "STSong", "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
-  letter-spacing: 0;
-}
-
-html[lang="zh-CN"] .magazine-video-content h1,
-html[lang="zh-CN"] .reading-room-hero h1,
-html[lang="zh-CN"] .our-story-hero h1 {
-  line-height: 1.06;
-}
-
 @media (max-width: 640px) {
+  html[lang="zh-CN"] body {
+    font-family: "Songti SC", "STSong", "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+  }
+
+  html[lang="zh-CN"] h1,
+  html[lang="zh-CN"] h2,
+  html[lang="zh-CN"] h3,
+  html[lang="zh-CN"] .hero-title,
+  html[lang="zh-CN"] .magazine-video-content h1,
+  html[lang="zh-CN"] .reading-room-hero h1,
+  html[lang="zh-CN"] .our-story-hero h1,
+  html[lang="zh-CN"] .magazine-logo,
+  html[lang="zh-CN"] .reading-room-logo,
+  html[lang="zh-CN"] .archive-house-small-logo,
+  html[lang="zh-CN"] .donation-brand {
+    font-family: "Songti SC", "STSong", "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+    letter-spacing: 0;
+  }
+
+  html[lang="zh-CN"] .magazine-video-content h1,
+  html[lang="zh-CN"] .reading-room-hero h1,
+  html[lang="zh-CN"] .our-story-hero h1 {
+    line-height: 1.06;
+  }
+
   body {
     overflow-x: hidden;
   }
