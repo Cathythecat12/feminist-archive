@@ -5256,6 +5256,19 @@ body {
   margin-bottom: 24px;
 }
 
+.our-story-rebuild-notice {
+  display: inline-block;
+  margin: 0 0 34px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(199, 155, 75, 0.58);
+  border-bottom: 1px solid rgba(199, 155, 75, 0.58);
+  color: #f4efe5;
+  font-family: "Songti SC", "STSong", "Noto Serif SC", Georgia, serif;
+  font-size: clamp(1.05rem, 1.65vw, 1.55rem);
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
 .our-story-hero h1 {
   margin: 0;
   font-family: "Cormorant Garamond", serif;

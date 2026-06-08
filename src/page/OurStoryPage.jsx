@@ -20,6 +20,12 @@ function OurStoryPage({ language, onBack, setCurrentPage }) {
             <div className="our-story-kicker">
               {zh ? "我们的故事" : "OUR STORY"}
             </div>
+
+            <div className="our-story-rebuild-notice">
+              {zh
+                ? "我们正在重新建设这个板块，敬请期待！"
+                : "We are rebuilding this section. Please stay tuned."}
+            </div>
   
             <h1>
               {zh
