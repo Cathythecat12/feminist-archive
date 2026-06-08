@@ -48,6 +48,12 @@ function HowWeEditPage({ language, onBack, setCurrentPage }) {
               <span>{zh ? "编辑工作室 / 2026" : "Editorial studio / 2026"}</span>
               <span>{zh ? "慢出版" : "Slow publishing"}</span>
             </div>
+
+            <div className="how-edit-rebuild-notice">
+              {zh
+                ? "我们正在重新建设这个板块，敬请期待！"
+                : "We are rebuilding this section. Please stay tuned."}
+            </div>
   
             <div className="how-edit-studio-poster">
               <img

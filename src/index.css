@@ -11383,6 +11383,17 @@ p {
   border-right: 0;
 }
 
+.how-edit-rebuild-notice {
+  padding: 24px clamp(28px, 5vw, 78px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.52);
+  color: rgba(0, 0, 0, 0.72);
+  font-family: "Songti SC", "STSong", "Noto Serif SC", Georgia, serif;
+  font-size: clamp(1.25rem, 2.1vw, 2rem);
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
+
 .how-edit-studio-poster {
   min-height: 590px;
   position: relative;
