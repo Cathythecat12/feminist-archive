@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "include": [
+    "/",
+    "/en/*",
+    "/zh/*"
+  ],
+  "exclude": [
+    "/assets/*",
+    "/images/*",
+    "/covers/*",
+    "/pdfs/*",
+    "/favicon.svg",
+    "/icons.svg",
+    "/robots.txt",
+    "/sitemap.xml"
+  ]
+}

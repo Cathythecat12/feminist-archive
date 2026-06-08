@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { articles as englishArticles } from "./data/articles-en";
 import { articles as chineseArticles } from "./data/articles-zh";
 import MonthlyThemePage from "./page/MonthlyThemePage";
@@ -22,6 +22,38 @@ const HOME_ARCHIVE_LIMIT = 6;
 // Temporarily hidden; switch to true when the Save the Elephant campaign should return to the homepage.
 const SHOW_SAVE_THE_ELEPHANT_ON_HOME = false;
 const IS_MAINTENANCE_MODE = import.meta.env.VITE_MAINTENANCE_MODE === "true";
+
+const PAGE_ROUTES = {
+  "archive-house": "archive-house",
+  "archive-page": "archive",
+  "contact-page": "contact",
+  "cover-submission": "submissions/covers",
+  donate: "donate",
+  "donation-drive": "support",
+  guidelines: "guidelines",
+  "how-we-edit": "how-we-edit",
+  magazine: "magazine",
+  "monthly-theme": "magazine/june-issue",
+  "monthly-theme-zh": "magazine/june-issue",
+  "news-page": "news",
+  "newsletter-page": "newsletter",
+  "newsletter-privacy": "newsletter/privacy",
+  "our-story": "our-story",
+  parlour: "parlour",
+  "print-edition": "print",
+  "reading-guides": "reading-room/guides",
+  "reading-room": "reading-room",
+  "submission-guidelines": "submissions/guidelines",
+  "submission-page": "submissions/new",
+};
+
+const ROUTE_PAGES = Object.entries(PAGE_ROUTES).reduce((routes, [page, route]) => {
+  if (page !== "monthly-theme-zh") {
+    routes[route] = page;
+  }
+
+  return routes;
+}, {});
 
 const getLanguageStorageKey = () => {
   if (typeof window === "undefined") return "fa-language";
@@ -320,6 +352,23 @@ function MainApp() {
   const [newsletterStatus, setNewsletterStatus] = useState("");
   const [donationEmailStatus, setDonationEmailStatus] = useState("");
   const [hasResolvedInitialUrl, setHasResolvedInitialUrl] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const toastTimerRef = useRef(null);
+
+  const showToast = (message) => {
+    if (!message) return;
+
+    window.clearTimeout(toastTimerRef.current);
+    setToastMessage(message);
+    toastTimerRef.current = window.setTimeout(() => {
+      setToastMessage("");
+    }, 3200);
+  };
+
+  useEffect(() => {
+    return () => window.clearTimeout(toastTimerRef.current);
+  }, []);
+
   useEffect(() => {
     window.localStorage.setItem(getLanguageStorageKey(), language);
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
@@ -478,15 +527,16 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
   const buildPageUrl = (page = currentPage, pageLanguage = language) => {
     if (typeof window === "undefined") return "";
 
-    const url = new URL(window.location.origin + window.location.pathname);
+    const route = PAGE_ROUTES[page] || "";
+    const url = new URL(window.location.origin);
 
-    if (page && page !== "main") {
-      url.searchParams.set("page", page);
+    if (!route && pageLanguage === "en") {
+      url.pathname = "/";
+      return url.toString();
     }
 
-    if (pageLanguage === "zh" || page !== "main") {
-      url.searchParams.set("lang", pageLanguage);
-    }
+    const languagePrefix = pageLanguage === "zh" ? "zh" : "en";
+    url.pathname = route ? `/${languagePrefix}/${route}` : `/${languagePrefix}`;
 
     return url.toString();
   };
@@ -502,9 +552,9 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
   const buildArticleUrl = (article, articleLanguage = getArticleLanguage(article)) => {
     if (typeof window === "undefined" || !article?.id) return "";
 
-    const url = new URL(window.location.origin + window.location.pathname);
-    url.searchParams.set("article", article.id);
-    url.searchParams.set("lang", articleLanguage);
+    const url = new URL(window.location.origin);
+    const languagePrefix = articleLanguage === "zh" ? "zh" : "en";
+    url.pathname = `/${languagePrefix}/articles/${article.id}`;
     return url.toString();
   };
 
@@ -556,7 +606,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     if (!copied) return;
 
-    alert(message);
+    showToast(message);
   };
 
   const shareSelectedArticle = async ({ fallbackToModal = true } = {}) => {
@@ -599,7 +649,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     const copied = await writeArticleLinkToClipboard();
 
     if (copied) {
-      alert("链接已复制。微信打开后可以粘贴给朋友或朋友圈。");
+      showToast("链接已复制。微信打开后可以粘贴给朋友或朋友圈。");
     }
 
     window.location.href = "weixin://";
@@ -615,20 +665,31 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     if (hasResolvedInitialUrl) return;
 
     const params = new URLSearchParams(window.location.search);
+    const pathSegments = window.location.pathname.split("/").filter(Boolean);
+    const pathLanguage = pathSegments[0] === "en" || pathSegments[0] === "zh"
+      ? pathSegments[0]
+      : null;
+    const routeSegments = pathLanguage ? pathSegments.slice(1) : pathSegments;
+    const pathRoute = routeSegments.join("/");
+    const pathArticleId =
+      routeSegments[0] === "articles" && routeSegments[1]
+        ? decodeURIComponent(routeSegments[1])
+        : "";
     const articleId = params.get("article");
     const pageName = params.get("page");
-    const urlLanguage = params.get("lang");
+    const urlLanguage = pathLanguage || params.get("lang");
 
     if ((urlLanguage === "en" || urlLanguage === "zh") && urlLanguage !== language) {
-      setLanguage(urlLanguage);
+      window.setTimeout(() => setLanguage(urlLanguage), 0);
       return;
     }
 
-    if (articleId) {
+    if (pathArticleId || articleId) {
+      const resolvedArticleId = pathArticleId || articleId;
       const article =
-        currentArticles.find((entry) => entry.id === articleId) ||
-        chineseArticles.find((entry) => entry.id === articleId) ||
-        englishArticles.find((entry) => entry.id === articleId);
+        currentArticles.find((entry) => entry.id === resolvedArticleId) ||
+        chineseArticles.find((entry) => entry.id === resolvedArticleId) ||
+        englishArticles.find((entry) => entry.id === resolvedArticleId);
 
       if (article) {
         const articleLanguage =
@@ -637,26 +698,48 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
             : getArticleLanguage(article);
 
         if (articleLanguage !== language) {
-          setLanguage(articleLanguage);
+          window.setTimeout(() => setLanguage(articleLanguage), 0);
           return;
         }
 
-        setSelectedArticle(article);
-        setArticleReturnPage("archive-page");
-        setCurrentPage("article-detail");
-        syncArticleUrl(article, articleLanguage);
-        setHasResolvedInitialUrl(true);
+        window.setTimeout(() => {
+          setSelectedArticle(article);
+          setArticleReturnPage("archive-page");
+          setCurrentPage("article-detail");
+          syncArticleUrl(article, articleLanguage);
+          setHasResolvedInitialUrl(true);
+        }, 0);
         return;
       }
     }
 
-    if (pageName && routedPages.has(pageName)) {
-      setCurrentPage(pageName);
-      setHasResolvedInitialUrl(true);
+    const routedPathPage = ROUTE_PAGES[pathRoute];
+
+    if (routedPathPage && routedPages.has(routedPathPage)) {
+      window.setTimeout(() => {
+        setCurrentPage(routedPathPage);
+        setHasResolvedInitialUrl(true);
+      }, 0);
       return;
     }
 
-    setHasResolvedInitialUrl(true);
+    if ((pathLanguage === "en" || pathLanguage === "zh") && routeSegments.length === 0) {
+      window.setTimeout(() => {
+        setCurrentPage("main");
+        setHasResolvedInitialUrl(true);
+      }, 0);
+      return;
+    }
+
+    if (pageName && routedPages.has(pageName)) {
+      window.setTimeout(() => {
+        setCurrentPage(pageName);
+        setHasResolvedInitialUrl(true);
+      }, 0);
+      return;
+    }
+
+    window.setTimeout(() => setHasResolvedInitialUrl(true), 0);
   }, [currentArticles, language, hasResolvedInitialUrl]);
 
   useEffect(() => {
@@ -688,15 +771,6 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     }
 
     return "← ISSUE";
-  };
-
-  const specialPageBoxStyle = {
-    marginTop: "24px",
-    background: "var(--paper)",
-    border: "1px solid var(--line)",
-    borderRadius: "24px",
-    padding: "28px",
-    lineHeight: 1.9,
   };
 
   function Header({ simple = false, hideLanguage = false }) {
@@ -2879,8 +2953,22 @@ Further materials are being gathered.`
       </div>
     );
   }
+
+  const renderWithToast = (content) => (
+    <>
+      {content}
+      <div
+        className={`site-toast ${toastMessage ? "is-visible" : ""}`}
+        role="status"
+        aria-live="polite"
+      >
+        {toastMessage}
+      </div>
+    </>
+  );
+
   if (currentPage === "magazine") {
-    return (
+    return renderWithToast(
       <MagazinePage
         language={language}
         onBack={() => setCurrentPage("main")}
@@ -2890,7 +2978,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "monthly-theme-zh") {
-    return (
+    return renderWithToast(
       <MonthlyThemePageZh
         onBack={() => setCurrentPage("main")}
         onOpenArticle={(article) => openArticleFrom(article, "monthly-theme")}
@@ -2899,7 +2987,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "contact-page") {
-    return (
+    return renderWithToast(
       <ContactPage
         language={language}
         onBack={() => setCurrentPage("magazine")}
@@ -2908,7 +2996,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "archive-house") {
-    return (
+    return renderWithToast(
       <ArchiveHousePage
         language={language}
         onBack={() => setCurrentPage("main")}
@@ -2917,7 +3005,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "newsletter-page") {
-    return (
+    return renderWithToast(
       <NewsletterPage
         language={language}
         onBack={() => setCurrentPage("magazine")}
@@ -2926,7 +3014,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "newsletter-privacy") {
-    return (
+    return renderWithToast(
       <NewsletterPrivacyPage
         language={language}
         onBack={() => setCurrentPage("newsletter-page")}
@@ -2935,7 +3023,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "cover-submission") {
-    return (
+    return renderWithToast(
       <CoverSubmissionPage
         language={language}
         onBack={() => setCurrentPage("contact-page")}
@@ -2944,7 +3032,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "submission-guidelines") {
-    return (
+    return renderWithToast(
       <SubmissionGuidelinesPage
         language={language}
         onBack={() => setCurrentPage("main")}
@@ -2953,7 +3041,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "submission-page") {
-    return (
+    return renderWithToast(
       <SubmissionPage
         language={language}
         onBack={() => setCurrentPage("submission-guidelines")}
@@ -2962,7 +3050,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "news-page") {
-    return (
+    return renderWithToast(
       <NewsPage
         language={language}
         onBack={() => setCurrentPage("main")}
@@ -2971,7 +3059,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "parlour") {
-    return (
+    return renderWithToast(
       <ParlourPage
         language={language}
         onBack={() => setCurrentPage("magazine")}
@@ -2980,7 +3068,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "our-story") {
-    return (
+    return renderWithToast(
       <OurStoryPage
         language={language}
         onBack={() => setCurrentPage("archive-house")}
@@ -2989,7 +3077,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "how-we-edit") {
-    return (
+    return renderWithToast(
       <HowWeEditPage
         language={language}
         onBack={() => setCurrentPage("archive-house")}
@@ -2998,7 +3086,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "reading-room") {
-    return (
+    return renderWithToast(
       <ReadingRoomPage
         language={language}
         onBack={() => setCurrentPage("archive-house")}
@@ -3008,7 +3096,7 @@ Further materials are being gathered.`
     );
   }
   if (currentPage === "reading-guides") {
-    return (
+    return renderWithToast(
       <ReadingRoomPage
         language={language}
         initialShowGuides
@@ -3021,7 +3109,7 @@ Further materials are being gathered.`
   if (currentPage === "monthly-theme") {
 
     if (language === "zh") {
-      return (
+      return renderWithToast(
         <MonthlyThemePageZh
           setLanguage={setLanguage}
           onBack={() => setCurrentPage("main")}
@@ -3037,7 +3125,7 @@ Further materials are being gathered.`
       );
     }
   
-    return (
+    return renderWithToast(
       <MonthlyThemePage
         language={language}
         setLanguage={setLanguage}
@@ -3055,27 +3143,27 @@ Further materials are being gathered.`
   }
 
   if (currentPage === "article-detail") {
-    return renderArticleDetail();
+    return renderWithToast(renderArticleDetail());
   }
 
   if (currentPage === "guidelines") {
-    return renderGuidelinesPage();
+    return renderWithToast(renderGuidelinesPage());
   }
 
   if (currentPage === "donate") {
-    return renderDonatePage();
+    return renderWithToast(renderDonatePage());
   }
-  if (currentPage === "donation-drive") return renderDonationDrivePage();
+  if (currentPage === "donation-drive") return renderWithToast(renderDonationDrivePage());
   if (currentPage === "contact-page") {
-    return renderContactPage();
+    return renderWithToast(renderContactPage());
   }
 
   if (currentPage === "print-edition") {
-    return renderPrintEditionPage();
+    return renderWithToast(renderPrintEditionPage());
   }
 
   if (currentPage === "archive-page") {
-    return (
+    return renderWithToast(
       <ArchivePage
   language={language}
   articles={currentArticles}
@@ -3085,7 +3173,7 @@ Further materials are being gathered.`
     );
   }
 
-  return renderHomePage();
+  return renderWithToast(renderHomePage());
 }
 
 function App() {

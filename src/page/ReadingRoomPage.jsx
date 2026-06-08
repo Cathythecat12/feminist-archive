@@ -168,7 +168,11 @@ function ReadingRoomPage({
   }, [showGuides]);
 
   useEffect(() => {
-    setShowGuides(initialShowGuides);
+    const timer = window.setTimeout(() => {
+      setShowGuides(initialShowGuides);
+    }, 0);
+
+    return () => window.clearTimeout(timer);
   }, [initialShowGuides]);
 
   if (showGuides) {
