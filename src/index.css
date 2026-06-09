@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap");
+
 :root {
   font-family: Georgia, "Times New Roman", serif;
   color: #171717;
@@ -12028,13 +12030,15 @@ p {
 /* Mobile polish pass */
 @media (max-width: 640px) {
   html[lang="zh-CN"] body {
-    font-family: "Songti SC", "STSong", "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
   }
 
   html[lang="zh-CN"] h1,
   html[lang="zh-CN"] h2,
   html[lang="zh-CN"] h3,
+  html[lang="zh-CN"] .hero h1,
   html[lang="zh-CN"] .hero-title,
+  html[lang="zh-CN"] .hero-title-enter,
   html[lang="zh-CN"] .magazine-video-content h1,
   html[lang="zh-CN"] .reading-room-hero h1,
   html[lang="zh-CN"] .our-story-hero h1,
@@ -12042,8 +12046,42 @@ p {
   html[lang="zh-CN"] .reading-room-logo,
   html[lang="zh-CN"] .archive-house-small-logo,
   html[lang="zh-CN"] .donation-brand {
-    font-family: "Songti SC", "STSong", "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
     letter-spacing: 0;
+  }
+
+  .top-nav a,
+  .top-nav button,
+  .button-light,
+  .category-pill,
+  .archive-more .button,
+  .contact-links a,
+  .contact-links button,
+  .language-trigger,
+  .language-menu button {
+    color: #151515 !important;
+  }
+
+  .button-dark,
+  .category-pill.active {
+    color: #fffdf9 !important;
+  }
+
+  .top-nav a:visited,
+  .button-light:visited,
+  .archive-more .button:visited,
+  .contact-links a:visited {
+    color: #151515 !important;
+  }
+
+  .top-nav a,
+  .top-nav button,
+  .button,
+  .category-pill,
+  .contact-links a,
+  .contact-links button,
+  .language-trigger {
+    -webkit-tap-highlight-color: rgba(21, 21, 21, 0.08);
   }
 
   html[lang="zh-CN"] .magazine-video-content h1,
@@ -12063,17 +12101,58 @@ p {
   .site-header {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 18px;
-    padding-top: 22px;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .site-header > div:last-child {
+    align-items: flex-start !important;
+    width: 100%;
+    gap: 16px !important;
   }
 
   .site-name {
-    font-size: 1.7rem;
+    font-size: clamp(2rem, 10vw, 3.1rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+
+  .site-tagline {
+    max-width: 22rem;
+    margin-top: 12px;
+    font-size: 1.05rem;
+    line-height: 1.55;
   }
 
   .top-nav {
-    gap: 14px;
-    font-size: 0.92rem;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 18px;
+    font-size: 1.02rem;
+    line-height: 1.2;
+  }
+
+  .language-dropdown {
+    align-self: flex-start;
+  }
+
+  .language-trigger {
+    min-height: 48px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero {
+    gap: 32px;
+    padding-top: 58px;
+  }
+
+  .hero h1,
+  .hero-title-enter {
+    font-size: clamp(3.05rem, 13.5vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
   }
 
   .hero-title {
@@ -12081,9 +12160,17 @@ p {
     line-height: 1.02;
   }
 
-  html[lang="zh-CN"] .hero-title {
-    font-size: clamp(2.65rem, 12vw, 4.05rem);
-    line-height: 1.14;
+  html[lang="zh-CN"] .hero h1,
+  html[lang="zh-CN"] .hero-title,
+  html[lang="zh-CN"] .hero-title-enter {
+    font-size: clamp(2.55rem, 11.2vw, 3.85rem);
+    line-height: 1.16;
+    font-weight: 900;
+  }
+
+  html[lang="zh-CN"] .hero-text {
+    font-size: 1.08rem;
+    line-height: 1.92;
   }
 
   .home-donation-drive-full {
