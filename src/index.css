@@ -8816,12 +8816,14 @@ body {
   box-shadow:
     0 14px 30px rgba(17, 17, 17, 0.18),
     inset 0 0 0 1px rgba(255,255,255,0.14);
+  animation: xLogoTilt 3.2s ease-in-out infinite;
 }
 
 .x-share-logo span {
   font-size: 1.75rem;
   font-weight: 760;
   line-height: 1;
+  animation: xGlyphSnap 3.2s ease-in-out infinite;
 }
 
 .bluesky-share-logo {
@@ -8876,9 +8878,11 @@ body {
     radial-gradient(circle at 28% 95%, #ffd66b 0 18%, transparent 34%),
     radial-gradient(circle at 12% 12%, #7a3cff 0 14%, transparent 32%),
     linear-gradient(135deg, #7a3cff, #e5369a 48%, #ff7a3d);
+  background-size: 150% 150%;
   box-shadow:
     0 14px 30px rgba(229, 54, 154, 0.22),
     inset 0 0 0 1px rgba(255,255,255,0.24);
+  animation: instagramGradientDrift 3.8s ease-in-out infinite;
 }
 
 .instagram-share-logo::before {
@@ -8888,6 +8892,7 @@ body {
   border: 4px solid #fff;
   border-radius: 10px;
   display: block;
+  animation: instagramLensPulse 2.8s ease-in-out infinite;
 }
 
 .instagram-share-logo i {
@@ -8898,6 +8903,7 @@ body {
   right: 18px;
   border-radius: 50%;
   background: #fff;
+  animation: instagramFlash 2.8s ease-in-out infinite;
 }
 
 .whatsapp-share-logo {
@@ -8906,6 +8912,7 @@ body {
   box-shadow:
     0 14px 30px rgba(34, 197, 94, 0.2),
     inset 0 0 0 1px rgba(255,255,255,0.22);
+  animation: whatsappBubblePulse 3s ease-in-out infinite;
 }
 
 .whatsapp-share-logo::after {
@@ -8917,6 +8924,7 @@ body {
   height: 16px;
   background: #22c55e;
   transform: rotate(38deg);
+  animation: whatsappTailWag 3s ease-in-out infinite;
 }
 
 .whatsapp-share-logo i {
@@ -8926,6 +8934,7 @@ body {
   height: 30px;
   border: 4px solid #fff;
   border-radius: 50%;
+  animation: whatsappRingFloat 3s ease-in-out infinite;
 }
 
 .whatsapp-share-logo i::after {
@@ -8948,6 +8957,7 @@ body {
   box-shadow:
     0 14px 30px rgba(24, 119, 242, 0.22),
     inset 0 0 0 1px rgba(255,255,255,0.18);
+  animation: facebookTileFloat 3.4s ease-in-out infinite;
 }
 
 .facebook-share-logo span {
@@ -8956,6 +8966,7 @@ body {
   font-size: 3rem;
   font-weight: 800;
   line-height: 1;
+  animation: facebookGlyphRise 3.4s ease-in-out infinite;
 }
 
 .wechat-share-logo {
@@ -9059,6 +9070,122 @@ body {
 
   20% {
     transform: rotate(-32deg) translate(42px, 22px);
+  }
+}
+
+@keyframes xLogoTilt {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  36% {
+    transform: rotate(-5deg) scale(1.02);
+  }
+
+  54% {
+    transform: rotate(4deg) scale(1.01);
+  }
+}
+
+@keyframes xGlyphSnap {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.12);
+  }
+
+  56% {
+    transform: scale(0.98);
+  }
+}
+
+@keyframes instagramGradientDrift {
+  0%, 100% {
+    background-position: 0% 50%;
+    transform: translateY(0);
+  }
+
+  50% {
+    background-position: 100% 50%;
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes instagramLensPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes instagramFlash {
+  0%, 55%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  68% {
+    transform: scale(1.45);
+    opacity: 0.55;
+  }
+}
+
+@keyframes whatsappBubblePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.05);
+  }
+
+  58% {
+    transform: scale(0.99);
+  }
+}
+
+@keyframes whatsappTailWag {
+  0%, 100% {
+    transform: rotate(38deg) translate(0, 0);
+  }
+
+  50% {
+    transform: rotate(45deg) translate(1px, 1px);
+  }
+}
+
+@keyframes whatsappRingFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-1px, -1px);
+  }
+}
+
+@keyframes facebookTileFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+}
+
+@keyframes facebookGlyphRise {
+  0%, 100% {
+    transform: translateY(6px);
+  }
+
+  50% {
+    transform: translateY(2px);
   }
 }
 
