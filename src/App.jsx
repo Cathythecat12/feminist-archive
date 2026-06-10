@@ -582,11 +582,17 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     if (!url) return false;
 
+    return writeTextToClipboard(url);
+  };
+
+  const writeTextToClipboard = async (text) => {
+    if (!text) return false;
+
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(text);
     } catch {
       const textarea = document.createElement("textarea");
-      textarea.value = url;
+      textarea.value = text;
       textarea.setAttribute("readonly", "");
       textarea.style.position = "fixed";
       textarea.style.opacity = "0";
@@ -597,6 +603,13 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     }
 
     return true;
+  };
+
+  const getArticleShareText = (article = selectedArticle) => {
+    const url = getArticleShareUrl(article);
+    if (!article || !url) return "";
+
+    return `${article.title}\n${url}`;
   };
 
   const copyArticleLink = async (
@@ -652,12 +665,19 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
       showToast("链接已复制。微信打开后可以粘贴给朋友或朋友圈。");
     }
 
-    window.location.href = "weixin://";
+    window.open("weixin://", "_self");
   };
 
   const shareToInstagram = async () => {
     window.open("https://www.instagram.com/", "_blank", "noopener,noreferrer");
-    await copyArticleLink("Article link copied. Instagram does not support direct web sharing, so you can paste it there.");
+    await writeTextToClipboard(getArticleShareText());
+    showToast("Article title and link copied. Opening Instagram now; paste them into your post, story, or message.");
+  };
+
+  const copyAndOpenShareDestination = async ({ url, message }) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+    await writeTextToClipboard(getArticleShareText());
+    showToast(message);
   };
 
   useEffect(() => {
@@ -1962,28 +1982,38 @@ return null;
         </div>
       ) : (
         <div className="article-share-icon-grid article-share-icon-grid-en" aria-label="Share options">
-          <a
+          <button
             className="article-share-icon-button x-share-button"
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-              selectedArticle.title
-            )}&url=${encodeURIComponent(getArticleShareUrl())}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            type="button"
+            onClick={() =>
+              copyAndOpenShareDestination({
+                url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                  selectedArticle.title
+                )}&url=${encodeURIComponent(getArticleShareUrl())}`,
+                message:
+                  "Article title and link copied. Opening X now; paste them if the preview card does not appear.",
+              })
+            }
           >
             <span className="article-share-logo x-share-logo" aria-hidden="true">
               <span aria-hidden="true">X</span>
             </span>
             <strong>X</strong>
-            <em>Post link</em>
-          </a>
+            <em>Copy and open</em>
+          </button>
 
-          <a
+          <button
             className="article-share-icon-button bluesky-share-button"
-            href={`https://bsky.app/intent/compose?text=${encodeURIComponent(
-              `${selectedArticle.title} ${getArticleShareUrl()}`
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            type="button"
+            onClick={() =>
+              copyAndOpenShareDestination({
+                url: `https://bsky.app/intent/compose?text=${encodeURIComponent(
+                  `${selectedArticle.title} ${getArticleShareUrl()}`
+                )}`,
+                message:
+                  "Article title and link copied. Opening Bluesky now; paste them if the composer does not load the card.",
+              })
+            }
           >
             <span className="article-share-logo bluesky-share-logo" aria-hidden="true">
               <svg className="bluesky-butterfly" viewBox="0 0 64 64" role="img" aria-hidden="true">
@@ -2006,8 +2036,8 @@ return null;
               </svg>
             </span>
             <strong>Bluesky</strong>
-            <em>Compose</em>
-          </a>
+            <em>Copy and open</em>
+          </button>
 
           <button
             className="article-share-icon-button instagram-share-button"
@@ -2021,35 +2051,45 @@ return null;
             <em>Copy and open</em>
           </button>
 
-          <a
+          <button
             className="article-share-icon-button whatsapp-share-button"
-            href={`https://wa.me/?text=${encodeURIComponent(
-              `${selectedArticle.title} ${getArticleShareUrl()}`
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            type="button"
+            onClick={() =>
+              copyAndOpenShareDestination({
+                url: `https://wa.me/?text=${encodeURIComponent(
+                  `${selectedArticle.title} ${getArticleShareUrl()}`
+                )}`,
+                message:
+                  "Article title and link copied. Opening WhatsApp now; paste them if the share window does not appear.",
+              })
+            }
           >
             <span className="article-share-logo whatsapp-share-logo" aria-hidden="true">
               <i />
             </span>
             <strong>WhatsApp</strong>
-            <em>Send</em>
-          </a>
+            <em>Copy and open</em>
+          </button>
 
-          <a
+          <button
             className="article-share-icon-button facebook-share-button"
-            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              getArticleShareUrl()
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            type="button"
+            onClick={() =>
+              copyAndOpenShareDestination({
+                url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                  getArticleShareUrl()
+                )}`,
+                message:
+                  "Article title and link copied. Opening Facebook now; paste them if the share window does not appear.",
+              })
+            }
           >
             <span className="article-share-logo facebook-share-logo" aria-hidden="true">
               <span aria-hidden="true">f</span>
             </span>
             <strong>Facebook</strong>
-            <em>Share</em>
-          </a>
+            <em>Copy and open</em>
+          </button>
 
           <button
             className="article-share-icon-button more-share-button"
