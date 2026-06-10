@@ -3728,21 +3728,23 @@ border: 1px solid #f0ddc5;
 }
 
 .kofi {
-  min-width: 168px;
+  width: 56px;
+  min-width: 56px;
   background: #ffffff;
   border: 0;
-  padding: 0 18px;
+  padding: 0 8px;
 }
 
 .coffee {
-  min-width: 168px;
+  width: 56px;
+  min-width: 56px;
   background: #ffd800;
   border: 0;
-  padding: 0 18px;
+  padding: 0 8px;
 }
 
 .pay-icon svg {
-  width: 74px;
+  width: 44px;
   height: 24px;
   display: block;
 }
