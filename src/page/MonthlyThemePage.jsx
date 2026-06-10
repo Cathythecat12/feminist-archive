@@ -1,6 +1,7 @@
 import { articles as englishArticles } from "../data/articles-en";
 import { useState } from "react";
 import { submitWebsiteForm } from "../utils/formSubmit";
+import MagazineMenuOverlay from "../components/MagazineMenuOverlay";
 
 const localIssueArticles = [
   {
@@ -78,13 +79,22 @@ const issueArticles = [
   ),
 ].filter(Boolean);
 
-function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle }) {
+function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle, setCurrentPage }) {
   const [newsletterStatus, setNewsletterStatus] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="issue-shell">
+      {showMenu && (
+        <MagazineMenuOverlay
+          language={language}
+          setCurrentPage={setCurrentPage}
+          onClose={() => setShowMenu(false)}
+        />
+      )}
+
       <header className="issue-header">
         <div className="issue-left-nav">
-          <button className="issue-menu-button" onClick={onBack}>
+          <button className="issue-menu-button" onClick={() => setShowMenu(true)}>
             MENU
           </button>
           <span>/</span>

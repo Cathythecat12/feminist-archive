@@ -9,6 +9,7 @@ import {
 
 import { SiBluesky } from "react-icons/si";
 import { useState, useEffect } from "react";
+import MagazineMenuOverlay from "../components/MagazineMenuOverlay";
 
 const SHOW_PARLOUR_LINK = false;
 
@@ -56,55 +57,11 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
     return (
         <div className="magazine-page">
           {showMenu && (
-            <div className="magazine-menu-overlay" onClick={() => setShowMenu(false)}>
-              <div
-                className="magazine-menu-panel"
-                onClick={(event) => event.stopPropagation()}
-              >
-                <button
-                  className="magazine-menu-close"
-                  onClick={() => setShowMenu(false)}
-                >
-                  ×
-                </button>
-
-                <div className="magazine-menu-kicker">
-                  {language === "zh" ? "进入栏目" : "Enter the sections"}
-                </div>
-
-                <h2>Feminist Archive</h2>
-
-                <div className="magazine-menu-routes">
-                  <button
-                    onClick={() => {
-                      setShowMenu(false);
-                      setCurrentPage("writing-page");
-                    }}
-                  >
-                    <span>{language === "zh" ? "写作" : "Writing"}</span>
-                    <em>
-                      {language === "zh"
-                        ? "批判、记忆与经验之间的女性主义写作"
-                        : "Critical essays across memory, power, and feminist thought"}
-                    </em>
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setShowMenu(false);
-                      setCurrentPage("reviews-page");
-                    }}
-                  >
-                    <span>{language === "zh" ? "书评 / 导读" : "Reviews / Guides"}</span>
-                    <em>
-                      {language === "zh"
-                        ? "经典书籍、思想文本与关键概念的导读"
-                        : "Guides and reviews for books, theory, and key concepts"}
-                    </em>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <MagazineMenuOverlay
+              language={language}
+              setCurrentPage={setCurrentPage}
+              onClose={() => setShowMenu(false)}
+            />
           )}
       
           {showSearch && (

@@ -3037,6 +3037,7 @@ Further materials are being gathered.`
         onBack={() => setCurrentPage("main")}
         onOpenArticle={(article) => openArticleFrom(article, "monthly-theme")}
         setLanguage={setLanguage}
+        setCurrentPage={setCurrentPage}
       />
     );
   }
@@ -3167,6 +3168,7 @@ Further materials are being gathered.`
         <MonthlyThemePageZh
           setLanguage={setLanguage}
           onBack={() => setCurrentPage("main")}
+          setCurrentPage={setCurrentPage}
           onOpenArticle={(article) => {
             openArticleFrom(article, "monthly-theme");
   
@@ -3184,6 +3186,7 @@ Further materials are being gathered.`
         language={language}
         setLanguage={setLanguage}
         onBack={() => setCurrentPage("main")}
+        setCurrentPage={setCurrentPage}
         onOpenArticle={(article) => {
           openArticleFrom(article, "monthly-theme");
   

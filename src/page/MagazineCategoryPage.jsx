@@ -57,26 +57,48 @@ function MagazineCategoryPage({
   return (
     <div className="magazine-category-page">
       <header className="magazine-category-topbar">
-        <button onClick={() => setCurrentPage("magazine")}>
-          {zh ? "杂志" : "Magazine"}
-        </button>
+        <div className="magazine-category-nav-left">
+          <button onClick={() => setCurrentPage("magazine")}>
+            {zh ? "杂志" : "Magazine"}
+          </button>
+          <button onClick={() => setCurrentPage("newsletter-page")}>
+            {zh ? "通讯" : "Newsletter"}
+          </button>
+          <button onClick={() => setCurrentPage("donation-drive")}>
+            {zh ? "捐助" : "Donate"}
+          </button>
+        </div>
+
         <button className="magazine-category-logo" onClick={onBack}>
-          Feminist Archive
+          <span>Feminist Archive</span>
+          <em>{zh ? "写作 · 书评 · 档案" : "essays · reviews · archives"}</em>
         </button>
-        <button onClick={() => setCurrentPage(type === "writing" ? "reviews-page" : "writing-page")}>
-          {type === "writing"
-            ? zh
-              ? "书评 / 导读"
-              : "Reviews / Guides"
-            : zh
-              ? "写作"
-              : "Writing"}
-        </button>
+
+        <div className="magazine-category-nav-right">
+          <button onClick={() => setCurrentPage(type === "writing" ? "reviews-page" : "writing-page")}>
+            {type === "writing"
+              ? zh
+                ? "书评 / 导读"
+                : "Reviews / Guides"
+              : zh
+                ? "写作"
+                : "Writing"}
+          </button>
+        </div>
       </header>
 
       <main>
         <section className="magazine-category-hero">
           <div className="magazine-category-eyebrow">{copy.eyebrow}</div>
+          <div className="magazine-category-script">
+            {type === "writing"
+              ? zh
+                ? "critical essays"
+                : "critical essays"
+              : zh
+                ? "reading notes"
+                : "reading notes"}
+          </div>
           <h1>{copy.title}</h1>
           <p>{copy.intro}</p>
         </section>
@@ -108,6 +130,9 @@ function MagazineCategoryPage({
                 </div>
                 <h2>{article.title}</h2>
                 <p>{article.excerpt}</p>
+                <div className="magazine-category-card-author">
+                  {article.author || "Feminist Archive"}
+                </div>
               </article>
             ))}
           </section>

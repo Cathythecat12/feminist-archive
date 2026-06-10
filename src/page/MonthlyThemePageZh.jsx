@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { submitWebsiteForm } from "../utils/formSubmit";
 import { articles as chineseArticles } from "../data/articles-zh";
+import MagazineMenuOverlay from "../components/MagazineMenuOverlay";
 
 const localIssueArticlesZh = [
     {
@@ -83,13 +84,22 @@ const issueArticlesZh = [
   ),
 ].filter(Boolean);
   
-  function MonthlyThemePageZh({ onBack, onOpenArticle, setLanguage }) {
+  function MonthlyThemePageZh({ onBack, onOpenArticle, setLanguage, setCurrentPage }) {
     const [newsletterStatus, setNewsletterStatus] = useState("");
+    const [showMenu, setShowMenu] = useState(false);
     return (
       <div className="issue-shell">
+        {showMenu && (
+          <MagazineMenuOverlay
+            language="zh"
+            setCurrentPage={setCurrentPage}
+            onClose={() => setShowMenu(false)}
+          />
+        )}
+
         <header className="issue-header">
           <div className="issue-left-nav">
-            <button className="issue-menu-button" onClick={onBack}>
+            <button className="issue-menu-button" onClick={() => setShowMenu(true)}>
               菜单
             </button>
             <span>/</span>
