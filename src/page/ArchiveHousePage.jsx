@@ -99,7 +99,7 @@ function ArchiveHousePage({ language, onBack, setCurrentPage }) {
               ))}
             </div>
   
-            <div className="archive-door" onClick={() => setCurrentPage("magazine")}>
+            <div className="archive-door" onClick={() => setCurrentPage("reading-room")}>
               <span>{zh ? "进入阅读室" : "ENTER READING ROOM"}</span>
             </div>
           </section>
