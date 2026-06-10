@@ -8851,12 +8851,12 @@ body {
 }
 
 .bluesky-wing-left-top {
-  transform-origin: 31px 34px;
+  transform-origin: 32px 33px;
   animation: blueskyLeftTop 2.45s ease-in-out infinite;
 }
 
 .bluesky-wing-right-top {
-  transform-origin: 33px 34px;
+  transform-origin: 32px 33px;
   animation: blueskyRightTop 2.45s ease-in-out infinite;
 }
 
@@ -9084,21 +9084,21 @@ body {
 
 @keyframes blueskyLeftTop {
   0%, 100% {
-    transform: rotate(4deg) translate(1.2px, 0);
+    transform: rotate(1deg) translate(0.6px, 0);
   }
 
   50% {
-    transform: rotate(-2deg) translate(0.4px, -0.4px) scaleX(1.02);
+    transform: rotate(-3deg) translate(0.2px, -0.6px) scaleX(1.01);
   }
 }
 
 @keyframes blueskyRightTop {
   0%, 100% {
-    transform: rotate(-4deg) translate(-1.2px, 0);
+    transform: rotate(-1deg) translate(-0.6px, 0);
   }
 
   50% {
-    transform: rotate(2deg) translate(-0.4px, -0.4px) scaleX(1.02);
+    transform: rotate(3deg) translate(-0.2px, -0.6px) scaleX(1.01);
   }
 }
 
