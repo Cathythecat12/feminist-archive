@@ -9104,19 +9104,46 @@ body {
 
 .x-share-logo {
   border-radius: 50%;
-  background: #111111;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12), transparent 34%),
+    #111111;
   color: #f8f4ee;
   box-shadow:
     0 14px 30px rgba(17, 17, 17, 0.18),
     inset 0 0 0 1px rgba(255,255,255,0.14);
-  animation: xLogoTilt 3.2s ease-in-out infinite;
+}
+
+.x-share-logo::before,
+.x-share-logo::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.x-share-logo::before {
+  width: 82px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.86), transparent);
+  transform: rotate(-18deg) translateX(-76px);
+  animation: xTechScan 2.6s ease-in-out infinite;
+}
+
+.x-share-logo::after {
+  inset: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow:
+    0 0 0 8px rgba(255,255,255,0.02),
+    inset 0 0 18px rgba(255,255,255,0.08);
+  animation: xTechRing 3.2s linear infinite;
 }
 
 .x-share-logo span {
+  position: relative;
+  z-index: 1;
   font-size: 1.75rem;
   font-weight: 760;
   line-height: 1;
-  animation: xGlyphSnap 3.2s ease-in-out infinite;
 }
 
 .bluesky-share-logo {
@@ -9192,11 +9219,11 @@ body {
   position: absolute;
   width: 8px;
   height: 8px;
-  top: 18px;
-  right: 18px;
+  top: 15px;
+  left: 42px;
   border-radius: 50%;
   background: #fff;
-  animation: instagramFlash 2.8s ease-in-out infinite;
+  animation: instagramDotOrbit 3.1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 }
 
 .whatsapp-share-logo {
@@ -9205,7 +9232,7 @@ body {
   box-shadow:
     0 14px 30px rgba(34, 197, 94, 0.2),
     inset 0 0 0 1px rgba(255,255,255,0.22);
-  animation: whatsappBubblePulse 3s ease-in-out infinite;
+  animation: whatsappLogoBreathe 3s ease-in-out infinite;
 }
 
 .whatsapp-share-logo::after {
@@ -9217,30 +9244,44 @@ body {
   height: 16px;
   background: #22c55e;
   transform: rotate(38deg);
-  animation: whatsappTailWag 3s ease-in-out infinite;
+  animation: whatsappTailBreathe 3s ease-in-out infinite;
 }
 
 .whatsapp-share-logo i {
-  position: relative;
+  position: absolute;
   z-index: 1;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   border: 4px solid #fff;
   border-radius: 50%;
-  animation: whatsappRingFloat 3s ease-in-out infinite;
+  transform: rotate(-20deg);
+  animation: whatsappHandsetPulse 3s ease-in-out infinite;
+}
+
+.whatsapp-share-logo i::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 16px;
+  width: 20px;
+  height: 9px;
+  border: 5px solid #fff;
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  transform: rotate(-42deg);
 }
 
 .whatsapp-share-logo i::after {
   content: "";
   position: absolute;
-  width: 13px;
-  height: 7px;
-  left: 7px;
-  top: 10px;
-  border-left: 4px solid #fff;
-  border-bottom: 4px solid #fff;
+  width: 7px;
+  height: 12px;
+  left: 5px;
+  top: 13px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 20px -10px 0 #fff;
   transform: rotate(-42deg);
-  border-radius: 2px;
 }
 
 .facebook-share-logo {
@@ -9250,16 +9291,51 @@ body {
   box-shadow:
     0 14px 30px rgba(24, 119, 242, 0.22),
     inset 0 0 0 1px rgba(255,255,255,0.18);
-  animation: facebookTileFloat 3.4s ease-in-out infinite;
+}
+
+.facebook-share-logo::before {
+  content: "";
+  position: absolute;
+  left: 29px;
+  top: 30px;
+  width: 22px;
+  height: 7px;
+  border-radius: 999px;
+  background: #fff;
+  transform-origin: left center;
+  animation: facebookMidBar 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
 .facebook-share-logo span {
-  transform: translateY(6px);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1;
-  animation: facebookGlyphRise 3.4s ease-in-out infinite;
+  position: relative;
+  width: 34px;
+  height: 46px;
+  transform: translate(3px, 4px);
+  font-size: 0;
+}
+
+.facebook-share-logo span::before,
+.facebook-share-logo span::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  border-radius: 999px;
+}
+
+.facebook-share-logo span::before {
+  left: 2px;
+  top: 4px;
+  width: 9px;
+  height: 38px;
+}
+
+.facebook-share-logo span::after {
+  left: 2px;
+  top: 4px;
+  width: 30px;
+  height: 7px;
+  transform-origin: left center;
+  animation: facebookTopBar 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
 .wechat-share-logo {
@@ -9366,31 +9442,33 @@ body {
   }
 }
 
-@keyframes xLogoTilt {
-  0%, 100% {
-    transform: rotate(0deg) scale(1);
-  }
-
-  36% {
-    transform: rotate(-5deg) scale(1.02);
-  }
-
-  54% {
-    transform: rotate(4deg) scale(1.01);
-  }
-}
-
-@keyframes xGlyphSnap {
-  0%, 100% {
-    transform: scale(1);
+@keyframes xTechScan {
+  0%, 32%, 100% {
+    transform: rotate(-18deg) translateX(-76px);
+    opacity: 0;
   }
 
   42% {
-    transform: scale(1.12);
+    opacity: 0.85;
   }
 
-  56% {
-    transform: scale(0.98);
+  58% {
+    transform: rotate(-18deg) translateX(76px);
+    opacity: 0;
+  }
+}
+
+@keyframes xTechRing {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.72;
+    border-color: rgba(255,255,255,0.22);
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+    border-color: rgba(255,255,255,0.52);
   }
 }
 
@@ -9416,69 +9494,83 @@ body {
   }
 }
 
-@keyframes instagramFlash {
-  0%, 55%, 100% {
+@keyframes instagramDotOrbit {
+  0%, 100% {
+    top: 15px;
+    left: 42px;
     transform: scale(1);
-    opacity: 1;
   }
 
-  68% {
-    transform: scale(1.45);
-    opacity: 0.55;
+  24% {
+    top: 15px;
+    left: 16px;
+    transform: scale(0.95);
+  }
+
+  50% {
+    top: 42px;
+    left: 16px;
+    transform: scale(1.08);
+  }
+
+  74% {
+    top: 42px;
+    left: 42px;
+    transform: scale(0.95);
   }
 }
 
-@keyframes whatsappBubblePulse {
+@keyframes whatsappLogoBreathe {
   0%, 100% {
     transform: scale(1);
   }
 
-  45% {
-    transform: scale(1.05);
-  }
-
-  58% {
-    transform: scale(0.99);
+  50% {
+    transform: scale(1.035);
   }
 }
 
-@keyframes whatsappTailWag {
+@keyframes whatsappTailBreathe {
   0%, 100% {
     transform: rotate(38deg) translate(0, 0);
   }
 
   50% {
-    transform: rotate(45deg) translate(1px, 1px);
+    transform: rotate(42deg) translate(1px, 1px);
   }
 }
 
-@keyframes whatsappRingFloat {
+@keyframes whatsappHandsetPulse {
   0%, 100% {
-    transform: translate(0, 0);
+    transform: rotate(-20deg) scale(1);
   }
 
   50% {
-    transform: translate(-1px, -1px);
+    transform: rotate(-20deg) scale(1.05);
   }
 }
 
-@keyframes facebookTileFloat {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
+@keyframes facebookTopBar {
+  0%, 18%, 100% {
+    transform: scaleX(0.34);
+    height: 4px;
   }
 
-  50% {
-    transform: translateY(-3px) rotate(-1deg);
+  38%, 64% {
+    transform: scaleX(1);
+    height: 7px;
   }
 }
 
-@keyframes facebookGlyphRise {
-  0%, 100% {
-    transform: translateY(6px);
+@keyframes facebookMidBar {
+  0%, 26%, 100% {
+    transform: scaleX(0.28);
+    height: 4px;
   }
 
-  50% {
-    transform: translateY(2px);
+  48%, 72% {
+    transform: scaleX(1);
+    height: 7px;
   }
 }
 
