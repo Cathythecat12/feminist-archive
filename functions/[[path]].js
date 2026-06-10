@@ -109,7 +109,7 @@ function getMeta(url) {
 
 function replaceMeta(html, attrName, attrValue, replacement) {
   const pattern = new RegExp(
-    `<meta ${attrName}="${attrValue}" content="[^"]*"\\s*/?>`,
+    `<meta(?=[^>]*\\b${attrName}="${attrValue}")[^>]*>`,
     "i"
   );
 
