@@ -20,6 +20,7 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
     visibleArticles.find((article) => article.id === "refusal-and-memory") ||
     visibleArticles[0];
     const [showSearch, setShowSearch] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     
     const searchResults = visibleArticles.filter((article) => {
@@ -41,6 +42,7 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
       const handleEsc = (e) => {
         if (e.key === "Escape") {
           setShowSearch(false);
+          setShowMenu(false);
           setSearchQuery("");
         }
       };
@@ -53,6 +55,57 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
     }, []);
     return (
         <div className="magazine-page">
+          {showMenu && (
+            <div className="magazine-menu-overlay" onClick={() => setShowMenu(false)}>
+              <div
+                className="magazine-menu-panel"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <button
+                  className="magazine-menu-close"
+                  onClick={() => setShowMenu(false)}
+                >
+                  ×
+                </button>
+
+                <div className="magazine-menu-kicker">
+                  {language === "zh" ? "进入栏目" : "Enter the sections"}
+                </div>
+
+                <h2>Feminist Archive</h2>
+
+                <div className="magazine-menu-routes">
+                  <button
+                    onClick={() => {
+                      setShowMenu(false);
+                      setCurrentPage("writing-page");
+                    }}
+                  >
+                    <span>{language === "zh" ? "写作" : "Writing"}</span>
+                    <em>
+                      {language === "zh"
+                        ? "批判、记忆与经验之间的女性主义写作"
+                        : "Critical essays across memory, power, and feminist thought"}
+                    </em>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setShowMenu(false);
+                      setCurrentPage("reviews-page");
+                    }}
+                  >
+                    <span>{language === "zh" ? "书评 / 导读" : "Reviews / Guides"}</span>
+                    <em>
+                      {language === "zh"
+                        ? "经典书籍、思想文本与关键概念的导读"
+                        : "Guides and reviews for books, theory, and key concepts"}
+                    </em>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
       
           {showSearch && (
             <div className="magazine-search-overlay">
@@ -122,7 +175,7 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
       
             <header className="magazine-topbar">
         <div className="magazine-left">
-          <button onClick={onBack}>MENU</button>
+          <button onClick={() => setShowMenu(true)}>MENU</button>
           <span>/</span>
           <button onClick={() => setShowSearch(true)}>⌕</button>
 

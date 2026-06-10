@@ -13,6 +13,10 @@ const pages = [
   ["zh/magazine/june-issue", "zh-CN", "0.9"],
   ["en/archive", "en", "0.8"],
   ["zh/archive", "zh-CN", "0.8"],
+  ["en/writing", "en", "0.8"],
+  ["zh/writing", "zh-CN", "0.8"],
+  ["en/reviews", "en", "0.8"],
+  ["zh/reviews", "zh-CN", "0.8"],
   ["en/reading-room", "en", "0.7"],
   ["zh/reading-room", "zh-CN", "0.7"],
   ["en/contact", "en", "0.6"],
@@ -54,4 +58,3 @@ ${[...pageEntries, ...articleEntries].join("\n")}
 `;
 
 await writeFile("public/sitemap.xml", sitemap);
-

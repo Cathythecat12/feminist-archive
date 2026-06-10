@@ -45,6 +45,24 @@ const PAGE_META = {
     title: "归档 | Feminist Archive",
     description: "浏览 Feminist Archive 的中文文章、书评与档案写作。",
   },
+  "/en/writing": {
+    title: "Writing | Feminist Archive",
+    description:
+      "Critical essays that move between memory, power, everyday life, and feminist thought.",
+  },
+  "/zh/writing": {
+    title: "写作 | Feminist Archive",
+    description: "批判、记忆与经验之间，带来思考的女性主义写作。",
+  },
+  "/en/reviews": {
+    title: "Reviews / Guides | Feminist Archive",
+    description:
+      "Guides and reviews for classic books, theoretical texts, and key feminist concepts.",
+  },
+  "/zh/reviews": {
+    title: "书评与导读 | Feminist Archive",
+    description: "对经典书籍、思想文本与关键概念的导读和书评。",
+  },
 };
 
 function escapeHtml(value = "") {

@@ -16,6 +16,7 @@ import SubmissionGuidelinesPage from "./page/SubmissionGuidelinesPage";
 import SubmissionPage from "./page/SubmissionPage";
 import MonthlyThemePageZh from "./page/MonthlyThemePageZh";
 import ReadingRoomPage from "./page/ReadingRoomPage";
+import MagazineCategoryPage from "./page/MagazineCategoryPage";
 import { submitWebsiteForm } from "./utils/formSubmit";
 import HowWeEditPage from "./page/HowWeEditPage";
 const HOME_ARCHIVE_LIMIT = 6;
@@ -33,6 +34,8 @@ const PAGE_ROUTES = {
   guidelines: "guidelines",
   "how-we-edit": "how-we-edit",
   magazine: "magazine",
+  "reviews-page": "reviews",
+  "writing-page": "writing",
   "monthly-theme": "magazine/june-issue",
   "monthly-theme-zh": "magazine/june-issue",
   "news-page": "news",
@@ -3014,6 +3017,17 @@ Further materials are being gathered.`
         onBack={() => setCurrentPage("main")}
         setCurrentPage={setCurrentPage}
         onOpenArticle={(article) => openArticleFrom(article, "magazine")}
+      />
+    );
+  }
+  if (currentPage === "writing-page" || currentPage === "reviews-page") {
+    return renderWithToast(
+      <MagazineCategoryPage
+        language={language}
+        type={currentPage === "writing-page" ? "writing" : "reviews"}
+        onBack={() => setCurrentPage("magazine")}
+        setCurrentPage={setCurrentPage}
+        onOpenArticle={(article) => openArticleFrom(article, currentPage)}
       />
     );
   }
