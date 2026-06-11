@@ -1136,7 +1136,7 @@ textarea {
   border-radius: 0;
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(176, 205, 211, 0.72), rgba(236, 199, 171, 0.56)),
+    linear-gradient(90deg, rgba(255, 252, 244, 0.38), rgba(255, 252, 244, 0.22)),
     url("/images/碎花1.png") center/cover no-repeat;
   color: #1f5c50;
   cursor: pointer;
