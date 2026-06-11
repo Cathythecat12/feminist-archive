@@ -1182,6 +1182,14 @@ textarea {
   letter-spacing: -0.055em;
 }
 
+.summer-update-card-logo {
+  display: block;
+  width: min(330px, 34vw);
+  min-width: 240px;
+  max-height: 150px;
+  object-fit: contain;
+}
+
 .summer-update-page {
   min-height: 100vh;
   background:
@@ -1223,7 +1231,34 @@ textarea {
 .summer-update-header-left {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
+}
+
+.summer-update-header-left > span {
+  color: rgba(31, 92, 80, 0.48);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.summer-update-image-button,
+.summer-update-back,
+.summer-update-return-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.summer-update-image-button img,
+.summer-update-back img,
+.summer-update-return-home img {
+  display: block;
+  object-fit: contain;
+}
+
+.summer-update-image-button img {
+  width: clamp(86px, 9vw, 138px);
+  max-height: 86px;
 }
 
 .summer-update-logo {
@@ -1242,6 +1277,11 @@ textarea {
 
 .summer-update-back {
   justify-self: end;
+}
+
+.summer-update-back img {
+  width: clamp(78px, 8vw, 116px);
+  max-height: 76px;
 }
 
 .summer-update-main {
@@ -1332,6 +1372,11 @@ textarea {
   font-weight: 700;
 }
 
+.summer-update-return-home img {
+  width: clamp(124px, 13vw, 190px);
+  max-height: 112px;
+}
+
 @media (max-width: 900px) {
   .summer-update-header {
     grid-template-columns: 1fr;
@@ -1350,6 +1395,18 @@ textarea {
     justify-self: center;
   }
 
+  .summer-update-image-button img {
+    width: min(124px, 32vw);
+  }
+
+  .summer-update-back img {
+    width: min(108px, 30vw);
+  }
+
+  .summer-update-return-home img {
+    width: min(178px, 48vw);
+  }
+
   .summer-update-logo img {
     width: min(430px, 82vw);
     max-height: 110px;
@@ -1360,6 +1417,14 @@ textarea {
     width: min(100%, 260px);
     grid-template-columns: repeat(4, 1fr);
     margin: 0 0 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  .summer-update-card-logo {
+    width: min(300px, 78vw);
+    min-width: 0;
+    max-height: 136px;
   }
 }
 
@@ -3767,9 +3832,9 @@ border: 1px solid #f0ddc5;
 
 .donation-slogan-image {
   display: block;
-  width: min(700px, 104%);
-  max-height: 350px;
-  margin: -12px 0 18px -14px;
+  width: min(760px, 112%);
+  max-height: 382px;
+  margin: -16px 0 18px -18px;
   object-fit: contain;
   object-position: left center;
   filter: drop-shadow(0 12px 16px rgba(42, 34, 26, 0.08));
@@ -4041,9 +4106,9 @@ border: 1px solid #f0ddc5;
   }
 
   .donation-slogan-image {
-    width: min(620px, 104%);
-    max-height: 320px;
-    margin-left: -10px;
+    width: min(670px, 112%);
+    max-height: 348px;
+    margin-left: -14px;
   }
 
   .donation-bottom-row {
@@ -13273,9 +13338,9 @@ p {
   }
 
   .donation-slogan-image {
-    width: min(460px, 112%);
-    max-height: 250px;
-    margin: -8px 0 14px -10px;
+    width: min(500px, 118%);
+    max-height: 274px;
+    margin: -10px 0 14px -14px;
   }
 
   .home-donation-panel {

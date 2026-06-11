@@ -2459,17 +2459,27 @@ return null;
 
   function renderSummerUpdatePage() {
     const zh = language === "zh";
+    const magazineLogo = zh ? "/images/杂志彩色logo.png" : "/images/Magzine彩色logo.png";
+    const newsletterLogo = zh ? "/images/通讯彩色logo.png" : "/images/Newsletter彩色logo.png";
 
     return (
       <div className="summer-update-page">
         <header className="summer-update-header">
           <div className="summer-update-header-left">
-            <button onClick={() => setCurrentPage("magazine")}>
-              {zh ? "杂志" : "Magazine"}
+            <button
+              className="summer-update-image-button"
+              onClick={() => setCurrentPage("magazine")}
+              aria-label={zh ? "杂志" : "Magazine"}
+            >
+              <img src={magazineLogo} alt="" />
             </button>
             <span>/</span>
-            <button onClick={() => setCurrentPage("newsletter-page")}>
-              {zh ? "通讯" : "Newsletter"}
+            <button
+              className="summer-update-image-button"
+              onClick={() => setCurrentPage("newsletter-page")}
+              aria-label={zh ? "通讯" : "Newsletter"}
+            >
+              <img src={newsletterLogo} alt="" />
             </button>
           </div>
 
@@ -2484,8 +2494,9 @@ return null;
           <button
             className="summer-update-back"
             onClick={() => setCurrentPage("main")}
+            aria-label={zh ? "返回" : "Back"}
           >
-            {zh ? "返回" : "Back"}
+            <img src="/images/Back彩色.png" alt="" />
           </button>
         </header>
 
@@ -2521,8 +2532,12 @@ return null;
                 : "Independent feminist writing, theory, and archives"}
             </span>
           </div>
-          <button onClick={() => setCurrentPage("main")}>
-            {zh ? "回到首页" : "Return home"}
+          <button
+            className="summer-update-return-home"
+            onClick={() => setCurrentPage("main")}
+            aria-label={zh ? "回到首页" : "Return home"}
+          >
+            <img src="/images/ReturnHome彩色logo.png" alt="" />
           </button>
         </footer>
       </div>
@@ -2609,7 +2624,17 @@ Further materials are being gathered.`
     onClick={() => setCurrentPage("summer-update")}
   >
     <span>{language === "zh" ? "网站建设中" : "Site in progress"}</span>
-    <strong>{language === "zh" ? "夏日更新" : "Summer Update"}</strong>
+    <strong>
+      {language === "zh" ? (
+        <img
+          className="summer-update-card-logo"
+          src="/images/夏日更新彩色logo.png"
+          alt="夏日更新"
+        />
+      ) : (
+        "Summer Update"
+      )}
+    </strong>
   </button>
 
   <div
