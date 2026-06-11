@@ -1,5 +1,38 @@
 function NewsPage({ language, onBack, setCurrentPage }) {
     const zh = language === "zh";
+    const tickerWords = zh
+      ? [
+          "印刷实验",
+          "编辑通讯",
+          "档案房间",
+          "六月期刊",
+          "声音散文",
+          "阅读室",
+          "女性主义写作",
+          "书评导读",
+          "公共档案",
+          "缓慢出版",
+          "理论札记",
+          "网站更新",
+          "投稿指南",
+          "编辑计划",
+        ]
+      : [
+          "PRINT EXPERIMENT",
+          "EDITORIAL LETTER",
+          "ARCHIVE ROOM",
+          "NEW ISSUE",
+          "AUDIO ESSAYS",
+          "READING ROOM",
+          "FEMINIST WRITING",
+          "REVIEWS AND GUIDES",
+          "PUBLIC ARCHIVE",
+          "SLOW PUBLISHING",
+          "THEORY NOTES",
+          "WEBSITE UPDATE",
+          "SUBMISSION GUIDE",
+          "EDITORIAL PLANS",
+        ];
   
     const newsItems = [
       {
@@ -70,11 +103,13 @@ function NewsPage({ language, onBack, setCurrentPage }) {
           </section>
   
           <section className="news-ticker">
-            <span>PRINT EXPERIMENT</span>
-            <span>EDITORIAL LETTER</span>
-            <span>ARCHIVE ROOM</span>
-            <span>NEW ISSUE</span>
-            <span>AUDIO ESSAYS</span>
+            {[0, 1].map((group) => (
+              <div className="news-ticker-track" aria-hidden={group === 1} key={group}>
+                {tickerWords.map((word) => (
+                  <span key={`${group}-${word}`}>{word}</span>
+                ))}
+              </div>
+            ))}
           </section>
   
           <section className="news-pinned">

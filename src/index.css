@@ -1235,8 +1235,8 @@ textarea {
 
 .summer-update-logo img {
   display: block;
-  width: min(560px, 52vw);
-  max-height: 126px;
+  width: min(760px, 58vw);
+  max-height: 150px;
   object-fit: contain;
 }
 
@@ -1351,8 +1351,8 @@ textarea {
   }
 
   .summer-update-logo img {
-    width: min(360px, 78vw);
-    max-height: 96px;
+    width: min(430px, 82vw);
+    max-height: 110px;
   }
 
   .summer-update-palette {
@@ -7187,7 +7187,6 @@ body {
   margin: 86px 0 0;
   padding: 18px 0;
   display: flex;
-  gap: 34px;
   overflow: hidden;
   border-top: 1px solid rgba(38, 34, 31, 0.14);
   border-bottom: 1px solid rgba(38, 34, 31, 0.14);
@@ -7197,8 +7196,13 @@ body {
   white-space: nowrap;
 }
 
-.news-ticker span {
-  animation: newsTicker 18s linear infinite;
+.news-ticker-track {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 34px;
+  min-width: max-content;
+  padding-right: 34px;
+  animation: newsTicker 34s linear infinite;
 }
 
 @keyframes newsTicker {
@@ -7207,7 +7211,7 @@ body {
   }
 
   to {
-    transform: translateX(-160px);
+    transform: translateX(-100%);
   }
 }
 
@@ -12419,8 +12423,8 @@ p {
 
 .how-edit-header-logo img {
   display: block;
-  width: clamp(280px, 27vw, 520px);
-  max-height: 96px;
+  width: clamp(420px, 36vw, 720px);
+  max-height: 112px;
   object-fit: contain;
 }
 
@@ -12991,8 +12995,8 @@ p {
   }
 
   .how-edit-header-logo img {
-    width: min(300px, 74vw);
-    max-height: 82px;
+    width: min(410px, 80vw);
+    max-height: 96px;
   }
 
   .how-edit-studio-main {
