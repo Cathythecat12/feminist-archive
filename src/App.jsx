@@ -2506,8 +2506,8 @@ return null;
 
             <p>
               {zh
-                ? "我们正在重新优化和建设我们的网站。为了在建设期间仍然保持公共阅读开放，我们保留了网站访问；因此，这段时间部分页面可能会显得未完成，或暂时缺少细节，敬请理解。请期待未来更好的页面。"
-                : "We are currently refining and rebuilding our website. To keep the archive publicly readable while this work continues, we have kept the site open. During this period, some pages may feel unfinished or temporarily missing details. Thank you for your patience, and please stay tuned for a better version of the site."}
+                ? "我们正在重新优化和建设我们的网站！为了在建设期间仍然保持公共阅读开放，我们保留了网站访问；因此，这段时间部分页面可能会显得未完成和缺失感，烦请谅解！敬请期待未来更好的页面！"
+                : "We are currently refining and rebuilding our website! To keep the archive publicly readable while this work continues, we have kept the site open; during this period, some pages may feel unfinished or incomplete. Thank you for your understanding! Please stay tuned for a better version of the site!"}
             </p>
           </section>
         </main>
