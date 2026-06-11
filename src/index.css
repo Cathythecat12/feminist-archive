@@ -12359,7 +12359,7 @@ p {
 }
 
 .how-edit-studio-header {
-  height: 82px;
+  height: 112px;
   padding: 0 clamp(22px, 4vw, 62px);
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -12400,8 +12400,8 @@ p {
 
 .how-edit-header-logo img {
   display: block;
-  width: clamp(152px, 17vw, 270px);
-  max-height: 62px;
+  width: clamp(280px, 27vw, 520px);
+  max-height: 96px;
   object-fit: contain;
 }
 
@@ -12972,7 +12972,8 @@ p {
   }
 
   .how-edit-header-logo img {
-    width: min(220px, 72vw);
+    width: min(300px, 74vw);
+    max-height: 82px;
   }
 
   .how-edit-studio-main {
