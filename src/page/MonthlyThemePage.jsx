@@ -104,7 +104,8 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle, setCur
         </div>
 
         <div className="issue-logo" onClick={onBack}>
-          Feminist Archive
+          <span>Feminist Archive</span>
+          <small>London</small>
         </div>
 
         <div className="issue-right-nav">
