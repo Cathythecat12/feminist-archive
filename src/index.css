@@ -3767,9 +3767,9 @@ border: 1px solid #f0ddc5;
 
 .donation-slogan-image {
   display: block;
-  width: min(650px, 100%);
-  max-height: 320px;
-  margin: -8px 0 22px -10px;
+  width: min(700px, 104%);
+  max-height: 350px;
+  margin: -12px 0 18px -14px;
   object-fit: contain;
   object-position: left center;
   filter: drop-shadow(0 12px 16px rgba(42, 34, 26, 0.08));
@@ -4041,9 +4041,9 @@ border: 1px solid #f0ddc5;
   }
 
   .donation-slogan-image {
-    width: min(590px, 100%);
-    max-height: 290px;
-    margin-left: -6px;
+    width: min(620px, 104%);
+    max-height: 320px;
+    margin-left: -10px;
   }
 
   .donation-bottom-row {
@@ -13273,9 +13273,9 @@ p {
   }
 
   .donation-slogan-image {
-    width: min(430px, 108%);
-    max-height: 230px;
-    margin: -6px 0 16px -8px;
+    width: min(460px, 112%);
+    max-height: 250px;
+    margin: -8px 0 14px -10px;
   }
 
   .home-donation-panel {
