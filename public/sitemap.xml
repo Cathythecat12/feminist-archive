@@ -73,6 +73,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://feministarchivejournal.org/en/summer-update</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://feministarchivejournal.org/zh/summer-update</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://feministarchivejournal.org/en/reading-room</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>

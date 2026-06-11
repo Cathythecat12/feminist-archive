@@ -17,6 +17,8 @@ const pages = [
   ["zh/writing", "zh-CN", "0.8"],
   ["en/reviews", "en", "0.8"],
   ["zh/reviews", "zh-CN", "0.8"],
+  ["en/summer-update", "en", "0.6"],
+  ["zh/summer-update", "zh-CN", "0.6"],
   ["en/reading-room", "en", "0.7"],
   ["zh/reading-room", "zh-CN", "0.7"],
   ["en/contact", "en", "0.6"],

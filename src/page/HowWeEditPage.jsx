@@ -34,8 +34,14 @@ function HowWeEditPage({ language, onBack, setCurrentPage }) {
     return (
       <div className={`how-edit-studio-page ${zh ? "how-edit-studio-page-zh" : ""}`}>
         <header className="how-edit-studio-header">
-          <button onClick={onBack}>← {zh ? "返回" : "Back"}</button>
-          <div onClick={() => setCurrentPage("main")}>Feminist Archive</div>
+          <button className="how-edit-back-button" onClick={onBack}>← {zh ? "返回" : "Back"}</button>
+          <button
+            className="how-edit-header-logo"
+            onClick={() => setCurrentPage("main")}
+            aria-label="Feminist Archive"
+          >
+            <img src="/images/编辑室logo.png" alt="Feminist Archive" />
+          </button>
           <button onClick={() => setCurrentPage("contact-page")}>
             {zh ? "联系" : "Contact"}
           </button>

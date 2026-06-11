@@ -311,7 +311,7 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle, setCur
 
   <div className="issue-footer-links">
     <button onClick={onBack}>Home</button>
-    <a href="mailto:submissions@feministarchivejournal.org">Submit</a>
+    <button onClick={() => setCurrentPage("submission-page")}>Submit</button>
     <a href="mailto:editorial@feministarchivejournal.org">Editorial</a>
     <a href="https://feministarchivejournal.org">Website</a>
   </div>

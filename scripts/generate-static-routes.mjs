@@ -88,6 +88,14 @@ const pageMeta = {
     title: "新闻 | Feminist Archive",
     description: "Feminist Archive 的编辑公告、计划与项目更新。",
   },
+  "/en/summer-update": {
+    title: "Summer Update | Feminist Archive",
+    description: "A note on the ongoing rebuilding and refinement of the Feminist Archive website.",
+  },
+  "/zh/summer-update": {
+    title: "夏日更新 | Feminist Archive",
+    description: "关于 Feminist Archive 网站正在重新优化与建设的说明。",
+  },
   "/en/newsletter": {
     title: "Newsletter | Feminist Archive",
     description: "Subscribe to editorial letters, essays, archive notes, and reading recommendations.",

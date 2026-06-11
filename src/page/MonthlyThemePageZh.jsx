@@ -312,7 +312,7 @@ const issueArticlesZh = [
   
             <div className="issue-footer-links">
               <button onClick={onBack}>主页</button>
-              <a href="mailto:submissions@feministarchivejournal.org">投稿</a>
+              <button onClick={() => setCurrentPage("submission-page")}>投稿</button>
               <a href="mailto:editorial@feministarchivejournal.org">编辑部</a>
               <a href="https://feministarchivejournal.org">网站</a>
             </div>

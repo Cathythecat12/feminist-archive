@@ -48,6 +48,7 @@ const PAGE_ROUTES = {
   "reading-room": "reading-room",
   "submission-guidelines": "submissions/guidelines",
   "submission-page": "submissions/new",
+  "summer-update": "summer-update",
 };
 
 const ROUTE_PAGES = Object.entries(PAGE_ROUTES).reduce((routes, [page, route]) => {
@@ -507,6 +508,8 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     "magazine",
     "monthly-theme",
     "monthly-theme-zh",
+    "writing-page",
+    "reviews-page",
     "archive-page",
     "archive-house",
     "reading-room",
@@ -517,6 +520,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     "cover-submission",
     "submission-guidelines",
     "submission-page",
+    "summer-update",
     "news-page",
     "parlour",
     "our-story",
@@ -702,11 +706,6 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     const pageName = params.get("page");
     const urlLanguage = pathLanguage || params.get("lang");
 
-    if ((urlLanguage === "en" || urlLanguage === "zh") && urlLanguage !== language) {
-      window.setTimeout(() => setLanguage(urlLanguage), 0);
-      return;
-    }
-
     if (pathArticleId || articleId) {
       const resolvedArticleId = pathArticleId || articleId;
       const article =
@@ -720,12 +719,10 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
             ? urlLanguage
             : getArticleLanguage(article);
 
-        if (articleLanguage !== language) {
-          window.setTimeout(() => setLanguage(articleLanguage), 0);
-          return;
-        }
-
         window.setTimeout(() => {
+          if (articleLanguage !== language) {
+            setLanguage(articleLanguage);
+          }
           setSelectedArticle(article);
           setArticleReturnPage("archive-page");
           setCurrentPage("article-detail");
@@ -740,6 +737,9 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     if (routedPathPage && routedPages.has(routedPathPage)) {
       window.setTimeout(() => {
+        if ((urlLanguage === "en" || urlLanguage === "zh") && urlLanguage !== language) {
+          setLanguage(urlLanguage);
+        }
         setCurrentPage(routedPathPage);
         setHasResolvedInitialUrl(true);
       }, 0);
@@ -748,6 +748,9 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     if ((pathLanguage === "en" || pathLanguage === "zh") && routeSegments.length === 0) {
       window.setTimeout(() => {
+        if (pathLanguage !== language) {
+          setLanguage(pathLanguage);
+        }
         setCurrentPage("main");
         setHasResolvedInitialUrl(true);
       }, 0);
@@ -756,6 +759,9 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     if (pageName && routedPages.has(pageName)) {
       window.setTimeout(() => {
+        if ((urlLanguage === "en" || urlLanguage === "zh") && urlLanguage !== language) {
+          setLanguage(urlLanguage);
+        }
         setCurrentPage(pageName);
         setHasResolvedInitialUrl(true);
       }, 0);
@@ -2068,7 +2074,16 @@ return null;
             }
           >
             <span className="article-share-logo whatsapp-share-logo" aria-hidden="true">
-              <i />
+              <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+                <path
+                  className="whatsapp-chat-bubble"
+                  d="M31.7 13.2c-10.4 0-18.8 7.7-18.8 17.3 0 3.5 1.1 6.8 3.1 9.5l-2.2 9.2 9.5-2.7c2.6 1.2 5.4 1.8 8.4 1.8 10.4 0 18.8-7.7 18.8-17.3S42.1 13.2 31.7 13.2Z"
+                />
+                <path
+                  className="whatsapp-phone"
+                  d="M25.3 23.9c.8-1.1 1.8-.9 2.6.2l1.6 2.4c.5.7.4 1.5-.3 2.2l-.9.9c1.4 2.5 3.4 4.5 6.1 5.9l1-.9c.7-.6 1.5-.7 2.2-.2l2.4 1.6c1.1.7 1.3 1.8.3 2.6-1.4 1.3-3.1 2.1-5.5 1.4-5.6-1.6-10.5-6.5-12.1-12.1-.6-2.2.4-3.8 2.6-4Z"
+                />
+              </svg>
             </span>
             <strong>WhatsApp</strong>
             <em>Copy and open</em>
@@ -2442,6 +2457,78 @@ return null;
     );
   }
 
+  function renderSummerUpdatePage() {
+    const zh = language === "zh";
+
+    return (
+      <div className="summer-update-page">
+        <header className="summer-update-header">
+          <div className="summer-update-header-left">
+            <button onClick={() => setCurrentPage("magazine")}>
+              {zh ? "杂志" : "Magazine"}
+            </button>
+            <span>/</span>
+            <button onClick={() => setCurrentPage("newsletter-page")}>
+              {zh ? "通讯" : "Newsletter"}
+            </button>
+          </div>
+
+          <button
+            className="summer-update-logo"
+            onClick={() => setCurrentPage("main")}
+          >
+            Feminist Archive
+            <span>{zh ? "夏日更新" : "summer update"}</span>
+          </button>
+
+          <button
+            className="summer-update-back"
+            onClick={() => setCurrentPage("main")}
+          >
+            {zh ? "返回" : "Back"}
+          </button>
+        </header>
+
+        <main className="summer-update-main">
+          <section className="summer-update-note">
+            <div className="summer-update-palette" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+
+            <div className="summer-update-kicker">
+              {zh ? "FEMINIST ARCHIVE / 网站更新" : "FEMINIST ARCHIVE / SITE UPDATE"}
+            </div>
+
+            <h1>{zh ? "夏日更新" : "Summer Update"}</h1>
+
+            <p>
+              {zh
+                ? "我们正在重新优化和建设我们的网站。为了在建设期间仍然保持公共阅读开放，我们保留了网站访问；因此，这段时间部分页面可能会显得未完成，或暂时缺少细节，敬请理解。请期待未来更好的页面。"
+                : "We are currently refining and rebuilding our website. To keep the archive publicly readable while this work continues, we have kept the site open. During this period, some pages may feel unfinished or temporarily missing details. Thank you for your patience, and please stay tuned for a better version of the site."}
+            </p>
+          </section>
+        </main>
+
+        <footer className="summer-update-footer">
+          <div>
+            <strong>Feminist Archive</strong>
+            <span>
+              {zh
+                ? "独立女性主义写作、理论与档案平台"
+                : "Independent feminist writing, theory, and archives"}
+            </span>
+          </div>
+          <button onClick={() => setCurrentPage("main")}>
+            {zh ? "回到首页" : "Return home"}
+          </button>
+        </footer>
+      </div>
+    );
+  }
+
   function renderHomePage() {
     return (
       <div className="site-shell">
@@ -2516,6 +2603,15 @@ Further materials are being gathered.`
             </div>
 
             <aside className="hero-right">
+  <button
+    className="summer-update-card"
+    type="button"
+    onClick={() => setCurrentPage("summer-update")}
+  >
+    <span>{language === "zh" ? "网站建设中" : "Site in progress"}</span>
+    <strong>{language === "zh" ? "夏日更新" : "Summer Update"}</strong>
+  </button>
+
   <div
     className="theme-card"
     onClick={() => setCurrentPage("monthly-theme")}
@@ -3139,6 +3235,9 @@ Further materials are being gathered.`
         setCurrentPage={setCurrentPage}
       />
     );
+  }
+  if (currentPage === "summer-update") {
+    return renderWithToast(renderSummerUpdatePage());
   }
   if (currentPage === "reading-room") {
     return renderWithToast(
