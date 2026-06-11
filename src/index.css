@@ -11380,9 +11380,16 @@ body {
   justify-self: end;
 }
 
-.privacy-lux-top div {
+.privacy-lux-home-logo {
+  justify-self: center;
+  font-weight: 700;
   font-size: 0.82rem;
   letter-spacing: 0.18em;
+  color: rgba(17, 18, 15, 0.9);
+}
+
+.privacy-lux-home-logo:hover {
+  color: #1f5c50;
 }
 
 .privacy-lux-canvas {
@@ -11481,6 +11488,7 @@ body {
 
 .privacy-lux-marquee {
   overflow: hidden;
+  display: flex;
   border-left: 1px solid rgba(17, 18, 15, 0.22);
   border-right: 1px solid rgba(17, 18, 15, 0.22);
   border-bottom: 1px solid rgba(17, 18, 15, 0.22);
@@ -11488,11 +11496,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.privacy-lux-marquee div {
-  display: inline-flex;
-  gap: 56px;
+.privacy-lux-marquee-track {
+  display: flex;
+  flex: 0 0 auto;
+  min-width: max-content;
+  gap: clamp(42px, 5vw, 76px);
+  padding-right: clamp(42px, 5vw, 76px);
   padding: 20px 0;
-  animation: privacyLuxMarquee 26s linear infinite;
+  animation: privacyLuxMarquee 40s linear infinite;
 }
 
 .privacy-lux-marquee span {
@@ -11639,7 +11650,7 @@ body {
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 

@@ -106,6 +106,44 @@ function NewsletterPrivacyPage({
         ],
       ];
 
+  const marqueeWords = zh
+    ? [
+        "读者关系",
+        "没有噪音",
+        "有意义的来信",
+        "随时离开",
+        "仅用于档案通讯",
+        "缓慢更新",
+        "克制发送",
+        "邮箱自主",
+        "编辑来信",
+        "阅读路径",
+        "隐私说明",
+        "自愿订阅",
+        "不作营销",
+        "公共阅读",
+        "专题更新",
+        "档案笔记",
+      ]
+    : [
+        "READERLY RELATION",
+        "NO NOISE",
+        "MEANINGFUL LETTERS",
+        "LEAVE ANYTIME",
+        "ARCHIVE USE ONLY",
+        "SLOW UPDATES",
+        "RESTRAINED LETTERS",
+        "EMAIL AUTONOMY",
+        "EDITORIAL DISPATCHES",
+        "READING PATHS",
+        "PRIVACY NOTE",
+        "VOLUNTARY SUBSCRIPTION",
+        "NO MARKETING",
+        "PUBLIC READING",
+        "ISSUE UPDATES",
+        "ARCHIVE NOTES",
+      ];
+
 
   return (
     <div
@@ -125,7 +163,12 @@ function NewsletterPrivacyPage({
 
       <header className="privacy-lux-top">
         <button onClick={onBack}>← {zh ? "返回通讯" : "Back"}</button>
-        <div>FEMINIST ARCHIVE</div>
+        <button
+          className="privacy-lux-home-logo"
+          onClick={() => setCurrentPage("main")}
+        >
+          FEMINIST ARCHIVE
+        </button>
         <button onClick={() => setCurrentPage("main")}>{zh ? "主页" : "Home"}</button>
       </header>
 
@@ -163,13 +206,17 @@ function NewsletterPrivacyPage({
         </section>
 
         <section className="privacy-lux-marquee">
-          <div>
-            <span>READERLY RELATION</span>
-            <span>NO NOISE</span>
-            <span>MEANINGFUL LETTERS</span>
-            <span>LEAVE ANYTIME</span>
-            <span>ARCHIVE USE ONLY</span>
-          </div>
+          {[0, 1].map((group) => (
+            <div
+              className="privacy-lux-marquee-track"
+              aria-hidden={group === 1}
+              key={group}
+            >
+              {marqueeWords.map((word) => (
+                <span key={`${group}-${word}`}>{word}</span>
+              ))}
+            </div>
+          ))}
         </section>
 
         <section className="privacy-lux-board">
