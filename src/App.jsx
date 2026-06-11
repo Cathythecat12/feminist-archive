@@ -2513,7 +2513,25 @@ return null;
               {zh ? "FEMINIST ARCHIVE / 网站更新" : "FEMINIST ARCHIVE / SITE UPDATE"}
             </div>
 
-            <h1>{zh ? "夏日更新" : "Summer Update"}</h1>
+            <div className="summer-update-title-scene">
+              <h1 className="summer-update-animated-title" aria-label={zh ? "夏日更新" : "Summer Update"}>
+                {(zh ? "夏日更新" : "Summer Update").split("").map((letter, index) => (
+                  <span
+                    key={`${letter}-${index}`}
+                    className="summer-update-title-letter"
+                    style={{ "--letter-delay": `${index * 0.16}s` }}
+                    aria-hidden="true"
+                  >
+                    {letter === " " ? "\u00a0" : letter}
+                  </span>
+                ))}
+              </h1>
+              <span className="summer-update-butterfly" aria-hidden="true">
+                <span className="summer-update-butterfly-wing upper" />
+                <span className="summer-update-butterfly-wing lower" />
+                <span className="summer-update-butterfly-body" />
+              </span>
+            </div>
 
             <p>
               {zh
