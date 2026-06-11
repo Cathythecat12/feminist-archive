@@ -1130,8 +1130,8 @@ textarea {
 
 .summer-update-card {
   position: relative;
-  min-height: 138px;
-  padding: 24px 26px;
+  min-height: 238px;
+  padding: 28px 30px 34px;
   border: 1px solid rgba(31, 92, 80, 0.22);
   border-radius: 0;
   overflow: hidden;
@@ -1184,9 +1184,9 @@ textarea {
 
 .summer-update-card-logo {
   display: block;
-  width: min(330px, 34vw);
-  min-width: 240px;
-  max-height: 150px;
+  width: min(520px, 94%);
+  min-width: 360px;
+  max-height: 246px;
   object-fit: contain;
 }
 
@@ -1421,10 +1421,15 @@ textarea {
 }
 
 @media (max-width: 700px) {
+  .summer-update-card {
+    min-height: 224px;
+    padding: 24px 22px 30px;
+  }
+
   .summer-update-card-logo {
-    width: min(300px, 78vw);
+    width: min(420px, 96vw);
     min-width: 0;
-    max-height: 136px;
+    max-height: 218px;
   }
 }
 
