@@ -3765,6 +3765,16 @@ border: 1px solid #f0ddc5;
   color: #474240;
 }
 
+.donation-slogan-image {
+  display: block;
+  width: min(650px, 100%);
+  max-height: 320px;
+  margin: -8px 0 22px -10px;
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 12px 16px rgba(42, 34, 26, 0.08));
+}
+
 .home-donation-copy p {
   max-width: 620px;
   font-size: clamp(1.02rem, 1.18vw, 1.18rem);
@@ -4028,6 +4038,12 @@ border: 1px solid #f0ddc5;
 
   .home-donation-copy h2 {
     font-size: 3rem;
+  }
+
+  .donation-slogan-image {
+    width: min(590px, 100%);
+    max-height: 290px;
+    margin-left: -6px;
   }
 
   .donation-bottom-row {
@@ -13254,6 +13270,12 @@ p {
     font-size: clamp(1.95rem, 9vw, 2.75rem);
     line-height: 1.14;
     letter-spacing: 0;
+  }
+
+  .donation-slogan-image {
+    width: min(430px, 108%);
+    max-height: 230px;
+    margin: -6px 0 16px -8px;
   }
 
   .home-donation-panel {

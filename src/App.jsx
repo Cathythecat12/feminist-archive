@@ -2967,11 +2967,27 @@ Further materials are being gathered.`
     <div className="home-donation-copy donation-reveal-item delay-2">
       <div className="donation-brand">Feminist Archive</div>
 
-      <h2>
-        {language === "zh"
-          ? "支持 Feminist Archive：让女性主义写作保持开放"
-          : "Donate to Feminist Archive: keep feminist writing open"}
-      </h2>
+      {/*
+        Original editable text heading, kept for easy rollback:
+        <h2>
+          {language === "zh"
+            ? "支持 Feminist Archive：让女性主义写作保持开放"
+            : "Donate to Feminist Archive: keep feminist writing open"}
+        </h2>
+      */}
+      <img
+        className="donation-slogan-image"
+        src={
+          language === "zh"
+            ? "/images/捐助标语手绘版中文.png"
+            : "/images/捐助标语手绘版英文.png"
+        }
+        alt={
+          language === "zh"
+            ? "支持 Feminist Archive：让女性主义写作保持开放"
+            : "Donate to Feminist Archive: keep feminist writing open"
+        }
+      />
 
       <p>
         {language === "zh"
