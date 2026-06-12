@@ -1257,8 +1257,8 @@ textarea {
 }
 
 .summer-update-image-button img {
-  width: clamp(86px, 9vw, 138px);
-  max-height: 86px;
+  width: clamp(96px, 10vw, 154px);
+  max-height: 96px;
 }
 
 .summer-update-logo {
@@ -1287,8 +1287,8 @@ textarea {
 }
 
 .summer-update-back img {
-  width: clamp(78px, 8vw, 116px);
-  max-height: 76px;
+  width: clamp(88px, 9vw, 130px);
+  max-height: 86px;
 }
 
 .summer-update-main {
@@ -1523,8 +1523,8 @@ textarea {
 }
 
 .summer-update-return-home img {
-  width: clamp(124px, 13vw, 190px);
-  max-height: 112px;
+  width: clamp(138px, 14vw, 210px);
+  max-height: 124px;
 }
 
 @media (max-width: 900px) {
@@ -1546,15 +1546,15 @@ textarea {
   }
 
   .summer-update-image-button img {
-    width: min(124px, 32vw);
+    width: min(136px, 34vw);
   }
 
   .summer-update-back img {
-    width: min(108px, 30vw);
+    width: min(120px, 32vw);
   }
 
   .summer-update-return-home img {
-    width: min(178px, 48vw);
+    width: min(196px, 52vw);
   }
 
   .summer-update-logo img {
