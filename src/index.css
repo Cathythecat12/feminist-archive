@@ -3932,6 +3932,108 @@ border: 1px solid #f0ddc5;
   text-wrap: balance;
 }
 
+.article-glossary-anchor {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.article-glossary-term {
+  position: relative;
+  display: inline;
+  margin: 0;
+  border: 0;
+  padding: 0 0.03em 0.02em;
+  background:
+    linear-gradient(
+      rgba(205, 190, 151, 0.7),
+      rgba(205, 190, 151, 0.7)
+    )
+    left calc(100% - 0.12em) / 100% 0.13em no-repeat;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  transition: background-size 0.22s ease, color 0.22s ease;
+}
+
+.article-glossary-term::before {
+  content: "";
+  position: absolute;
+  left: -0.52em;
+  top: 58%;
+  width: 0.38em;
+  border-top: 2px solid rgba(205, 190, 151, 0.82);
+  opacity: 0.75;
+  transform: translateY(-50%);
+}
+
+.article-glossary-term:hover,
+.article-glossary-term.is-active {
+  background-size: 100% 0.32em;
+  color: #2a241d;
+}
+
+.article-glossary-popover {
+  position: absolute;
+  z-index: 30;
+  left: -26px;
+  top: 50%;
+  width: min(320px, 42vw);
+  padding: 18px 20px;
+  background: rgba(247, 244, 237, 0.97);
+  border: 1px solid rgba(205, 190, 151, 0.7);
+  box-shadow: 0 22px 54px rgba(52, 45, 36, 0.16);
+  color: #433c33;
+  font-family: Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: 0.01em;
+  text-align: left;
+  transform: translate(-100%, -50%);
+}
+
+.article-glossary-popover::after {
+  content: "";
+  position: absolute;
+  right: -26px;
+  top: 50%;
+  width: 26px;
+  border-top: 1px solid rgba(205, 190, 151, 0.9);
+}
+
+.article-glossary-title {
+  display: block;
+  margin-bottom: 8px;
+  color: #2e5f51;
+  font-family: Georgia, "Songti SC", "STSong", serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@media (max-width: 900px) {
+  .article-glossary-popover {
+    left: 0;
+    top: calc(100% + 14px);
+    width: min(78vw, 340px);
+    transform: none;
+  }
+
+  .article-glossary-popover::after {
+    top: -14px;
+    right: auto;
+    left: 24px;
+    width: 1px;
+    height: 14px;
+    border-top: 0;
+    border-left: 1px solid rgba(205, 190, 151, 0.9);
+  }
+}
+
 .article-highlight {
   margin: 88px auto 82px;
   max-width: 760px;

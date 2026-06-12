@@ -23,6 +23,19 @@ const HOME_ARCHIVE_LIMIT = 6;
 // Temporarily hidden; switch to true when the Save the Elephant campaign should return to the homepage.
 const SHOW_SAVE_THE_ELEPHANT_ON_HOME = false;
 const IS_MAINTENANCE_MODE = import.meta.env.VITE_MAINTENANCE_MODE === "true";
+const ARTICLE_GLOSSARY_TERMS = {
+  "reproduction-is-labour": {
+    zh: [
+      {
+        key: "marxist-feminism",
+        term: "马克思主义女性主义",
+        title: "马克思主义女性主义",
+        text:
+          "一种从资本主义、劳动分配与阶级结构出发的女性主义分析。它关注家务、照护、生育等再生产劳动如何被社会依赖，却常常被女性承担、被私人化、且不被工资和经济统计承认。",
+      },
+    ],
+  },
+};
 
 const PAGE_ROUTES = {
   "archive-house": "archive-house",
@@ -350,6 +363,7 @@ function MainApp() {
   const [showNewsletter, setShowNewsletter] = useState(false);
   const [showArticleShare, setShowArticleShare] = useState(false);
   const [articleShareVisible, setArticleShareVisible] = useState(false);
+  const [activeGlossaryKey, setActiveGlossaryKey] = useState("");
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [isSubmittingArticle, setIsSubmittingArticle] = useState(false);
   const [submissionError, setSubmissionError] = useState("");
@@ -575,6 +589,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
   const openArticleFrom = (article, returnPage = currentPage) => {
     setSelectedArticle(article);
+    setActiveGlossaryKey("");
     setArticleReturnPage(returnPage);
     setCurrentPage("article-detail");
     syncArticleUrl(article, getArticleLanguage(article));
@@ -610,6 +625,57 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     }
 
     return true;
+  };
+
+  const renderArticleParagraphText = (text, blockIndex) => {
+    const glossaryTerms =
+      ARTICLE_GLOSSARY_TERMS[selectedArticle?.id]?.[language] || [];
+
+    if (!glossaryTerms.length || typeof text !== "string") {
+      return text;
+    }
+
+    const term = glossaryTerms.find((item) => text.includes(item.term));
+
+    if (!term) {
+      return text;
+    }
+
+    const segments = text.split(term.term);
+
+    return segments.flatMap((segment, segmentIndex) => {
+      const pieces = [];
+
+      if (segment) {
+        pieces.push(segment);
+      }
+
+      if (segmentIndex < segments.length - 1) {
+        const glossaryKey = `${selectedArticle.id}-${term.key}-${blockIndex}-${segmentIndex}`;
+        const isOpen = activeGlossaryKey === glossaryKey;
+
+        pieces.push(
+          <span className="article-glossary-anchor" key={glossaryKey}>
+            <button
+              className={`article-glossary-term ${isOpen ? "is-active" : ""}`}
+              type="button"
+              aria-expanded={isOpen}
+              onClick={() => setActiveGlossaryKey(isOpen ? "" : glossaryKey)}
+            >
+              {term.term}
+            </button>
+            {isOpen && (
+              <span className="article-glossary-popover" role="note">
+                <span className="article-glossary-title">{term.title}</span>
+                <span>{term.text}</span>
+              </span>
+            )}
+          </span>
+        );
+      }
+
+      return pieces;
+    });
   };
 
   const getArticleShareText = (article = selectedArticle) => {
@@ -2276,7 +2342,11 @@ return null;
       {selectedArticle.contentBlocks
         ? selectedArticle.contentBlocks.map((block, index) => {
             if (block.type === "paragraph") {
-              return <p key={index}>{block.text}</p>;
+              return (
+                <p key={index}>
+                  {renderArticleParagraphText(block.text, index)}
+                </p>
+              );
             }
 
             if (block.type === "lead") {
