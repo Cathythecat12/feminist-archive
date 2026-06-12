@@ -3021,7 +3021,7 @@ Further materials are being gathered.`
         className="donation-slogan-image"
         src={
           language === "zh"
-            ? "/images/捐助标语手绘版中文.png"
+            ? "/images/捐助标语手绘版中文.png?v=20260612-erased"
             : "/images/捐助标语手绘版英文.png"
         }
         alt={
