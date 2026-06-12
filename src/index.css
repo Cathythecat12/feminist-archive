@@ -4858,6 +4858,10 @@ body {
   animation: magazineMenuDrop 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+.magazine-menu-panel.en {
+  padding-top: clamp(28px, 4vw, 52px);
+}
+
 .magazine-menu-topline {
   display: flex;
   align-items: center;
@@ -4910,10 +4914,20 @@ body {
   padding: clamp(48px, 7vw, 96px) 0 clamp(62px, 7vw, 104px);
 }
 
+.magazine-menu-panel.en .magazine-menu-body {
+  grid-template-columns: minmax(500px, 1.28fr) minmax(390px, 0.72fr);
+  gap: clamp(46px, 6.8vw, 112px);
+  padding: clamp(32px, 4.8vw, 58px) 0 clamp(34px, 4.8vw, 56px);
+}
+
 .magazine-menu-routes {
   display: flex;
   flex-direction: column;
   gap: clamp(22px, 3.3vw, 42px);
+}
+
+.magazine-menu-panel.en .magazine-menu-routes {
+  gap: clamp(18px, 2.7vw, 34px);
 }
 
 .magazine-menu-routes button {
@@ -4940,6 +4954,10 @@ body {
   letter-spacing: -0.025em;
 }
 
+.magazine-menu-panel.en .magazine-menu-routes span {
+  font-size: clamp(2.65rem, 4.35vw, 5rem);
+}
+
 .magazine-menu-routes em {
   display: block;
   max-width: 760px;
@@ -4960,10 +4978,20 @@ body {
   padding-top: clamp(22px, 3vw, 44px);
 }
 
+.magazine-menu-panel.en .magazine-menu-side {
+  grid-template-columns: minmax(176px, 1fr) minmax(176px, 0.8fr);
+  gap: clamp(38px, 5.2vw, 82px);
+  padding-top: clamp(14px, 2.2vw, 32px);
+}
+
 .magazine-menu-secondary {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.magazine-menu-panel.en .magazine-menu-secondary {
+  gap: 20px;
 }
 
 .magazine-menu-secondary > span,
@@ -4988,6 +5016,11 @@ body {
   letter-spacing: -0.055em;
 }
 
+.magazine-menu-panel.en .magazine-menu-secondary button {
+  font-size: clamp(1.62rem, 2.35vw, 3rem);
+  line-height: 1.08;
+}
+
 .magazine-menu-secondary button:hover,
 .magazine-menu-tertiary button:hover {
   color: #1f5c50;
@@ -4996,6 +5029,10 @@ body {
 .magazine-menu-tertiary {
   display: grid;
   gap: clamp(46px, 6vw, 86px);
+}
+
+.magazine-menu-panel.en .magazine-menu-tertiary {
+  gap: clamp(36px, 4.8vw, 66px);
 }
 
 .magazine-menu-tertiary div {
@@ -5018,6 +5055,11 @@ body {
   padding: 24px clamp(30px, 5.6vw, 118px);
   border-top: 1px solid rgba(32, 32, 28, 0.12);
   background: #efede7;
+}
+
+.magazine-menu-panel.en .magazine-menu-footer {
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .magazine-menu-footer p {

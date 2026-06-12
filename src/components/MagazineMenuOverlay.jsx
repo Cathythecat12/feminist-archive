@@ -12,7 +12,7 @@ function MagazineMenuOverlay({ language, setCurrentPage, onClose }) {
   return (
     <div className="magazine-menu-overlay" onClick={onClose}>
       <div
-        className="magazine-menu-panel"
+        className={`magazine-menu-panel ${zh ? "zh" : "en"}`}
         onClick={(event) => event.stopPropagation()}
       >
         <div className="magazine-menu-topline">
