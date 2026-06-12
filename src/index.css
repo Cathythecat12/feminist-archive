@@ -1262,8 +1262,8 @@ textarea {
 }
 
 .summer-update-image-button.zh-newsletter img {
-  width: clamp(144px, 13.8vw, 210px);
-  max-height: 82px;
+  width: clamp(124px, 10.8vw, 168px);
+  max-height: 66px;
 }
 
 .summer-update-logo {
@@ -1327,8 +1327,8 @@ textarea {
   }
 
   .summer-update-image-button.zh-newsletter img {
-    width: 94px;
-    max-height: 50px;
+    width: 78px;
+    max-height: 42px;
   }
 }
 
@@ -1597,8 +1597,8 @@ textarea {
   }
 
   .summer-update-image-button.zh-newsletter img {
-    width: min(168px, 40vw);
-    max-height: 74px;
+    width: min(142px, 34vw);
+    max-height: 62px;
   }
 
   .summer-update-back img {
