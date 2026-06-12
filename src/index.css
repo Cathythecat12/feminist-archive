@@ -3901,15 +3901,18 @@ border: 1px solid #f0ddc5;
   text-align: center;
 }
 .article-section-heading {
-  margin: 82px 0 34px;
-  max-width: 720px;
-  color: #8b5138;
-  font-family: "Songti SC", "STSong", "Noto Serif SC", "SimSun", serif;
-  font-size: clamp(24px, 1.7vw, 31px);
+  margin: 88px 0 32px;
+  max-width: 860px;
+  color: #075183;
+  font-family: Georgia, "Times New Roman", "Songti SC", "STSong", "Noto Serif SC",
+    "SimSun", serif;
+  font-size: clamp(2.55rem, 4.1vw, 4.5rem);
   font-style: normal;
-  font-weight: 700;
-  line-height: 1.48;
-  letter-spacing: 0.045em;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0;
+  text-align: left;
+  text-wrap: balance;
 }
 
 .article-highlight {
