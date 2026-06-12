@@ -1261,6 +1261,11 @@ textarea {
   max-height: 74px;
 }
 
+.summer-update-image-button.zh-newsletter img {
+  width: clamp(144px, 13.8vw, 210px);
+  max-height: 82px;
+}
+
 .summer-update-logo {
   display: flex;
   align-items: center;
@@ -1311,6 +1316,11 @@ textarea {
   .summer-update-image-button img {
     width: 100px;
     max-height: 52px;
+  }
+
+  .summer-update-image-button.zh-newsletter img {
+    width: 108px;
+    max-height: 58px;
   }
 }
 
@@ -1576,6 +1586,11 @@ textarea {
   .summer-update-image-button img {
     width: min(154px, 37vw);
     max-height: 68px;
+  }
+
+  .summer-update-image-button.zh-newsletter img {
+    width: min(168px, 40vw);
+    max-height: 74px;
   }
 
   .summer-update-back img {

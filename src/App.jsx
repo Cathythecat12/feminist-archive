@@ -2467,7 +2467,7 @@ return null;
         <header className="summer-update-header">
           <div className="summer-update-header-left">
             <button
-              className="summer-update-image-button"
+              className={`summer-update-image-button ${zh ? "zh-magazine" : "en-magazine"}`}
               onClick={() => setCurrentPage("magazine")}
               aria-label={zh ? "杂志" : "Magazine"}
             >
@@ -2475,7 +2475,7 @@ return null;
             </button>
             <span>/</span>
             <button
-              className="summer-update-image-button"
+              className={`summer-update-image-button ${zh ? "zh-newsletter" : "en-newsletter"}`}
               onClick={() => setCurrentPage("newsletter-page")}
               aria-label={zh ? "通讯" : "Newsletter"}
             >
