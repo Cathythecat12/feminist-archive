@@ -1739,20 +1739,24 @@ textarea {
 
 .issue-hero h1 {
   margin: 0;
-  font-size: clamp(3.8rem, 9vw, 8rem);
-  line-height: 0.92;
-  letter-spacing: -0.06em;
+  font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  font-size: clamp(3.4rem, 7.6vw, 7rem);
+  font-weight: 560;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
   max-width: 980px;
   text-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
 }
 
 .issue-hero p {
-  margin: 24px 0 0;
-  max-width: 760px;
-  font-size: clamp(1.1rem, 2vw, 1.55rem);
-  line-height: 1.5;
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 22px 0 0;
+  max-width: 720px;
+  font-size: clamp(1rem, 1.55vw, 1.32rem);
+  line-height: 1.72;
+  font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
   font-weight: 500;
+  letter-spacing: 0.01em;
+  text-shadow: 0 5px 24px rgba(0, 0, 0, 0.2);
 }
 
 .issue-intro {
@@ -1837,9 +1841,9 @@ textarea {
 
 .issue-card h2 {
   margin: 0 0 12px;
-  font-size: clamp(1.9rem, 3vw, 3rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  font-size: clamp(1.72rem, 2.55vw, 2.55rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
 }
 
 .issue-card p {
@@ -2172,7 +2176,28 @@ textarea {
 }
 
 .issue-card:first-child h2 {
-  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  font-size: clamp(2.08rem, 3.75vw, 3.4rem);
+  line-height: 1.02;
+}
+
+html[lang="zh-CN"] .issue-hero h1 {
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "PingFang SC", "Hiragino Sans GB", serif;
+  font-weight: 520;
+  letter-spacing: 0.02em;
+}
+
+html[lang="zh-CN"] .issue-hero p {
+  max-width: 780px;
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "PingFang SC", "Hiragino Sans GB", serif;
+  font-size: clamp(1.02rem, 1.7vw, 1.38rem);
+  font-weight: 500;
+  letter-spacing: 0.035em;
+}
+
+html[lang="zh-CN"] .issue-card h2 {
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "PingFang SC", "Hiragino Sans GB", serif;
+  font-weight: 560;
+  letter-spacing: -0.015em;
 }
 
 @media (max-width: 1050px) {
