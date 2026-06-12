@@ -2485,10 +2485,15 @@ return null;
 
           <button
             className="summer-update-logo"
+            type="button"
             onClick={() => setCurrentPage("main")}
             aria-label="Feminist Archive Summer Update"
           >
-            <img src="/images/夏日更新logo.png" alt="Feminist Archive Summer Update" />
+            <img
+              src="/images/夏日更新logo.png"
+              alt="Feminist Archive Summer Update"
+              draggable={false}
+            />
           </button>
 
           <button

@@ -1266,6 +1266,9 @@ textarea {
   align-items: center;
   justify-content: center;
   text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .summer-update-logo img {
@@ -1273,6 +1276,10 @@ textarea {
   width: min(760px, 58vw);
   max-height: 150px;
   object-fit: contain;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+  user-select: none;
 }
 
 .summer-update-back {
