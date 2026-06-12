@@ -2210,6 +2210,11 @@ return null;
 
               <p>{selectedArticle.excerpt}</p>
             </div>
+            {selectedArticle.heroCaption && (
+              <p className="mag-article-hero-caption">
+                {selectedArticle.heroCaption}
+              </p>
+            )}
           </section>
 
           <button

@@ -614,6 +614,8 @@ This is the beginning of the first section of Chapter 2 of Gender Trouble.
     date: "June 2026",
     readTime: "5 min read",
     image: "/images/BirthStrike封面图.png",
+    heroCaption:
+      "Cover image from Birth Strike: The Hidden Fight Over Women’s Work by Jenny Brown.",
     excerpt:
       "Capitalist societies have long relied on women to bear children, raise them, perform domestic work, and care for the elderly, while rendering this labour largely invisible.",
     tags: [
@@ -624,17 +626,6 @@ This is the beginning of the first section of Chapter 2 of Gender Trouble.
       "reproductive justice",
     ],
     contentBlocks: [
-      {
-        type: "lead",
-        text:
-          "Capitalist societies have long relied on women to bear children, raise them, perform domestic work, and care for the elderly. Yet these activities are often excluded from GDP calculations, unpaid, and described as “maternal love,” “natural instinct,” or “responsibility,” rendering them largely invisible.",
-      },
-      {
-        type: "image",
-        src: "/images/BirthStrike封面图.png",
-        caption:
-          "Cover image from Birth Strike: The Hidden Fight Over Women’s Work by Jenny Brown.",
-      },
       ...paragraphs(`
 As more and more women choose to delay childbirth, have fewer children, or not have children at all, this reflects a broader social phenomenon: women are becoming less willing to bear the costs of reproduction and caregiving unconditionally.
 

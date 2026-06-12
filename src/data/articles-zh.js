@@ -662,21 +662,12 @@ image: "/images/文章素材图9.png",
     date: "2026年6月",
     readTime: "5 min read",
     image: "/images/BirthStrike封面图.png",
+    heroCaption:
+      "封面图片引用自书籍 Birth Strike: The Hidden Fight Over Women’s Work 封面，作者 Jenny Brown。",
     excerpt:
       "资本主义社会长期依赖女性怀孕、生育、抚养儿童、家务劳动、照护老人，但这些工作往往不被计算进GDP、没有工资、被描述为“母爱”“天性”“责任”，因此被隐形化了。",
     tags: ["生育劳动", "照护劳动", "资本主义", "女性主义", "生育正义"],
     contentBlocks: [
-      {
-        type: "lead",
-        text:
-          "资本主义社会长期依赖女性怀孕、生育、抚养儿童、家务劳动、照护老人，但这些工作往往不被计算进GDP、没有工资、被描述为“母爱”“天性”“责任”，因此被隐形化了。",
-      },
-      {
-        type: "image",
-        src: "/images/BirthStrike封面图.png",
-        caption:
-          "封面图片引用自书籍 Birth Strike: The Hidden Fight Over Women’s Work 封面，作者 Jenny Brown。",
-      },
       ...paragraphs(`
 当越来越多女性：推迟生育、拒绝生育、少生孩子，这实际上反映了一种社会现象：女性不再愿意无条件承担生育和照护成本。
 
