@@ -1257,14 +1257,15 @@ textarea {
 }
 
 .summer-update-image-button img {
-  width: clamp(96px, 10vw, 154px);
-  max-height: 96px;
+  width: clamp(126px, 12.5vw, 190px);
+  max-height: 74px;
 }
 
 .summer-update-logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-self: center;
   text-align: center;
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
@@ -1284,6 +1285,33 @@ textarea {
 
 .summer-update-back {
   justify-self: end;
+}
+
+@media (min-width: 901px) {
+  .summer-update-header {
+    grid-template-columns: 1fr;
+  }
+
+  .summer-update-header-left {
+    position: absolute;
+    left: clamp(18px, 2vw, 72px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .summer-update-back {
+    position: absolute;
+    right: clamp(26px, 5vw, 72px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1400px) {
+  .summer-update-image-button img {
+    width: 100px;
+    max-height: 52px;
+  }
 }
 
 .summer-update-back img {
@@ -1546,7 +1574,8 @@ textarea {
   }
 
   .summer-update-image-button img {
-    width: min(136px, 34vw);
+    width: min(154px, 37vw);
+    max-height: 68px;
   }
 
   .summer-update-back img {
