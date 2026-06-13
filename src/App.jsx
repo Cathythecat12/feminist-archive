@@ -2235,7 +2235,7 @@ return null;
     </div>
   </div>
 )}
-        <div className="mag-article-shell">
+        <div className={`mag-article-shell article-${selectedArticle.id}`}>
           <header className="mag-article-header">
             <div className="mag-article-header-left">
               <nav

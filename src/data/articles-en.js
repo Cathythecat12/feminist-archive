@@ -74,7 +74,7 @@ A slower archive allows writing to remain intellectually alive beyond visibility
   
     contentBlocks: [
       {
-        type: "lead",
+        type: "paragraph",
         text:
           "Indeed, the old patriarchal narrative could no longer sustain itself. Barbie could no longer continue to be sold to women merely as a fully decorated object.",
       },
@@ -141,7 +141,7 @@ A slower archive allows writing to remain intellectually alive beyond visibility
       {
         type: "quote",
         text:
-          "Barbie’s pointed feet finally touched the ground. So now the way you prove yourself to be feminist is by buying huge amounts of pink clothing, dressing like Barbie, and going to the theater to watch Barbie?",
+          "“Barbie’s pointed feet finally touched the ground. So now the way you prove yourself to be feminist is by buying huge amounts of pink clothing, dressing like Barbie, and going to the theater to watch Barbie?”",
       },
   
       ...paragraphs(`
