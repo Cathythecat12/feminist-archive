@@ -3915,6 +3915,31 @@ border: 1px solid #f0ddc5;
   letter-spacing: 0.02em;
   text-align: center;
 }
+
+.article-barbie-capitalism .article-pullquote {
+  position: relative;
+  max-width: 900px;
+  line-height: 1.72;
+  letter-spacing: 0.01em;
+}
+
+.article-barbie-capitalism .article-pullquote::before,
+.article-barbie-capitalism .article-pullquote::after {
+  color: currentColor;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+.article-barbie-capitalism .article-pullquote::before {
+  content: "“";
+  margin-right: 0.08em;
+}
+
+.article-barbie-capitalism .article-pullquote::after {
+  content: "”";
+  margin-left: 0.04em;
+}
+
 .article-quote {
   margin: 90px auto;
 
