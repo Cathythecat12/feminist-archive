@@ -4015,6 +4015,25 @@ border: 1px solid #f0ddc5;
   line-height: 1.25;
 }
 
+.article-glossary-action {
+  display: inline-flex;
+  margin-top: 13px;
+  border: 0;
+  border-bottom: 1px solid rgba(205, 190, 151, 0.9);
+  padding: 0 0 3px;
+  background: transparent;
+  color: #2e5f51;
+  cursor: pointer;
+  font: inherit;
+  font-family: Georgia, "Songti SC", "STSong", serif;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.article-glossary-action:hover {
+  color: #7a5a33;
+}
+
 @media (max-width: 900px) {
   .article-glossary-popover {
     left: 0;
@@ -11578,6 +11597,56 @@ body {
   transform: translateY(-2px);
 }
 
+.reading-guide-page-book {
+  background:
+    radial-gradient(circle at 10% 12%, rgba(205, 190, 151, 0.2), transparent 30%),
+    linear-gradient(180deg, #f7f2ea 0%, #ece1d2 100%);
+}
+
+.book-guide-placeholder {
+  min-height: calc(84vh - 112px);
+}
+
+.book-guide-placeholder h1 {
+  max-width: 1100px;
+}
+
+.book-guide-staging {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.58fr) 1fr;
+  gap: 34px;
+  padding: 42px;
+  border: 1px solid rgba(65,45,28,0.18);
+  background: rgba(255, 252, 246, 0.45);
+  box-shadow: 0 28px 90px rgba(31, 27, 24, 0.05);
+}
+
+.book-guide-staging span {
+  display: block;
+  margin-bottom: 16px;
+  color: #9a6a4f;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.book-guide-staging h2 {
+  margin: 0;
+  color: #113f38;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  font-weight: 560;
+  line-height: 0.95;
+}
+
+.book-guide-staging p {
+  margin: 0;
+  color: #5c554f;
+  font-size: 1.08rem;
+  line-height: 1.78;
+}
+
 @media (max-width: 820px) {
   .reading-guide-main {
     padding: 0 24px 110px;
@@ -11600,6 +11669,11 @@ body {
 
   .reading-guide-row > span {
     font-size: 2rem;
+  }
+
+  .book-guide-staging {
+    grid-template-columns: 1fr;
+    padding: 30px;
   }
 }
 

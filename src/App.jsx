@@ -33,6 +33,24 @@ const ARTICLE_GLOSSARY_TERMS = {
         text:
           "一种从资本主义、劳动分配与阶级结构出发的女性主义分析。它关注家务、照护、生育等再生产劳动如何被社会依赖，却常常被女性承担、被私人化、且不被工资和经济统计承认。",
       },
+      {
+        key: "caliban-and-the-witch",
+        term: "《卡利班与女巫》",
+        title: "《卡利班与女巫》",
+        text: "我们对这本书有解读文章，点击这里查看！",
+        actionLabel: "查看导读",
+        targetPage: "caliban-guide",
+      },
+    ],
+    en: [
+      {
+        key: "caliban-and-the-witch",
+        term: "Caliban and the Witch",
+        title: "Caliban and the Witch",
+        text: "We have a reading guide for this book. Click here to read it!",
+        actionLabel: "View guide",
+        targetPage: "caliban-guide",
+      },
     ],
   },
 };
@@ -58,6 +76,7 @@ const PAGE_ROUTES = {
   parlour: "parlour",
   "print-edition": "print",
   "reading-guides": "reading-room/guides",
+  "caliban-guide": "reading-room/caliban-and-the-witch",
   "reading-room": "reading-room",
   "submission-guidelines": "submissions/guidelines",
   "submission-page": "submissions/new",
@@ -528,6 +547,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     "archive-house",
     "reading-room",
     "reading-guides",
+    "caliban-guide",
     "contact-page",
     "newsletter-page",
     "newsletter-privacy",
@@ -635,47 +655,69 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
       return text;
     }
 
-    const term = glossaryTerms.find((item) => text.includes(item.term));
+    const pieces = [];
+    let cursor = 0;
+    let matchIndex = 0;
 
-    if (!term) {
-      return text;
+    while (cursor < text.length) {
+      const nextMatch = glossaryTerms
+        .map((item) => ({
+          term: item,
+          index: text.indexOf(item.term, cursor),
+        }))
+        .filter((item) => item.index !== -1)
+        .sort((a, b) => a.index - b.index || b.term.term.length - a.term.term.length)[0];
+
+      if (!nextMatch) {
+        pieces.push(text.slice(cursor));
+        break;
+      }
+
+      if (nextMatch.index > cursor) {
+        pieces.push(text.slice(cursor, nextMatch.index));
+      }
+
+      const term = nextMatch.term;
+      const glossaryKey = `${selectedArticle.id}-${term.key}-${blockIndex}-${matchIndex}`;
+      const isOpen = activeGlossaryKey === glossaryKey;
+
+      pieces.push(
+        <span className="article-glossary-anchor" key={glossaryKey}>
+          <button
+            className={`article-glossary-term ${isOpen ? "is-active" : ""}`}
+            type="button"
+            aria-expanded={isOpen}
+            onClick={() => setActiveGlossaryKey(isOpen ? "" : glossaryKey)}
+          >
+            {term.term}
+          </button>
+          {isOpen && (
+            <span className="article-glossary-popover" role="note">
+              <span className="article-glossary-title">{term.title}</span>
+              <span>{term.text}</span>
+              {term.targetPage && (
+                <button
+                  className="article-glossary-action"
+                  type="button"
+                  onClick={() => {
+                    setActiveGlossaryKey("");
+                    setCurrentPage(term.targetPage);
+                    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+                  }}
+                >
+                  {term.actionLabel || (language === "zh" ? "查看" : "Open")}
+                </button>
+              )}
+            </span>
+          )}
+        </span>
+      );
+
+      cursor = nextMatch.index + term.term.length;
+      matchIndex += 1;
     }
 
-    const segments = text.split(term.term);
-
-    return segments.flatMap((segment, segmentIndex) => {
-      const pieces = [];
-
-      if (segment) {
-        pieces.push(segment);
-      }
-
-      if (segmentIndex < segments.length - 1) {
-        const glossaryKey = `${selectedArticle.id}-${term.key}-${blockIndex}-${segmentIndex}`;
-        const isOpen = activeGlossaryKey === glossaryKey;
-
-        pieces.push(
-          <span className="article-glossary-anchor" key={glossaryKey}>
-            <button
-              className={`article-glossary-term ${isOpen ? "is-active" : ""}`}
-              type="button"
-              aria-expanded={isOpen}
-              onClick={() => setActiveGlossaryKey(isOpen ? "" : glossaryKey)}
-            >
-              {term.term}
-            </button>
-            {isOpen && (
-              <span className="article-glossary-popover" role="note">
-                <span className="article-glossary-title">{term.title}</span>
-                <span>{term.text}</span>
-              </span>
-            )}
-          </span>
-        );
-      }
-
-      return pieces;
-    });
+    return pieces;
   };
 
   const getArticleShareText = (article = selectedArticle) => {
@@ -3382,6 +3424,18 @@ Further materials are being gathered.`
       <ReadingRoomPage
         language={language}
         initialShowGuides
+        onBack={() => setCurrentPage("reading-room")}
+        onOpenArticle={(article) => openArticleFrom(article, "reading-room")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "caliban-guide") {
+    return renderWithToast(
+      <ReadingRoomPage
+        language={language}
+        initialShowGuides
+        initialGuideBookId="caliban-and-the-witch"
         onBack={() => setCurrentPage("reading-room")}
         onOpenArticle={(article) => openArticleFrom(article, "reading-room")}
         setCurrentPage={setCurrentPage}

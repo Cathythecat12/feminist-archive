@@ -40,6 +40,18 @@ const booksEn = [
     note: "A classic argument on women’s economic dependence, domestic labour, and the social organisation of gender.",
   },
   {
+    id: "caliban-and-the-witch",
+    title: "Caliban and the Witch",
+    author: "Silvia Federici",
+    year: "2004",
+    category: "Body & Labour",
+    path: "Body & Labour",
+    cover: "",
+    pdf: "",
+    guide: true,
+    note: "A future guide to capitalism, witch-hunts, women’s bodies, and reproductive labour.",
+  },
+  {
     id: "gender-trouble-en",
     title: "Gender Trouble",
     author: "Judith Butler",
@@ -115,6 +127,18 @@ const booksZh = [
     note: "这里将放置新的女性主义经典文本。",
   },
   {
+    id: "caliban-and-the-witch",
+    title: "卡利班与女巫",
+    author: "西尔维娅·费代里奇",
+    year: "2004",
+    category: "身体与劳动",
+    path: "身体与劳动",
+    cover: "",
+    pdf: "",
+    guide: true,
+    note: "关于资本主义、猎巫、女性身体与再生产劳动的导读将在这里继续建设。",
+  },
+  {
     id: "coming-soon-zh-2",
     title: "即将上架",
     author: "Feminist Archive",
@@ -134,11 +158,14 @@ function ReadingRoomPage({
   onOpenArticle,
   setCurrentPage,
   initialShowGuides = false,
+  initialGuideBookId = "gender-trouble",
 }) {
   const zh = language === "zh";
   const books = zh ? booksZh : booksEn;
-  const [activeBook, setActiveBook] = useState(books[0]);
+  const initialBook = books.find((book) => book.id === initialGuideBookId) || books[0];
+  const [activeBook, setActiveBook] = useState(initialBook);
   const [showGuides, setShowGuides] = useState(initialShowGuides);
+  const [activeGuideBookId, setActiveGuideBookId] = useState(initialBook.id);
   const sourceArticles = zh ? chineseArticles : englishArticles;
   const genderTroubleGuideOrder = [
     "butler-women-subject-heterosexual-matrix",
@@ -156,6 +183,11 @@ function ReadingRoomPage({
       (article) => !genderTroubleGuideOrder.includes(article.id)
     ),
   ];
+  const activeGuideBook =
+    books.find((book) => book.id === activeGuideBookId) ||
+    books.find((book) => book.id === initialGuideBookId) ||
+    books[0];
+  const isCalibanGuide = activeGuideBook?.id === "caliban-and-the-witch";
 
   useEffect(() => {
     if (showGuides) {
@@ -170,12 +202,80 @@ function ReadingRoomPage({
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setShowGuides(initialShowGuides);
+      const nextBook =
+        books.find((book) => book.id === initialGuideBookId) || books[0];
+
+      setActiveBook(nextBook);
+      setActiveGuideBookId(nextBook.id);
     }, 0);
 
     return () => window.clearTimeout(timer);
-  }, [initialShowGuides]);
+  }, [books, initialGuideBookId, initialShowGuides]);
 
   if (showGuides) {
+    if (isCalibanGuide) {
+      return (
+        <div className="reading-guide-page reading-guide-page-book">
+          <header className="reading-room-header">
+            <button onClick={() => setShowGuides(false)}>
+              ← {zh ? "返回书架" : "Back to shelf"}
+            </button>
+
+            <div className="reading-room-logo" onClick={() => setCurrentPage("main")}>
+              Feminist Archive
+              <span>{zh ? "经典导读计划" : "classic guide programme"}</span>
+            </div>
+
+            <button onClick={() => setCurrentPage("magazine")}>
+              {zh ? "杂志" : "Magazine"}
+            </button>
+          </header>
+
+          <main className="reading-guide-main">
+            <section className="reading-guide-hero book-guide-placeholder">
+              <div className="reading-guide-meta-grid">
+                <span>Feminist Archive</span>
+                <span>{zh ? "阅读室" : "Reading Room"}</span>
+                <span>{zh ? "《卡利班与女巫》" : "Caliban and the Witch"}</span>
+                <span>{zh ? "建设中" : "In progress"}</span>
+              </div>
+
+              <div className="reading-room-kicker">
+                {zh ? "READING GUIDE / 导读占位" : "READING GUIDE / PLACEHOLDER"}
+              </div>
+
+              <h1>{zh ? "《卡利班与女巫》导读" : "Caliban and the Witch Guide"}</h1>
+
+              <p>
+                {zh
+                  ? "这里会放置 Feminist Archive 对《卡利班与女巫》的导读、关键词、章节说明与延伸阅读。页面已经先建好，未来可以继续补充正文。"
+                  : "This page is reserved for the Feminist Archive guide to Caliban and the Witch: keywords, chapter notes, context, and further reading will be added here."}
+              </p>
+            </section>
+
+            <section className="book-guide-staging">
+              <div>
+                <span>{zh ? "书籍" : "Book"}</span>
+                <h2>{activeGuideBook.title}</h2>
+                <p>
+                  {activeGuideBook.author} {activeGuideBook.year && `· ${activeGuideBook.year}`}
+                </p>
+              </div>
+
+              <div>
+                <span>{zh ? "未来内容" : "Future notes"}</span>
+                <p>
+                  {zh
+                    ? "这里将加入关于原始积累、猎巫、身体规训、再生产劳动与资本主义形成的导读。"
+                    : "Future notes will cover primitive accumulation, witch-hunts, bodily discipline, reproductive labour, and the formation of capitalism."}
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      );
+    }
+
     return (
       <div className="reading-guide-page">
         <header className="reading-room-header">
@@ -347,7 +447,12 @@ function ReadingRoomPage({
               )}
 
               {activeBook.guide ? (
-                <button onClick={() => setShowGuides(true)}>
+                <button
+                  onClick={() => {
+                    setActiveGuideBookId(activeBook.id);
+                    setShowGuides(true);
+                  }}
+                >
                   {zh ? "阅读导读" : "Read guide"}
                 </button>
               ) : (

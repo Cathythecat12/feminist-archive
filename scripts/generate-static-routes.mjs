@@ -144,6 +144,14 @@ const pageMeta = {
     title: "阅读导读 | Feminist Archive",
     description: "Feminist Archive 阅读室的导读与学习路径。",
   },
+  "/en/reading-room/caliban-and-the-witch": {
+    title: "Caliban and the Witch Guide | Feminist Archive",
+    description: "A Reading Room guide placeholder for Silvia Federici's Caliban and the Witch.",
+  },
+  "/zh/reading-room/caliban-and-the-witch": {
+    title: "《卡利班与女巫》导读 | Feminist Archive",
+    description: "Feminist Archive 阅读室的《卡利班与女巫》导读占位页。",
+  },
   "/en/submissions/new": {
     title: "Submit Writing | Feminist Archive",
     description: "Submit essays, fragments, translations, reviews, lecture texts, and archival notes.",
