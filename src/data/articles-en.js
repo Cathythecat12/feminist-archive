@@ -61,7 +61,7 @@ A slower archive allows writing to remain intellectually alive beyond visibility
     author: "Feminist Archive",
     date: "20 May 2026",
     readTime: "18 min read",
-    image: "/images/barbie-cover3.jpg",
+    image: "/images/barbie-cover3新版.PNG",
     excerpt:
       "Mattel now criticizes itself in the name of anti-patriarchy, injecting the spirit of feminist freedom into commodities themselves — and as a result, they profit more than ever before.",
     tags: [

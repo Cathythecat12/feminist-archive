@@ -63,7 +63,7 @@ Feminist Archive 希望保留另一种阅读时间。
     author: "Feminist Archive",
     date: "2026年5月20日",
     readTime: "10 min read",
-    image: "/images/barbie-cover3.jpg",
+    image: "/images/barbie-cover3新版.PNG",
     excerpt:
       "美泰公司打着反父权制的旗号自我批判，并把反父权制的自由精神注入到商品里，于是他们便赚得更多了。",
     tags: ["资本主义", "女性主义", "商品批判", "芭比", "意识形态"],
