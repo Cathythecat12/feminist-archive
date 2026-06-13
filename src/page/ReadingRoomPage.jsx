@@ -179,9 +179,6 @@ function ReadingRoomPage({
     ...genderTroubleGuideOrder
       .map((id) => sourceArticles.find((article) => article.id === id))
       .filter(Boolean),
-    ...sourceArticles.filter(
-      (article) => !genderTroubleGuideOrder.includes(article.id)
-    ),
   ];
   const activeGuideBook =
     books.find((book) => book.id === activeGuideBookId) ||
