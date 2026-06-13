@@ -6134,6 +6134,17 @@ body {
   transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
+.psyche-contact-socials a.psyche-contact-social-icon {
+  width: 52px;
+  min-width: 52px;
+  height: 52px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+}
+
 .psyche-contact-socials a:hover {
   background: #075b4d;
   color: #f7f4ee;

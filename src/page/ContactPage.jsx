@@ -1,4 +1,5 @@
 import {
+    FaFacebookF,
     FaInstagram,
     FaYoutube,
   } from "react-icons/fa";
@@ -98,6 +99,15 @@ import {
       <a href="https://x.com/FeministArchiv" target="_blank" rel="noopener noreferrer">
         X
       </a>
+      <a
+        className="psyche-contact-social-icon"
+        href="https://www.facebook.com/profile.php?id=61590423616711"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+      >
+        <FaFacebookF />
+      </a>
     </div>
   </section>
 
@@ -140,6 +150,10 @@ import {
   
               <a href="https://x.com/FeministArchiv" target="_blank" rel="noopener noreferrer">
                 <FaXTwitter />
+              </a>
+
+              <a href="https://www.facebook.com/profile.php?id=61590423616711" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <FaFacebookF />
               </a>
   
               <a href="https://www.youtube.com/channel/UCnw53eUKlZOK3Znp1AvY0Cw" target="_blank" rel="noopener noreferrer">
