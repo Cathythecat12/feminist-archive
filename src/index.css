@@ -10310,32 +10310,27 @@ body {
 }
 
 .facebook-share-logo {
-  border-radius: 18px;
-  background: linear-gradient(135deg, #1877f2, #0d4fb3);
-  color: #ffffff;
-  box-shadow:
-    0 14px 30px rgba(24, 119, 242, 0.22),
-    inset 0 0 0 1px rgba(255,255,255,0.18);
+  width: 62px;
+  height: 66px;
+  overflow: visible;
+  color: #1664d9;
+  filter: drop-shadow(0 14px 18px rgba(22, 100, 217, 0.14));
 }
 
 .facebook-share-logo::before {
   content: "";
   position: absolute;
-  left: 29px;
-  top: 30px;
-  width: 22px;
-  height: 7px;
-  border-radius: 999px;
-  background: #fff;
-  transform-origin: left center;
-  animation: facebookMidBar 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  left: 19px;
+  top: 4px;
+  width: 10px;
+  height: 56px;
+  background: currentColor;
+  border-radius: 0;
 }
 
 .facebook-share-logo span {
-  position: relative;
-  width: 34px;
-  height: 46px;
-  transform: translate(3px, 4px);
+  position: absolute;
+  inset: 0;
   font-size: 0;
 }
 
@@ -10343,24 +10338,20 @@ body {
 .facebook-share-logo span::after {
   content: "";
   position: absolute;
-  background: #fff;
-  border-radius: 999px;
+  left: 19px;
+  height: 10px;
+  background: currentColor;
+  border-radius: 0 1px 1px 0;
 }
 
 .facebook-share-logo span::before {
-  left: 2px;
   top: 4px;
-  width: 9px;
-  height: 38px;
+  width: 37px;
 }
 
 .facebook-share-logo span::after {
-  left: 2px;
-  top: 4px;
+  top: 28px;
   width: 30px;
-  height: 7px;
-  transform-origin: left center;
-  animation: facebookTopBar 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
 .wechat-share-logo {
