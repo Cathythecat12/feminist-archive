@@ -734,7 +734,7 @@ image: "/images/文章素材图9.png",
     author: "Feminist Archive",
     date: "2026年6月",
     readTime: "7 min read",
-    image: "/images/后现代女性主义.PNG",
+    image: "/images/FeminismArtCapitalism.png",
     heroCaption: "图像来自 Feminist Archive 站内视觉素材。",
     excerpt:
       "当女性主义从改变权力结构转向争取进入权力结构时，它便开始从一种解放政治转化为资本主义意识形态的一部分。",
