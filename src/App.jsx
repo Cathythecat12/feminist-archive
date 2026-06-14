@@ -2763,7 +2763,14 @@ return null;
       </div>
       <div>
         <h3>{language === "zh" ? "关于" : "About"}</h3>
-        <a className="psyche-footer-link" href="https://feministarchivejournal.org/zh/our-story">
+        <a
+          className="psyche-footer-link"
+          href={
+            language === "zh"
+              ? "https://feministarchivejournal.org/zh/our-story"
+              : "https://feministarchivejournal.org/en/our-story"
+          }
+        >
           {language === "zh" ? "我们的故事" : "About"}
         </a>
         <button type="button" onClick={() => setCurrentPage("contact-page")}>

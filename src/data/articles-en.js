@@ -178,6 +178,75 @@ A slower archive allows writing to remain intellectually alive beyond visibility
 },
 
   {
+    id: "feminism-art-capitalism",
+    layout: "psyche",
+    title:
+      "The Most Successful Triumph of Capitalism Is Not the Suppression of Feminism, but Convincing Feminism That Participation in the Existing Order Is Liberation",
+    subtitle:
+      "Feminism, Art, Capitalism: When feminism shifts from transforming power structures to seeking entry into them, it begins to turn from a politics of liberation into a component of capitalist ideology.",
+    category: "Reviews",
+    author: "Feminist Archive",
+    date: "June 2026",
+    readTime: "7 min read",
+    image: "/images/FeminismArtCapitalism.png",
+    excerpt:
+      "When feminism shifts from transforming power structures to seeking entry into them, it begins to turn from a politics of liberation into a component of capitalist ideology.",
+    tags: ["feminism", "art", "capitalism", "Marxism", "ideology"],
+    recommendedArticleIds: [
+      "barbie-capitalism",
+      "reproduction-is-labour",
+      "self-objectification-beauty-myth",
+    ],
+    contentBlocks: [
+      {
+        type: "lead",
+        text:
+          "In contemporary capitalist societies, feminism appears to have achieved unprecedented victories. Women have entered universities, corporate boardrooms, parliaments and governments, as well as art institutions, museums, and the global art market. More and more women artists are gaining recognition, and an increasing number of feminist issues have entered the public sphere of discussion. On the surface, gender equality seems to be gradually becoming a reality.",
+      },
+      {
+        type: "paragraph",
+        text:
+          "However, in Feminism, Art, Capitalism, Angela Dimitrakaki argues that this optimistic narrative conceals a deeper problem: is feminism transforming capitalism, or is it increasingly being appropriated by capitalism itself?",
+      },
+      {
+        type: "quote",
+        text:
+          "The greatest danger facing contemporary feminism does not come from its explicit opponents, but precisely from its own success.",
+      },
+      ...paragraphs(`
+Dimitrakaki points out that over the past several decades, feminism has increasingly been redefined as a story of individual success. Successful women are presented as symbols of social progress, while independence, confidence, professional achievement, and purchasing power are celebrated as key indicators of women’s liberation. Within this narrative, equality appears to have been achieved so long as women are granted the same opportunities as men to compete, to become entrepreneurs, investors, artists, or political leaders.
+
+Yet this understanding implicitly accepts the fundamental premise of capitalist society: that the social order itself does not need to change; it merely needs to include more women. The problem is that an exploitative structure does not automatically become just because more women are admitted into it. A female corporate executive may still participate in the production of poverty and inequality. A female politician may likewise uphold existing structures of power. If oppressive institutions remain intact, granting more women the opportunity to participate in oppression is not the same as achieving liberation.
+
+According to the author, feminism in the neoliberal era has gradually abandoned its critique of capitalism and redirected its focus toward personal choice and individual freedom. Women are encouraged to continuously invest in themselves, improve themselves, and cultivate themselves in order to succeed through market competition. Freedom is increasingly understood as the freedom to consume, the freedom to pursue a career, and the freedom of self-realization.
+
+However, such freedoms are often accessible only to those who already possess significant resources. The vast majority of women remain constrained by working conditions, economic inequality, class structures, and the dynamics of global capital. Feminism thus risks transforming itself from a collective political movement into an individualized ethic of success.
+
+The art world provides one of the clearest illustrations of this transformation. Many feminist artistic practices originally possessed a distinctly critical character. They challenged patriarchy, questioned the disciplining of bodies, opposed the objectification of women, and sought to expose the mechanisms through which social power operates. Yet capitalism possesses a remarkable capacity: it can not only tolerate criticism but also convert criticism itself into a commodity.
+
+An artwork originally intended to resist market logic can be purchased by collectors at extraordinary prices, exhibited at international biennials, transformed into an investment asset, and made to generate profit within the cultural industries. Radical political language becomes a cultural brand. Challenging artistic practices become integrated into the circuits of cultural production. The critical nature of art does not automatically prevent its commodification. On the contrary, criticality itself can become a significant source of market value.
+`),
+      {
+        type: "recommendations",
+        title: "You may also like",
+      },
+      ...paragraphs(`
+For this reason, the greatest strength of contemporary capitalism lies not in suppressing resistance but in absorbing it. It can transform revolutionary language into advertising slogans, emancipatory demands into brand identities, and critical art into cultural capital. Feminism therefore faces a profound danger: the more successfully it enters mainstream culture, the more likely it is to lose its original political edge.
+
+When feminism becomes a fashion trend, an identity label, or a marketing strategy, it may no longer pose a threat to the existing order. Instead, it risks becoming one of the order’s most effective components.
+
+Dimitrakaki further argues that art should not remain confined to the level of identity representation. Merely presenting women’s experiences, telling women’s stories, or emphasizing women’s identities is insufficient to constitute a genuinely emancipatory politics. If art neglects questions of labour, production relations, class structures, and global flows of capital, it can offer only a cultural critique while leaving untouched the economic foundations that sustain oppression.
+
+Feminist art with genuine emancipatory potential must therefore do more than challenge patriarchy; it must also challenge capitalism. It must concern itself not only with who is speaking, but also with who is labouring. It must focus not only on cultural representation but also on material production.
+
+Feminism, Art, Capitalism seeks to restore a connection between feminism and Marxism that has been increasingly severed. Dimitrakaki argues that women’s oppression does not arise solely from gender relations. Rather, it is deeply intertwined with the capitalist mode of production. Capitalism depends upon cheap labour, unpaid care work, and mechanisms of social reproduction within the household, burdens that are disproportionately carried by women. Unless these economic structures are challenged, many feminist achievements will ultimately be reabsorbed and repurposed by capitalism.
+
+True women’s liberation does not mean enabling more women to successfully integrate into the existing order. It means rethinking and transforming the social structures that generate inequality in the first place. The progress of a society cannot be measured merely by whether women gain access to centres of power. It must also be measured by whether those centres of power themselves are transformed. Otherwise, feminism may ultimately become capitalism’s most successful ideology, because it convinces people that gaining the opportunity to participate in exploitation is equivalent to achieving liberation.
+`),
+    ],
+  },
+
+  {
     id: "butler-women-subject-heterosexual-matrix",
     title:
       "Feminism Tries to Represent Women, but “Women” May Be Produced by Power Itself.",

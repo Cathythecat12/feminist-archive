@@ -67,6 +67,7 @@ These ordinary gestures are not outside history. They are often where history is
 ];
 
 const currentIssueArticleIds = [
+  "feminism-art-capitalism",
   "barbie-capitalism",
   "reproduction-is-labour",
   "self-objectification-beauty-myth",
