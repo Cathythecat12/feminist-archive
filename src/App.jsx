@@ -2707,22 +2707,34 @@ return null;
           href="https://www.instagram.com/feministarchivejournal/"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Instagram"
         >
-          Instagram
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4.5" y="4.5" width="15" height="15" rx="4.8" />
+            <circle cx="12" cy="12" r="3.65" />
+            <circle cx="16.65" cy="7.35" r="0.72" />
+          </svg>
         </a>
         <a
           href="https://bsky.app/profile/feministarchive.bsky.social"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Bluesky"
         >
-          Bluesky
+          <svg className="psyche-social-butterfly" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 12.15c-1.06-2.06-3.18-5.02-5.38-6.6-1.54-1.1-2.66-.58-2.54 1.02.13 1.73 1.46 4.04 3.78 5.6 1.03.7 1.95 1.02 2.58 1.1-1.48.18-3.16.93-3.5 2.4-.36 1.56.86 3.18 2.48 3.18 1.22 0 2.22-.86 2.58-2.2.36 1.34 1.36 2.2 2.58 2.2 1.62 0 2.84-1.62 2.48-3.18-.34-1.47-2.02-2.22-3.5-2.4.63-.08 1.55-.4 2.58-1.1 2.32-1.56 3.65-3.87 3.78-5.6.12-1.6-.98-2.12-2.54-1.02-2.2 1.58-4.32 4.54-5.38 6.6Z" />
+          </svg>
         </a>
         <a
           href="https://x.com/FeministArchiv"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="X"
         >
-          X
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5.2 5.2 18.8 18.8" />
+            <path d="M18.8 5.2 5.2 18.8" />
+          </svg>
         </a>
       </nav>
     </div>

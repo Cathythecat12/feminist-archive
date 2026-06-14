@@ -3081,21 +3081,39 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 .psyche-article-footer {
+  position: relative;
   max-width: 1760px;
   margin: 0 auto;
-  padding: 92px clamp(38px, 5vw, 92px) 52px;
+  padding: 88px clamp(38px, 5vw, 92px) 48px;
   display: grid;
   grid-template-columns: minmax(280px, 1fr) 1.85fr;
   gap: clamp(70px, 9vw, 190px);
-  background: #dedcd5;
-  color: #45423d;
-  border-top: 1px solid rgba(46, 43, 37, 0.12);
+  background:
+    linear-gradient(135deg, rgba(255, 254, 248, 0.22), transparent 38%),
+    linear-gradient(180deg, #e1ded6 0%, #d9d7cf 100%);
+  color: #403d37;
+  border-top: 1px solid rgba(36, 90, 143, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.psyche-article-footer::before {
+  content: "";
+  position: absolute;
+  top: 34px;
+  left: clamp(38px, 5vw, 92px);
+  right: clamp(38px, 5vw, 92px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(36, 90, 143, 0.36), rgba(36, 90, 143, 0.08), transparent);
+}
+
+.psyche-footer-brand {
+  position: relative;
 }
 
 .psyche-footer-logo {
-  color: #235d4d;
+  color: #245a8f;
   font-family: "Cormorant Garamond", Georgia, "Noto Serif SC", serif;
-  font-size: clamp(4rem, 7vw, 7.7rem);
+  font-size: clamp(3.7rem, 6vw, 6.75rem);
   font-weight: 560;
   letter-spacing: -0.055em;
   line-height: 0.74;
@@ -3103,24 +3121,54 @@ html[lang="zh-CN"] .issue-card h2 {
 
 .psyche-footer-brand p {
   max-width: 470px;
-  margin: 72px 0 58px;
-  color: #4e4b46;
-  font-family: "Noto Serif SC", Georgia, serif;
-  font-size: 1.34rem;
-  font-weight: 560;
-  line-height: 1.45;
+  margin: 68px 0 50px;
+  color: rgba(55, 53, 48, 0.86);
+  font-family: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  font-size: 1.28rem;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
 }
 
 .psyche-footer-socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 22px;
+  gap: 16px;
 }
 
 .psyche-footer-socials a {
-  color: #4a4742;
-  font: 750 0.9rem/1 Inter, "Noto Sans SC", sans-serif;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(36, 90, 143, 0.28);
+  border-radius: 50%;
+  color: #245a8f;
   text-decoration: none;
+  transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
+}
+
+.psyche-footer-socials a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(36, 90, 143, 0.56);
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.psyche-footer-socials svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}
+
+.psyche-footer-socials .psyche-social-butterfly {
+  width: 25px;
+  height: 25px;
+  stroke-width: 1.25;
 }
 
 .psyche-footer-columns {
@@ -3131,10 +3179,12 @@ html[lang="zh-CN"] .issue-card h2 {
 
 .psyche-footer-columns h3 {
   margin: 0 0 34px;
-  color: #46423d;
-  font: 850 0.94rem/1 Inter, "Noto Sans SC", sans-serif;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  color: #245a8f;
+  font-family: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  font-size: 1.04rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.1em;
 }
 
 .psyche-footer-columns button,
@@ -3144,23 +3194,38 @@ html[lang="zh-CN"] .issue-card h2 {
   margin: 0 0 22px;
   border: 0;
   background: transparent;
-  color: #4a4742;
+  color: rgba(55, 53, 48, 0.86);
   cursor: pointer;
-  font: 700 1.08rem/1.1 Inter, "Noto Sans SC", sans-serif;
+  font-family: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0.02em;
   padding: 0;
   text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.psyche-footer-columns button:hover,
+.psyche-footer-link:hover {
+  color: #245a8f;
+  transform: translateX(3px);
 }
 
 .psyche-footer-bottom {
   grid-column: 1 / -1;
-  margin-top: 60px;
-  padding-top: 34px;
+  margin-top: 54px;
+  padding-top: 28px;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  border-top: 1px solid rgba(46, 43, 37, 0.14);
-  color: #4a4742;
-  font: 650 0.9rem/1.4 Inter, "Noto Sans SC", sans-serif;
+  border-top: 1px solid rgba(36, 90, 143, 0.14);
+  color: rgba(55, 53, 48, 0.72);
+  font-family: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
 }
 
 .article-you-may-like {
@@ -3344,11 +3409,17 @@ html[lang="zh-CN"] .issue-card h2 {
   }
 
   .psyche-article-footer {
-    padding: 64px 24px 38px;
+    padding: 70px 24px 38px;
+  }
+
+  .psyche-article-footer::before {
+    top: 28px;
+    left: 24px;
+    right: 24px;
   }
 
   .psyche-footer-logo {
-    font-size: clamp(3.4rem, 18vw, 5rem);
+    font-size: clamp(3rem, 15vw, 4.35rem);
   }
 
   .psyche-footer-brand p {
