@@ -1765,7 +1765,7 @@ textarea {
       rgba(0, 0, 0, 0.12),
       rgba(0, 0, 0, 0.42)
     ),
-    url("/images/文章素材图4.png") center/cover no-repeat;
+    url("/images/封面图1.PNG") center/cover no-repeat;
   transform: scale(1.04);
   animation: issueImageSlowIn 1.4s ease both;
 }
