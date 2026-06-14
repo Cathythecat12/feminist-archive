@@ -2731,39 +2731,36 @@ return null;
       <div>
         <h3>{language === "zh" ? "栏目" : "Sections"}</h3>
         <button type="button" onClick={() => setCurrentPage("magazine")}>
-          Magazine
+          {language === "zh" ? "杂志" : "Magazine"}
         </button>
         <button type="button" onClick={() => setCurrentPage("archive")}>
-          Archive
+          {language === "zh" ? "档案" : "Archive"}
         </button>
         <button type="button" onClick={() => setCurrentPage("reading-guides")}>
-          Reading Guides
+          {language === "zh" ? "阅读导读" : "Reading Guides"}
         </button>
       </div>
       <div>
         <h3>{language === "zh" ? "支持" : "Support"}</h3>
         <button type="button" onClick={() => setCurrentPage("newsletter-page")}>
-          Newsletter
+          {language === "zh" ? "通讯" : "Newsletter"}
         </button>
         <button type="button" onClick={() => setCurrentPage("donate")}>
-          Donate
+          {language === "zh" ? "捐助" : "Donate"}
         </button>
       </div>
       <div>
         <h3>{language === "zh" ? "关于" : "About"}</h3>
-        <button type="button" onClick={() => setCurrentPage("about")}>
-          About
-        </button>
+        <a className="psyche-footer-link" href="https://feministarchivejournal.org/zh/our-story">
+          {language === "zh" ? "我们的故事" : "About"}
+        </a>
         <button type="button" onClick={() => setCurrentPage("contact-page")}>
-          Contact
+          {language === "zh" ? "联系" : "Contact"}
         </button>
       </div>
     </div>
 
     <div className="psyche-footer-bottom">
-      <span>Privacy Policy</span>
-      <span>Terms of Use</span>
-      <span>RSS</span>
       <span>© Feminist Archive 2026</span>
     </div>
   </footer>
