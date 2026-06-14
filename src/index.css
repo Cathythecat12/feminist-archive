@@ -2912,6 +2912,8 @@ html[lang="zh-CN"] .issue-card h2 {
 
 :is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .mag-article-layout {
   max-width: 1380px;
+  margin-left: clamp(240px, 20vw, 420px);
+  margin-right: auto;
   grid-template-columns: 220px minmax(0, 820px);
   gap: clamp(64px, 5vw, 84px);
   padding: 70px 0 92px;
@@ -3293,6 +3295,10 @@ html[lang="zh-CN"] .issue-card h2 {
   :is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .mag-article-layout {
     grid-template-columns: 1fr;
     gap: 46px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 38px;
+    padding-right: 38px;
   }
 
   :is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .mag-article-sidebar {
