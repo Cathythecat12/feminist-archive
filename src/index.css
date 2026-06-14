@@ -2709,14 +2709,6 @@ html[lang="zh-CN"] .issue-card h2 {
   font-weight: 600;
 }
 
-.article-barbie-capitalism .mag-article-content p:first-child::first-letter {
-  float: none;
-  font-size: inherit;
-  line-height: inherit;
-  padding-right: 0;
-  font-weight: inherit;
-}
-
 .article-barbie-capitalism .article-image-block:first-of-type {
   max-width: 560px;
 }
