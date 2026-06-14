@@ -2756,8 +2756,8 @@ html[lang="zh-CN"] .issue-card h2 {
 
 .article-feminism-art-capitalism-zh .mag-article-header {
   position: relative;
-  height: 136px;
-  background: #f6f4ef;
+  height: 224px;
+  background: #f8f6f0;
   border-bottom: 1px solid rgba(34, 32, 28, 0.1);
   padding: 0 34px;
 }
@@ -2765,20 +2765,20 @@ html[lang="zh-CN"] .issue-card h2 {
 .article-feminism-art-capitalism-zh .mag-article-logo {
   color: #1f5a8e;
   font-family: "Cormorant Garamond", Georgia, "Noto Serif SC", serif;
-  font-size: clamp(3.2rem, 5.5vw, 6.2rem);
-  font-weight: 650;
-  letter-spacing: -0.075em;
-  line-height: 0.8;
+  font-size: clamp(4.6rem, 7.2vw, 8rem);
+  font-weight: 560;
+  letter-spacing: -0.045em;
+  line-height: 0.72;
   text-align: center;
 }
 
 .article-feminism-art-capitalism-zh .mag-article-logo::after {
   content: "critical feminist thought";
   display: block;
-  margin-top: 12px;
+  margin-top: 18px;
   color: #1f5a8e;
-  font-family: Inter, "Noto Sans SC", sans-serif;
-  font-size: clamp(1rem, 1.7vw, 1.55rem);
+  font-family: "Cormorant Garamond", Inter, "Noto Sans SC", sans-serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.75rem);
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1;
@@ -2830,12 +2830,13 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 .article-feminism-art-capitalism-zh .mag-article-hero {
-  min-height: calc(100vh - 136px);
+  min-height: min(780px, calc(100vh - 224px));
+  max-width: 1760px;
+  margin: 0 auto;
+  display: flex;
   align-items: stretch;
   background-color: #dfeaf0;
-  background-size: 50% 100%;
-  background-position: right center;
-  background-repeat: no-repeat;
+  background-image: none;
 }
 
 .article-feminism-art-capitalism-zh .mag-article-hero::before {
@@ -2843,10 +2844,10 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 .article-feminism-art-capitalism-zh .mag-article-hero-overlay {
-  width: 50%;
+  width: 44%;
   max-width: none;
   margin: 0;
-  padding: clamp(88px, 12vh, 170px) clamp(38px, 5.6vw, 114px) 72px;
+  padding: clamp(84px, 10vh, 132px) clamp(42px, 5vw, 96px) 72px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -2864,17 +2865,17 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 .article-feminism-art-capitalism-zh .mag-article-hero-overlay h1 {
-  max-width: 900px;
+  max-width: 720px;
   color: #245a8f;
   font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", serif;
-  font-size: clamp(2.6rem, 4.45vw, 5.5rem);
+  font-size: clamp(2.6rem, 4vw, 4.95rem);
   font-weight: 520;
-  letter-spacing: -0.045em;
-  line-height: 1;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
 }
 
 .article-feminism-art-capitalism-zh .mag-article-hero p {
-  max-width: 720px;
+  max-width: 620px;
   margin: 26px 0 0;
   color: #474541;
   font-family: "Noto Serif SC", "Songti SC", Georgia, serif;
@@ -2884,15 +2885,33 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 .article-feminism-art-capitalism-zh .mag-article-hero .mag-article-hero-caption {
-  right: 28px;
+  right: max(28px, calc((100vw - 1760px) / 2 + 28px));
   bottom: 18px;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(63, 61, 57, 0.62);
+}
+
+.psyche-hero-image {
+  width: 56%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f3;
+  overflow: hidden;
+}
+
+.psyche-hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .article-feminism-art-capitalism-zh .mag-article-layout {
-  max-width: 1680px;
+  max-width: 1420px;
   grid-template-columns: 240px minmax(0, 900px);
-  gap: clamp(64px, 7vw, 140px);
+  gap: clamp(58px, 6vw, 104px);
   padding: 84px 52px 96px;
 }
 
@@ -3045,6 +3064,93 @@ html[lang="zh-CN"] .issue-card h2 {
   letter-spacing: -0.045em;
 }
 
+.article-feminism-art-capitalism-zh .article-endnote,
+.article-feminism-art-capitalism-zh .article-circulation,
+.article-feminism-art-capitalism-zh .article-support-block {
+  display: none;
+}
+
+.psyche-article-footer {
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: 92px clamp(38px, 5vw, 92px) 52px;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 1.85fr;
+  gap: clamp(70px, 9vw, 190px);
+  background: #dedcd5;
+  color: #45423d;
+  border-top: 1px solid rgba(46, 43, 37, 0.12);
+}
+
+.psyche-footer-logo {
+  color: #235d4d;
+  font-family: "Cormorant Garamond", Georgia, "Noto Serif SC", serif;
+  font-size: clamp(4rem, 7vw, 7.7rem);
+  font-weight: 560;
+  letter-spacing: -0.055em;
+  line-height: 0.74;
+}
+
+.psyche-footer-brand p {
+  max-width: 470px;
+  margin: 72px 0 58px;
+  color: #4e4b46;
+  font-family: "Noto Serif SC", Georgia, serif;
+  font-size: 1.34rem;
+  font-weight: 560;
+  line-height: 1.45;
+}
+
+.psyche-footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.psyche-footer-socials a {
+  color: #4a4742;
+  font: 750 0.9rem/1 Inter, "Noto Sans SC", sans-serif;
+  text-decoration: none;
+}
+
+.psyche-footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: clamp(40px, 6vw, 112px);
+}
+
+.psyche-footer-columns h3 {
+  margin: 0 0 34px;
+  color: #46423d;
+  font: 850 0.94rem/1 Inter, "Noto Sans SC", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.psyche-footer-columns button {
+  display: block;
+  width: max-content;
+  margin: 0 0 22px;
+  border: 0;
+  background: transparent;
+  color: #4a4742;
+  cursor: pointer;
+  font: 700 1.08rem/1.1 Inter, "Noto Sans SC", sans-serif;
+  padding: 0;
+}
+
+.psyche-footer-bottom {
+  grid-column: 1 / -1;
+  margin-top: 60px;
+  padding-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  border-top: 1px solid rgba(46, 43, 37, 0.14);
+  color: #4a4742;
+  font: 650 0.9rem/1.4 Inter, "Noto Sans SC", sans-serif;
+}
+
 .article-you-may-like {
   margin: 80px 0 88px;
   padding: 28px 0 0;
@@ -3122,6 +3228,11 @@ html[lang="zh-CN"] .issue-card h2 {
   .psyche-keypoints-panel {
     max-width: 680px;
   }
+
+  .psyche-article-footer {
+    grid-template-columns: 1fr;
+    gap: 58px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -3147,7 +3258,7 @@ html[lang="zh-CN"] .issue-card h2 {
 
   .article-feminism-art-capitalism-zh .mag-article-logo {
     order: -1;
-    font-size: clamp(3.1rem, 14vw, 4.4rem);
+    font-size: clamp(3.15rem, 14vw, 4.45rem);
   }
 
   .article-feminism-art-capitalism-zh .mag-article-logo::after {
@@ -3161,13 +3272,20 @@ html[lang="zh-CN"] .issue-card h2 {
 
   .article-feminism-art-capitalism-zh .mag-article-hero {
     min-height: auto;
-    display: block;
-    background-size: 100% 44vh;
-    background-position: top center;
-    padding-top: 44vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+  }
+
+  .psyche-hero-image {
+    order: 1;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 1560 / 1008;
   }
 
   .article-feminism-art-capitalism-zh .mag-article-hero-overlay {
+    order: 2;
     width: 100%;
     padding: 36px 24px 46px;
   }
@@ -3210,6 +3328,28 @@ html[lang="zh-CN"] .issue-card h2 {
 
   .psyche-article-action-row {
     flex-wrap: wrap;
+  }
+
+  .psyche-article-footer {
+    padding: 64px 24px 38px;
+  }
+
+  .psyche-footer-logo {
+    font-size: clamp(3.4rem, 18vw, 5rem);
+  }
+
+  .psyche-footer-brand p {
+    margin: 44px 0 36px;
+    font-size: 1.1rem;
+  }
+
+  .psyche-footer-columns {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .psyche-footer-columns h3 {
+    margin-bottom: 20px;
   }
 }
 

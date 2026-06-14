@@ -2338,9 +2338,13 @@ return null;
 
           <section
             className="mag-article-hero"
-            style={{
-              backgroundImage: `url(${selectedArticle.image || "/images/文章素材图4.png"})`,
-            }}
+            style={
+              selectedArticle.layout === "psyche"
+                ? undefined
+                : {
+                    backgroundImage: `url(${selectedArticle.image || "/images/文章素材图4.png"})`,
+                  }
+            }
           >
             <div className="mag-article-hero-overlay">
               <div className="mag-article-kicker">
@@ -2351,6 +2355,14 @@ return null;
 
               <p>{selectedArticle.excerpt}</p>
             </div>
+            {selectedArticle.layout === "psyche" && (
+              <div className="psyche-hero-image">
+                <img
+                  src={selectedArticle.image || "/images/文章素材图4.png"}
+                  alt=""
+                />
+              </div>
+            )}
             {selectedArticle.heroCaption && (
               <p className="mag-article-hero-caption">
                 {selectedArticle.heroCaption}
@@ -2378,7 +2390,7 @@ return null;
             <span>{language === "zh" ? "分享" : "Share"}</span>
           </button>
 
-          {selectedArticle.layout === "psyche" && (
+          {selectedArticle.layout === "psyche" && selectedArticle.showKeyPoints && (
             <button
               className="psyche-keypoints-tab"
               type="button"
@@ -2452,7 +2464,7 @@ return null;
       Return to issue
     </button>
 
-    {selectedArticle.layout === "psyche" && selectedArticle.keyPoints?.length > 0 && (
+    {selectedArticle.layout === "psyche" && selectedArticle.showKeyPoints && selectedArticle.keyPoints?.length > 0 && (
       <section className="psyche-keypoints-panel">
         <span>{language === "zh" ? "文章要点" : "Key points"}</span>
         <ul>
@@ -2681,6 +2693,81 @@ return null;
 </section>
   </article>
 </main>
+{selectedArticle.layout === "psyche" && (
+  <footer className="psyche-article-footer">
+    <div className="psyche-footer-brand">
+      <div className="psyche-footer-logo">Feminist Archive</div>
+      <p>
+        {language === "zh"
+          ? "一个保持理论、档案与女性主义长篇写作开放的独立出版平台"
+          : "An independent magazine for theory, archives, and long-form feminist thought"}
+      </p>
+      <nav className="psyche-footer-socials" aria-label="Feminist Archive social links">
+        <a
+          href="https://www.instagram.com/feministarchivejournal/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
+        <a
+          href="https://bsky.app/profile/feministarchive.bsky.social"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Bluesky
+        </a>
+        <a
+          href="https://x.com/FeministArchiv"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          X
+        </a>
+      </nav>
+    </div>
+
+    <div className="psyche-footer-columns">
+      <div>
+        <h3>{language === "zh" ? "栏目" : "Sections"}</h3>
+        <button type="button" onClick={() => setCurrentPage("magazine")}>
+          Magazine
+        </button>
+        <button type="button" onClick={() => setCurrentPage("archive")}>
+          Archive
+        </button>
+        <button type="button" onClick={() => setCurrentPage("reading-guides")}>
+          Reading Guides
+        </button>
+      </div>
+      <div>
+        <h3>{language === "zh" ? "支持" : "Support"}</h3>
+        <button type="button" onClick={() => setCurrentPage("newsletter-page")}>
+          Newsletter
+        </button>
+        <button type="button" onClick={() => setCurrentPage("donate")}>
+          Donate
+        </button>
+      </div>
+      <div>
+        <h3>{language === "zh" ? "关于" : "About"}</h3>
+        <button type="button" onClick={() => setCurrentPage("about")}>
+          About
+        </button>
+        <button type="button" onClick={() => setCurrentPage("contact-page")}>
+          Contact
+        </button>
+      </div>
+    </div>
+
+    <div className="psyche-footer-bottom">
+      <span>Privacy Policy</span>
+      <span>Terms of Use</span>
+      <span>RSS</span>
+      <span>© Feminist Archive 2026</span>
+    </div>
+  </footer>
+)}
         </div>
       </>
     );
