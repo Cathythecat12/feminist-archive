@@ -1257,13 +1257,13 @@ textarea {
 }
 
 .summer-update-image-button img {
-  width: clamp(126px, 12.5vw, 190px);
-  max-height: 74px;
+  width: clamp(88px, 7vw, 132px);
+  max-height: 56px;
 }
 
 .summer-update-image-button.zh-newsletter img {
-  width: clamp(124px, 10.8vw, 168px);
-  max-height: 66px;
+  width: clamp(84px, 6.4vw, 122px);
+  max-height: 52px;
 }
 
 .summer-update-logo {

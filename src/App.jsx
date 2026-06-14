@@ -44,12 +44,11 @@ const ARTICLE_GLOSSARY_TERMS = {
     ],
     en: [
       {
-        key: "caliban-and-the-witch",
-        term: "Caliban and the Witch",
-        title: "Caliban and the Witch",
-        text: "We have a reading guide for this book. Click here to read it!",
-        actionLabel: "View guide",
-        targetPage: "caliban-guide",
+        key: "marxist-feminism",
+        term: "Marxist feminist",
+        title: "Marxist feminism",
+        text:
+          "A feminist approach that analyzes women’s oppression through capitalism, class relations, and the organization of labor. It pays particular attention to domestic work, care work, childbirth, and other forms of reproductive labor that sustain society but are often unpaid or made invisible.",
       },
     ],
   },
@@ -1157,7 +1156,11 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
                   className="donation-link-card"
                 >
                   <span>Ko-fi</span>
-                  <em>{language === "zh" ? "国际捐助通道" : "International donations"}</em>
+                  <em>
+                    {language === "zh"
+                      ? "国际捐助通道"
+                      : "Recommended: lower platform fees mean more of your support reaches us."}
+                  </em>
                 </a>
               </div>
             </div>
