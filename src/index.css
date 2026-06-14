@@ -2911,9 +2911,9 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 .article-feminism-art-capitalism-zh .mag-article-layout {
-  max-width: 1320px;
-  grid-template-columns: 150px minmax(0, 820px);
-  gap: clamp(36px, 3.6vw, 56px);
+  max-width: 1380px;
+  grid-template-columns: 220px minmax(0, 820px);
+  gap: clamp(64px, 5vw, 84px);
   padding: 70px 0 92px;
 }
 
