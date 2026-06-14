@@ -2709,11 +2709,13 @@ html[lang="zh-CN"] .issue-card h2 {
   font-weight: 600;
 }
 
-.article-barbie-capitalism .article-image-block:first-of-type {
+.article-barbie-capitalism .article-image-block:first-of-type,
+.article-barbie-capitalism-zh .article-image-block:first-of-type {
   max-width: 460px;
 }
 
-.article-barbie-capitalism .article-image-block:first-of-type img {
+.article-barbie-capitalism .article-image-block:first-of-type img,
+.article-barbie-capitalism-zh .article-image-block:first-of-type img {
   width: 100%;
   margin: 0 auto;
 }
