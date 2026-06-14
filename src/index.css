@@ -4124,43 +4124,29 @@ border: 1px solid #f0ddc5;
 }
 
 .article-statement {
-  margin: 100px auto;
-
-  max-width: 900px;
-
-  font-size: 2.6rem;
-
-  line-height: 1.1;
-
-  font-weight: 700;
-
-  letter-spacing: -0.04em;
-
-  text-align: center;
-}
-.article-statement {
-  margin: 86px auto;
-
-  max-width: 760px;
-
-  font-size: 1.52rem;
-
-  line-height: 1.45;
-
-  font-weight: 700;
-
-  letter-spacing: -0.03em;
-
-  text-align: center;
-
-  color: #444;
+  margin: 0 0 1.35em;
+  max-width: none;
+  color: #292929;
+  font: inherit;
+  font-weight: 760;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: left;
 }
 .article-statement p {
-  margin: 0 0 26px;
+  margin: 0 0 1.35em;
 }
 
 .article-statement p:last-child {
   margin-bottom: 0;
+}
+
+.mag-article-content .article-statement p:first-child::first-letter {
+  float: none;
+  font-size: inherit;
+  line-height: inherit;
+  padding-right: 0;
+  font-weight: inherit;
 }
 .hero-title-enter {
   animation: heroTitleEnter 0.75s ease both;
