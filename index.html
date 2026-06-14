@@ -102,11 +102,52 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 />
     <!-- Cloudflare Web Analytics -->
-    <script
-      defer
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "5c6d1ce8c2f74dacbf1a25547d152d82"}'
-    ></script>
+    <script>
+      (() => {
+        const ignoreKey = "fa_ignore_analytics";
+
+        try {
+          const params = new URLSearchParams(window.location.search);
+
+          if (params.get(ignoreKey) === "1") {
+            window.localStorage.setItem(ignoreKey, "1");
+            params.delete(ignoreKey);
+            const nextSearch = params.toString();
+            window.history.replaceState(
+              null,
+              "",
+              `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`,
+            );
+          }
+
+          if (params.get("fa_track_analytics") === "1") {
+            window.localStorage.removeItem(ignoreKey);
+            params.delete("fa_track_analytics");
+            const nextSearch = params.toString();
+            window.history.replaceState(
+              null,
+              "",
+              `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`,
+            );
+          }
+
+          if (window.localStorage.getItem(ignoreKey) === "1") {
+            return;
+          }
+        } catch {
+          // If storage is unavailable, fall through and keep analytics active for ordinary visitors.
+        }
+
+        const script = document.createElement("script");
+        script.defer = true;
+        script.src = "https://static.cloudflareinsights.com/beacon.min.js";
+        script.setAttribute(
+          "data-cf-beacon",
+          '{"token": "5c6d1ce8c2f74dacbf1a25547d152d82"}',
+        );
+        document.head.appendChild(script);
+      })();
+    </script>
     <!-- End Cloudflare Web Analytics -->
   </head>
   <body>
