@@ -65,6 +65,7 @@ const localIssueArticlesZh = [
   ];
 
 const currentIssueArticleIdsZh = [
+  "feminism-art-capitalism-zh",
   "barbie-capitalism-zh",
   "reproduction-is-labour",
   "self-objectification-beauty-myth",

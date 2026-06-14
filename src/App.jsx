@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Bookmark, List, Send } from "lucide-react";
 import { articles as englishArticles } from "./data/articles-en";
 import { articles as chineseArticles } from "./data/articles-zh";
 import MonthlyThemePage from "./page/MonthlyThemePage";
@@ -2021,6 +2022,10 @@ return null;
       );
     }
 
+    const recommendedArticles = (selectedArticle.recommendedArticleIds || [])
+      .map((id) => currentArticles.find((article) => article.id === id))
+      .filter(Boolean);
+
     return (
       <>
         <div
@@ -2241,54 +2246,79 @@ return null;
         <div className={`mag-article-shell article-${selectedArticle.id}`}>
           <header className="mag-article-header">
             <div className="mag-article-header-left">
-              <nav
-                className="mag-article-socials"
-                aria-label="Feminist Archive social links"
-              >
-                <a
-                  href="https://www.instagram.com/feministarchivejournal/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="4" y="4" width="16" height="16" rx="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17" cy="7" r="0.8" />
-                  </svg>
-                </a>
+              {selectedArticle.layout === "psyche" ? (
+                <nav className="psyche-top-links" aria-label="Article navigation">
+                  <button
+                    className="psyche-menu-icon"
+                    type="button"
+                    onClick={() =>
+                      setCurrentPage(articleReturnPage || "monthly-theme")
+                    }
+                    aria-label={getArticleReturnLabel()}
+                  >
+                    <span />
+                    <span />
+                    <span />
+                  </button>
+                  <button type="button" onClick={() => setCurrentPage("newsletter-page")}>
+                    Newsletter
+                  </button>
+                  <button type="button" onClick={() => setCurrentPage("donate")}>
+                    Donate
+                  </button>
+                </nav>
+              ) : (
+                <>
+                  <nav
+                    className="mag-article-socials"
+                    aria-label="Feminist Archive social links"
+                  >
+                    <a
+                      href="https://www.instagram.com/feministarchivejournal/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="4" y="4" width="16" height="16" rx="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17" cy="7" r="0.8" />
+                      </svg>
+                    </a>
 
-                <a
-                  href="https://bsky.app/profile/feministarchive.bsky.social"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Bluesky"
-                >
-                  <svg className="mag-social-bluesky" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 12.15c-1.06-2.06-3.18-5.02-5.38-6.6-1.54-1.1-2.66-.58-2.54 1.02.13 1.73 1.46 4.04 3.78 5.6 1.03.7 1.95 1.02 2.58 1.1-1.48.18-3.16.93-3.5 2.4-.36 1.56.86 3.18 2.48 3.18 1.22 0 2.22-.86 2.58-2.2.36 1.34 1.36 2.2 2.58 2.2 1.62 0 2.84-1.62 2.48-3.18-.34-1.47-2.02-2.22-3.5-2.4.63-.08 1.55-.4 2.58-1.1 2.32-1.56 3.65-3.87 3.78-5.6.12-1.6-.98-2.12-2.54-1.02-2.2 1.58-4.32 4.54-5.38 6.6Z" />
-                  </svg>
-                </a>
+                    <a
+                      href="https://bsky.app/profile/feministarchive.bsky.social"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Bluesky"
+                    >
+                      <svg className="mag-social-bluesky" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 12.15c-1.06-2.06-3.18-5.02-5.38-6.6-1.54-1.1-2.66-.58-2.54 1.02.13 1.73 1.46 4.04 3.78 5.6 1.03.7 1.95 1.02 2.58 1.1-1.48.18-3.16.93-3.5 2.4-.36 1.56.86 3.18 2.48 3.18 1.22 0 2.22-.86 2.58-2.2.36 1.34 1.36 2.2 2.58 2.2 1.62 0 2.84-1.62 2.48-3.18-.34-1.47-2.02-2.22-3.5-2.4.63-.08 1.55-.4 2.58-1.1 2.32-1.56 3.65-3.87 3.78-5.6.12-1.6-.98-2.12-2.54-1.02-2.2 1.58-4.32 4.54-5.38 6.6Z" />
+                      </svg>
+                    </a>
 
-                <a
-                  href="https://x.com/FeministArchiv"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="X"
-                >
-                  <svg className="mag-social-x" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4.8 4.8h4.15l4.05 5.35 4.78-5.35h1.95l-5.82 6.52 6.02 7.88h-4.16l-4.38-5.75-5.12 5.75H4.35l6.24-7.02L4.8 4.8Z" />
-                  </svg>
-                </a>
-              </nav>
+                    <a
+                      href="https://x.com/FeministArchiv"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="X"
+                    >
+                      <svg className="mag-social-x" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4.8 4.8h4.15l4.05 5.35 4.78-5.35h1.95l-5.82 6.52 6.02 7.88h-4.16l-4.38-5.75-5.12 5.75H4.35l6.24-7.02L4.8 4.8Z" />
+                      </svg>
+                    </a>
+                  </nav>
 
-              <button
-                className="issue-menu-button"
-                onClick={() =>
-                  setCurrentPage(articleReturnPage || "monthly-theme")
-                }
-              >
-                {getArticleReturnLabel()}
-              </button>
+                  <button
+                    className="issue-menu-button"
+                    onClick={() =>
+                      setCurrentPage(articleReturnPage || "monthly-theme")
+                    }
+                  >
+                    {getArticleReturnLabel()}
+                  </button>
+                </>
+              )}
             </div>
 
             <div
@@ -2347,12 +2377,54 @@ return null;
             </svg>
             <span>{language === "zh" ? "分享" : "Share"}</span>
           </button>
+
+          {selectedArticle.layout === "psyche" && (
+            <button
+              className="psyche-keypoints-tab"
+              type="button"
+              onClick={() => {
+                const target = document.querySelector(".psyche-keypoints-panel");
+                target?.scrollIntoView({ block: "center", behavior: "smooth" });
+              }}
+            >
+              <List size={22} strokeWidth={2.2} />
+              <span>{language === "zh" ? "要点" : "Key points"}</span>
+            </button>
+          )}
           
 
 
           <main className="mag-article-layout">
           
   <aside className="mag-article-sidebar">
+  {selectedArticle.layout === "psyche" && (
+    <div className="psyche-article-actions">
+      <div className="psyche-article-action-row">
+        <button
+          type="button"
+          onClick={() => showToast(language === "zh" ? "已保存到阅读清单。" : "Saved to reading list.")}
+        >
+          <Bookmark size={18} strokeWidth={1.9} />
+          <span>{language === "zh" ? "保存" : "Save"}</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowArticleShare(true)}
+        >
+          <Send size={18} strokeWidth={1.9} />
+          <span>{language === "zh" ? "分享" : "Share"}</span>
+        </button>
+      </div>
+      <button
+        className="psyche-thoughts-button"
+        type="button"
+        onClick={() => setCurrentPage("contact-page")}
+      >
+        {language === "zh" ? "分享你的想法" : "Share your thoughts"}
+      </button>
+    </div>
+  )}
+
   <p>
   {selectedArticle.sidebarText || (
     <>
@@ -2379,6 +2451,17 @@ return null;
     >
       Return to issue
     </button>
+
+    {selectedArticle.layout === "psyche" && selectedArticle.keyPoints?.length > 0 && (
+      <section className="psyche-keypoints-panel">
+        <span>{language === "zh" ? "文章要点" : "Key points"}</span>
+        <ul>
+          {selectedArticle.keyPoints.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      </section>
+    )}
 
   </aside>
 
@@ -2427,6 +2510,32 @@ return null;
                 <blockquote key={index} className="article-pullquote">
                   {block.text}
                 </blockquote>
+              );
+            }
+
+            if (block.type === "recommendations") {
+              if (!recommendedArticles.length) return null;
+
+              return (
+                <section key={index} className="article-you-may-like">
+                  <div className="article-you-may-like-label">
+                    {block.title || (language === "zh" ? "你可能会喜欢" : "You may also like")}
+                  </div>
+                  <div className="article-you-may-like-grid">
+                    {recommendedArticles.map((article) => (
+                      <button
+                        className="article-you-may-like-card"
+                        key={article.id}
+                        type="button"
+                        onClick={() => openArticleFrom(article, articleReturnPage || "monthly-theme")}
+                      >
+                        <img src={article.image || "/images/文章素材图4.png"} alt="" />
+                        <span>{article.category}</span>
+                        <strong>{article.title}</strong>
+                      </button>
+                    ))}
+                  </div>
+                </section>
               );
             }
 
