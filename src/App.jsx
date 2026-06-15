@@ -20,6 +20,7 @@ import ReadingRoomPage from "./page/ReadingRoomPage";
 import MagazineCategoryPage from "./page/MagazineCategoryPage";
 import { submitWebsiteForm } from "./utils/formSubmit";
 import HowWeEditPage from "./page/HowWeEditPage";
+import MagazineMenuOverlay from "./components/MagazineMenuOverlay";
 const HOME_ARCHIVE_LIMIT = 6;
 // Temporarily hidden; switch to true when the Save the Elephant campaign should return to the homepage.
 const SHOW_SAVE_THE_ELEPHANT_ON_HOME = false;
@@ -381,6 +382,7 @@ function MainApp() {
   const [donationEmail, setDonationEmail] = useState("");
   const [showNewsletter, setShowNewsletter] = useState(false);
   const [showArticleShare, setShowArticleShare] = useState(false);
+  const [showArticleMenu, setShowArticleMenu] = useState(false);
   const [articleShareVisible, setArticleShareVisible] = useState(false);
   const [activeGlossaryKey, setActiveGlossaryKey] = useState("");
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
@@ -2243,6 +2245,13 @@ return null;
     </div>
   </div>
 )}
+{showArticleMenu && (
+  <MagazineMenuOverlay
+    language={language}
+    setCurrentPage={setCurrentPage}
+    onClose={() => setShowArticleMenu(false)}
+  />
+)}
         <div className={`mag-article-shell article-${selectedArticle.id}`}>
           <header className="mag-article-header">
             <div className="mag-article-header-left">
@@ -2251,10 +2260,8 @@ return null;
                   <button
                     className="psyche-menu-icon"
                     type="button"
-                    onClick={() =>
-                      setCurrentPage(articleReturnPage || "monthly-theme")
-                    }
-                    aria-label={getArticleReturnLabel()}
+                    onClick={() => setShowArticleMenu(true)}
+                    aria-label={language === "zh" ? "打开菜单" : "Open menu"}
                   >
                     <span />
                     <span />
@@ -2328,12 +2335,14 @@ return null;
               Feminist Archive
             </div>
 
-            <button
-              className="issue-menu-button mag-article-donate-button"
-              onClick={() => setCurrentPage("donate")}
-            >
-              Donate
-            </button>
+            {selectedArticle.layout !== "psyche" && (
+              <button
+                className="issue-menu-button mag-article-donate-button"
+                onClick={() => setCurrentPage("donate")}
+              >
+                Donate
+              </button>
+            )}
           </header>
 
           <section
