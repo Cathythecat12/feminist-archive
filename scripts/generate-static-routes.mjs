@@ -246,6 +246,15 @@ function applyMeta(template, meta, path) {
     /<link rel="canonical" href="[^"]+"\s*\/?>/i,
     `<link rel="canonical" href="${pageUrl}" />`
   );
+
+  if (meta.preloadImage) {
+    html = upsertHeadTag(
+      html,
+      /<link rel="preload" as="image" fetchpriority="high" href="[^"]+"\s*\/?>/i,
+      `<link rel="preload" as="image" fetchpriority="high" href="${imageUrl}" />`
+    );
+  }
+
   html = replaceMeta(html, "name", "description", `<meta name="description" content="${description}" />`);
   html = replaceMeta(html, "property", "og:type", `<meta property="og:type" content="${escapeHtml(meta.type || "website")}" />`);
   html = replaceMeta(html, "property", "og:locale", `<meta property="og:locale" content="${locale}" />`);
@@ -295,6 +304,7 @@ for (const article of englishArticles) {
     title: `${article.title} | ${siteName}`,
     description: stripText(article.excerpt || article.subtitle || article.title),
     image: article.image || defaultImage,
+    preloadImage: Boolean(article.image),
   });
 }
 
@@ -304,6 +314,7 @@ for (const article of chineseArticles) {
     title: `${article.title} | ${siteName}`,
     description: stripText(article.excerpt || article.subtitle || article.title),
     image: article.image || defaultImage,
+    preloadImage: Boolean(article.image),
   });
 }
 

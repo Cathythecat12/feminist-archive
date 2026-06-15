@@ -895,6 +895,38 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     syncPageUrl(currentPage);
   }, [currentPage, selectedArticle?.id, language, hasResolvedInitialUrl]);
 
+  useEffect(() => {
+    if (
+      typeof window === "undefined" ||
+      typeof document === "undefined" ||
+      currentPage !== "article-detail" ||
+      !selectedArticle?.image
+    ) {
+      return undefined;
+    }
+
+    const imageUrl = new URL(selectedArticle.image, window.location.origin).href;
+    const existingPreload = Array.from(
+      document.querySelectorAll('link[rel="preload"][as="image"]')
+    ).some((entry) => entry.href === imageUrl);
+
+    if (existingPreload) {
+      return undefined;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = selectedArticle.image;
+    link.fetchPriority = "high";
+    link.dataset.faArticleImagePreload = selectedArticle.id || "article";
+    document.head.appendChild(link);
+
+    return () => {
+      link.remove();
+    };
+  }, [currentPage, selectedArticle?.id, selectedArticle?.image]);
+
   const getArticleReturnLabel = () => {
     if (articleReturnPage === "reading-room") {
       return language === "zh" ? "← 阅读室" : "← READING ROOM";
