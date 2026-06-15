@@ -2775,6 +2775,30 @@ html[lang="zh-CN"] .issue-card h2 {
 
 :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-layout {
   background: #f4f1ea;
+  padding-top: clamp(34px, 4vw, 54px);
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .article-section-heading:first-child {
+  margin-top: 0;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-content .article-section-heading:first-child + p::first-letter {
+  float: left;
+  margin: 0.03em 0.13em 0 0;
+  color: #15130f;
+  font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", Georgia, serif;
+  font-size: clamp(7rem, 10vw, 10.6rem);
+  font-weight: 620;
+  line-height: 0.72;
+  letter-spacing: -0.08em;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-content p:first-child::first-letter {
+  float: none;
+  font-size: inherit;
+  line-height: inherit;
+  padding-right: 0;
+  font-weight: inherit;
 }
 
 :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-article-footer {
@@ -3855,6 +3879,16 @@ html[lang="zh-CN"] .issue-card h2 {
     margin-top: 24px;
     font-size: clamp(1rem, 4.1vw, 1.22rem);
     line-height: 1.62;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-layout {
+    padding-top: 30px;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-content .article-section-heading:first-child + p::first-letter {
+    margin-right: 0.12em;
+    font-size: clamp(5.2rem, 24vw, 7.1rem);
+    line-height: 0.74;
   }
 }
 
