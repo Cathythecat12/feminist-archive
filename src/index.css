@@ -12060,9 +12060,7 @@ body {
   margin: 0 auto clamp(54px, 7vw, 92px);
   overflow: hidden;
   border: 1px solid rgba(31, 27, 24, 0.13);
-  background:
-    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.26), transparent 38%),
-    linear-gradient(135deg, #302f2c, #8a8a83 42%, #f0eee8 58%, #4b4d4a);
+  background: transparent;
   box-shadow:
     0 34px 100px rgba(31, 27, 24, 0.15),
     inset 0 0 0 1px rgba(255, 255, 255, 0.28);
@@ -12070,15 +12068,7 @@ body {
 }
 
 .deep-reading-normal-map::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg, rgba(246, 241, 233, 0.16), transparent 24%, transparent 76%, rgba(246, 241, 233, 0.18)),
-    linear-gradient(180deg, rgba(12, 11, 10, 0.28), transparent 30%, rgba(12, 11, 10, 0.22));
-  mix-blend-mode: soft-light;
+  content: none;
 }
 
 .deep-reading-normal-map::after {
@@ -12122,14 +12112,14 @@ body {
   line-height: 1.72;
 }
 
-.deep-reading-placeholder {
+.deep-reading-note {
   max-width: 760px;
   margin-top: clamp(64px, 8vw, 118px);
   padding-top: 28px;
   border-top: 1px solid rgba(31, 27, 24, 0.18);
 }
 
-.deep-reading-placeholder span {
+.deep-reading-note span {
   color: #8f1f2d;
   font-size: 0.78rem;
   font-weight: 700;
@@ -12137,7 +12127,7 @@ body {
   text-transform: uppercase;
 }
 
-.deep-reading-placeholder p {
+.deep-reading-note p {
   margin: 18px 0 0;
   color: #514b45;
   font-size: 1.08rem;

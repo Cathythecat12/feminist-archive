@@ -1,31 +1,13 @@
 import { useEffect, useRef } from "react";
 
 const NORMAL_MAP_SETTINGS = {
-  shrinkSpeed: 0.58,
-  dissolveScale: 2,
-  dissolveAmount: 0.7,
-  swirlStrength: 0.05,
-  swirlScale: 1.5,
-  swirlSpeed: 1.35,
-  grainAmount: 0.3,
-  grainScale: 13.5,
-  brushSize: 0.085,
-  brushSoftness: 0.16,
-  noiseScale: 8,
-  noiseSpeed: 0.5,
-  ambient: 0.06,
-  revealAmbient: 0.19,
-  direction: 135,
-  intensity: 0.4,
-  specular: 1.1,
-  radius: 1.5,
-  metallic: 0.85,
-  sweepAmount: 0.8,
-  cloudScale: 0.5,
-  edgeSoftness: 0.25,
   introDuration: 4.7,
-  topperOpacity: 0.85,
-  topperContrast: 1,
+};
+
+const TEXTURE_PATHS = {
+  relief: "/assets/deep-reading-effect/relief.jpg",
+  normal: "/assets/deep-reading-effect/normal.jpg",
+  mask: "/assets/deep-reading-effect/mask.png",
 };
 
 function DeepReadingNormalMap() {
@@ -61,52 +43,20 @@ function DeepReadingNormalMap() {
       uniform vec2 u_pointer;
       uniform float u_time;
       uniform float u_intro;
-
-      float hash(vec2 p) {
-        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
-      }
-
-      float noise(vec2 p) {
-        vec2 i = floor(p);
-        vec2 f = fract(p);
-        vec2 u = f * f * (3.0 - 2.0 * f);
-        return mix(
-          mix(hash(i + vec2(0.0, 0.0)), hash(i + vec2(1.0, 0.0)), u.x),
-          mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x),
-          u.y
-        );
-      }
-
-      float fbm(vec2 p) {
-        float value = 0.0;
-        float amplitude = 0.5;
-        for (int i = 0; i < 5; i++) {
-          value += amplitude * noise(p);
-          p = mat2(1.62, 1.16, -1.16, 1.62) * p;
-          amplitude *= 0.5;
-        }
-        return value;
-      }
+      uniform sampler2D u_baseTexture;
+      uniform sampler2D u_normalTexture;
+      uniform sampler2D u_maskTexture;
 
       void main() {
         vec2 uv = v_uv;
         vec2 aspect = vec2(u_resolution.x / u_resolution.y, 1.0);
         vec2 center = (uv - 0.5) * aspect;
 
-        float angle = atan(center.y, center.x);
-        float radius = length(center);
-        float swirl = sin(angle * 1.5 + u_time * 1.35 + radius * 8.0) * 0.05;
-        vec2 warped = uv + vec2(cos(angle), sin(angle)) * swirl * (1.0 - smoothstep(0.1, 1.5, radius));
-
-        float cloud = fbm(warped * 8.0 + vec2(u_time * 0.05, -u_time * 0.04));
-        float dissolve = fbm(warped * 2.0 + cloud * 0.5);
-        float grain = noise(warped * 13.5 + u_time * 0.5);
-        float height = cloud * 0.62 + dissolve * 0.24 + grain * 0.14;
-
-        float eps = 0.0025;
-        float hx = fbm((warped + vec2(eps, 0.0)) * 8.0);
-        float hy = fbm((warped + vec2(0.0, eps)) * 8.0);
-        vec3 normal = normalize(vec3((height - hx) * 5.5, (height - hy) * 5.5, 1.0));
+        vec3 baseColor = texture2D(u_baseTexture, uv).rgb;
+        vec3 normalSample = texture2D(u_normalTexture, uv).rgb;
+        vec3 normal = normalize(normalSample * 2.0 - 1.0);
+        normal.y *= -1.0;
+        float maskValue = texture2D(u_maskTexture, uv).r;
 
         float direction = radians(135.0);
         vec3 lightDir = normalize(vec3(cos(direction) * 0.7, sin(direction) * 0.7, 1.5));
@@ -123,21 +73,19 @@ function DeepReadingNormalMap() {
         float cursorSpec = pow(max(dot(normal, normalize(pointerLight + viewDir)), 0.0), 34.0) * brush * 1.35;
 
         float introSweep = smoothstep(-0.28, 1.0, u_intro - (1.0 - uv.y) * 0.8);
-        float edge = smoothstep(0.0, 0.25, introSweep);
+        float edge = smoothstep(0.0, 0.25, introSweep + maskValue * 0.8);
         float reveal = mix(0.19, 1.0, edge);
-        float alpha = smoothstep(0.26, 0.96, introSweep + dissolve * 0.7);
+        float alpha = smoothstep(0.08, 0.96, introSweep + maskValue * 0.9);
 
-        vec3 base = vec3(0.72, 0.73, 0.72);
-        vec3 shadow = vec3(0.18, 0.19, 0.18);
-        vec3 silver = mix(shadow, base, 0.35 + diffuse * 0.4 + height * 0.3);
-        vec3 color = silver * (0.06 + reveal * 0.78);
-        color += vec3(1.0) * (specular + cursorSpec) * 0.85;
-        color += vec3(0.8, 0.86, 0.88) * cursorDiffuse * 0.4;
+        vec3 litBase = baseColor * (0.55 + diffuse * 0.42);
+        vec3 color = litBase * (0.06 + reveal * 0.94);
+        color += vec3(1.0) * (specular + cursorSpec) * 0.55;
+        color += vec3(0.95, 0.98, 1.0) * cursorDiffuse * 0.32;
         color = mix(color, vec3(0.95, 0.95, 0.92), 0.08 * 0.85);
         color = pow(color, vec3(1.0 / 1.08));
 
         float vignette = smoothstep(1.2, 0.18, length(center));
-        alpha *= mix(0.72, 1.0, vignette);
+        alpha *= mix(0.86, 1.0, vignette);
         gl_FragColor = vec4(color, alpha * 0.86);
       }
     `;
@@ -148,6 +96,7 @@ function DeepReadingNormalMap() {
       gl.compileShader(shader);
 
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        console.error("Deep Reading WebGL shader error:", gl.getShaderInfoLog(shader));
         gl.deleteShader(shader);
         return null;
       }
@@ -166,8 +115,37 @@ function DeepReadingNormalMap() {
     gl.linkProgram(program);
 
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      console.error("Deep Reading WebGL program error:", gl.getProgramInfoLog(program));
       return undefined;
     }
+
+    const loadImage = (src) =>
+      new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error(`Deep Reading texture failed to load: ${src}`));
+        image.src = src;
+      });
+
+    const createTexture = (image, unit) => {
+      const texture = gl.createTexture();
+      gl.activeTexture(gl.TEXTURE0 + unit);
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texImage2D(
+        gl.TEXTURE_2D,
+        0,
+        gl.RGBA,
+        gl.RGBA,
+        gl.UNSIGNED_BYTE,
+        image
+      );
+      return texture;
+    };
 
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -182,11 +160,16 @@ function DeepReadingNormalMap() {
     const pointerUniform = gl.getUniformLocation(program, "u_pointer");
     const timeUniform = gl.getUniformLocation(program, "u_time");
     const introUniform = gl.getUniformLocation(program, "u_intro");
+    const baseTextureUniform = gl.getUniformLocation(program, "u_baseTexture");
+    const normalTextureUniform = gl.getUniformLocation(program, "u_normalTexture");
+    const maskTextureUniform = gl.getUniformLocation(program, "u_maskTexture");
     const pointer = { x: 0.62, y: 0.58 };
     const targetPointer = { x: 0.62, y: 0.58 };
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let frame = 0;
     let start = performance.now();
+    let disposed = false;
+    let textures = [];
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -218,6 +201,9 @@ function DeepReadingNormalMap() {
       gl.uniform2f(pointerUniform, pointer.x, pointer.y);
       gl.uniform1f(timeUniform, reduceMotion ? 1.6 : elapsed);
       gl.uniform1f(introUniform, reduceMotion ? 1.25 : intro);
+      gl.uniform1i(baseTextureUniform, 0);
+      gl.uniform1i(normalTextureUniform, 1);
+      gl.uniform1i(maskTextureUniform, 2);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
 
       if (!reduceMotion) {
@@ -239,13 +225,45 @@ function DeepReadingNormalMap() {
     canvas.addEventListener("pointermove", handlePointerMove);
     canvas.addEventListener("pointerleave", handlePointerLeave);
     window.addEventListener("resize", resize);
-    frame = window.requestAnimationFrame(render);
+
+    Promise.all([
+      loadImage(TEXTURE_PATHS.relief),
+      loadImage(TEXTURE_PATHS.normal),
+      loadImage(TEXTURE_PATHS.mask),
+    ])
+      .then(([reliefImage, normalImage, maskImage]) => {
+        if (disposed) return;
+
+        const expectedSize = `${reliefImage.naturalWidth}×${reliefImage.naturalHeight}`;
+        const normalSize = `${normalImage.naturalWidth}×${normalImage.naturalHeight}`;
+        const maskSize = `${maskImage.naturalWidth}×${maskImage.naturalHeight}`;
+
+        if (normalSize !== expectedSize || maskSize !== expectedSize) {
+          console.warn(
+            "Deep Reading texture size mismatch:",
+            { relief: expectedSize, normal: normalSize, mask: maskSize }
+          );
+        }
+
+        textures = [
+          createTexture(reliefImage, 0),
+          createTexture(normalImage, 1),
+          createTexture(maskImage, 2),
+        ];
+        start = performance.now();
+        frame = window.requestAnimationFrame(render);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     return () => {
+      disposed = true;
       window.cancelAnimationFrame(frame);
       canvas.removeEventListener("pointermove", handlePointerMove);
       canvas.removeEventListener("pointerleave", handlePointerLeave);
       window.removeEventListener("resize", resize);
+      textures.forEach((texture) => gl.deleteTexture(texture));
       gl.deleteBuffer(buffer);
       gl.deleteProgram(program);
       gl.deleteShader(vertexShader);
@@ -295,7 +313,7 @@ function DeepReadingPage({ language, onBack, setCurrentPage }) {
           </p>
         </section>
 
-        <section className="deep-reading-placeholder">
+        <section className="deep-reading-note">
           <span>{zh ? "页面建设中" : "Page in preparation"}</span>
           <p>
             {zh
