@@ -1,13 +1,26 @@
 import { useEffect, useRef } from "react";
 
 const NORMAL_MAP_SETTINGS = {
+  ambient: 0.06,
+  revealAmbient: 0.19,
+  direction: 135,
+  intensity: 0.4,
+  specular: 1.1,
+  metallic: 0.85,
+  brushSize: 0.085,
+  brushSoftness: 0.16,
+  sweepAmount: 0.8,
+  edgeSoftness: 0.25,
   introDuration: 4.7,
+  topperOpacity: 0.85,
+  topperContrast: 1,
 };
 
 const TEXTURE_PATHS = {
-  relief: "/assets/deep-reading-effect/relief.jpg",
-  normal: "/assets/deep-reading-effect/normal.jpg",
-  mask: "/assets/deep-reading-effect/mask.png",
+  relief: "/assets/deep-reading-effect/relief.png",
+  normal: "/assets/deep-reading-effect/normal.png",
+  topper: "/assets/deep-reading-effect/topper.jpg",
+  revealMask: "/assets/deep-reading-effect/reveal-mask.png",
 };
 
 function DeepReadingNormalMap() {
@@ -45,18 +58,20 @@ function DeepReadingNormalMap() {
       uniform float u_intro;
       uniform sampler2D u_baseTexture;
       uniform sampler2D u_normalTexture;
-      uniform sampler2D u_maskTexture;
+      uniform sampler2D u_topperTexture;
+      uniform sampler2D u_revealMaskTexture;
 
       void main() {
-        vec2 uv = v_uv;
+        vec2 uv = vec2(v_uv.x, 1.0 - v_uv.y);
         vec2 aspect = vec2(u_resolution.x / u_resolution.y, 1.0);
         vec2 center = (uv - 0.5) * aspect;
 
         vec3 baseColor = texture2D(u_baseTexture, uv).rgb;
+        vec3 topperColor = texture2D(u_topperTexture, uv).rgb;
         vec3 normalSample = texture2D(u_normalTexture, uv).rgb;
         vec3 normal = normalize(normalSample * 2.0 - 1.0);
         normal.y *= -1.0;
-        float maskValue = texture2D(u_maskTexture, uv).r;
+        float revealMask = texture2D(u_revealMaskTexture, uv).r;
 
         float direction = radians(135.0);
         vec3 lightDir = normalize(vec3(cos(direction) * 0.7, sin(direction) * 0.7, 1.5));
@@ -69,24 +84,32 @@ function DeepReadingNormalMap() {
         float cursorDiffuse = max(dot(normal, pointerLight), 0.0) * brush;
         vec3 viewDir = vec3(0.0, 0.0, 1.0);
         vec3 halfDir = normalize(lightDir + viewDir);
-        float specular = pow(max(dot(normal, halfDir), 0.0), 46.0) * 1.1;
-        float cursorSpec = pow(max(dot(normal, normalize(pointerLight + viewDir)), 0.0), 34.0) * brush * 1.35;
+        float specular = pow(max(dot(normal, halfDir), 0.0), 58.0) * 1.1;
+        float cursorSpec = pow(max(dot(normal, normalize(pointerLight + viewDir)), 0.0), 42.0) * brush * 0.82;
 
         float introSweep = smoothstep(-0.28, 1.0, u_intro - (1.0 - uv.y) * 0.8);
-        float edge = smoothstep(0.0, 0.25, introSweep + maskValue * 0.8);
-        float reveal = mix(0.19, 1.0, edge);
-        float alpha = smoothstep(0.08, 0.96, introSweep + maskValue * 0.9);
+        float maskReveal = smoothstep(0.0, 0.25, introSweep + revealMask * 0.8);
+        float baseReveal = mix(0.19, 1.0, maskReveal);
+        float revealEdge = smoothstep(0.66, 0.91, introSweep + revealMask * 0.8)
+          - smoothstep(0.91, 1.08, introSweep + revealMask * 0.8);
 
-        vec3 litBase = baseColor * (0.55 + diffuse * 0.42);
-        vec3 color = litBase * (0.06 + reveal * 0.94);
-        color += vec3(1.0) * (specular + cursorSpec) * 0.55;
-        color += vec3(0.95, 0.98, 1.0) * cursorDiffuse * 0.32;
-        color = mix(color, vec3(0.95, 0.95, 0.92), 0.08 * 0.85);
-        color = pow(color, vec3(1.0 / 1.08));
+        vec3 contrastedTopper = clamp((topperColor - 0.5) * 1.0 + 0.5, 0.0, 1.0);
+        vec3 materialColor = mix(baseColor, contrastedTopper, 0.09 * 0.85);
+        vec3 silverTint = vec3(0.88, 0.88, 0.86);
+        materialColor = mix(materialColor, silverTint, 0.06 * 0.85);
 
-        float vignette = smoothstep(1.2, 0.18, length(center));
-        alpha *= mix(0.86, 1.0, vignette);
-        gl_FragColor = vec4(color, alpha * 0.86);
+        float light = baseReveal * (0.86 + diffuse * 0.18);
+        vec3 color = materialColor * light;
+        color += vec3(1.0) * (specular * 0.12 + cursorSpec * 0.34);
+        color += vec3(1.0) * revealEdge * 0.08;
+        color += vec3(0.95, 0.98, 1.0) * cursorDiffuse * 0.14;
+        color = pow(color, vec3(1.0 / 1.02));
+
+        float vignette = smoothstep(1.24, 0.22, length(center));
+        float frameFade = smoothstep(0.0, 0.04, uv.x) * smoothstep(0.0, 0.04, uv.y)
+          * smoothstep(0.0, 0.04, 1.0 - uv.x) * smoothstep(0.0, 0.04, 1.0 - uv.y);
+        float alpha = mix(0.82, 1.0, vignette) * frameFade;
+        gl_FragColor = vec4(color, alpha);
       }
     `;
 
@@ -162,9 +185,10 @@ function DeepReadingNormalMap() {
     const introUniform = gl.getUniformLocation(program, "u_intro");
     const baseTextureUniform = gl.getUniformLocation(program, "u_baseTexture");
     const normalTextureUniform = gl.getUniformLocation(program, "u_normalTexture");
-    const maskTextureUniform = gl.getUniformLocation(program, "u_maskTexture");
-    const pointer = { x: 0.62, y: 0.58 };
-    const targetPointer = { x: 0.62, y: 0.58 };
+    const topperTextureUniform = gl.getUniformLocation(program, "u_topperTexture");
+    const revealMaskTextureUniform = gl.getUniformLocation(program, "u_revealMaskTexture");
+    const pointer = { x: -1.0, y: -1.0 };
+    const targetPointer = { x: -1.0, y: -1.0 };
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let frame = 0;
     let start = performance.now();
@@ -203,7 +227,8 @@ function DeepReadingNormalMap() {
       gl.uniform1f(introUniform, reduceMotion ? 1.25 : intro);
       gl.uniform1i(baseTextureUniform, 0);
       gl.uniform1i(normalTextureUniform, 1);
-      gl.uniform1i(maskTextureUniform, 2);
+      gl.uniform1i(topperTextureUniform, 2);
+      gl.uniform1i(revealMaskTextureUniform, 3);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
 
       if (!reduceMotion) {
@@ -218,8 +243,8 @@ function DeepReadingNormalMap() {
     };
 
     const handlePointerLeave = () => {
-      targetPointer.x = 0.62;
-      targetPointer.y = 0.58;
+      targetPointer.x = -1.0;
+      targetPointer.y = -1.0;
     };
 
     canvas.addEventListener("pointermove", handlePointerMove);
@@ -229,26 +254,33 @@ function DeepReadingNormalMap() {
     Promise.all([
       loadImage(TEXTURE_PATHS.relief),
       loadImage(TEXTURE_PATHS.normal),
-      loadImage(TEXTURE_PATHS.mask),
+      loadImage(TEXTURE_PATHS.topper),
+      loadImage(TEXTURE_PATHS.revealMask),
     ])
-      .then(([reliefImage, normalImage, maskImage]) => {
+      .then(([reliefImage, normalImage, topperImage, revealMaskImage]) => {
         if (disposed) return;
 
         const expectedSize = `${reliefImage.naturalWidth}×${reliefImage.naturalHeight}`;
         const normalSize = `${normalImage.naturalWidth}×${normalImage.naturalHeight}`;
-        const maskSize = `${maskImage.naturalWidth}×${maskImage.naturalHeight}`;
+        const revealMaskSize = `${revealMaskImage.naturalWidth}×${revealMaskImage.naturalHeight}`;
 
-        if (normalSize !== expectedSize || maskSize !== expectedSize) {
+        if (normalSize !== expectedSize || revealMaskSize !== expectedSize) {
           console.warn(
             "Deep Reading texture size mismatch:",
-            { relief: expectedSize, normal: normalSize, mask: maskSize }
+            {
+              relief: expectedSize,
+              normal: normalSize,
+              topper: `${topperImage.naturalWidth}×${topperImage.naturalHeight}`,
+              revealMask: revealMaskSize,
+            }
           );
         }
 
         textures = [
           createTexture(reliefImage, 0),
           createTexture(normalImage, 1),
-          createTexture(maskImage, 2),
+          createTexture(topperImage, 2),
+          createTexture(revealMaskImage, 3),
         ];
         start = performance.now();
         frame = window.requestAnimationFrame(render);
