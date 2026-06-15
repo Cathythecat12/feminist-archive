@@ -732,7 +732,7 @@ image: "/images/文章素材图9.png",
     author: "Feminist Archive",
     date: "2026年6月15日",
     readTime: "16 min read",
-    image: "/images/文章素材图24.png",
+    image: "/images/sappho-and-alcaeus-social.jpg",
     excerpt:
       "为什么现代性把身体自由、性多元、欲望选择说成解放，但最后反而会把主体卷入倒错、消费、恋物和资本主义秩序。",
     tags: ["性解放", "拉康", "资本主义", "恋物", "女性主义"],

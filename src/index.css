@@ -2638,14 +2638,182 @@ html[lang="zh-CN"] .issue-card h2 {
   
 }
 
-.article-sexual-liberationism-erotic-nihilism .mag-article-hero-overlay h1 {
-  max-width: 980px;
-  font-size: clamp(2.5rem, 4.35vw, 4.45rem);
-  line-height: 1.02;
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) {
+  padding-top: 0;
+  background: #f4f1ea;
+  animation: articleSoftArrival 1.08s cubic-bezier(0.16, 0.84, 0.24, 1) both;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) {
-  animation: articleSoftArrival 1.08s cubic-bezier(0.16, 0.84, 0.24, 1) both;
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-header {
+  height: 70px;
+  padding: 0 clamp(22px, 3vw, 54px);
+  background: transparent;
+  border-bottom: 0;
+  color: #fffaf0;
+  backdrop-filter: none;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.36);
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(17, 16, 13, 0.36), rgba(17, 16, 13, 0));
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-socials a,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .issue-menu-button,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-donate-button {
+  color: #fffaf0;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .issue-menu-button,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-donate-button {
+  font-family: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
+  font-size: clamp(1rem, 1.25vw, 1.28rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-logo {
+  color: #fffaf0;
+  font-family: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
+  font-size: clamp(2.1rem, 3.05vw, 3.35rem);
+  font-weight: 720;
+  letter-spacing: -0.065em;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero {
+  min-height: 100svh;
+  background-position: center center;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero::before {
+  background:
+    linear-gradient(90deg, rgba(13, 12, 10, 0.44), rgba(13, 12, 10, 0.12) 45%, rgba(13, 12, 10, 0.5)),
+    linear-gradient(180deg, rgba(13, 12, 10, 0.32) 0%, rgba(13, 12, 10, 0.18) 38%, rgba(13, 12, 10, 0.72) 100%);
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay {
+  width: min(1360px, 100%);
+  max-width: none;
+  margin: 0 auto;
+  padding: clamp(116px, 12vh, 168px) clamp(28px, 4vw, 82px) clamp(74px, 9vh, 118px);
+  display: grid;
+  justify-items: center;
+  color: #fffaf0;
+  text-align: center;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-kicker,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay h1,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero p {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: immersiveHeroReveal 0.95s cubic-bezier(0.2, 0.74, 0.18, 1) forwards;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-kicker {
+  margin-bottom: clamp(20px, 3vh, 36px);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: clamp(0.82rem, 1.1vw, 1.06rem);
+  font-weight: 760;
+  letter-spacing: 0.28em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.48);
+  animation-delay: 0.1s;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay h1 {
+  max-width: min(1280px, 92vw);
+  color: #fffaf0;
+  font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", Georgia, serif;
+  font-size: clamp(3.05rem, 5.45vw, 7.15rem);
+  font-weight: 760;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+  text-shadow:
+    0 3px 20px rgba(0, 0, 0, 0.42),
+    0 16px 50px rgba(0, 0, 0, 0.26);
+  animation-delay: 0.24s;
+}
+
+.article-sexual-liberationism-erotic-nihilism .mag-article-hero-overlay h1 {
+  max-width: min(1320px, 92vw);
+  font-size: clamp(2.9rem, 4.95vw, 6.45rem);
+  line-height: 0.94;
+}
+
+.article-sexual-liberationism-erotic-nihilism-zh .mag-article-hero-overlay h1 {
+  max-width: min(1120px, 90vw);
+  font-size: clamp(3rem, 5.1vw, 6.55rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero p {
+  max-width: min(820px, 82vw);
+  margin-top: clamp(30px, 4vh, 52px);
+  color: rgba(255, 250, 240, 0.94);
+  font-family: Inter, "Noto Sans SC", Arial, sans-serif;
+  font-size: clamp(1.08rem, 1.55vw, 1.54rem);
+  font-weight: 620;
+  line-height: 1.58;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.52);
+  animation-delay: 0.42s;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero .mag-article-hero-caption {
+  color: rgba(255, 250, 240, 0.72);
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-layout {
+  background: #f4f1ea;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-article-footer {
+  max-width: none;
+  background:
+    linear-gradient(135deg, rgba(222, 214, 196, 0.48), transparent 38%),
+    linear-gradient(180deg, #d9d4c8 0%, #cfc9bc 100%);
+  color: #35332d;
+  border-top-color: rgba(33, 67, 72, 0.18);
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-article-footer::before {
+  background: linear-gradient(90deg, rgba(33, 67, 72, 0.34), rgba(33, 67, 72, 0.08), transparent);
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-logo,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-columns h3,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-socials a,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-columns button:hover,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-link:hover {
+  color: #214348;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-socials a {
+  border-color: rgba(33, 67, 72, 0.28);
+}
+
+@keyframes immersiveHeroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 @keyframes articleSoftArrival {
@@ -2670,6 +2838,15 @@ html[lang="zh-CN"] .issue-card h2 {
 @media (prefers-reduced-motion: reduce) {
   :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) {
     animation: none;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-kicker,
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay h1,
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero p {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    filter: none;
   }
 }
 
@@ -3612,6 +3789,72 @@ html[lang="zh-CN"] .issue-card h2 {
 
   .article-related-card {
     padding: 24px 22px 26px;
+  }
+}
+
+@media (max-width: 700px) {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-header {
+    height: 64px;
+    min-height: 64px;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding: 0 18px;
+    text-align: left;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-header-left {
+    justify-self: start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-socials {
+    gap: 9px;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-socials a {
+    width: 19px;
+    height: 19px;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-logo {
+    justify-self: end;
+    font-size: clamp(1.55rem, 7vw, 2.2rem);
+    line-height: 1;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-donate-button {
+    display: none;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero {
+    min-height: 100svh;
+    background-position: center top;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay {
+    padding: 92px 20px 52px;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-kicker {
+    margin-bottom: 18px;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+  }
+
+  .article-sexual-liberationism-erotic-nihilism .mag-article-hero-overlay h1,
+  .article-sexual-liberationism-erotic-nihilism-zh .mag-article-hero-overlay h1 {
+    max-width: 94vw;
+    font-size: clamp(2.25rem, 11vw, 4.4rem);
+    line-height: 1;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero p {
+    max-width: 92vw;
+    margin-top: 24px;
+    font-size: clamp(1rem, 4.1vw, 1.22rem);
+    line-height: 1.62;
   }
 }
 

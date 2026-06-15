@@ -2027,6 +2027,10 @@ return null;
     const recommendedArticles = (selectedArticle.recommendedArticleIds || [])
       .map((id) => currentArticles.find((article) => article.id === id))
       .filter(Boolean);
+    const isImmersiveArticle = [
+      "sexual-liberationism-erotic-nihilism",
+      "sexual-liberationism-erotic-nihilism-zh",
+    ].includes(selectedArticle.id);
 
     return (
       <>
@@ -2706,7 +2710,7 @@ return null;
 </section>
   </article>
 </main>
-{selectedArticle.layout === "psyche" && (
+{(selectedArticle.layout === "psyche" || isImmersiveArticle) && (
   <footer className="psyche-article-footer">
     <div className="psyche-footer-brand">
       <div className="psyche-footer-logo">Feminist Archive</div>
@@ -2758,7 +2762,7 @@ return null;
         <button type="button" onClick={() => setCurrentPage("magazine")}>
           {language === "zh" ? "杂志" : "Magazine"}
         </button>
-        <button type="button" onClick={() => setCurrentPage("archive")}>
+        <button type="button" onClick={() => setCurrentPage("archive-page")}>
           {language === "zh" ? "档案" : "Archive"}
         </button>
         <button type="button" onClick={() => setCurrentPage("reading-guides")}>
