@@ -2753,6 +2753,7 @@ html[lang="zh-CN"] .issue-card h2 {
   background: #f5f3ee;
   color: #4a4742;
   padding-top: 0;
+  animation: psycheArticleEnter 0.78s cubic-bezier(0.2, 0.74, 0.18, 1) both;
 }
 
 :is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .mag-article-header {
@@ -3077,9 +3078,33 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 :is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-endnote,
-:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-circulation,
-:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-block {
+:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-circulation {
   display: none;
+}
+
+@keyframes psycheArticleEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+
+  62% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) {
+    animation: none;
+  }
 }
 
 .psyche-article-footer {
@@ -3635,6 +3660,76 @@ border: 1px solid #f0ddc5;
 
 .article-support-block {
   overflow: hidden;
+}
+
+:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-block {
+  margin: 82px 0 0;
+  padding: clamp(30px, 4vw, 46px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(210px, 0.72fr);
+  gap: clamp(26px, 4vw, 44px);
+  align-items: end;
+  border: 1px solid rgba(36, 90, 143, 0.2);
+  background:
+    linear-gradient(135deg, rgba(223, 234, 240, 0.96), rgba(249, 246, 238, 0.94) 55%, rgba(255, 252, 244, 0.96)),
+    radial-gradient(circle at 14% 18%, rgba(36, 90, 143, 0.12), transparent 32%);
+  box-shadow:
+    0 24px 58px rgba(36, 90, 143, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.64);
+}
+
+:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-label {
+  color: rgba(31, 90, 142, 0.72);
+  font-family: Inter, "Noto Sans SC", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+}
+
+:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-copy h2 {
+  max-width: 520px;
+  color: #1f5a8e;
+  font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", serif;
+  font-size: clamp(2.15rem, 3.9vw, 4.05rem);
+  font-weight: 560;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-copy p {
+  max-width: 620px;
+  color: #4d4942;
+  font-family: Inter, "Noto Sans SC", sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.75;
+}
+
+:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-actions {
+  align-self: center;
+  gap: 12px;
+}
+
+:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-actions a {
+  border: 1px solid rgba(36, 90, 143, 0.34);
+  background: rgba(255, 253, 247, 0.64);
+  color: #1f5a8e;
+  font-family: Inter, "Noto Sans SC", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 760;
+  text-align: left;
+}
+
+:is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-actions a:hover {
+  background: #1f5a8e;
+  color: #fffdf7;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 800px) {
+  :is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-block {
+    grid-template-columns: 1fr;
+    margin-top: 62px;
+  }
 }
 
 
