@@ -65,6 +65,7 @@ const localIssueArticlesZh = [
   ];
 
 const currentIssueArticleIdsZh = [
+  "sexual-liberationism-erotic-nihilism-zh",
   "feminism-art-capitalism-zh",
   "barbie-capitalism-zh",
   "reproduction-is-labour",
