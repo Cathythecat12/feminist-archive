@@ -185,7 +185,7 @@ A slower archive allows writing to remain intellectually alive beyond visibility
     author: "Feminist Archive",
     date: "15 June 2026",
     readTime: "17 min read",
-    image: "/images/文章素材图24.png",
+    image: "/images/sappho-and-alcaeus-social.jpg",
     excerpt:
       "Why does modernity present bodily freedom, sexual diversity, and the freedom to choose one’s desires as forms of liberation, only to end up drawing the subject into perversion, consumption, fetishism, and the capitalist order?",
     tags: ["sexual liberation", "Lacan", "capitalism", "fetishism", "feminism"],
