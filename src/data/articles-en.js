@@ -191,11 +191,6 @@ A slower archive allows writing to remain intellectually alive beyond visibility
     tags: ["sexual liberation", "Lacan", "capitalism", "fetishism", "feminism"],
     contentBlocks: [
       {
-        type: "lead",
-        text:
-          "Why does modernity present bodily freedom, sexual diversity, and the freedom to choose one’s desires as forms of liberation, only to end up drawing the subject into perversion, consumption, fetishism, and the capitalist order?",
-      },
-      {
         type: "heading",
         text: "1. Sexual Liberationism as the Endpoint of Humanism",
       },

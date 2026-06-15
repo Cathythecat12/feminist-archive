@@ -2638,6 +2638,12 @@ html[lang="zh-CN"] .issue-card h2 {
   
 }
 
+.article-sexual-liberationism-erotic-nihilism .mag-article-hero-overlay h1 {
+  max-width: 980px;
+  font-size: clamp(2.5rem, 4.35vw, 4.45rem);
+  line-height: 1.02;
+}
+
 
 .mag-article-hero p {
   max-width: 760px;
