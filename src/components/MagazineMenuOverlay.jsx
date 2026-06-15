@@ -59,6 +59,15 @@ function MagazineMenuOverlay({ language, setCurrentPage, onClose }) {
                   : "A room for slower study: books, guides, reading paths and return."}
               </em>
             </button>
+
+            <button onClick={() => goTo("deep-reading")}>
+              <span>{zh ? "深度阅读" : "Deep Reading"}</span>
+              <em>
+                {zh
+                  ? "为已经熟悉一些女性主义理论、并希望更深入探索思想的读者准备。"
+                  : "For readers who already have some familiarity with feminist theory and would like to explore ideas in greater depth."}
+              </em>
+            </button>
           </nav>
 
           <div className="magazine-menu-side">

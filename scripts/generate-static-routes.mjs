@@ -136,6 +136,15 @@ const pageMeta = {
     title: "阅读室 | Feminist Archive",
     description: "Feminist Archive 为读者准备的女性主义公共阅读室。",
   },
+  "/en/deep-reading": {
+    title: "Deep Reading | Feminist Archive",
+    description:
+      "For readers who already have some familiarity with feminist theory and would like to explore ideas in greater depth.",
+  },
+  "/zh/deep-reading": {
+    title: "深度阅读 | Feminist Archive",
+    description: "为已经熟悉一些女性主义理论、并希望更深入探索思想的读者准备。",
+  },
   "/en/reading-room/guides": {
     title: "Reading Guides | Feminist Archive",
     description: "Guides and study paths from the Feminist Archive Reading Room.",

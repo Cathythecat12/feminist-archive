@@ -17,6 +17,7 @@ import SubmissionGuidelinesPage from "./page/SubmissionGuidelinesPage";
 import SubmissionPage from "./page/SubmissionPage";
 import MonthlyThemePageZh from "./page/MonthlyThemePageZh";
 import ReadingRoomPage from "./page/ReadingRoomPage";
+import DeepReadingPage from "./page/DeepReadingPage";
 import MagazineCategoryPage from "./page/MagazineCategoryPage";
 import { submitWebsiteForm } from "./utils/formSubmit";
 import HowWeEditPage from "./page/HowWeEditPage";
@@ -79,6 +80,7 @@ const PAGE_ROUTES = {
   "reading-guides": "reading-room/guides",
   "caliban-guide": "reading-room/caliban-and-the-witch",
   "reading-room": "reading-room",
+  "deep-reading": "deep-reading",
   "submission-guidelines": "submissions/guidelines",
   "submission-page": "submissions/new",
   "summer-update": "summer-update",
@@ -548,6 +550,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     "archive-page",
     "archive-house",
     "reading-room",
+    "deep-reading",
     "reading-guides",
     "caliban-guide",
     "contact-page",
@@ -3647,6 +3650,15 @@ Further materials are being gathered.`
         language={language}
         onBack={() => setCurrentPage("archive-house")}
         onOpenArticle={(article) => openArticleFrom(article, "reading-room")}
+        setCurrentPage={setCurrentPage}
+      />
+    );
+  }
+  if (currentPage === "deep-reading") {
+    return renderWithToast(
+      <DeepReadingPage
+        language={language}
+        onBack={() => setCurrentPage("magazine")}
         setCurrentPage={setCurrentPage}
       />
     );

@@ -12038,6 +12038,68 @@ body {
   gap: 12px;
 }
 
+/* Deep Reading */
+.deep-reading-page {
+  min-height: 100vh;
+  color: #1f1b18;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(7, 91, 77, 0.14), transparent 30%),
+    radial-gradient(circle at 88% 20%, rgba(143, 31, 45, 0.12), transparent 32%),
+    linear-gradient(180deg, #f6f1e9 0%, #ebe2d6 100%);
+}
+
+.deep-reading-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(74px, 8vw, 118px) 44px 140px;
+}
+
+.deep-reading-hero {
+  max-width: 1040px;
+  animation: readingRise 0.9s ease both;
+}
+
+.deep-reading-hero h1 {
+  max-width: 1060px;
+  margin: 0;
+  color: #075b4d;
+  font-family: "Cormorant Garamond", "Songti SC", Georgia, serif;
+  font-size: clamp(4.5rem, 8.4vw, 9.2rem);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+}
+
+.deep-reading-hero p {
+  max-width: 780px;
+  margin: 34px 0 0;
+  color: #57504a;
+  font-size: clamp(1.14rem, 1.7vw, 1.42rem);
+  line-height: 1.72;
+}
+
+.deep-reading-placeholder {
+  max-width: 760px;
+  margin-top: clamp(64px, 8vw, 118px);
+  padding-top: 28px;
+  border-top: 1px solid rgba(31, 27, 24, 0.18);
+}
+
+.deep-reading-placeholder span {
+  color: #8f1f2d;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.deep-reading-placeholder p {
+  margin: 18px 0 0;
+  color: #514b45;
+  font-size: 1.08rem;
+  line-height: 1.72;
+}
+
 .reading-room-detail-actions a,
 .reading-room-detail-actions button {
   padding: 13px 18px;
