@@ -963,4 +963,65 @@ According to Michel Foucault, power in modern society no longer operates primari
 `),
     ],
   },
+
+  {
+    id: "pansexualism-freudian-psychoanalysis",
+    title:
+      "“Pansexualism”: The Vulgarized Interpretation of Freudian Psychoanalysis as the Reduction of All Mental Activity to Sexual Desire",
+    category: "Writing",
+    author: "Feminist Archive",
+    date: "16 June 2026",
+    readTime: "7 min read",
+    image: "/images/文章素材图9.png",
+    excerpt:
+      "So-called pansexualism appears to celebrate psychoanalysis, yet it actually misunderstands it by transforming psychoanalysis back into psychological realism and mystical authority worship.",
+    tags: ["psychoanalysis", "Freud", "pansexualism", "unconscious", "discourse"],
+    contentBlocks: [
+      ...paragraphs(`
+So-called pansexualism is the view that all human mental activities, psychological impulses, structures of desire, and even art, religion, and personality can ultimately be reduced to sexual repression, the Oedipus complex, maternal desire, patricidal impulses, incestuous fantasies, the oral stage, the anal stage, and similar sexualized mechanisms. While this perspective appears to celebrate psychoanalysis, it actually fundamentally misunderstands it.
+
+Pansexualism can be understood as a form of popular psychological fetishism. It treats psychoanalysis as a universal psychological tool capable of explaining everything. It assumes that once a person’s behavior has been interpreted in terms of “sexual repression,” “frustrated desire,” or an “Oedipal structure,” one has already uncovered the deepest truth about that person. Yet such explanations are extremely crude. They never reach the core of psychoanalysis itself. Instead, they seize upon the aspects of Freud’s early theory that are most easily consumed by the public and expand them into a universal explanatory framework.
+
+Many people who claim to study psychoanalysis ultimately do not move toward rational analysis. Instead, they drift toward mysticism, spiritualization, or various forms of esoteric interpretation. This tendency can be observed in certain strands of Jungian psychology and in some niche circles devoted to discussing Lacan. In these contexts, psychoanalysis is transformed into a form of modern occultism. It appears anti-traditional and profound on the surface, but in reality it continues to depend upon authority. The only difference is that the source of authority shifts from science or religion to academic communities, knowledge networks, or psychoanalytic masters. Whoever occupies the position of the master acquires the authority to interpret human beings.
+
+Pansexualism attempts to reconcile nature and humanity through psychological phenomena. On the one hand, human beings possess desires, impulses, and instincts, which seem to belong to the domain of natural law. On the other hand, they possess reason, reflection, and self-consciousness, which appear to belong to the realm of spirit and subjectivity. Pansexualism uses “sex” or “eros” as the bridge between these two domains, explaining everything as a consequence of the economy of desire. Repressed sexuality supposedly becomes symptoms, while unrestricted sexuality supposedly produces chaos. Consequently, normality is defined as the proper management of desire under the reality principle. This interpretation appears close to Freud’s classical distinction between the Pleasure Principle and the Reality Principle.
+
+This is the characteristic structure of pansexualism: all problems become problems of libidinal economy, and all distinctions between normality and pathology depend upon whether sexuality has been properly organized. Yet this reconciliation remains overly simplistic, because genuine psychoanalysis does not regard reason as order and desire as disorder. On the contrary, reason, reflection, and language themselves are saturated with ruptures, disturbances, and symptoms.
+`),
+      {
+        type: "heading",
+        text: "Psychoanalysis Is Fundamentally Concerned with Discourse, Not Sex",
+      },
+      ...paragraphs(`
+What psychoanalysis is truly concerned with is not sex, or at least not sex as its central concern, but discourse.
+
+Freud certainly employed concepts such as sexual repression, the Oedipus complex, and libido. However, to treat these concepts as the entirety of psychoanalysis is to grasp only its surface. What truly matters is psychoanalysis’s revelation of how the subject is constituted through language and symbolic systems.
+
+The unconscious is not an underground storage room in which desires and memories are hidden. Rather, it is a mechanism of symbolic operations. The unconscious is neither a “latent consciousness” nor some mysterious ontological depth lurking in darkness, nor is it reducible to questions such as whether one harbors incestuous desires. It is the very mode through which language operates within the subject.
+`),
+      {
+        type: "heading",
+        text: "The Unconscious, Consciousness, and the Preconscious",
+      },
+      ...paragraphs(`
+Many people imagine the unconscious as a basement in which desires, traumas, and memories are stored. This understanding is fundamentally mistaken.
+
+The unconscious is better understood as a process or mechanism of movement, analogous to a linguistic system, a symbolic network, or an automatically functioning program. It is constantly in operation. Consciousness, by contrast, is merely an “error message” produced within this process of operation.
+
+In other words, the unconscious is not a substance but a movement. Likewise, consciousness is not a stable master governing the psyche; it is an effect generated by the functioning of symbolic systems. When people speak, meaning is often not fully controlled by a transparent “I.” Rather, language itself flows and symbolic structures themselves operate. We imagine that we know exactly what we mean, yet meaning is frequently organized only afterward. The subject merely hears what has already been said and subsequently supplies it with coherence and significance.
+
+The preconscious should not be understood as a filter that screens content before expression. It functions more like a retrospective mechanism of review. It does not prevent certain things from being said in advance. Rather, after discourse has unfolded, it returns to inspect what appears awkward, shameful, problematic, or in need of reformulation. Thus consciousness, the preconscious, and the unconscious should not be regarded as fixed psychological organs. They are distinct mechanisms operating within the movement of discourse itself.
+
+Psychoanalysis should not be mystified. It ought to be understood as a lucid practice, a form of symbolic work carried out through dialogue.
+
+The relationship between analyst and analysand is not one of equal conversation. It is an asymmetrical discursive relation. The task of psychoanalysis is not to tell people that all their problems originate in sexual repression. Rather, it seeks, through discourse, to enable the subject to recognize the ruptures, repetitions, symptoms, and structures of desire embedded within their own speech.
+
+The analyst must not transform themselves into a revered Big Other for the analysand. Nor should they exploit transference in order to make the analysand fall in love with them, become dependent upon them, or treat them as a mysterious authority. The genuine ethics of psychoanalysis requires the analyst to acknowledge that they possess no ultimate answer and cannot present themselves as a master in possession of truth.
+
+Otherwise, psychoanalysis degenerates into a cult-like structure of authority, becoming an expensive and mystified industry of gurus who foster psychological dependence among their followers.
+
+Pansexualism ultimately transforms psychoanalysis back into a form of psychological realism and mystical authority worship. In doing so, it betrays the most critical and subversive dimensions of psychoanalysis itself.
+`),
+    ],
+  },
 ];
