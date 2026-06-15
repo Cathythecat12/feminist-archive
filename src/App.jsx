@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Bookmark, List, Send } from "lucide-react";
+import { Link2, List, Send } from "lucide-react";
 import { articles as englishArticles } from "./data/articles-en";
 import { articles as chineseArticles } from "./data/articles-zh";
 import MonthlyThemePage from "./page/MonthlyThemePage";
@@ -2414,10 +2414,14 @@ return null;
       <div className="psyche-article-action-row">
         <button
           type="button"
-          onClick={() => showToast(language === "zh" ? "已保存到阅读清单。" : "Saved to reading list.")}
+          onClick={() =>
+            copyArticleLink(
+              language === "zh" ? "链接已复制。" : "Article link copied."
+            )
+          }
         >
-          <Bookmark size={18} strokeWidth={1.9} />
-          <span>{language === "zh" ? "保存" : "Save"}</span>
+          <Link2 size={18} strokeWidth={1.9} />
+          <span>{language === "zh" ? "复制链接" : "Copy link"}</span>
         </button>
         <button
           type="button"
@@ -2432,7 +2436,7 @@ return null;
         type="button"
         onClick={() => setCurrentPage("contact-page")}
       >
-        {language === "zh" ? "分享你的想法" : "Share your thoughts"}
+        {language === "zh" ? "写信给编辑部" : "Write to the editors"}
       </button>
     </div>
   )}
