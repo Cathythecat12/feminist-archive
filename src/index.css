@@ -11176,48 +11176,42 @@ body {
 }
 
 .facebook-share-logo {
-  width: 62px;
-  height: 66px;
-  overflow: visible;
-  color: #1664d9;
-  filter: drop-shadow(0 14px 18px rgba(22, 100, 217, 0.14));
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 34% 18%, rgba(255, 255, 255, 0.26), transparent 30%),
+    linear-gradient(145deg, #1877f2 0%, #1567dc 58%, #0f55bf 100%);
+  color: #fff;
+  box-shadow:
+    0 14px 30px rgba(24, 119, 242, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+  filter: none;
+  animation: facebookLogoBreathe 2.8s ease-in-out infinite;
 }
 
 .facebook-share-logo::before {
   content: "";
   position: absolute;
-  left: 19px;
-  top: 4px;
-  width: 10px;
-  height: 56px;
-  background: currentColor;
-  border-radius: 0;
+  width: 86px;
+  height: 18px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+  transform: rotate(-28deg) translateX(-76px);
+  animation: facebookLogoSweep 3.2s ease-in-out infinite;
 }
 
 .facebook-share-logo span {
   position: absolute;
-  inset: 0;
-  font-size: 0;
-}
-
-.facebook-share-logo span::before,
-.facebook-share-logo span::after {
-  content: "";
-  position: absolute;
-  left: 19px;
-  height: 10px;
-  background: currentColor;
-  border-radius: 0 1px 1px 0;
-}
-
-.facebook-share-logo span::before {
-  top: 4px;
-  width: 37px;
-}
-
-.facebook-share-logo span::after {
-  top: 28px;
-  width: 30px;
+  right: 15px;
+  bottom: -4px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 4.05rem;
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.08em;
+  animation: facebookGlyphLift 2.8s ease-in-out infinite;
 }
 
 .wechat-share-logo {
@@ -11409,6 +11403,42 @@ body {
 
   50% {
     transform: scale(1.025);
+  }
+}
+
+@keyframes facebookLogoBreathe {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-1px) scale(1.025);
+  }
+}
+
+@keyframes facebookLogoSweep {
+  0%, 48%, 100% {
+    transform: rotate(-28deg) translateX(-76px);
+    opacity: 0;
+  }
+
+  62% {
+    opacity: 0.78;
+  }
+
+  82% {
+    transform: rotate(-28deg) translateX(76px);
+    opacity: 0;
+  }
+}
+
+@keyframes facebookGlyphLift {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-1px);
   }
 }
 
