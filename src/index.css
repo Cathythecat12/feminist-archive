@@ -2638,13 +2638,13 @@ html[lang="zh-CN"] .issue-card h2 {
   
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) {
   padding-top: 0;
   background: #f4f1ea;
   animation: articleSoftArrival 1.08s cubic-bezier(0.16, 0.84, 0.24, 1) both;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-header {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-header {
   height: 70px;
   padding: 0 clamp(22px, 3vw, 54px);
   background: transparent;
@@ -2654,7 +2654,7 @@ html[lang="zh-CN"] .issue-card h2 {
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.36);
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-header::before {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-header::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -2663,14 +2663,14 @@ html[lang="zh-CN"] .issue-card h2 {
   background: linear-gradient(180deg, rgba(17, 16, 13, 0.36), rgba(17, 16, 13, 0));
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-socials a,
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .issue-menu-button,
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-donate-button {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-socials a,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .issue-menu-button,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-donate-button {
   color: #fffaf0;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .issue-menu-button,
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-donate-button {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .issue-menu-button,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-donate-button {
   font-family: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
   font-size: clamp(1rem, 1.25vw, 1.28rem);
   font-weight: 700;
@@ -2678,7 +2678,7 @@ html[lang="zh-CN"] .issue-card h2 {
   text-transform: none;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-logo {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-logo {
   color: #fffaf0;
   font-family: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
   font-size: clamp(2.1rem, 3.05vw, 3.35rem);
@@ -2686,7 +2686,7 @@ html[lang="zh-CN"] .issue-card h2 {
   letter-spacing: -0.065em;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero {
   min-height: 100svh;
   background-position: center center;
   align-items: center;
@@ -2695,13 +2695,13 @@ html[lang="zh-CN"] .issue-card h2 {
   transform: translateZ(0);
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero::before {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero::before {
   background:
     linear-gradient(90deg, rgba(13, 12, 10, 0.44), rgba(13, 12, 10, 0.12) 45%, rgba(13, 12, 10, 0.5)),
     linear-gradient(180deg, rgba(13, 12, 10, 0.32) 0%, rgba(13, 12, 10, 0.18) 38%, rgba(13, 12, 10, 0.72) 100%);
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero-overlay {
   width: min(1360px, 100%);
   max-width: none;
   margin: 0 auto;
@@ -2712,16 +2712,16 @@ html[lang="zh-CN"] .issue-card h2 {
   text-align: center;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-kicker,
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay h1,
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero p {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-kicker,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero-overlay h1,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero p {
   opacity: 0;
   transform: translateY(22px);
   animation: immersiveHeroReveal 0.95s cubic-bezier(0.2, 0.74, 0.18, 1) forwards;
   will-change: opacity, transform;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-kicker {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-kicker {
   margin-bottom: clamp(20px, 3vh, 36px);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: clamp(0.82rem, 1.1vw, 1.06rem);
@@ -2731,7 +2731,7 @@ html[lang="zh-CN"] .issue-card h2 {
   animation-delay: 0.1s;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay h1 {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero-overlay h1 {
   max-width: min(1280px, 92vw);
   color: #fffaf0;
   font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", Georgia, serif;
@@ -2759,7 +2759,21 @@ html[lang="zh-CN"] .issue-card h2 {
   letter-spacing: -0.035em;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero p {
+.article-pansexualism-freudian-psychoanalysis .mag-article-hero-overlay h1 {
+  max-width: min(1160px, 90vw);
+  font-size: clamp(2.35rem, 3.65vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.032em;
+}
+
+.article-pansexualism-freud-vulgarized-zh .mag-article-hero-overlay h1 {
+  max-width: min(1080px, 90vw);
+  font-size: clamp(2.55rem, 4.2vw, 5.45rem);
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+}
+
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero p {
   max-width: min(820px, 82vw);
   margin-top: clamp(30px, 4vh, 52px);
   color: rgba(255, 250, 240, 0.94);
@@ -2771,22 +2785,22 @@ html[lang="zh-CN"] .issue-card h2 {
   animation-delay: 0.42s;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero .mag-article-hero-caption {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero .mag-article-hero-caption {
   color: rgba(255, 250, 240, 0.72);
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-layout {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-layout {
   background: #f4f1ea;
   padding-top: clamp(34px, 4vw, 54px);
   content-visibility: auto;
   contain-intrinsic-size: 1400px;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .article-section-heading:first-child {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .article-section-heading:first-child {
   margin-top: 0;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-content .article-section-heading:first-child + p::first-letter {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-content .article-section-heading:first-child + p::first-letter {
   float: left;
   margin: 0.03em 0.13em 0 0;
   color: #15130f;
@@ -2797,7 +2811,7 @@ html[lang="zh-CN"] .issue-card h2 {
   letter-spacing: -0.08em;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-content p:first-child::first-letter {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-content p:first-child::first-letter {
   float: none;
   font-size: inherit;
   line-height: inherit;
@@ -2805,7 +2819,7 @@ html[lang="zh-CN"] .issue-card h2 {
   font-weight: inherit;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-article-footer {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .psyche-article-footer {
   max-width: none;
   background:
     linear-gradient(135deg, rgba(222, 214, 196, 0.48), transparent 38%),
@@ -2814,19 +2828,19 @@ html[lang="zh-CN"] .issue-card h2 {
   border-top-color: rgba(33, 67, 72, 0.18);
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-article-footer::before {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .psyche-article-footer::before {
   background: linear-gradient(90deg, rgba(33, 67, 72, 0.34), rgba(33, 67, 72, 0.08), transparent);
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-logo,
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-columns h3,
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-socials a,
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-columns button:hover,
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-link:hover {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .psyche-footer-logo,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .psyche-footer-columns h3,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .psyche-footer-socials a,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .psyche-footer-columns button:hover,
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .psyche-footer-link:hover {
   color: #214348;
 }
 
-:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .psyche-footer-socials a {
+:is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .psyche-footer-socials a {
   border-color: rgba(33, 67, 72, 0.28);
 }
 
@@ -2859,13 +2873,13 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) {
     animation: none;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-kicker,
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay h1,
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero p {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-kicker,
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero-overlay h1,
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero p {
     opacity: 1;
     transform: none;
     animation: none;
@@ -3816,7 +3830,7 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 @media (max-width: 700px) {
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-header {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-header {
     height: 64px;
     min-height: 64px;
     grid-template-columns: 1fr auto;
@@ -3825,66 +3839,74 @@ html[lang="zh-CN"] .issue-card h2 {
     text-align: left;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-header-left {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-header-left {
     justify-self: start;
     justify-content: flex-start;
     flex-wrap: nowrap;
     gap: 10px;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-socials {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-socials {
     gap: 9px;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-socials a {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-socials a {
     width: 19px;
     height: 19px;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-logo {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-logo {
     justify-self: end;
     font-size: clamp(1.55rem, 7vw, 2.2rem);
     line-height: 1;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-donate-button {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-donate-button {
     display: none;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero {
     min-height: 100svh;
     background-position: center top;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero-overlay {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero-overlay {
     padding: 92px 20px 52px;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-kicker {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-kicker {
     margin-bottom: 18px;
     font-size: 0.72rem;
     letter-spacing: 0.22em;
   }
 
   .article-sexual-liberationism-erotic-nihilism .mag-article-hero-overlay h1,
-  .article-sexual-liberationism-erotic-nihilism-zh .mag-article-hero-overlay h1 {
+  .article-sexual-liberationism-erotic-nihilism-zh .mag-article-hero-overlay h1,
+  .article-pansexualism-freudian-psychoanalysis .mag-article-hero-overlay h1,
+  .article-pansexualism-freud-vulgarized-zh .mag-article-hero-overlay h1 {
     max-width: 94vw;
     font-size: clamp(2.25rem, 11vw, 4.4rem);
     line-height: 1;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-hero p {
+  .article-pansexualism-freudian-psychoanalysis .mag-article-hero-overlay h1,
+  .article-pansexualism-freud-vulgarized-zh .mag-article-hero-overlay h1 {
+    font-size: clamp(1.95rem, 8.2vw, 3.3rem);
+    line-height: 1.08;
+  }
+
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-hero p {
     max-width: 92vw;
     margin-top: 24px;
     font-size: clamp(1rem, 4.1vw, 1.22rem);
     line-height: 1.62;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-layout {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-layout {
     padding-top: 30px;
   }
 
-  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism) .mag-article-content .article-section-heading:first-child + p::first-letter {
+  :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .mag-article-content .article-section-heading:first-child + p::first-letter {
     margin-right: 0.12em;
     font-size: clamp(5.2rem, 24vw, 7.1rem);
     line-height: 0.74;

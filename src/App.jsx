@@ -2065,6 +2065,8 @@ return null;
     const isImmersiveArticle = [
       "sexual-liberationism-erotic-nihilism",
       "sexual-liberationism-erotic-nihilism-zh",
+      "pansexualism-freudian-psychoanalysis",
+      "pansexualism-freud-vulgarized-zh",
     ].includes(selectedArticle.id);
 
     return (

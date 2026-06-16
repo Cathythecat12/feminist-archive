@@ -972,7 +972,7 @@ According to Michel Foucault, power in modern society no longer operates primari
     author: "Feminist Archive",
     date: "16 June 2026",
     readTime: "7 min read",
-    image: "/images/文章素材图9.png",
+    image: "/images/泛性主义.png",
     excerpt:
       "So-called pansexualism appears to celebrate psychoanalysis, yet it actually misunderstands it by transforming psychoanalysis back into psychological realism and mystical authority worship.",
     tags: ["psychoanalysis", "Freud", "pansexualism", "unconscious", "discourse"],
