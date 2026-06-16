@@ -3723,6 +3723,7 @@ Further materials are being gathered.`
       <DeepReadingPage
         language={language}
         onBack={() => setCurrentPage("magazine")}
+        onOpenArticle={(article) => openArticleFrom(article, "deep-reading")}
         setCurrentPage={setCurrentPage}
       />
     );

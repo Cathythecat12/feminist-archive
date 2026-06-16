@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
+import { articles as englishArticles } from "../data/articles-en";
 
 const NORMAL_MAP_SETTINGS = {
   ambient: 0.06,
@@ -337,8 +338,28 @@ function DeepReadingNormalMap() {
   );
 }
 
-function DeepReadingPage({ language, onBack, setCurrentPage }) {
+const DEEP_READING_ARTICLE_IDS = [
+  "sexual-liberationism-erotic-nihilism",
+  "pansexualism-freudian-psychoanalysis",
+];
+
+function DeepReadingPage({ language, onBack, setCurrentPage, onOpenArticle }) {
   const zh = language === "zh";
+  const featuredArticles = useMemo(
+    () =>
+      DEEP_READING_ARTICLE_IDS
+        .map((id) => englishArticles.find((article) => article.id === id))
+        .filter(Boolean),
+    []
+  );
+
+  const openArticle = (article, event) => {
+    if (!onOpenArticle) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    onOpenArticle(article);
+  };
 
   return (
     <div className="deep-reading-page">
@@ -356,29 +377,79 @@ function DeepReadingPage({ language, onBack, setCurrentPage }) {
       </header>
 
       <main className="deep-reading-main">
-        <DeepReadingNormalMap />
+        <section className="deep-reading-hero-panel" aria-labelledby="deep-reading-title">
+          <div className="deep-reading-hero-copy">
+            <div className="reading-room-kicker">
+              {zh ? "DEEP READING / 深度阅读" : "DEEP READING"}
+            </div>
 
-        <section className="deep-reading-hero">
-          <div className="reading-room-kicker">
-            {zh ? "DEEP READING / 深度阅读" : "DEEP READING"}
+            <h1 id="deep-reading-title">Deep Reading</h1>
+
+            <p className="deep-reading-lede">
+              For readers who already have some familiarity with feminist theory and would
+              like to explore ideas in greater depth.
+            </p>
+
+            <p>
+              At Feminist Archive, we believe feminist thought should remain open to
+              everyone who wishes to engage with it. Alongside our Deep Reading essays, we
+              also publish reading guides, introductions, and accessible articles designed
+              for new readers and those beginning their journey.
+            </p>
+
+            <div className="deep-reading-palette" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+
+            <button
+              className="deep-reading-guides-link"
+              onClick={() => setCurrentPage("reading-room")}
+            >
+              Explore our Reading Guides →
+            </button>
           </div>
 
-          <h1>{zh ? "为已经进入理论深处的读者。" : "For readers already inside the work of theory."}</h1>
-
-          <p>
-            {zh
-              ? "这个页面将为已经熟悉一些女性主义理论、并希望更深入探索思想的读者准备。"
-              : "For readers who already have some familiarity with feminist theory and would like to explore ideas in greater depth."}
-          </p>
+          <DeepReadingNormalMap />
         </section>
 
-        <section className="deep-reading-note">
-          <span>{zh ? "页面建设中" : "Page in preparation"}</span>
-          <p>
-            {zh
-              ? "这里已经先建立为独立页面。具体栏目、阅读路径与文本结构会在下一步继续补充。"
-              : "This section has been created as a standalone page. Its columns, reading paths, and text structure can be added next."}
-          </p>
+        <section className="deep-reading-articles" aria-labelledby="deep-reading-articles-title">
+          <div className="deep-reading-section-top">
+            <span>{zh ? "已上线文章" : "Now Reading"}</span>
+            <h2 id="deep-reading-articles-title">
+              {zh ? "两篇进入深层理论结构的文章。" : "Two routes into difficult desire."}
+            </h2>
+          </div>
+
+          <div className="deep-reading-card-grid">
+            {featuredArticles.map((article, index) => (
+              <a
+                className="deep-reading-article-card"
+                href={`/en/articles/${article.id}`}
+                key={article.id}
+                onClick={(event) => openArticle(article, event)}
+                style={{ "--card-index": index }}
+              >
+                <div
+                  className="deep-reading-card-image"
+                  style={{ backgroundImage: `url(${article.image})` }}
+                />
+
+                <div className="deep-reading-card-body">
+                  <span>{article.category}</span>
+                  <h3>{article.title}</h3>
+                  <p>{article.excerpt}</p>
+                  <small>
+                    {article.date}
+                    {article.readTime ? ` · ${article.readTime}` : ""}
+                  </small>
+                </div>
+              </a>
+            ))}
+          </div>
         </section>
       </main>
     </div>
