@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link2, List, Send } from "lucide-react";
 import { articles as englishArticles } from "./data/articles-en";
 import { articles as chineseArticles } from "./data/articles-zh";
+import { articles as frenchArticles } from "./data/articles-fr";
 import MonthlyThemePage from "./page/MonthlyThemePage";
 import ArchivePage from "./page/ArchivePage";
 import MagazinePage from "./page/MagazinePage";
@@ -483,12 +484,12 @@ function MainApp() {
     return () => clearTimeout(timer);
   }, [currentPage, selectedArticle?.id]);
 
-  const t = text[language];
+  const t = text[language] || text.en;
 
   const categories = ["All", "Writing", "Reviews", "Archive"];
 
   const currentArticles =
-  language === "en" ? englishArticles : chineseArticles;
+  language === "zh" ? chineseArticles : englishArticles;
 
   const visibleArticles = useMemo(
     () => currentArticles.filter((article) => !article.hidden),
@@ -520,6 +521,10 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
   const getArticleLanguage = (article = selectedArticle) => {
     if (!article) return language;
+
+    if (article.language === "fr") return "fr";
+    if (article.language === "zh") return "zh";
+    if (article.language === "en") return "en";
 
     return hasChineseText(`${article.title || ""} ${article.excerpt || ""}`)
       ? "zh"
@@ -599,7 +604,8 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     if (typeof window === "undefined" || !article?.id) return "";
 
     const url = new URL(window.location.origin);
-    const languagePrefix = articleLanguage === "zh" ? "zh" : "en";
+    const languagePrefix =
+      articleLanguage === "zh" ? "zh" : articleLanguage === "fr" ? "fr" : "en";
     url.pathname = `/${languagePrefix}/articles/${article.id}`;
     return url.toString();
   };
@@ -806,7 +812,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     const params = new URLSearchParams(window.location.search);
     const pathSegments = window.location.pathname.split("/").filter(Boolean);
-    const pathLanguage = pathSegments[0] === "en" || pathSegments[0] === "zh"
+    const pathLanguage = ["en", "zh", "fr"].includes(pathSegments[0])
       ? pathSegments[0]
       : null;
     const routeSegments = pathLanguage ? pathSegments.slice(1) : pathSegments;
@@ -821,19 +827,28 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     if (pathArticleId || articleId) {
       const resolvedArticleId = pathArticleId || articleId;
+      const articlePool =
+        pathLanguage === "fr"
+          ? frenchArticles
+          : pathLanguage === "zh"
+            ? chineseArticles
+            : pathLanguage === "en"
+              ? englishArticles
+              : currentArticles;
       const article =
-        currentArticles.find((entry) => entry.id === resolvedArticleId) ||
+        articlePool.find((entry) => entry.id === resolvedArticleId) ||
+        frenchArticles.find((entry) => entry.id === resolvedArticleId) ||
         chineseArticles.find((entry) => entry.id === resolvedArticleId) ||
         englishArticles.find((entry) => entry.id === resolvedArticleId);
 
       if (article) {
         const articleLanguage =
-          urlLanguage === "en" || urlLanguage === "zh"
+          urlLanguage === "en" || urlLanguage === "zh" || urlLanguage === "fr"
             ? urlLanguage
             : getArticleLanguage(article);
 
         window.setTimeout(() => {
-          if (articleLanguage !== language) {
+          if (articleLanguage !== "fr" && articleLanguage !== language) {
             setLanguage(articleLanguage);
           }
           setSelectedArticle(article);
@@ -928,6 +943,16 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
   }, [currentPage, selectedArticle?.id, selectedArticle?.image]);
 
   const getArticleReturnLabel = () => {
+    const returnLanguage = getArticleLanguage(selectedArticle);
+
+    if (returnLanguage === "fr") {
+      if (articleReturnPage === "reading-room") return "← SALLE DE LECTURE";
+      if (articleReturnPage === "magazine") return "← MAGAZINE";
+      if (articleReturnPage === "archive-page") return "← ARCHIVES";
+      if (articleReturnPage === "main") return "← ACCUEIL";
+      return "← NUMÉRO";
+    }
+
     if (articleReturnPage === "reading-room") {
       return language === "zh" ? "← 阅读室" : "← READING ROOM";
     }
@@ -2068,6 +2093,9 @@ return null;
       "pansexualism-freudian-psychoanalysis",
       "pansexualism-freud-vulgarized-zh",
     ].includes(selectedArticle.id);
+    const articleUiLanguage = getArticleLanguage(selectedArticle);
+    const articleUsesFrench = articleUiLanguage === "fr";
+    const articleUsesChinese = articleUiLanguage === "zh";
 
     return (
       <>
@@ -2309,10 +2337,10 @@ return null;
                     <span />
                   </button>
                   <button type="button" onClick={() => setCurrentPage("newsletter-page")}>
-                    Newsletter
+                    {articleUsesFrench ? "Lettre" : "Newsletter"}
                   </button>
                   <button type="button" onClick={() => setCurrentPage("donate")}>
-                    Donate
+                    {articleUsesFrench ? "Soutenir" : "Donate"}
                   </button>
                 </nav>
               ) : (
@@ -2381,7 +2409,7 @@ return null;
                 className="issue-menu-button mag-article-donate-button"
                 onClick={() => setCurrentPage("donate")}
               >
-                Donate
+                {articleUsesFrench ? "Soutenir" : "Donate"}
               </button>
             )}
           </header>
@@ -2752,7 +2780,9 @@ return null;
     <div className="psyche-footer-brand">
       <div className="psyche-footer-logo">Feminist Archive</div>
       <p>
-        {language === "zh"
+        {articleUsesFrench
+          ? "Une revue indépendante pour la théorie, les archives et la pensée féministe au long cours"
+          : articleUsesChinese
           ? "一个保持理论、档案与女性主义长篇写作开放的独立出版平台"
           : "An independent magazine for theory, archives, and long-form feminist thought"}
       </p>
@@ -2795,40 +2825,40 @@ return null;
 
     <div className="psyche-footer-columns">
       <div>
-        <h3>{language === "zh" ? "栏目" : "Sections"}</h3>
+        <h3>{articleUsesFrench ? "Rubriques" : articleUsesChinese ? "栏目" : "Sections"}</h3>
         <button type="button" onClick={() => setCurrentPage("magazine")}>
-          {language === "zh" ? "杂志" : "Magazine"}
+          {articleUsesFrench ? "Magazine" : articleUsesChinese ? "杂志" : "Magazine"}
         </button>
         <button type="button" onClick={() => setCurrentPage("archive-page")}>
-          {language === "zh" ? "档案" : "Archive"}
+          {articleUsesFrench ? "Archives" : articleUsesChinese ? "档案" : "Archive"}
         </button>
         <button type="button" onClick={() => setCurrentPage("reading-guides")}>
-          {language === "zh" ? "阅读导读" : "Reading Guides"}
+          {articleUsesFrench ? "Guides de lecture" : articleUsesChinese ? "阅读导读" : "Reading Guides"}
         </button>
       </div>
       <div>
-        <h3>{language === "zh" ? "支持" : "Support"}</h3>
+        <h3>{articleUsesFrench ? "Soutenir" : articleUsesChinese ? "支持" : "Support"}</h3>
         <button type="button" onClick={() => setCurrentPage("newsletter-page")}>
-          {language === "zh" ? "通讯" : "Newsletter"}
+          {articleUsesFrench ? "Lettre" : articleUsesChinese ? "通讯" : "Newsletter"}
         </button>
         <button type="button" onClick={() => setCurrentPage("donate")}>
-          {language === "zh" ? "捐助" : "Donate"}
+          {articleUsesFrench ? "Don" : articleUsesChinese ? "捐助" : "Donate"}
         </button>
       </div>
       <div>
-        <h3>{language === "zh" ? "关于" : "About"}</h3>
+        <h3>{articleUsesFrench ? "À propos" : articleUsesChinese ? "关于" : "About"}</h3>
         <a
           className="psyche-footer-link"
           href={
-            language === "zh"
+            articleUsesChinese
               ? "https://feministarchivejournal.org/zh/our-story"
               : "https://feministarchivejournal.org/en/our-story"
           }
         >
-          {language === "zh" ? "我们的故事" : "About"}
+          {articleUsesFrench ? "À propos" : articleUsesChinese ? "我们的故事" : "About"}
         </a>
         <button type="button" onClick={() => setCurrentPage("contact-page")}>
-          {language === "zh" ? "联系" : "Contact"}
+          {articleUsesFrench ? "Contact" : articleUsesChinese ? "联系" : "Contact"}
         </button>
       </div>
     </div>

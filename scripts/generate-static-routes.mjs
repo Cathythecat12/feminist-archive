@@ -3,6 +3,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { articles as englishArticles } from "../src/data/articles-en.js";
 import { articles as chineseArticles } from "../src/data/articles-zh.js";
+import { articles as frenchArticles } from "../src/data/articles-fr.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, "..");
@@ -236,9 +237,9 @@ function applyMeta(template, meta, path) {
   const description = escapeHtml(meta.description || defaultDescription);
   const pageUrl = escapeHtml(`${siteUrl}${path}`);
   const imageUrl = escapeHtml(absoluteUrl(meta.image));
-  const locale = path.startsWith("/zh") ? "zh_CN" : "en_US";
+  const locale = path.startsWith("/zh") ? "zh_CN" : path.startsWith("/fr") ? "fr_FR" : "en_US";
   let html = template
-    .replace(/<html lang="[^"]*">/i, `<html lang="${path.startsWith("/zh") ? "zh-CN" : "en"}">`)
+    .replace(/<html lang="[^"]*">/i, `<html lang="${path.startsWith("/zh") ? "zh-CN" : path.startsWith("/fr") ? "fr" : "en"}">`)
     .replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
 
   html = upsertHeadTag(
@@ -310,6 +311,16 @@ for (const article of englishArticles) {
 
 for (const article of chineseArticles) {
   await writeRoute(template, `/zh/articles/${article.id}`, {
+    type: "article",
+    title: `${article.title} | ${siteName}`,
+    description: stripText(article.excerpt || article.subtitle || article.title),
+    image: article.image || defaultImage,
+    preloadImage: Boolean(article.image),
+  });
+}
+
+for (const article of frenchArticles) {
+  await writeRoute(template, `/fr/articles/${article.id}`, {
     type: "article",
     title: `${article.title} | ${siteName}`,
     description: stripText(article.excerpt || article.subtitle || article.title),
