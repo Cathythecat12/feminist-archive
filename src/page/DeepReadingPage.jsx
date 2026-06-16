@@ -76,8 +76,16 @@ function DeepReadingNormalMap() {
         float direction = radians(135.0);
         vec3 lightDir = normalize(vec3(cos(direction) * 0.7, sin(direction) * 0.7, 1.5));
         vec2 pointer = u_pointer;
-        float pointerDistance = length((uv - pointer) * aspect);
-        float brush = 1.0 - smoothstep(0.085, 0.245, pointerDistance);
+        vec2 pointerDelta = (uv - pointer) * aspect;
+        vec2 scatterAxis = normalize(vec2(0.92, 0.28));
+        vec2 scatterCross = vec2(-scatterAxis.y, scatterAxis.x);
+        float coreBrush = 1.0 - smoothstep(0.035, 0.18, length(pointerDelta * vec2(0.72, 1.28)));
+        float softBrush = 1.0 - smoothstep(0.08, 0.44, length(pointerDelta * vec2(0.58, 1.08)));
+        float diagonalScatter = 1.0 - smoothstep(
+          0.0,
+          0.42,
+          abs(dot(pointerDelta, scatterAxis)) + abs(dot(pointerDelta, scatterCross)) * 1.85
+        );
 
         float diffuse = max(dot(normal, lightDir), 0.0);
         vec3 viewDir = vec3(0.0, 0.0, 1.0);
@@ -100,14 +108,27 @@ function DeepReadingNormalMap() {
         color += vec3(1.0) * specular * 0.12;
         color += vec3(1.0) * revealEdge * 0.08;
 
-        float maskWhite = smoothstep(0.48, 0.78, revealMask);
-        float raisedDetail = clamp(length(normal.xy) * 1.35 + diffuse * 0.5, 0.0, 1.0);
-        float raisedGold = smoothstep(0.24, 0.82, raisedDetail);
-        float goldMix = brush * maskWhite * (0.28 + raisedGold * 0.72);
-        vec3 goldShadow = vec3(0.48, 0.28, 0.08);
-        vec3 goldLight = vec3(1.0, 0.74, 0.25);
-        vec3 goldColor = mix(goldShadow, goldLight, 0.32 + diffuse * 0.68);
-        goldColor += vec3(1.0, 0.86, 0.46) * specular * 0.28;
+        float maskWhite = smoothstep(0.52, 0.82, revealMask);
+        float textureBreak = smoothstep(
+          0.16,
+          0.9,
+          length(normal.xy) * 0.9 + dot(baseColor, vec3(0.299, 0.587, 0.114)) * 0.14
+        );
+        float brush = clamp(
+          max(coreBrush * 0.78, max(softBrush * 0.38, diagonalScatter * 0.48)) *
+          (0.72 + textureBreak * 0.28),
+          0.0,
+          1.0
+        );
+        float raisedDetail = clamp(length(normal.xy) * 1.5 + diffuse * 0.42, 0.0, 1.0);
+        float raisedGold = smoothstep(0.24, 0.78, raisedDetail);
+        float goldMix = brush * maskWhite * raisedGold;
+        vec3 goldShadow = vec3(0.62, 0.50, 0.30);
+        vec3 goldMid = vec3(0.92, 0.78, 0.48);
+        vec3 goldLight = vec3(1.0, 0.9, 0.62);
+        vec3 goldColor = mix(goldShadow, goldMid, 0.46 + diffuse * 0.38);
+        goldColor = mix(goldColor, goldLight, raisedGold * 0.22 + specular * 0.2);
+        goldColor += vec3(1.0, 0.88, 0.56) * specular * 0.14;
         color = mix(color, goldColor, goldMix);
         color = pow(color, vec3(1.0 / 1.02));
 
