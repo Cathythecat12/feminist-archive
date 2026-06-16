@@ -68,6 +68,7 @@ These ordinary gestures are not outside history. They are often where history is
 
 const currentIssueArticleIds = [
   "sexual-liberationism-erotic-nihilism",
+  "pansexualism-freudian-psychoanalysis",
   "feminism-art-capitalism",
   "barbie-capitalism",
   "reproduction-is-labour",
