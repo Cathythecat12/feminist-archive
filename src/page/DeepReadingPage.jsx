@@ -378,13 +378,15 @@ function DeepReadingPage({ language, onBack, setCurrentPage, onOpenArticle }) {
 
       <main className="deep-reading-main">
         <section className="deep-reading-hero-panel" aria-labelledby="deep-reading-title">
-          <div className="deep-reading-hero-copy">
+          <div className="deep-reading-title-stack">
             <div className="reading-room-kicker">
               {zh ? "DEEP READING / 深度阅读" : "DEEP READING"}
             </div>
 
             <h1 id="deep-reading-title">Deep Reading</h1>
+          </div>
 
+          <div className="deep-reading-hero-copy">
             <p className="deep-reading-lede">
               For readers who already have some familiarity with feminist theory and would
               like to explore ideas in greater depth.
@@ -397,14 +399,6 @@ function DeepReadingPage({ language, onBack, setCurrentPage, onOpenArticle }) {
               for new readers and those beginning their journey.
             </p>
 
-            <div className="deep-reading-palette" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-
             <button
               className="deep-reading-guides-link"
               onClick={() => setCurrentPage("reading-room")}
@@ -412,7 +406,9 @@ function DeepReadingPage({ language, onBack, setCurrentPage, onOpenArticle }) {
               Explore our Reading Guides →
             </button>
           </div>
+        </section>
 
+        <section className="deep-reading-relief-stage" aria-label="Deep Reading relief artwork">
           <DeepReadingNormalMap />
         </section>
 
@@ -433,6 +429,10 @@ function DeepReadingPage({ language, onBack, setCurrentPage, onOpenArticle }) {
                 onClick={(event) => openArticle(article, event)}
                 style={{ "--card-index": index }}
               >
+                <div className="deep-reading-article-number">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+
                 <div
                   className="deep-reading-card-image"
                   style={{ backgroundImage: `url(${article.image})` }}
