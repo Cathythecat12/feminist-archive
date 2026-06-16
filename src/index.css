@@ -4247,6 +4247,104 @@ border: 1px solid #f0ddc5;
   overflow: hidden;
 }
 
+.article-newsletter-block {
+  margin-top: 30px;
+  padding: clamp(30px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(300px, 0.68fr);
+  gap: clamp(28px, 4vw, 54px);
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(255, 253, 248, 0.72), rgba(244, 236, 224, 0.92)),
+    #f5ead9;
+  border: 1px solid #ecd7bd;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+}
+
+.article-newsletter-label {
+  margin-bottom: 16px;
+  color: #70665e;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.article-newsletter-copy h2 {
+  margin: 0;
+  color: #514d47;
+  font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", Georgia, serif;
+  font-size: clamp(2.3rem, 4.2vw, 4.45rem);
+  font-weight: 640;
+  line-height: 0.96;
+  letter-spacing: 0;
+}
+
+.article-newsletter-copy p {
+  max-width: 620px;
+  margin: 20px 0 0;
+  color: #6b645c;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+}
+
+.article-newsletter-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+}
+
+.article-newsletter-form input {
+  min-height: 58px;
+  width: 100%;
+  border: 1px solid rgba(31, 27, 24, 0.72);
+  background: rgba(255, 253, 249, 0.74);
+  color: #2f2c28;
+  font: 700 1rem/1.2 Arial, Helvetica, sans-serif;
+  padding: 0 18px;
+  outline: none;
+}
+
+.article-newsletter-form input:focus {
+  border-color: #214348;
+  box-shadow: 0 0 0 3px rgba(33, 67, 72, 0.12);
+}
+
+.article-newsletter-form button {
+  min-height: 58px;
+  border: 1px solid #111;
+  background: #214348;
+  color: #fffdf8;
+  cursor: pointer;
+  font: 800 1rem/1 Arial, Helvetica, sans-serif;
+  padding: 0 26px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.article-newsletter-form button:hover {
+  transform: translateY(-2px);
+  background: #15130f;
+}
+
+.article-newsletter-note {
+  grid-column: 1 / -1;
+  color: #6b645c;
+  font: 700 0.92rem/1.45 Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 800px) {
+  .article-newsletter-block,
+  .article-newsletter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .article-newsletter-form button {
+    width: 100%;
+  }
+}
+
 :is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-block {
   margin: 82px 0 0;
   padding: clamp(30px, 4vw, 46px);

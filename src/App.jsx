@@ -2093,6 +2093,10 @@ return null;
       "pansexualism-freudian-psychoanalysis",
       "pansexualism-freud-vulgarized-zh",
     ].includes(selectedArticle.id);
+    const showArticleNewsletterSignup = [
+      "sexual-liberationism-erotic-nihilism",
+      "sexual-liberationism-erotic-nihilism-zh",
+    ].includes(selectedArticle.id);
     const articleUiLanguage = getArticleLanguage(selectedArticle);
     const articleUsesFrench = articleUiLanguage === "fr";
     const articleUsesChinese = articleUiLanguage === "zh";
@@ -2773,6 +2777,70 @@ return null;
     </a>
   </div>
 </section>
+{showArticleNewsletterSignup && (
+  <section className="article-newsletter-block" aria-labelledby="article-newsletter-title">
+    <div className="article-newsletter-copy">
+      <div className="article-newsletter-label">
+        {articleUsesChinese ? "NEWSLETTER / 通讯" : "NEWSLETTER"}
+      </div>
+
+      <h2 id="article-newsletter-title">
+        {articleUsesChinese ? "加入我们的 Newsletter!" : "Join our Newsletter!"}
+      </h2>
+
+      <p>
+        {articleUsesChinese
+          ? "接收 Feminist Archive 的新文章、编辑通讯与阅读推荐。"
+          : "Receive new essays, editorial letters, and reading recommendations from Feminist Archive."}
+      </p>
+    </div>
+
+    <form
+      className="article-newsletter-form"
+      onSubmit={async (e) => {
+        e.preventDefault();
+
+        const email = e.target.email.value;
+        setNewsletterStatus(articleUsesChinese ? "正在订阅..." : "Subscribing...");
+
+        try {
+          await submitWebsiteForm({
+            type: "Newsletter subscription",
+            email,
+            language: articleUiLanguage,
+            source: selectedArticle.id,
+          });
+
+          setNewsletterStatus(
+            articleUsesChinese ? "订阅成功，谢谢。" : "Subscribed. Thank you."
+          );
+          e.target.reset();
+        } catch {
+          setNewsletterStatus(
+            articleUsesChinese
+              ? "订阅失败，请稍后再试。"
+              : "Could not subscribe. Please try again later."
+          );
+        }
+      }}
+    >
+      <input
+        name="email"
+        type="email"
+        placeholder={articleUsesChinese ? "你的邮箱地址" : "Your email address"}
+        required
+      />
+
+      <button type="submit">
+        {articleUsesChinese ? "订阅" : "Subscribe"}
+      </button>
+
+      {newsletterStatus && (
+        <div className="article-newsletter-note">{newsletterStatus}</div>
+      )}
+    </form>
+  </section>
+)}
   </article>
 </main>
 {(selectedArticle.layout === "psyche" || isImmersiveArticle) && (
