@@ -78,14 +78,11 @@ function DeepReadingNormalMap() {
         vec2 pointer = u_pointer;
         float pointerDistance = length((uv - pointer) * aspect);
         float brush = 1.0 - smoothstep(0.085, 0.245, pointerDistance);
-        vec3 pointerLight = normalize(vec3((pointer - uv) * aspect, 0.34));
 
         float diffuse = max(dot(normal, lightDir), 0.0);
-        float cursorDiffuse = max(dot(normal, pointerLight), 0.0) * brush;
         vec3 viewDir = vec3(0.0, 0.0, 1.0);
         vec3 halfDir = normalize(lightDir + viewDir);
         float specular = pow(max(dot(normal, halfDir), 0.0), 58.0) * 1.1;
-        float cursorSpec = pow(max(dot(normal, normalize(pointerLight + viewDir)), 0.0), 42.0) * brush * 0.82;
 
         float introSweep = smoothstep(-0.28, 1.0, u_intro - (1.0 - uv.y) * 0.8);
         float maskReveal = smoothstep(0.0, 0.25, introSweep + revealMask * 0.8);
@@ -100,9 +97,18 @@ function DeepReadingNormalMap() {
 
         float light = baseReveal * (0.86 + diffuse * 0.18);
         vec3 color = materialColor * light;
-        color += vec3(1.0) * (specular * 0.12 + cursorSpec * 0.34);
+        color += vec3(1.0) * specular * 0.12;
         color += vec3(1.0) * revealEdge * 0.08;
-        color += vec3(0.95, 0.98, 1.0) * cursorDiffuse * 0.14;
+
+        float maskWhite = smoothstep(0.48, 0.78, revealMask);
+        float raisedDetail = clamp(length(normal.xy) * 1.35 + diffuse * 0.5, 0.0, 1.0);
+        float raisedGold = smoothstep(0.24, 0.82, raisedDetail);
+        float goldMix = brush * maskWhite * (0.28 + raisedGold * 0.72);
+        vec3 goldShadow = vec3(0.48, 0.28, 0.08);
+        vec3 goldLight = vec3(1.0, 0.74, 0.25);
+        vec3 goldColor = mix(goldShadow, goldLight, 0.32 + diffuse * 0.68);
+        goldColor += vec3(1.0, 0.86, 0.46) * specular * 0.28;
+        color = mix(color, goldColor, goldMix);
         color = pow(color, vec3(1.0 / 1.02));
 
         float vignette = smoothstep(1.24, 0.22, length(center));
