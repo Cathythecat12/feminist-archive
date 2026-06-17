@@ -189,10 +189,6 @@ const issueArticlesZh = [
                 </div>
 
                 <div className="issue-preview-item">
-                  <h3>起源神话、自然/文化二元论与异性恋矩阵如何制造“自然”</h3>
-                </div>
-
-                <div className="issue-preview-item">
                   <h3>当商品学会自我批判，女性主义如何被重新注入消费系统</h3>
                 </div>
 
@@ -200,9 +196,6 @@ const issueArticlesZh = [
                   <h3>生育、照护与家务劳动如何被 GDP、工资与市场价值体系隐形化</h3>
                 </div>
 
-                <div className="issue-preview-item">
-                  <h3>美貌神话如何把外部控制转化为女性对身体的自我监控</h3>
-                </div>
               </div>
             </section>
   
