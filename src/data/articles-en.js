@@ -192,7 +192,7 @@ A slower archive allows writing to remain intellectually alive beyond visibility
     contentBlocks: [
       {
         type: "heading",
-        text: "1. Sexual Liberationism as the Endpoint of Humanism",
+        text: "Sexual Liberationism as the Endpoint of Humanism",
       },
       ...paragraphs(`
 Secular humanism originally emphasized “human beings,” “freedom,” “the body,” and “diversity.” Yet it contains an internal contradiction: on the one hand, it seeks to recognize diversity; on the other hand, it still attempts to preserve a universal conception of humanity as a whole.
@@ -205,7 +205,7 @@ That is to say, people no longer know what they truly want. All that remains are
 `),
       {
         type: "heading",
-        text: "2. “Sexuality as a Liberal Fantasy”",
+        text: "“Sexuality as a Liberal Fantasy”",
       },
       ...paragraphs(`
 There is no pure “sex itself”; there are only different kinds of sexualities organized through symbolic systems, culture, and ideology.
@@ -220,7 +220,7 @@ Sexual liberationism did not emerge in isolation. It arose within the broader co
 `),
       {
         type: "heading",
-        text: "4. The Lacanian Section: Why Does It Lead Toward “Perversion”?",
+        text: "The Lacanian Section: Why Does It Lead Toward “Perversion”?",
       },
       ...paragraphs(`
 According to Lacan’s formula of fantasy, the subject is constitutively lacking. The subject can never fully coincide with itself and is perpetually searching for something capable of filling its absence. This object is the objet petit a.
@@ -251,7 +251,7 @@ Traditional society tells you: Do not do this. Do not desire. Do not enjoy. Mode
 `),
       {
         type: "heading",
-        text: "5. Eroticism Could Be Sublimated, but Perversion Externalizes It",
+        text: "Eroticism Could Be Sublimated, but Perversion Externalizes It",
       },
       ...paragraphs(`
 A crucial distinction must be made here: genuine erotic desire can be sublimated, spiritualized, and internalized. Perversion, by contrast, externalizes, bodily materializes, and behavioralizes erotic desire.
@@ -262,7 +262,7 @@ Thus the pervert is a “failed lover.” Unable to become a lover, the subject 
 `),
       {
         type: "heading",
-        text: "6. Masochism: Enjoying the Silence of the Big Other",
+        text: "Masochism: Enjoying the Silence of the Big Other",
       },
       ...paragraphs(`
 The central point of masochism is that the masochist is not controlled by the sadist. Rather, the masochist manipulates the sadist. The masochist arranges for the other person to beat, humiliate, or harm them. On the surface, the masochist appears dominated; in reality, the other person has been transformed into an instrument. What the masochist truly enjoys is not pain itself but the silence of the Big Other.
@@ -271,7 +271,7 @@ It is as though the masochist asks: Big Other, what exactly do you want from me?
 `),
       {
         type: "heading",
-        text: "7. Sadism: Seeing on Behalf of the Big Other",
+        text: "Sadism: Seeing on Behalf of the Big Other",
       },
       ...paragraphs(`
 The logic of sadism is the opposite. The sadist believes that the Big Other is blind and cannot see, and therefore the sadist must see on its behalf. By causing others pain, the sadist attempts to short-circuit their own gaze and the gaze of the Big Other. The sadist’s enjoyment comes from the feeling: I see on behalf of the Big Other. I enforce order on behalf of the Big Other. I make others suffer because a higher command requires it.
@@ -280,7 +280,7 @@ For this reason, many forms of moral rigorism, political violence, and patriarch
 `),
       {
         type: "heading",
-        text: "8. Several “Static Fetishes”: All Are Relations to the Big Other",
+        text: "Several “Static Fetishes”: All Are Relations to the Big Other",
       },
       ...paragraphs(`
 Necrophilia, somnophilia, and amaurophilia are not fundamentally about particular acts but about different states of the Big Other. In necrophilia, the Big Other is dead, deaf, and blind. The subject treats the corpse as an embodiment of the Big Other and turns itself into an instrument of the Big Other’s enjoyment. In somnophilia, the Big Other is asleep. The subject allows the Big Other to continue dreaming, suspending ethical injunctions. In amaurophilia, the Big Other cannot see but can still hear, or perhaps only pretends to see. The subject enjoys the experience of “the gaze within blindness.”
@@ -289,7 +289,7 @@ These three forms can be summarized as: sleeping with the Big Other. Perversion 
 `),
       {
         type: "heading",
-        text: "9. Perversion in Public Space: Exhibitionism, Frotteurism, and Cross-Dressing",
+        text: "Perversion in Public Space: Exhibitionism, Frotteurism, and Cross-Dressing",
       },
       ...paragraphs(`
 The core of exhibitionism is not “letting others see me” but forcing others to close their eyes, thereby proving that the Big Other is watching. Others avert their gaze because social order is present. Consequently, the exhibitionist feels: the Big Other sees me, and I see myself being seen by the Big Other.
@@ -302,7 +302,7 @@ The article therefore argues that cross-dressing is productive but not revolutio
 `),
       {
         type: "heading",
-        text: "10. The Most Extreme Form: Pedophilia",
+        text: "The Most Extreme Form: Pedophilia",
       },
       ...paragraphs(`
 Pedophilia is among the most extreme and disturbing forms of perverse structure. The reason is not simply that it violates an external moral norm but that it reveals the deepest logic of perversion itself.
@@ -321,14 +321,14 @@ The fundamental illusion is that the subject completely identifies their own des
 `),
       {
         type: "heading",
-        text: "11. Voyeurism: Not Seeing Others, but Remaining Unseen",
+        text: "Voyeurism: Not Seeing Others, but Remaining Unseen",
       },
       ...paragraphs(`
 The essence of voyeurism is not “I see someone else’s naked body” but “I am not seen.” More fundamentally, it is: I see the Big Other looking at someone else. When the victim discovers that they have been watched and experiences shame, fear, or despair, the voyeur receives confirmation that social order and the gaze of the Big Other still exist. The voyeur’s enjoyment comes from activating the gaze of the Big Other.
 `),
       {
         type: "heading",
-        text: "12. Fetishism: Toward a Critique of Capitalism",
+        text: "Fetishism: Toward a Critique of Capitalism",
       },
       ...paragraphs(`
 Fetishism is not merely the love of objects. It is the projection of intersubjectivity onto objects. The isolated subject cannot establish genuine relationships with others and therefore projects erotic desire, other minds, and intersubjectivity onto shoes, clothing, socks, and various commodities.
@@ -337,7 +337,7 @@ This naturally leads to Marx’s theory of commodity fetishism: human relations 
 `),
       {
         type: "heading",
-        text: "13. From a Feminist Perspective",
+        text: "From a Feminist Perspective",
       },
       ...paragraphs(`
 Consequently, if women’s bodily freedom is understood merely as “I can consume, display, and choose how to use my body,” it will inevitably be recoded by global capitalism and the patriarchal gaze into a colorful nihilism.
