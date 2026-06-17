@@ -201,19 +201,31 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
   
         <main className="fa-newsletter-main">
           <section className="fa-newsletter-hero">
-            <div className="fa-newsletter-kicker">
-              {zh ? "编辑通讯" : "EDITORIAL LETTER"}
+            <div className="fa-newsletter-hero-copy">
+              <div className="fa-newsletter-kicker">
+                {zh ? "编辑通讯" : "EDITORIAL LETTER"}
+              </div>
+
+              <h1>
+                {zh ? "Stay with the archive." : "Stay with the archive."}
+              </h1>
+
+              <p>
+                {zh
+                  ? "我们发送高质量的编辑通讯：新文章、档案片段、阅读路径与缓慢形成的思想。没有商业推销，没有无聊消息，也不会频繁轰炸你的邮箱。"
+                  : "We send high-quality editorial letters: new essays, archival fragments, reading paths, and slowly formed thoughts. No commercial promotion, no empty updates, and no inbox bombardment."}
+              </p>
             </div>
-  
-            <h1>
-              {zh ? "Stay with the archive." : "Stay with the archive."}
-            </h1>
-  
-            <p>
-              {zh
-                ? "我们发送高质量的编辑通讯：新文章、档案片段、阅读路径与缓慢形成的思想。没有商业推销，没有无聊消息，也不会频繁轰炸你的邮箱。"
-                : "We send high-quality editorial letters: new essays, archival fragments, reading paths, and slowly formed thoughts. No commercial promotion, no empty updates, and no inbox bombardment."}
-            </p>
+
+            <aside className="fa-newsletter-editorial-card" aria-label={zh ? "通讯说明" : "Newsletter note"}>
+              <span>FA / 2026</span>
+              <strong>{zh ? "慢速编辑信" : "Slow editorial letters"}</strong>
+              <p>
+                {zh
+                  ? "每封邮件都像一份可以保存的档案页。"
+                  : "Each email should feel like a page worth keeping."}
+              </p>
+            </aside>
           </section>
   
           <section className="fa-newsletter-panel">
