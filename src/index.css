@@ -4259,6 +4259,18 @@ border: 1px solid #f0ddc5;
     #f5ead9;
   border: 1px solid #ecd7bd;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+  transition:
+    transform 0.36s cubic-bezier(0.2, 0.78, 0.2, 1),
+    border-color 0.36s ease,
+    box-shadow 0.36s ease;
+}
+
+.article-newsletter-block:hover {
+  transform: translateY(-6px);
+  border-color: rgba(33, 67, 72, 0.22);
+  box-shadow:
+    0 24px 62px rgba(33, 30, 25, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.68);
 }
 
 .article-newsletter-label {
@@ -4269,6 +4281,7 @@ border: 1px solid #f0ddc5;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  transition: color 0.32s ease, transform 0.32s ease;
 }
 
 .article-newsletter-copy h2 {
@@ -4279,6 +4292,10 @@ border: 1px solid #f0ddc5;
   font-weight: 640;
   line-height: 0.96;
   letter-spacing: 0;
+  transition:
+    color 0.32s ease,
+    transform 0.42s cubic-bezier(0.2, 0.78, 0.2, 1),
+    text-shadow 0.32s ease;
 }
 
 .article-newsletter-copy p {
@@ -4288,6 +4305,23 @@ border: 1px solid #f0ddc5;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.05rem;
   line-height: 1.68;
+  transition: opacity 0.32s ease, transform 0.42s cubic-bezier(0.2, 0.78, 0.2, 1);
+}
+
+.article-newsletter-block:hover .article-newsletter-label {
+  color: #214348;
+  transform: translateY(-3px);
+}
+
+.article-newsletter-block:hover .article-newsletter-copy h2 {
+  color: #214348;
+  transform: translateY(-8px);
+  text-shadow: 0 12px 32px rgba(33, 67, 72, 0.1);
+}
+
+.article-newsletter-block:hover .article-newsletter-copy p {
+  opacity: 0.88;
+  transform: translateY(-3px);
 }
 
 .article-newsletter-form {
@@ -4305,11 +4339,21 @@ border: 1px solid #f0ddc5;
   font: 700 1rem/1.2 Arial, Helvetica, sans-serif;
   padding: 0 18px;
   outline: none;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .article-newsletter-form input:focus {
   border-color: #214348;
   box-shadow: 0 0 0 3px rgba(33, 67, 72, 0.12);
+}
+
+.article-newsletter-block:hover .article-newsletter-form input {
+  background: rgba(255, 253, 249, 0.92);
+  transform: translateY(-2px);
 }
 
 .article-newsletter-form button {
@@ -4342,6 +4386,17 @@ border: 1px solid #f0ddc5;
 
   .article-newsletter-form button {
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-newsletter-block,
+  .article-newsletter-label,
+  .article-newsletter-copy h2,
+  .article-newsletter-copy p,
+  .article-newsletter-form input {
+    transition: none;
+    transform: none;
   }
 }
 
