@@ -591,11 +591,6 @@ Feminism does not need a unified identity of “women” as its foundation. On t
       "Subverting gender order does not mean finding a pure body outside power, but repeating, appropriating, parodying, and displacing norms from within.",
     tags: ["Butler", "Gender Trouble", "performativity", "heterosexual matrix", "power"],
     contentBlocks: [
-      {
-        type: "lead",
-        text:
-          "To subvert the gender order is not to search for a pure body or pure desire outside power. It is to work inside existing norms through repetition, appropriation, parody, and displacement, making those norms lose their appearance of naturalness.",
-      },
       ...paragraphs(`
 The traditional view says that I have a stable identity, that this identity persists over time, and that gender is one of its attributes. For example: I am a woman, therefore I am gentle, wear skirts, and love men. Butler asks the question in reverse: is the stable “I” already produced by gender norms? It is not that people first possess gender. Rather, gender norms make certain bodies intelligible, and only then are those bodies recognized as persons. Butler’s claim is radical: to be understood socially as a “normal person,” one usually must first be placed within a recognizable gender order.
 
@@ -698,11 +693,6 @@ Gender order is maintained through repetition; therefore subversion can also occ
       "For Butler, the political task is to create gender trouble, making seemingly natural categories of gender, body, and desire appear as constructed.",
     tags: ["Butler", "Gender Trouble", "performativity", "displacement", "power"],
     contentBlocks: [
-      {
-        type: "lead",
-        text:
-          "For Butler, the political task is to create “gender trouble,” so that seemingly natural categories such as men, women, heterosexuality, homosexuality, bodies, and desires appear as what they are: constructed.",
-      },
       {
         type: "heading",
         text: "A Feminist Fantasy Under Critique",
