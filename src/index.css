@@ -4281,7 +4281,10 @@ border: 1px solid #f0ddc5;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  transition: color 0.32s ease, transform 0.32s ease;
+  transition:
+    color 0.46s ease,
+    transform 0.62s cubic-bezier(0.19, 1, 0.22, 1);
+  transition-delay: 0s;
 }
 
 .article-newsletter-copy h2 {
@@ -4293,9 +4296,10 @@ border: 1px solid #f0ddc5;
   line-height: 0.96;
   letter-spacing: 0;
   transition:
-    color 0.32s ease,
-    transform 0.42s cubic-bezier(0.2, 0.78, 0.2, 1),
-    text-shadow 0.32s ease;
+    color 0.48s ease,
+    transform 0.72s cubic-bezier(0.19, 1, 0.22, 1),
+    text-shadow 0.48s ease;
+  transition-delay: 0.04s;
 }
 
 .article-newsletter-copy p {
@@ -4305,23 +4309,29 @@ border: 1px solid #f0ddc5;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.05rem;
   line-height: 1.68;
-  transition: opacity 0.32s ease, transform 0.42s cubic-bezier(0.2, 0.78, 0.2, 1);
+  transition:
+    opacity 0.5s ease,
+    transform 0.72s cubic-bezier(0.19, 1, 0.22, 1);
+  transition-delay: 0.12s;
 }
 
 .article-newsletter-block:hover .article-newsletter-label {
   color: #214348;
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  transition-delay: 0s;
 }
 
 .article-newsletter-block:hover .article-newsletter-copy h2 {
   color: #214348;
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   text-shadow: 0 12px 32px rgba(33, 67, 72, 0.1);
+  transition-delay: 0.08s;
 }
 
 .article-newsletter-block:hover .article-newsletter-copy p {
   opacity: 0.88;
-  transform: translateY(-3px);
+  transform: translateY(-7px);
+  transition-delay: 0.18s;
 }
 
 .article-newsletter-form {
@@ -4343,7 +4353,8 @@ border: 1px solid #f0ddc5;
     background 0.3s ease,
     border-color 0.3s ease,
     box-shadow 0.3s ease,
-    transform 0.3s ease;
+    transform 0.58s cubic-bezier(0.19, 1, 0.22, 1);
+  transition-delay: 0s;
 }
 
 .article-newsletter-form input:focus {
@@ -4353,7 +4364,8 @@ border: 1px solid #f0ddc5;
 
 .article-newsletter-block:hover .article-newsletter-form input {
   background: rgba(255, 253, 249, 0.92);
-  transform: translateY(-2px);
+  transform: translateY(-5px);
+  transition-delay: 0.27s;
 }
 
 .article-newsletter-form button {
@@ -4364,11 +4376,19 @@ border: 1px solid #f0ddc5;
   cursor: pointer;
   font: 800 1rem/1 Arial, Helvetica, sans-serif;
   padding: 0 26px;
-  transition: transform 0.25s ease, background 0.25s ease;
+  transition:
+    transform 0.58s cubic-bezier(0.19, 1, 0.22, 1),
+    background 0.25s ease;
+  transition-delay: 0s;
+}
+
+.article-newsletter-block:hover .article-newsletter-form button {
+  transform: translateY(-5px);
+  transition-delay: 0.34s;
 }
 
 .article-newsletter-form button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-7px);
   background: #15130f;
 }
 
@@ -4394,7 +4414,8 @@ border: 1px solid #f0ddc5;
   .article-newsletter-label,
   .article-newsletter-copy h2,
   .article-newsletter-copy p,
-  .article-newsletter-form input {
+  .article-newsletter-form input,
+  .article-newsletter-form button {
     transition: none;
     transform: none;
   }
