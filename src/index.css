@@ -5832,6 +5832,48 @@ border: 1px solid #f0ddc5;
   filter: drop-shadow(0 8px 10px rgba(42, 34, 26, 0.06));
 }
 
+.donation-slogan-drawn {
+  width: min(780px, 112%);
+  max-height: none;
+  margin: -10px 0 14px -16px;
+  color: #eef3df;
+  font-family: "Marker Felt", "Chalkboard SE", "Arial Unicode MS", "Noto Serif SC", serif;
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: 0;
+  filter: drop-shadow(0 9px 9px rgba(42, 34, 26, 0.08));
+}
+
+.donation-slogan-drawn span {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  -webkit-text-stroke: 3px #2d382f;
+  paint-order: stroke fill;
+  text-shadow:
+    4px 6px 0 rgba(88, 105, 86, 0.52),
+    -1px 1px 0 rgba(45, 56, 47, 0.7);
+}
+
+.donation-slogan-drawn span:nth-child(1) {
+  font-size: clamp(3.05rem, 4.55vw, 5.65rem);
+}
+
+.donation-slogan-drawn span:nth-child(2) {
+  font-size: clamp(3.45rem, 5.25vw, 6.45rem);
+  margin-top: 8px;
+}
+
+.donation-slogan-drawn span:nth-child(3) {
+  font-size: clamp(2.65rem, 4.2vw, 5.25rem);
+  margin-top: 12px;
+}
+
+.donation-slogan-drawn span:nth-child(4) {
+  font-size: clamp(2.95rem, 4.65vw, 5.75rem);
+  margin-top: 10px;
+}
+
 .home-donation-copy p {
   max-width: 620px;
   margin: 0;
@@ -6119,6 +6161,10 @@ border: 1px solid #f0ddc5;
     width: min(670px, 112%);
     max-height: 310px;
     margin-left: -14px;
+  }
+
+  .donation-slogan-drawn {
+    max-height: none;
   }
 
   .donation-bottom-row {
@@ -15907,6 +15953,11 @@ p {
     width: min(500px, 118%);
     max-height: 274px;
     margin: -10px 0 14px -14px;
+  }
+
+  .donation-slogan-drawn {
+    max-height: none;
+    width: min(500px, 112%);
   }
 
   .home-donation-panel {

@@ -3496,19 +3496,23 @@ Further materials are being gathered.`
             : "Donate to Feminist Archive: keep feminist writing open"}
         </h2>
       */}
-      <img
-        className="donation-slogan-image"
-        src={
-          language === "zh"
-            ? "/images/捐助标语手绘版中文.png?v=20260612-erased"
-            : "/images/捐助标语手绘版英文.png"
-        }
-        alt={
-          language === "zh"
-            ? "支持 Feminist Archive：让女性主义写作保持开放"
-            : "Donate to Feminist Archive: keep feminist writing open"
-        }
-      />
+      {language === "zh" ? (
+        <div
+          className="donation-slogan-image donation-slogan-drawn"
+          aria-label="支持 Feminist Archive：让女性主义写作保持开放"
+        >
+          <span>支持Feminist</span>
+          <span>Archive:</span>
+          <span>让女性主义写作保持</span>
+          <span>开放</span>
+        </div>
+      ) : (
+        <img
+          className="donation-slogan-image"
+          src="/images/捐助标语手绘版英文.png"
+          alt="Donate to Feminist Archive: keep feminist writing open"
+        />
+      )}
 
       <p>
         {language === "zh"
