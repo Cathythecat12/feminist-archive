@@ -5262,9 +5262,9 @@ border: 1px solid #f0ddc5;
 
 .archive-index-title {
   margin: 14px 0 18px;
-  font-size: clamp(3.8rem, 8vw, 7rem);
-  line-height: 0.92;
-  letter-spacing: -0.065em;
+  font-size: clamp(3.45rem, 6.7vw, 5.9rem);
+  line-height: 0.96;
+  letter-spacing: 0;
 }
 
 .archive-index-intro {
