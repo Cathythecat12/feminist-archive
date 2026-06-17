@@ -394,6 +394,7 @@ function MainApp() {
   const [newsletterStatus, setNewsletterStatus] = useState("");
   const [donationEmailStatus, setDonationEmailStatus] = useState("");
   const [hasResolvedInitialUrl, setHasResolvedInitialUrl] = useState(false);
+  const [preserveRootIssueUrl, setPreserveRootIssueUrl] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const toastTimerRef = useRef(null);
 
@@ -825,6 +826,21 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     const pageName = params.get("page");
     const urlLanguage = pathLanguage || params.get("lang");
 
+    // Temporary launch rule: show the June Issue at / and /zh without changing the URL.
+    if (!pageName && !articleId && routeSegments.length === 0) {
+      window.setTimeout(() => {
+        if (pathLanguage === "zh" && language !== "zh") {
+          setLanguage("zh");
+        } else if (!pathLanguage && language !== "en") {
+          setLanguage("en");
+        }
+        setPreserveRootIssueUrl(true);
+        setCurrentPage("monthly-theme");
+        setHasResolvedInitialUrl(true);
+      }, 0);
+      return;
+    }
+
     if (pathArticleId || articleId) {
       const resolvedArticleId = pathArticleId || articleId;
       const articlePool =
@@ -907,8 +923,16 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
       return;
     }
 
+    if (
+      preserveRootIssueUrl &&
+      currentPage === "monthly-theme" &&
+      ["/", "/zh", "/en"].includes(window.location.pathname)
+    ) {
+      return;
+    }
+
     syncPageUrl(currentPage);
-  }, [currentPage, selectedArticle?.id, language, hasResolvedInitialUrl]);
+  }, [currentPage, selectedArticle?.id, language, hasResolvedInitialUrl, preserveRootIssueUrl]);
 
   useEffect(() => {
     if (
