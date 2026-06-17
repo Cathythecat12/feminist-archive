@@ -10815,8 +10815,10 @@ body {
 
 .magazine-video-content h1 {
   font-family: "Cormorant Garamond", serif !important;
-  font-size: clamp(4.5rem, 9vw, 9.5rem) !important;
-  line-height: 0.86 !important;
+  font-size: clamp(4.15rem, 7.8vw, 8.4rem) !important;
+  font-weight: 500 !important;
+  line-height: 0.92 !important;
+  letter-spacing: 0 !important;
   margin: 0 !important;
 }
 .magazine-video-hero {
@@ -10861,8 +10863,10 @@ body {
 .magazine-video-content h1 {
   margin: 0 !important;
   font-family: "Cormorant Garamond", serif !important;
-  font-size: clamp(4.5rem, 9vw, 9.5rem) !important;
-  line-height: 0.86 !important;
+  font-size: clamp(4.15rem, 7.8vw, 8.4rem) !important;
+  font-weight: 500 !important;
+  line-height: 0.92 !important;
+  letter-spacing: 0 !important;
   color: #fffaf2 !important;
 }
 
@@ -16136,8 +16140,10 @@ p {
   }
 
   .magazine-video-content h1 {
-    font-size: clamp(3.45rem, 16vw, 5rem) !important;
-    line-height: 0.95 !important;
+    font-size: clamp(3.1rem, 13.5vw, 4.55rem) !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
   }
 
   html[lang="zh-CN"] .magazine-video-content h1 {
