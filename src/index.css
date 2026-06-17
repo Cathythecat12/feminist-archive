@@ -2976,6 +2976,35 @@ html[lang="zh-CN"] .issue-card h2 {
   transform: translateY(-2px);
 }
 
+.deep-reading-sidebar-note {
+  margin: 46px 0 0;
+  max-width: 280px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(183, 148, 87, 0.42);
+  color: rgba(57, 52, 47, 0.74);
+  font-size: 0.98rem;
+  line-height: 1.72;
+}
+
+.deep-reading-sidebar-note button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #c9a45f;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.deep-reading-sidebar-note button:hover {
+  color: #d8bb7a;
+  text-shadow: 0 0 16px rgba(201, 164, 95, 0.28);
+}
+
 .mag-article-body {
   max-width: 860px;
 }
