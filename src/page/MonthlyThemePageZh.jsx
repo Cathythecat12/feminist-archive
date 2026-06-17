@@ -177,15 +177,7 @@ const issueArticlesZh = [
                 </div>
   
                 <div className="issue-preview-item">
-                  <h3>生理性别是否真的先于文化，还是早已被分类制度塑造</h3>
-                </div>
-  
-                <div className="issue-preview-item">
                   <h3>如果没有统一的“妇女”，女性主义政治如何继续行动</h3>
-                </div>
-  
-                <div className="issue-preview-item">
-                  <h3>性别秩序如何靠重复维持，又如何在重复中发生偏移</h3>
                 </div>
 
                 <div className="issue-preview-item">
