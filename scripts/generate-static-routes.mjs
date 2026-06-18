@@ -10,7 +10,7 @@ const rootDir = join(__dirname, "..");
 const distDir = join(rootDir, "dist");
 const siteUrl = "https://feministarchivejournal.org";
 const siteName = "Feminist Archive";
-const defaultImage = "/images/barbie-cover3.jpg";
+const defaultImage = "/images/背景图素材2.jpg";
 const defaultDescription =
   "Feminist Archive is an independent platform for feminist theory, essays, reviews, archival writing, reading guides, and public feminist scholarship.";
 
