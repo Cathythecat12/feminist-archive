@@ -276,6 +276,11 @@ function applyMeta(template, meta, path) {
   );
   html = upsertHeadTag(
     html,
+    /<meta property="og:image:url" content="[^"]*"\s*\/?>/i,
+    `<meta property="og:image:url" content="${imageUrl}" />`
+  );
+  html = upsertHeadTag(
+    html,
     /<meta property="og:image:type" content="[^"]*"\s*\/?>/i,
     `<meta property="og:image:type" content="image/jpeg" />`
   );
