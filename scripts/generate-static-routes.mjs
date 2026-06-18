@@ -10,7 +10,7 @@ const rootDir = join(__dirname, "..");
 const distDir = join(rootDir, "dist");
 const siteUrl = "https://feministarchivejournal.org";
 const siteName = "Feminist Archive";
-const defaultImage = "/images/背景图素材2.jpg";
+const defaultImage = "/images/social-preview.jpg";
 const defaultDescription =
   "Feminist Archive is an independent platform for feminist theory, essays, reviews, archival writing, reading guides, and public feminist scholarship.";
 
@@ -273,6 +273,21 @@ function applyMeta(template, meta, path) {
     html,
     /<meta property="og:image:secure_url" content="[^"]*"\s*\/?>/i,
     `<meta property="og:image:secure_url" content="${imageUrl}" />`
+  );
+  html = upsertHeadTag(
+    html,
+    /<meta property="og:image:type" content="[^"]*"\s*\/?>/i,
+    `<meta property="og:image:type" content="image/jpeg" />`
+  );
+  html = upsertHeadTag(
+    html,
+    /<meta property="og:image:width" content="[^"]*"\s*\/?>/i,
+    `<meta property="og:image:width" content="1536" />`
+  );
+  html = upsertHeadTag(
+    html,
+    /<meta property="og:image:height" content="[^"]*"\s*\/?>/i,
+    `<meta property="og:image:height" content="1024" />`
   );
   html = upsertHeadTag(
     html,
