@@ -4009,6 +4009,12 @@ html[lang="zh-CN"] .issue-card h2 {
   margin: 0 auto;
 }
 
+:is(.article-barbie-capitalism, .article-barbie-capitalism-zh) .mag-article-hero-overlay h1 {
+  font-size: clamp(3.15rem, 5.65vw, 5.15rem);
+  line-height: 0.96;
+  max-width: min(1080px, 90vw);
+}
+
 .mag-article-body .article-endnote {
   margin-top: 70px;
 }
@@ -4069,6 +4075,11 @@ html[lang="zh-CN"] .issue-card h2 {
   .mag-article-hero-overlay h1 {
     font-size: clamp(2.85rem, 13vw, 4.15rem);
     line-height: 0.98;
+  }
+
+  :is(.article-barbie-capitalism, .article-barbie-capitalism-zh) .mag-article-hero-overlay h1 {
+    font-size: clamp(2.35rem, 10.5vw, 3.35rem);
+    line-height: 1.02;
   }
 
   html[lang="zh-CN"] .mag-article-hero-overlay h1 {
