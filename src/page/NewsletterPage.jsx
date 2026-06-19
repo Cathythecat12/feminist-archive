@@ -9,6 +9,8 @@ const floatingEnvelopes = [
   { className: "envelope-5", startX: 0.09, delay: 1300, drift: 0.94 },
 ];
 
+const SHOW_NEWSLETTER_ARCHIVE = false;
+
 function NewsletterPage({ language, onBack, setCurrentPage }) {
     const zh = language === "zh";
     const [status, setStatus] = useState("");
@@ -287,28 +289,30 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
             </article>
           </section>
   
-          <section className="fa-newsletter-archive">
-            <div className="fa-newsletter-kicker">
-              {zh ? "历史通讯" : "PAST LETTERS"}
-            </div>
-  
-            <h2>
-              {zh
-                ? "之后这里会放置历史 newsletter 的图片。"
-                : "A visual archive of past letters will live here."}
-            </h2>
-  
-            <div className="fa-newsletter-letter-grid">
-              {pastLetters.map((letter) => (
-                <div className="fa-newsletter-letter-card" key={letter}>
-                  <div className="letter-card-inner">
-                    <span>{letter}</span>
-                    <p>{zh ? "即将加入图片" : "Image coming soon"}</p>
+          {SHOW_NEWSLETTER_ARCHIVE && (
+            <section className="fa-newsletter-archive">
+              <div className="fa-newsletter-kicker">
+                {zh ? "历史通讯" : "PAST LETTERS"}
+              </div>
+    
+              <h2>
+                {zh
+                  ? "之后这里会放置历史 newsletter 的图片。"
+                  : "A visual archive of past letters will live here."}
+              </h2>
+    
+              <div className="fa-newsletter-letter-grid">
+                {pastLetters.map((letter) => (
+                  <div className="fa-newsletter-letter-card" key={letter}>
+                    <div className="letter-card-inner">
+                      <span>{letter}</span>
+                      <p>{zh ? "即将加入图片" : "Image coming soon"}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
+                ))}
+              </div>
+            </section>
+          )}
 
           <section className="fa-newsletter-privacy-note refined">
   <div className="privacy-note-copy">
