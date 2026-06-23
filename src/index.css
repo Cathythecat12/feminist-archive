@@ -1940,9 +1940,12 @@ textarea {
 
 .issue-card h2 {
   margin: 0 0 12px;
-  font-size: clamp(1.72rem, 2.55vw, 2.55rem);
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 1.9vw, 2.05rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  color: #4c4844;
 }
 
 .issue-card p {
@@ -2275,8 +2278,9 @@ textarea {
 }
 
 .issue-card:first-child h2 {
-  font-size: clamp(2.08rem, 3.75vw, 3.4rem);
-  line-height: 1.02;
+  font-size: clamp(1.9rem, 2.9vw, 2.9rem);
+  font-weight: 400;
+  line-height: 1.08;
 }
 
 html[lang="zh-CN"] .issue-hero h1 {
