@@ -20,6 +20,7 @@ import MonthlyThemePageZh from "./page/MonthlyThemePageZh";
 import ReadingRoomPage from "./page/ReadingRoomPage";
 import DeepReadingPage from "./page/DeepReadingPage";
 import MagazineCategoryPage from "./page/MagazineCategoryPage";
+import PastWorksPage from "./page/PastWorksPage";
 import { submitWebsiteForm } from "./utils/formSubmit";
 import HowWeEditPage from "./page/HowWeEditPage";
 import MagazineMenuOverlay from "./components/MagazineMenuOverlay";
@@ -72,6 +73,7 @@ const PAGE_ROUTES = {
   "writing-page": "writing",
   "monthly-theme": "magazine/june-issue",
   "monthly-theme-zh": "magazine/june-issue",
+  "past-works": "magazine/past-works",
   "news-page": "news",
   "newsletter-page": "newsletter",
   "newsletter-privacy": "newsletter/privacy",
@@ -551,6 +553,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     "magazine",
     "monthly-theme",
     "monthly-theme-zh",
+    "past-works",
     "writing-page",
     "reviews-page",
     "archive-page",
@@ -987,6 +990,10 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     if (articleReturnPage === "archive-page") {
       return language === "zh" ? "← 归档" : "← ARCHIVE";
+    }
+
+    if (articleReturnPage === "past-works") {
+      return language === "zh" ? "← 往期作品" : "← PAST WORKS";
     }
 
     if (articleReturnPage === "main") {
@@ -1542,13 +1549,19 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
           <section className="donate-copy-panel">
   
             <h1>
-  
-              {language === "zh"
-  
-                ? "你的支持让 Feminist Archive 保持开放。"
-  
-                : "Your support keeps Feminist Archive open to everyone."}
-  
+              {language === "zh" ? (
+                <>
+                  <span className="donate-copy-title-line">你的支持让</span>
+                  <span className="donate-copy-title-line">Feminist Archive</span>
+                  <span className="donate-copy-title-line">保持开放。</span>
+                </>
+              ) : (
+                <>
+                  <span className="donate-copy-title-line">Your support keeps</span>
+                  <span className="donate-copy-title-line">Feminist Archive</span>
+                  <span className="donate-copy-title-line">open to everyone.</span>
+                </>
+              )}
             </h1>
   
             <p>
@@ -3897,6 +3910,16 @@ Further materials are being gathered.`
             behavior: "smooth",
           });
         }}
+      />
+    );
+  }
+  if (currentPage === "past-works") {
+    return renderWithToast(
+      <PastWorksPage
+        language={language}
+        onBack={() => setCurrentPage("monthly-theme")}
+        setCurrentPage={setCurrentPage}
+        onOpenArticle={(article) => openArticleFrom(article, "past-works")}
       />
     );
   }

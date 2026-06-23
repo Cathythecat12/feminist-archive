@@ -81,6 +81,14 @@ const pageMeta = {
     title: "六月期刊 | Feminist Archive",
     description: "Feminist Archive 中文六月期刊。",
   },
+  "/en/magazine/past-works": {
+    title: "Past Works | Feminist Archive",
+    description: "Read past essays, reviews, and archive pieces from Feminist Archive.",
+  },
+  "/zh/magazine/past-works": {
+    title: "往期作品 | Feminist Archive",
+    description: "阅读 Feminist Archive 的往期中文文章、书评与档案作品。",
+  },
   "/en/news": {
     title: "News | Feminist Archive",
     description: "Editorial notices, plans, and project updates from Feminist Archive.",

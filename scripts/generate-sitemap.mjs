@@ -11,6 +11,8 @@ const pages = [
   ["zh/magazine", "zh-CN", "0.9"],
   ["en/magazine/june-issue", "en", "0.9"],
   ["zh/magazine/june-issue", "zh-CN", "0.9"],
+  ["en/magazine/past-works", "en", "0.8"],
+  ["zh/magazine/past-works", "zh-CN", "0.8"],
   ["en/archive", "en", "0.8"],
   ["zh/archive", "zh-CN", "0.8"],
   ["en/writing", "en", "0.8"],

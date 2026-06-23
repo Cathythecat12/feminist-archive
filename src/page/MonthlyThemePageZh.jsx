@@ -190,6 +190,17 @@ const issueArticlesZh = [
 
               </div>
             </section>
+            <button
+              type="button"
+              className="issue-past-works-cta"
+              onClick={() => {
+                setCurrentPage("past-works");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
+              <span>杂志归档</span>
+              <strong>阅读往期作品</strong>
+            </button>
   
             <div className="issue-section-label">本月推荐</div>
   
