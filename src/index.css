@@ -5820,6 +5820,11 @@ border: 1px solid #f0ddc5;
   box-shadow: 0 26px 70px rgba(31, 56, 49, 0.08);
 }
 
+.home-donation-drive-full:hover,
+.home-donation-drive-full:focus-within {
+  box-shadow: 0 34px 90px rgba(31, 56, 49, 0.12);
+}
+
 .home-donation-drive-full::before {
   content: "";
   position: absolute;
@@ -5848,6 +5853,12 @@ border: 1px solid #f0ddc5;
   display: block;
   border: 0;
   box-shadow: none;
+  transform: translateY(0) scale(1);
+  transform-origin: center;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease,
+    box-shadow 0.7s ease;
 }
 
 .donation-brand {
@@ -5859,6 +5870,10 @@ border: 1px solid #f0ddc5;
   font-weight: 600;
   transform: scaleX(0.94);
   margin-bottom: 20px;
+  transform-origin: left center;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease;
 }
 
 .home-donation-copy h2 {
@@ -5878,6 +5893,11 @@ border: 1px solid #f0ddc5;
   object-fit: contain;
   object-position: left center;
   filter: drop-shadow(0 8px 10px rgba(42, 34, 26, 0.06));
+  transform: translateY(0) scale(1);
+  transform-origin: left center;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease;
 }
 
 .donation-slogan-drawn {
@@ -5939,6 +5959,70 @@ border: 1px solid #f0ddc5;
 .home-donation-panel {
   display: grid;
   gap: 24px;
+  transform: translateY(0);
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease;
+}
+
+.home-donation-drive-full:hover .home-donation-art img,
+.home-donation-drive-full:focus-within .home-donation-art img {
+  transform: translateY(-10px) scale(1.012);
+  filter: saturate(1.04) contrast(1.02);
+  box-shadow: 0 22px 42px rgba(23, 63, 54, 0.12);
+}
+
+.home-donation-drive-full:hover .donation-brand,
+.home-donation-drive-full:focus-within .donation-brand {
+  transform: translateY(-8px) scaleX(0.94);
+  filter: drop-shadow(0 14px 18px rgba(7, 91, 77, 0.12));
+}
+
+.home-donation-drive-full:hover .donation-slogan-image,
+.home-donation-drive-full:focus-within .donation-slogan-image {
+  transform: translateY(-8px) scale(1.01);
+  filter:
+    drop-shadow(0 13px 14px rgba(42, 34, 26, 0.1))
+    drop-shadow(0 0 14px rgba(248, 242, 198, 0.22));
+}
+
+.home-donation-drive-full:hover .home-donation-panel,
+.home-donation-drive-full:focus-within .home-donation-panel {
+  transform: translateY(-9px);
+  filter: drop-shadow(0 20px 24px rgba(7, 91, 77, 0.1));
+}
+
+.home-donation-drive-full:hover .donation-choice.active,
+.home-donation-drive-full:focus-within .donation-choice.active {
+  box-shadow:
+    0 18px 36px rgba(7, 91, 77, 0.13),
+    0 0 0 1px rgba(7, 91, 77, 0.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-donation-art img,
+  .donation-brand,
+  .donation-slogan-image,
+  .home-donation-panel,
+  .donation-choice {
+    transition: none;
+  }
+
+  .home-donation-drive-full:hover .home-donation-art img,
+  .home-donation-drive-full:focus-within .home-donation-art img,
+  .home-donation-drive-full:hover .donation-brand,
+  .home-donation-drive-full:focus-within .donation-brand,
+  .home-donation-drive-full:hover .donation-slogan-image,
+  .home-donation-drive-full:focus-within .donation-slogan-image,
+  .home-donation-drive-full:hover .home-donation-panel,
+  .home-donation-drive-full:focus-within .home-donation-panel {
+    transform: none;
+  }
+
+  .home-donation-drive-full:hover .donation-brand,
+  .home-donation-drive-full:focus-within .donation-brand {
+    transform: scaleX(0.94);
+  }
 }
 
 .donation-choice {
