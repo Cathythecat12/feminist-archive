@@ -196,17 +196,6 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle, setCur
     </div>
   </div>
 </section>
-          <button
-            type="button"
-            className="issue-past-works-cta"
-            onClick={() => {
-              setCurrentPage("past-works");
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          >
-            <span>MAGAZINE ARCHIVE</span>
-            <strong>Read Past Works</strong>
-          </button>
           <div className="issue-section-label">FEATURED THIS MONTH</div>
 
           <div className="issue-card-grid">
@@ -236,6 +225,18 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle, setCur
               </article>
             ))}
           </div>
+
+          <button
+            type="button"
+            className="issue-past-works-cta"
+            onClick={() => {
+              setCurrentPage("past-works");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            <span>MAGAZINE ARCHIVE</span>
+            <strong>Read Past Works</strong>
+          </button>
         </section>
 
         <section className="issue-bottom-note">
