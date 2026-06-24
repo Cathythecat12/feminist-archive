@@ -21,6 +21,7 @@ import ReadingRoomPage from "./page/ReadingRoomPage";
 import DeepReadingPage from "./page/DeepReadingPage";
 import MagazineCategoryPage from "./page/MagazineCategoryPage";
 import PastWorksPage from "./page/PastWorksPage";
+import ParallaxPage from "./page/ParallaxPage";
 import { submitWebsiteForm } from "./utils/formSubmit";
 import HowWeEditPage from "./page/HowWeEditPage";
 import MagazineMenuOverlay from "./components/MagazineMenuOverlay";
@@ -69,6 +70,7 @@ const PAGE_ROUTES = {
   guidelines: "guidelines",
   "how-we-edit": "how-we-edit",
   magazine: "magazine",
+  parallax: "magazine/parallax",
   "reviews-page": "reviews",
   "writing-page": "writing",
   "monthly-theme": "magazine/june-issue",
@@ -554,6 +556,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     "monthly-theme",
     "monthly-theme-zh",
     "past-works",
+    "parallax",
     "writing-page",
     "reviews-page",
     "archive-page",
@@ -994,6 +997,10 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     if (articleReturnPage === "past-works") {
       return language === "zh" ? "← 往期作品" : "← PAST WORKS";
+    }
+
+    if (articleReturnPage === "parallax") {
+      return language === "zh" ? "← 思想余温" : "← PARALLAX";
     }
 
     if (articleReturnPage === "main") {
@@ -2145,6 +2152,10 @@ return null;
     const articleUiLanguage = getArticleLanguage(selectedArticle);
     const articleUsesFrench = articleUiLanguage === "fr";
     const articleUsesChinese = articleUiLanguage === "zh";
+    const isParallaxEssay =
+      /FA\s*Special Essay/i.test(selectedArticle.kickerDetail || "") ||
+      (selectedArticle.kickerDetail || "").includes("FA 特别文章");
+    const articlePrimaryReturnPage = isParallaxEssay ? "parallax" : "monthly-theme";
 
     return (
       <>
@@ -2575,10 +2586,27 @@ return null;
 
   <p>
   {selectedArticle.sidebarText || (
-    <>
-      <strong>{selectedArticle.author}</strong> writes with Feminist Archive.
-      This essay appears in the monthly issue <em>June Issue</em>.
-    </>
+    isParallaxEssay ? (
+      <>
+        <strong>{selectedArticle.author}</strong> writes with Feminist Archive.
+        {articleUsesChinese
+          ? " 本文属于 FA 特别文章，隶属于 "
+          : " This essay is part of FA Special Essay and belongs to "}
+        <button
+          type="button"
+          className="parallax-inline-link"
+          onClick={() => setCurrentPage("parallax")}
+        >
+          Parallax
+        </button>
+        {articleUsesChinese ? "。" : "."}
+      </>
+    ) : (
+      <>
+        <strong>{selectedArticle.author}</strong> writes with Feminist Archive.
+        This essay appears in the monthly issue <em>June Issue</em>.
+      </>
+    )
   )}
 </p>
 
@@ -2595,9 +2623,13 @@ return null;
 
     <button
       className="mag-sidebar-button"
-      onClick={() => setCurrentPage("monthly-theme")}
+      onClick={() => setCurrentPage(articlePrimaryReturnPage)}
     >
-      Return to issue
+      {isParallaxEssay
+        ? articleUsesChinese
+          ? "返回思想余温"
+          : "Return to Parallax"
+        : "Return to issue"}
     </button>
 
     {isDeepReadingArticle && (
@@ -3714,6 +3746,16 @@ Further materials are being gathered.`
         onBack={() => setCurrentPage("main")}
         setCurrentPage={setCurrentPage}
         onOpenArticle={(article) => openArticleFrom(article, "magazine")}
+      />
+    );
+  }
+  if (currentPage === "parallax") {
+    return renderWithToast(
+      <ParallaxPage
+        language={language}
+        onBack={() => setCurrentPage("magazine")}
+        setCurrentPage={setCurrentPage}
+        onOpenArticle={(article) => openArticleFrom(article, "parallax")}
       />
     );
   }

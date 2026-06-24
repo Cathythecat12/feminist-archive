@@ -187,6 +187,15 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
         </div>
       </header>
 
+      <div className="magazine-parallax-strip">
+        <button
+          className="magazine-parallax-entry"
+          onClick={() => setCurrentPage("parallax")}
+        >
+          {language === "zh" ? "思想余温" : "Parallax"}
+        </button>
+      </div>
+
       <section
   className="magazine-video-hero"
   onClick={() => onOpenArticle(heroArticle)}

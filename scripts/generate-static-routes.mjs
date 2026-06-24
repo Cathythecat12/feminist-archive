@@ -73,6 +73,15 @@ const pageMeta = {
     title: "杂志 | Feminist Archive",
     description: "Feminist Archive 的中文杂志页、六月期刊、文章与书评。",
   },
+  "/en/magazine/parallax": {
+    title: "Parallax | Feminist Archive",
+    description:
+      "Parallax is Feminist Archive's space for philosophy, ideology critique, historical inquiry, and critical writing on contemporary life.",
+  },
+  "/zh/magazine/parallax": {
+    title: "思想余温 | Feminist Archive",
+    description: "Feminist Archive 旗下关于哲学、意识形态批判、历史探究与当代现实的批判性写作空间。",
+  },
   "/en/magazine/june-issue": {
     title: "June Issue | Feminist Archive",
     description: "The June monthly issue from Feminist Archive.",
