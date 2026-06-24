@@ -2888,6 +2888,22 @@ html[lang="zh-CN"] .issue-card h2 {
   text-transform: uppercase;
   font-size: 0.9rem;
   margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.72em;
+}
+
+.mag-article-kicker-extra {
+  text-transform: none;
+  letter-spacing: 0.08em;
+}
+
+.mag-article-kicker-extra::before {
+  content: "/";
+  margin-right: 0.72em;
+  opacity: 0.72;
 }
 
 .mag-article-hero-overlay h1 {
@@ -4719,6 +4735,112 @@ border: 1px solid #f0ddc5;
     transition: none;
     transform: none;
   }
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .mag-article-hero {
+  background-position: center center;
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .mag-article-hero::before {
+  background:
+    linear-gradient(180deg, rgba(5, 20, 15, 0.14) 0%, rgba(5, 20, 15, 0.34) 42%, rgba(5, 20, 15, 0.76) 100%),
+    linear-gradient(90deg, rgba(88, 10, 16, 0.32), rgba(7, 55, 39, 0.12) 48%, rgba(9, 49, 35, 0.38));
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .mag-article-kicker-extra {
+  color: #e9d9a8;
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-support-block {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(214, 190, 132, 0.28);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(139, 28, 36, 0.34), transparent 34%),
+    radial-gradient(circle at 86% 82%, rgba(93, 149, 63, 0.24), transparent 32%),
+    linear-gradient(135deg, #062f25 0%, #0d563f 48%, #061f18 100%);
+  color: #f8f2e5;
+  box-shadow:
+    0 24px 62px rgba(5, 36, 27, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-support-block::after {
+  content: "";
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  bottom: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #6f1f28, #2f7b3c 34%, #86a95a 66%, #0f5a3e);
+  opacity: 0.88;
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-support-label {
+  color: rgba(232, 217, 168, 0.82);
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-support-copy h2 {
+  color: #fff7df;
+  text-shadow: 0 18px 38px rgba(0, 0, 0, 0.22);
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-support-copy p {
+  color: rgba(248, 242, 229, 0.84);
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-support-actions a {
+  border-color: rgba(232, 217, 168, 0.42);
+  background: rgba(255, 250, 236, 0.08);
+  color: #fff7df;
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-support-actions a:hover {
+  background: #7e222b;
+  color: #fffaf0;
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-newsletter-block {
+  border-color: rgba(12, 86, 61, 0.28);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(126, 34, 43, 0.14), transparent 30%),
+    linear-gradient(135deg, rgba(248, 245, 232, 0.96), rgba(219, 232, 211, 0.92) 52%, rgba(243, 235, 222, 0.96)),
+    #f4efe4;
+  box-shadow:
+    0 22px 54px rgba(11, 61, 45, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.68);
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-newsletter-block:hover {
+  border-color: rgba(126, 34, 43, 0.36);
+  box-shadow:
+    0 28px 66px rgba(11, 61, 45, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-newsletter-label,
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-newsletter-block:hover .article-newsletter-label {
+  color: #7e222b;
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-newsletter-copy h2,
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-newsletter-block:hover .article-newsletter-copy h2 {
+  color: #0d563f;
+  text-shadow: 0 14px 34px rgba(13, 86, 63, 0.12);
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-newsletter-form input:focus {
+  border-color: #0d563f;
+  box-shadow: 0 0 0 3px rgba(13, 86, 63, 0.12);
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-newsletter-form button {
+  border-color: #0d563f;
+  background: #0d563f;
+}
+
+:is(.article-capitalism-appropriates-football, .article-capitalism-appropriates-football-zh) .article-newsletter-form button:hover {
+  background: #7e222b;
 }
 
 :is(.article-feminism-art-capitalism-zh, .article-feminism-art-capitalism) .article-support-block {

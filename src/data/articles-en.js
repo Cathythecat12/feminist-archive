@@ -55,6 +55,45 @@ A slower archive allows writing to remain intellectually alive beyond visibility
   },
 
   {
+    id: "capitalism-appropriates-football",
+    title: "How Capitalism Appropriates the Meaning of Football",
+    category: "Writing",
+    kickerDetail: "FA Special Essay",
+    author: "Feminist Archive",
+    date: "24 June 2026",
+    readTime: "7 min read",
+    image: "/images/世界杯图片.jpg",
+    excerpt:
+      "The World Cup is not the highest form of football. Rather, it is an alienated form of football after the game has been monopolized by capital, state apparatuses, and the celebrity industry.",
+    tags: ["football", "World Cup", "capitalism", "spectatorship", "celebrity"],
+    contentBlocks: [
+      ...paragraphs(`
+The World Cup is not football. Or, more precisely, the World Cup has become an ideological machine about football rather than football itself.
+
+Football was originally an extraordinarily simple activity. It was friends kicking a ball together, strangers competing against one another, the joy that comes from the free movement of the body, and a game whose purpose exists within the activity itself. Like street skateboarding, neighborhood basketball, or badminton in the park, its meaning comes from participation itself rather than from external rewards.
+
+The World Cup, however, has transformed this structure. Under normal circumstances, people would first play football, and the World Cup would merely be a concentrated display of the sport. Yet reality seems to have been inverted. Today, people often come to understand football through the World Cup first, and only afterward understand and imitate football according to the image constructed by the World Cup. Football has gradually become identified with national teams, star players, commercial sponsorships, the betting industry, and advertising capital. When people talk about football, they no longer think primarily about whether they themselves play the game. Instead, they think about Lionel Messi, Cristiano Ronaldo, championship outcomes, and tournament narratives. The meaning of football has been redefined, and this redefinition itself constitutes a monopoly over meaning.
+
+Watching football is replacing playing football. During the World Cup, countless fans devote enormous amounts of time to watching matches, studying tactics, analyzing statistics, and staying up late to follow games. Yet at the same time, their own football practice is constantly postponed. As a result, a seemingly absurd phenomenon emerges: more and more people claim to love football, while fewer and fewer actually play it. The World Cup primarily produces not football participants but football consumers. It cultivates spectators rather than practitioners.
+
+Modern society produces large numbers of people who are accustomed to watching but not to participating. Our bodies are confined within offices, subways, apartment buildings, and shopping centers, with fewer and fewer opportunities for free physical movement. Yet the body’s desire for movement does not disappear. Instead, it manifests itself in small and often unconscious ways: fidgeting with fingers, spinning pens, biting nails. These residual movements are traces left behind by a repressed body, faint echoes of its desire for freedom.
+
+It is in this sense that the World Cup becomes a form of “mental hyperactivity.” Staying up late to watch matches, cheering with intense enthusiasm, arguing online, and engaging in rivalries between fan groups are not forms of athletic participation themselves. Rather, they function as substitute outlets for repressed bodily desires. People seem to participate in a grand athletic event psychologically while remaining physically motionless. They experience running through watching, competition through cheering, and victory or defeat through identification with players.
+
+Consequently, the most common action produced by the World Cup may simply be a person standing up from a sofa at the moment of a goal, raising their arms, and shouting in celebration. The players on the field are the ones who truly run, while the vast majority remain spectators. The bodily practice of football becomes concentrated in the hands of a small elite, while everyone else acquires the illusion of participation through observation. The body does not actually play football, yet the mind experiences a substitute form of playing. In this sense, the World Cup becomes a psychological compensation mechanism for the scarcity of physical movement.
+
+The worship of football stars such as Messi and Ronaldo is structurally no different from the worship of entertainment celebrities. The central issue is no longer footballing skill itself, but the acquisition of identity and collective belonging through the shared admiration of an idol. To say “I am a Messi fan” means not only that one likes Messi, but also that one belongs to a particular community. For increasingly atomized and isolated individuals in modern society, such identities provide a sense of existence and belonging. Fan culture thus functions as a compensatory mechanism for identity in contemporary society.
+
+If we compare the World Cup to a modern religious ritual, which in many respects it genuinely resembles, it generates a network of relationships analogous to a sacrificial structure. If the capitalist system and the nation-state function as gods, then star players serve as priests, fans become believers, and football itself becomes the sacrifice. Football originally belonged to everyone. Yet through the sacralization of the World Cup, it is extracted from everyday life and relocated into a special sphere occupied by a small elite. Football no longer belongs to streets and communities; it belongs to international tournaments, commercial capital, and the celebrity industry.
+
+It is precisely in this sense that the World Cup possesses a paradoxically “anti-football” tendency. The World Cup obstructs football’s existence as a popular and collective practice. It encourages the illusion that real football belongs to Messi, to national teams, and to television broadcasts, rather than to ordinary people themselves. As a result, people become increasingly accustomed to watching, consuming, and worshipping, while becoming less and less likely to step onto the field themselves.
+
+Therefore, the more prosperous the World Cup becomes, the more ordinary football practice declines. This is what may be called its “anti-football essence.”
+`),
+    ],
+  },
+
+  {
     id: "barbie-capitalism",
     title: "Patriarchal Capitalism Repackaged Barbie with Feminism… And Then They Made Even More Money?",
     category: "Writing",

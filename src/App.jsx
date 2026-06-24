@@ -2133,6 +2133,8 @@ return null;
     const showArticleNewsletterSignup = [
       "sexual-liberationism-erotic-nihilism",
       "sexual-liberationism-erotic-nihilism-zh",
+      "capitalism-appropriates-football",
+      "capitalism-appropriates-football-zh",
     ].includes(selectedArticle.id);
     const isDeepReadingArticle = [
       "sexual-liberationism-erotic-nihilism",
@@ -2474,6 +2476,11 @@ return null;
             <div className="mag-article-hero-overlay">
               <div className="mag-article-kicker">
                 {selectedArticle.category}
+                {selectedArticle.kickerDetail && (
+                  <span className="mag-article-kicker-extra">
+                    {selectedArticle.kickerDetail}
+                  </span>
+                )}
               </div>
 
               <h1>{selectedArticle.title}</h1>
