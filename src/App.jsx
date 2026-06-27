@@ -70,7 +70,7 @@ const PAGE_ROUTES = {
   guidelines: "guidelines",
   "how-we-edit": "how-we-edit",
   magazine: "magazine",
-  parallax: "magazine/parallax",
+  parallax: "parallax",
   "reviews-page": "reviews",
   "writing-page": "writing",
   "monthly-theme": "magazine/june-issue",
@@ -97,7 +97,9 @@ const ROUTE_PAGES = Object.entries(PAGE_ROUTES).reduce((routes, [page, route]) =
   }
 
   return routes;
-}, {});
+}, {
+  "magazine/parallax": "parallax",
+});
 
 const getLanguageStorageKey = () => {
   if (typeof window === "undefined") return "fa-language";
