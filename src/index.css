@@ -8188,6 +8188,41 @@ body {
   opacity: 1;
   transform: translateY(-3px);
 }
+
+.magazine-page .magazine-logo {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3.8rem, 5.2vw, 5.2rem);
+  font-weight: 360;
+  letter-spacing: -0.025em;
+  line-height: 0.9;
+  color: #075b4d;
+}
+
+.magazine-page .magazine-card h2 {
+  max-width: 100%;
+  margin: 0 auto 14px;
+  color: #171615;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.78rem, 2vw, 2.38rem);
+  font-weight: 540;
+  letter-spacing: -0.012em;
+  line-height: 1.04;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.magazine-page .magazine-card-long-title h2 {
+  font-size: clamp(1.5rem, 1.72vw, 2.02rem);
+  font-weight: 520;
+  line-height: 1.08;
+  letter-spacing: -0.006em;
+}
+
+.magazine-page .magazine-card p,
+.magazine-page .magazine-card span,
+.magazine-page .magazine-card-meta {
+  text-align: center;
+}
 .magazine-socials {
   display: flex;
   align-items: center;

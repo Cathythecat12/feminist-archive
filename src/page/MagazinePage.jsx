@@ -16,6 +16,12 @@ const SHOW_PARLOUR_LINK = false;
 function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
   const articles = language === "zh" ? chineseArticles : englishArticles;
   const visibleArticles = articles.filter((article) => !article.hidden);
+  const getMagazineCardClassName = (article) => {
+    const titleLength = article.title?.length || 0;
+    return titleLength > (language === "zh" ? 32 : 68)
+      ? "magazine-card magazine-card-long-title"
+      : "magazine-card";
+  };
 
   const heroArticle =
     visibleArticles.find((article) => article.id === "refusal-and-memory") ||
@@ -236,7 +242,7 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
         {visibleArticles.slice(4).map((article) => (
           <article
             key={article.id}
-            className="magazine-card"
+            className={getMagazineCardClassName(article)}
             onClick={() => onOpenArticle(article)}
           >
             <div
@@ -261,7 +267,7 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
           {visibleArticles.slice(0, 4).map((article) => (
             <article
               key={article.id}
-              className="magazine-card"
+              className={getMagazineCardClassName(article)}
               onClick={() => onOpenArticle(article)}
             >
               <div
