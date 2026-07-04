@@ -7,6 +7,10 @@ const SITE_URL = "https://feministarchivejournal.org";
 const pages = [
   ["", "en", "1.0"],
   ["zh", "zh-CN", "1.0"],
+  ["en/front-page", "en", "1.0"],
+  ["zh/front-page", "zh-CN", "1.0"],
+  ["en/parallax", "en", "0.8", "2026-06-26"],
+  ["zh/parallax", "zh-CN", "0.8", "2026-06-26"],
   ["en/magazine", "en", "0.9"],
   ["zh/magazine", "zh-CN", "0.9"],
   ["en/magazine/june-issue", "en", "0.9"],
@@ -44,7 +48,9 @@ function urlEntry(path, priority, lastmod = "2026-06-08") {
   </url>`;
 }
 
-const pageEntries = pages.map(([path, , priority]) => urlEntry(path, priority));
+const pageEntries = pages.map(([path, , priority, lastmod]) =>
+  urlEntry(path, priority, lastmod),
+);
 
 const articleEntries = [
   ...englishArticles

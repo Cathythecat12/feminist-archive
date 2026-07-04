@@ -13,16 +13,16 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://feministarchivejournal.org/en/magazine</loc>
+    <loc>https://feministarchivejournal.org/en/front-page</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://feministarchivejournal.org/zh/magazine</loc>
+    <loc>https://feministarchivejournal.org/zh/front-page</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://feministarchivejournal.org/en/parallax</loc>
@@ -35,6 +35,18 @@
     <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://feministarchivejournal.org/en/magazine</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://feministarchivejournal.org/zh/magazine</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://feministarchivejournal.org/en/magazine/june-issue</loc>
@@ -157,6 +169,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://feministarchivejournal.org/en/articles/capitalism-appropriates-football</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://feministarchivejournal.org/en/articles/barbie-capitalism</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -224,6 +242,12 @@
   </url>
   <url>
     <loc>https://feministarchivejournal.org/en/articles/pansexualism-freudian-psychoanalysis</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://feministarchivejournal.org/zh/articles/capitalism-appropriates-football-zh</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

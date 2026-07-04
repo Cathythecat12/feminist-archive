@@ -556,6 +556,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
   const routedPages = new Set([
     "main",
+    "editorial-front",
     "magazine",
     "monthly-theme",
     "monthly-theme-zh",
@@ -836,16 +837,21 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     const pageName = params.get("page");
     const urlLanguage = pathLanguage || params.get("lang");
 
-    // Temporary launch rule: show the June Issue at / and /zh without changing the URL.
+    // Front-page launch rule: route bare language roots into the magazine-style front page.
     if (!pageName && !articleId && routeSegments.length === 0) {
       window.setTimeout(() => {
-        if (pathLanguage === "zh" && language !== "zh") {
-          setLanguage("zh");
-        } else if (!pathLanguage && language !== "en") {
-          setLanguage("en");
+        const rootLanguage = pathLanguage === "zh" ? "zh" : "en";
+
+        if (rootLanguage !== language) {
+          setLanguage(rootLanguage);
         }
-        setPreserveRootIssueUrl(true);
-        setCurrentPage("monthly-theme");
+        setPreserveRootIssueUrl(false);
+        setCurrentPage("editorial-front");
+        window.history.replaceState(
+          {},
+          "",
+          `${window.location.origin}/${rootLanguage}/front-page`,
+        );
         setHasResolvedInitialUrl(true);
       }, 0);
       return;
@@ -1005,6 +1011,10 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
 
     if (articleReturnPage === "parallax") {
       return language === "zh" ? "← 思想余温" : "← PARALLAX";
+    }
+
+    if (articleReturnPage === "editorial-front") {
+      return language === "zh" ? "← 今日首页" : "← FRONT PAGE";
     }
 
     if (articleReturnPage === "main") {
@@ -3742,6 +3752,17 @@ Further materials are being gathered.`
       </div>
     </>
   );
+
+  if (currentPage === "editorial-front") {
+    return renderWithToast(
+      <EditorialFrontPage
+        language={language}
+        setLanguage={setLanguage}
+        setCurrentPage={setCurrentPage}
+        onOpenArticle={(article) => openArticleFrom(article, "editorial-front")}
+      />
+    );
+  }
 
   if (currentPage === "magazine") {
     return renderWithToast(

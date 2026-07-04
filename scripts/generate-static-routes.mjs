@@ -23,6 +23,15 @@ const pageMeta = {
     title: "Feminist Archive | 女性主义档案",
     description: "Feminist Archive 是一个独立女性主义理论、文章、书评与档案写作平台。",
   },
+  "/en/front-page": {
+    title: "Front Page | Feminist Archive",
+    description:
+      "A magazine-style front page for Feminist Archive essays, reviews, reading, and archival writing.",
+  },
+  "/zh/front-page": {
+    title: "今日首页 | Feminist Archive",
+    description: "Feminist Archive 的杂志式首页，汇集中文文章、书评、阅读与档案写作。",
+  },
   "/en/archive-house": {
     title: "Archive House | Feminist Archive",
     description: "Enter the imagined rooms of Feminist Archive.",
