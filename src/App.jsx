@@ -22,6 +22,7 @@ import DeepReadingPage from "./page/DeepReadingPage";
 import MagazineCategoryPage from "./page/MagazineCategoryPage";
 import PastWorksPage from "./page/PastWorksPage";
 import ParallaxPage from "./page/ParallaxPage";
+import EditorialFrontPage from "./page/EditorialFrontPage";
 import { submitWebsiteForm } from "./utils/formSubmit";
 import HowWeEditPage from "./page/HowWeEditPage";
 import MagazineMenuOverlay from "./components/MagazineMenuOverlay";
@@ -67,6 +68,7 @@ const PAGE_ROUTES = {
   "cover-submission": "submissions/covers",
   donate: "donate",
   "donation-drive": "support",
+  "editorial-front": "front-page",
   guidelines: "guidelines",
   "how-we-edit": "how-we-edit",
   magazine: "magazine",
@@ -1881,8 +1883,8 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
   
           <h1 className="print-edition-title text-reveal reveal-delay-1">
             {language === "zh"
-              ? "Feminist Archive 正在准备第一本印刷出版物。"
-              : "Feminist Archive is preparing its first print publication."}
+              ? "Feminist Archive 正在准备第一本印刷出版物！"
+              : "Feminist Archive is preparing its first print publication!"}
           </h1>
   
           <p className="print-edition-intro text-reveal reveal-delay-2">

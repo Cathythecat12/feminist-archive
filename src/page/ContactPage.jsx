@@ -112,7 +112,7 @@ import {
   </section>
 
   <section className="psyche-contact-block">
-    <h2>{zh ? "我们欢迎投稿封面照片！" : "Cover image submissions are welcome"}</h2>
+    <h2>{zh ? "我们欢迎投稿封面照片！" : "Cover image submissions are welcome!"}</h2>
     <p>
       {zh
         ? "如果你有适合 Feminist Archive 气质的摄影、绘画或电脑绘制图像，也欢迎把作品传给我们。它不需要专业设备，只要你觉得它能让这个网站更美。"

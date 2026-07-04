@@ -42,7 +42,17 @@ function ParallaxPage({ language, onBack, onOpenArticle, setCurrentPage }) {
             {zh ? "FEMINIST ARCHIVE / 思想副刊" : "FEMINIST ARCHIVE / CRITICAL SERIES"}
           </div>
 
-          <h1>{zh ? "思想余温" : "Parallax"}</h1>
+          <h1 className={zh ? undefined : "parallax-hero-wordmark-title"}>
+            {zh ? (
+              "思想余温"
+            ) : (
+              <img
+                className="parallax-hero-wordmark"
+                src="/images/parallax.png"
+                alt="Parallax"
+              />
+            )}
+          </h1>
           <p className="parallax-subtitle">
             {zh
               ? "哲学、意识形态与当代现实的批判性写作"

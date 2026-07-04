@@ -360,7 +360,7 @@ function MagazinePage({ language, onBack, onOpenArticle, setCurrentPage }) {
             className="magazine-footer-parallax"
             onClick={() => setCurrentPage("parallax")}
           >
-            {language === "zh" ? "思想余温" : "Parallax"}
+            <img src="/images/Parallaxlogo.png" alt={language === "zh" ? "思想余温" : "Parallax"} />
           </button>
 
         </div>

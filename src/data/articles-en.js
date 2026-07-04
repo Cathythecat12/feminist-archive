@@ -234,158 +234,253 @@ Therefore, the more prosperous the World Cup becomes, the more ordinary football
         text: "Sexual Liberationism as the Endpoint of Humanism",
       },
       ...paragraphs(`
-Secular humanism originally emphasized “human beings,” “freedom,” “the body,” and “diversity.” Yet it contains an internal contradiction: on the one hand, it seeks to recognize diversity; on the other hand, it still attempts to preserve a universal conception of humanity as a whole.
+Secular humanism initially appeared in an emancipatory posture. It opposed the suppression of human beings by theological order, emphasized the value of the human being itself, and stressed freedom, the body, experience, difference, and diversity. It attempted to liberate human beings from external authority and make them once again the center of their own lives. For this reason, modern humanism appears naturally opposed to repression. It opposes asceticism, rigid moral commandments, and the negation of the body in the name of the sacred.
 
-This contradiction was originally mediated through appeals to “nature,” environmentalism, and the objective world. Later, this conception of nature became further internalized into the human body itself, leading to the following logic: if nature deserves respect, then my bodily nature deserves respect first. If my body belongs to me, then my sexuality, my desires, and the ways I use my body should also be entirely free.
+Yet there has always been an unresolved contradiction within this discourse. On the one hand, it must acknowledge human diversity and recognize the legitimacy of different bodies, different ways of life, and different forms of desire. On the other hand, it must still preserve a universal concept of “the human,” as if all differences could ultimately be absorbed into some common human totality.
 
-Thus “bodily freedom” gradually slides into “sexual freedom.” Yet a problem emerges here: sexuality is not a purely external bodily activity but an intensely internal erotic structure. If liberal principles are crudely applied to sexuality, teleology begins to collapse.
+At first, this contradiction was often reconciled through “nature.” Humanism could say that although different people have different ways of life, all people belong to the same natural world; although bodies differ, the body itself still has some natural basis; although freedom appears in multiple forms, freedom should still respect some objective natural order. In this way, “nature” became the final guarantee through which humanism maintained totality.
 
-That is to say, people no longer know what they truly want. All that remains are displays, consumption, classifications, labels, and experiences of various sexualities. What emerges is a colorful nihilism. Not the gray nihilism of decadence, but a colorful nihilism wrapped in diversity, identities, sexual labels, and postmodern fantasies.
+But in late modernity, this view of nature gradually shifted. Nature was no longer merely the external environment, ecology, or objective world, but began to be internalized within the subject’s own body. People began to say: if nature deserves respect, then my bodily nature should also be respected; if the body is mine, then my desire, sexuality, pleasure, and way of using the body should also belong to me. Bodily freedom was thus gradually understood as sexual freedom, and sexual freedom was further understood as the freedom to choose desire.
+
+The problem appears precisely here. The body can be understood as something external, visible, and protectable, but sex is not merely a bodily act. Sex has never been simply a way of using the body, but is a highly internal structure of eros. It involves fantasy, lack, the Other, recognition, shame, the gaze, power, and meaning. If the liberal principles of ownership and choice are directly applied to sex, and if sex is understood as “my body, therefore I can choose freely how to use it,” then sex is mistakenly reduced to a consumer choice.
+
+Once sex is understood as choice, desire can easily be understood as a menu. The subject no longer asks what they truly desire, but moves between different identities, labels, experiences, and styles. Various sexualities begin to be displayed, classified, consumed, and managed like selectable cultural forms. What people gain from this is not necessarily deeper freedom, but perhaps merely more options.
+
+This is the paradox of sexual liberationism. On the surface, it expands freedom, but in reality it may dissolve the teleology of desire. The subject no longer knows what they truly want. The subject only knows that they must constantly explore, experience, name, display, and confirm themselves. Freedom is no longer the capacity to move toward a more complete life, but becomes the task of continuously producing the self.
+
+Thus, what sexual liberationism ultimately produces is not the grey nihilism of traditional decadence, but a colorful nihilism. It is full of identities, labels, diversity, bodily styles, gender expressions, consumer choices, and postmodern fantasies. It appears rich, open, inclusive, and free, but deep within it there may be a teleological emptiness. People possess more and more language for describing desire, yet find it increasingly difficult to explain why they desire at all.
 `),
       {
         type: "heading",
-        text: "“Sexuality as a Liberal Fantasy”",
+        text: "“Sex Is Fantasized by Liberalism”",
       },
       ...paragraphs(`
-There is no pure “sex itself”; there are only different kinds of sexualities organized through symbolic systems, culture, and ideology.
+There is no pure “sex itself,” only different kinds of sexualities organized by symbolic systems, culture, and ideology.
 
-This clearly reflects a Foucauldian problematic: sexuality is not a natural fact but an object produced through discourse, power, and knowledge.
+We usually assume that sex is a natural fact. People first possess certain desires, and then society decides whether to repress them. However, Foucault raised a completely different question: what if what we call “sex” was, from the very beginning, an object organized by modern society?
 
-Yet the author also criticizes a more superficial aspect of Foucauldian thought, arguing that if one merely studies different sexualities in a detached and descriptive manner, one risks becoming trapped in a postmodern illusion: as though recognizing difference, diversity, and identity labels were itself liberation.
+From this perspective, there is no pure “sex itself” waiting to be discovered. What exists are various sexualities constantly organized by language, institutions, systems of knowledge, medical classifications, psychological discourses, and cultural imagination. Modern society does not simply repress sex. Rather, it continuously produces knowledge about sex and thereby produces subjects that can be named, classified, and managed.
 
-These forms of diversity can themselves be absorbed and commodified by capitalism and liberalism.
+Therefore, the history of modernity is not simply a story of moving from repression to liberation. It is also a process of continuously inventing new sexual identities, new sexual classifications, and new languages of desire.
 
-Sexual liberationism did not emerge in isolation. It arose within the broader context of global capitalism. Although it appears liberating on the surface, it is in fact a mechanism of purposeless enjoyment operating within global capitalism.
+However, if the analysis stops here, it may fall into another postmodern illusion. Today, people are increasingly accustomed to equating “difference” itself with “freedom.” It seems as though emancipation has already been achieved as long as more sexual identities, more forms of desire, and more identity labels are recognized. People believe that as long as everyone can find the most accurate label to describe themselves, society will become freer.
+
+But is it really so simple? The problem is that difference is not naturally emancipatory. Capitalism has never simply been a system that eliminates difference. On the contrary, it can often transform difference into a market. Every new identity may correspond to a new consumer group, a new media community, a new cultural product, and a new commercial opportunity. Thus, identity is no longer only a political question. It also becomes a market question. Modern capitalism does not necessarily require everyone to become the same. It even welcomes diversity, because difference can be marketed, identity can be consumed, and desire can be packaged.
+
+Thus, a strange phenomenon emerges. In many historical periods, people suffered because their desires were repressed. Today, more and more people suffer from another form of anxiety: they do not know whether they are already free enough, whether they have discovered their true self, or whether they have had sufficiently rich experiences.
+
+Freedom gradually becomes a new task. The subject is constantly encouraged to explore themselves, express themselves, display themselves, define themselves, and reshape themselves. Every new identity promises a new possibility. Every new experience promises a new completeness. Yet when this process continues without limit, people often find that they have not arrived at freedom, but have fallen into an endless production of the self.
+
+Sexual liberationism appears precisely against this background. It grew alongside the development of global capitalism. On the surface, sexual liberationism seems very free. It speaks the language of freedom, autonomy, authenticity, and self-expression. Yet it also increasingly becomes a mechanism of purposeless enjoyment within global capitalism.
+
+The subject is constantly encouraged to pursue new desires, new experiences, new identities, and new stimuli, yet finds it increasingly difficult to answer a more fundamental question: what do I truly want? When desire itself is constantly produced, and when enjoyment itself becomes a social command, so-called liberation begins to show another face. It no longer appears as prohibition, but as encouragement.
 `),
       {
         type: "heading",
-        text: "The Lacanian Section: Why Does It Lead Toward “Perversion”?",
+        text: "Lacan: Why Does It Lead to “Perversion”?",
       },
       ...paragraphs(`
-According to Lacan’s formula of fantasy, the subject is constitutively lacking. The subject can never fully coincide with itself and is perpetually searching for something capable of filling its absence. This object is the objet petit a.
+Lacan’s formula of fantasy holds that the subject is inherently lacking. The subject can never fully coincide with itself. It is always searching for something that might fill its lack. This thing is objet petit a.
 
-The objet petit a is not a concrete object but a remainder within the structure of desire, the thing that the subject believes can make it whole. For some people this may be romantic love; for others it may be power, prestige, wealth, or a particular identity. The subject desires an object not because the object itself possesses any special value, but because the subject projects its own lack onto it.
+Objet petit a is not a concrete object, but a remainder within the structure of desire. It is the object that the subject believes will make itself complete. For some people, this may be love. For others, it may be power, fame, wealth, or some form of identity. The subject desires the object not because the object itself has special value, but because the subject projects its own lack onto the object.
 
-The ordinary structure of fantasy is roughly this: the subject ($) confronting the objet petit a.
+The ordinary structure of fantasy is roughly this: the subject $ faces objet petit a. The subject itself is empty, barred, and incomplete. Objet petit a is the remainder of desire, something that appears external but is in fact most internal. For example, a man who cannot find a real place for himself within a male community may project his lack onto a woman. The woman becomes his objet petit a, as if she could prove that he has value, position, and completeness. This is fantasy.
 
-The subject itself is empty, barred, and incomplete. The objet petit a is the remainder of desire, something that appears external yet is in fact the most intimate thing. For example, a man may discover that he has no genuine place within a male community and therefore projects his lack onto a woman. The woman becomes his objet petit a, as though she could prove his value, his place, and his completeness. This is fantasy.
+But where does “perversion” occur? Perversion appears when objet petit a moves behind the subject and occupies the place of the big Other.
 
-But where does perversion emerge?
+In the normal structure of fantasy, the subject is still constrained by some ethical or symbolic order. However, when objet petit a in turn occupies the place of the big Other, the structure of perversion appears. The subject, who should have been supported by ethics and community, begins to be dominated by the object of desire. The object is no longer merely the target of desire, but becomes the commander of desire. The subject no longer says, “I want it,” but feels, “It demands that I desire it.” Thus the object of desire becomes a commandment. The subject constantly hears a secret command: enjoy, for my sake; desire, for my sake; obey, for my sake. This is the true structure of perversion. In other words, the subject should originally be supported by ethical order, symbolic order, and the big Other. Now, however, the subject is commanded by an erotic object, a desired thing, or a bodily sign.
 
-Perversion emerges when the objet petit a moves behind the subject and occupies the position of the Big Other.
-
-In the normal structure of fantasy, the subject remains constrained by some form of ethical or symbolic order. However, once the objet petit a occupies the position of the Big Other, a perverse structure emerges. The subject, which ought to be sustained by ethics and communal symbolic structures, becomes governed by the object of desire itself. The object ceases to be merely the target of desire and becomes the one issuing commands.
-
-The subject no longer says, “I desire it.” Instead, the subject feels that “it demands that I desire it.”
-
-The object of desire becomes a commandment. The subject continuously hears a hidden injunction: Enjoy, for my sake. Desire, for my sake. Obey, for my sake. This is the true structure of perversion.
-
-In other words, the subject should be sustained by ethical order, symbolic order, and the Big Other. Instead, some erotic object, desired commodity, or bodily sign comes to command the subject.
-
-Lacan’s late work contains a famous formulation: “The superego says: Enjoy!”
-
+In late Lacan, there is a very famous statement: the superego says, “Enjoy!”
 Enjoy for me. This is the core of perversion.
 
-Traditional society tells you: Do not do this. Do not desire. Do not enjoy. Modern society tells you: Desire. Enjoy. Be yourself. Discover your true self. This is one of the strangest features of modern capitalism. In the past, enjoyment generated guilt. Today, failing to enjoy generates guilt. Consequently, the modern subject becomes trapped in a new anxiety: Have I enjoyed enough? At this point, enjoyment is no longer freedom but an obligation.
+Traditional society tells you: do not do this. Do not desire. Do not enjoy. Modern society says: go desire. Go enjoy. Be yourself. Discover your true self. This is in fact the strangest thing about modern capitalism. In the past, people felt guilty when they enjoyed. Now they feel guilty when they do not enjoy. Thus the modern subject falls into a new anxiety: have I enjoyed enough? This is no longer freedom, but the duty to enjoy.
 `),
       {
         type: "heading",
-        text: "Eroticism Could Be Sublimated, but Perversion Externalizes It",
+        text: "Eros Could Have Been Sublimated, but Perversion Externalizes It",
       },
       ...paragraphs(`
-A crucial distinction must be made here: genuine erotic desire can be sublimated, spiritualized, and internalized. Perversion, by contrast, externalizes, bodily materializes, and behavioralizes erotic desire.
+Here, an important distinction must be made. True eros and perversion are not two different intensities of the same thing, but two completely different structures. True eros has a tendency to move inward. It can be spiritualized, sublimated, and symbolized. It is not satisfied with the body itself, but always searches within the body for something that exceeds the body.
 
-When one truly loves another person, fantasy may involve holding hands, walking side by side, sharing a life together, or attaining spiritual intimacy. Perversion cannot tolerate this intensity of inner experience and therefore transforms erotic desire into external acts, taboos, bodily operations, stimuli, and fetishes.
+When someone truly loves another person, what they pursue is not necessarily a concrete bodily act. Eros may appear as holding hands, living together, long companionship, shared time, mutual understanding, or even merely sharing a certain spiritual space. In other words, eros always points toward the subject. Eros wants to reach the inner world of another person. It wants to know how the other thinks, feels, and understands the world. What it desires is not the body itself, but the person who appears through the body.
 
-Thus the pervert is a “failed lover.” Unable to become a lover, the subject retreats into object worship.
+For this reason, eros naturally has a tendency toward sublimation. It always attempts to elevate bodily experience into spiritual experience, transform momentary pleasure into long-term relation, and turn bodily contact into a connection between subject and subject.
+
+Yet eros also becomes dangerous for precisely this reason. The subject can never truly possess another subject. True love entails uncertainty, waiting, frustration, misunderstanding, jealousy, loss, and a distance that can never be completely filled. Eros requires the subject to endure lack. It requires the subject to accept that even if I love you, I can never fully possess you. This is precisely what perversion cannot bear.
+
+Perversion is not the intensification of eros, but the avoidance of eros. When the subject cannot bear the lack, anxiety, and uncertainty within eros, they begin to search for an object that is easier to control. Thus the eros that originally pointed toward the subject is transferred onto the object.
+
+When the subject cannot bear the lack, anxiety, and uncertainty within eros, they begin to search for a more controllable substitute. Thus the eros that originally pointed toward another subject gradually shifts onto an object. External acts, taboos, bodily operations, stimulation, and various fetishes may all become new bearers of desire. In this structure, what the subject loves is no longer a person, but a dispositif of desire that can be grasped, repeated, and operated.
+
+Unlike a subject, an object does not refuse, does not leave, and does not possess its own desire. It does not make demands, produce misunderstandings, or threaten the subject’s narcissism with its own subjectivity. For this reason, perversion is not merely a special sexual preference, but rather a defense mechanism. By externalizing, bodily embodying, and behavioralizing eros, it allows the subject to avoid truly entering the risky relation between persons. The subject no longer needs to face the complexity of another person, nor endure the waiting, loss, and uncertainty brought by love. Instead, the subject retreats into a scene of desire that can be controlled, arranged, and repeatedly reproduced.
+
+In this sense, the pervert may perhaps be understood as a failed lover. Not because he loves too much, but because he has failed to become a lover. True love requires the subject to endure the unpredictability of another subject and the distance between two people that can never be completely eliminated. Perversion, however, attempts to abolish this distance. It gives up the uncertainty of love and turns toward the certainty of fetish. It gives up the relation between subject and subject and embraces an object that can be completely possessed. Therefore, the true opposite of perversion is not so-called normality, but love itself.
 `),
       {
         type: "heading",
-        text: "Masochism: Enjoying the Silence of the Big Other",
+        text: "1. Masochism: Enjoying the Silence of the Big Other",
       },
       ...paragraphs(`
-The central point of masochism is that the masochist is not controlled by the sadist. Rather, the masochist manipulates the sadist. The masochist arranges for the other person to beat, humiliate, or harm them. On the surface, the masochist appears dominated; in reality, the other person has been transformed into an instrument. What the masochist truly enjoys is not pain itself but the silence of the Big Other.
+The most puzzling aspect of masochism is this: on the surface, the masochist seems to be the most powerless person in the entire relation. They are humiliated, punished, and dominated, as if entirely under the control of another. Yet from the perspective of psychoanalysis, the opposite may be true.
 
-It is as though the masochist asks: Big Other, what exactly do you want from me? The Big Other does not answer. The masochist therefore answers on behalf of the Big Other: The Big Other wants me to suffer. I am the object of the Big Other’s love. The more I suffer, the more I prove that I have been chosen. The core of masochism is therefore the attempt to confirm oneself as the beloved child of the Big Other through suffering.
+For the one who truly arranges all this is often the masochist themselves.
+
+Masochism is not simply the passive endurance of pain, but the careful construction of a scene. The masochist searches for the sadist, designs the rules, sets the boundaries, decides when it begins and when it ends, and even determines which acts may occur and which may not. On the surface, the sadist seems to possess power. In reality, the sadist is often merely a character in the masochist’s script. In other words, the masochist is not the one who is controlled, but the one who exercises control through the form of being controlled.
+
+If this is so, then what does the masochist truly enjoy? The answer is not necessarily pain itself. Pain is only a prop on the stage. The real question is hidden at a deeper level: what does the big Other want?
+
+Lacan repeatedly points out that the subject is always asking the big Other a question. We want to know who we are, how others see us, and whether we are worthy of being loved, recognized, and needed. Yet the big Other remains silent. The world does not directly give us an answer. God does not speak. History does not speak. Social norms do not speak. Even parents and lovers cannot fully answer what we truly are.
+
+Because the big Other remains silent, the subject falls into anxiety. Masochism attempts precisely to end this anxiety. When the big Other does not answer, the masochist begins to answer on behalf of the big Other. It is as if they say: I finally know what you want. You want me to suffer. You want me to obey. You want me to endure punishment. Thus every humiliation, every punishment, and every pain is no longer merely a bodily experience, but becomes a message from the big Other.
+
+Suffering thus gains meaning.
+
+The subject no longer needs to face the disturbing silence of the big Other, because the answer has already been written in advance. Pain becomes a proof. The deeper the suffering, the more it proves that the subject is seen. The harsher the punishment, the more it proves that there is still a connection between the subject and the big Other.
+
+Therefore, what masochism truly pursues is not pain, but certainty. The masochist hopes to confirm, through suffering, that they occupy a special place in the big Other. It is as if by continuing to endure pain, they can prove that they are chosen, loved, and entrusted with a special mission. From this perspective, the masochist is not someone who loves pain, but someone who cannot endure the silence of the big Other. Rather than face the question that will never receive an answer, “What do I mean to you?” they would rather turn themselves into the object of the big Other’s desire. Because at least in that moment, the world finally seems to stop being silent.
 `),
       {
         type: "heading",
-        text: "Sadism: Seeing on Behalf of the Big Other",
+        text: "1. Sadism: Gazing on Behalf of the Big Other",
       },
       ...paragraphs(`
-The logic of sadism is the opposite. The sadist believes that the Big Other is blind and cannot see, and therefore the sadist must see on its behalf. By causing others pain, the sadist attempts to short-circuit their own gaze and the gaze of the Big Other. The sadist’s enjoyment comes from the feeling: I see on behalf of the Big Other. I enforce order on behalf of the Big Other. I make others suffer because a higher command requires it.
+The structure of sadism is almost the mirror image of masochism.
 
-For this reason, many forms of moral rigorism, political violence, and patriarchal punishment can be interpreted through a sadistic structure: they appear to be exercises of justice while secretly deriving enjoyment in the name of the Big Other.
+Masochism confronts a silent big Other and therefore attempts to obtain the response of the big Other through suffering. Sadism, by contrast, confronts a blind big Other and therefore attempts to exercise the gaze on behalf of the big Other.
+
+On the surface, sadism seems merely to derive pleasure from the suffering of others. Yet what is truly important is not pain itself, but the relation between the sadist and the big Other.
+
+In the fantasy of sadism, the big Other has not truly seen. The law has not seen. God has not seen. History has not seen. Order has not seen. The world seems to be in a state of dullness, looseness, or even blindness. Therefore, the sadist feels that he must intervene. He must see on behalf of the big Other, judge on behalf of the big Other, and execute on behalf of the big Other.
+
+For this reason, sadism rarely understands itself as a simple pursuit of pleasure. On the contrary, the sadist often understands himself as an executor, maintainer, corrector, or even savior. He does not think he is satisfying a private desire, but believes he is fulfilling a higher mission. Others suffer not because he wants them to suffer, but because some higher order requires it.
+
+This is also why sadistic structures often combine with moral discourse.
+
+If masochism constantly asks the big Other, “What do I mean to you?” then sadism constantly asks the big Other, “Why have you not acted yet?” When the big Other never provides a clear answer, the sadist begins to speak in place of the big Other. It is as if he says: I know what is right. I know what is wrong. I know who deserves punishment. I know who should be corrected.
+
+Thus punishment gains a kind of sacredness.
+
+The sadist does not feel that he is enjoying, because he can always find a sublime reason for his actions. Justice, discipline, tradition, morality, the state, religion, history, civilization, and even love can all become such reasons. Under the protection of these sublime reasons, violence gains legitimacy, while pleasure is hidden behind a sense of mission.
+
+Therefore, the sadist’s true enjoyment does not come from pain itself, but from a special fantasy: I am seeing on behalf of the big Other, acting on behalf of the big Other, and restoring order on behalf of the big Other.
+
+From this perspective, many forms of moral rigorism, political violence, and patriarchal punishment possess a certain sadistic structure. They appear in the name of justice, responsibility, or order, but in reality gain pleasure by playing the role of the big Other’s agent. The sadist believes that he is merely an instrument. Yet precisely within this fantasy of “I am only following orders,” the most dangerous enjoyment often emerges.
+
+Therefore, what is most worthy of caution in the sadistic structure is not that it openly declares its pursuit of pleasure, but precisely that it never admits it is pursuing pleasure. It always appears in the form of responsibility, mission, and justice, and uses the name of the big Other to conceal its own enjoyment.
 `),
       {
         type: "heading",
-        text: "Several “Static Fetishes”: All Are Relations to the Big Other",
+        text: "Several “Static Fetishes”: All Are Relations with the Big Other",
       },
       ...paragraphs(`
-Necrophilia, somnophilia, and amaurophilia are not fundamentally about particular acts but about different states of the Big Other. In necrophilia, the Big Other is dead, deaf, and blind. The subject treats the corpse as an embodiment of the Big Other and turns itself into an instrument of the Big Other’s enjoyment. In somnophilia, the Big Other is asleep. The subject allows the Big Other to continue dreaming, suspending ethical injunctions. In amaurophilia, the Big Other cannot see but can still hear, or perhaps only pretends to see. The subject enjoys the experience of “the gaze within blindness.”
+On the surface, necrophilia, somnophilia, and amaurophilia seem to have nothing in common. They involve different objects, different scenes, and different behavioral patterns. However, if we remain only at the level of behavior, we may miss the truly important problem.
 
-These three forms can be summarized as: sleeping with the Big Other. Perversion appears to be a relationship with a concrete object, but it is actually a relationship with a particular state of the Big Other.
+For perversion is never merely about the object. It concerns the relation between the subject and the big Other.
+
+Psychoanalysis often reminds us that what human beings truly desire is not always the immediate object itself. The object matters because it bears a deeper fantasy structure. Therefore, a more important question might be: in these forms of perversion, what state is the big Other in?
+
+Take necrophilia as an example. What seems most shocking about necrophilia is the corpse itself. Yet if we analyze further, the corpse matters not because it is a special body, but because it presents an extreme state of the big Other. Here, the big Other is already dead. It can neither see nor hear, nor can it respond. The subject confronts a completely silent big Other. Precisely because of this, the subject obtains a special position: they no longer need to face judgment from the big Other, and can completely devote themselves as an instrument of the big Other’s enjoyment.
+
+Somnophilia presents another structure. Here, the big Other is not dead, but asleep. The big Other still exists, yet has temporarily stopped supervising and intervening. The subject seems to obtain a brief exceptional moment, a space in which ethical law is suspended. The sleeping big Other is neither absent nor gone, but placed within dream. The subject’s enjoyment does not come from the object itself, but from the fantasy that as long as the big Other continues to sleep, order temporarily loses its force.
+
+Amaurophilia is more subtle. Here, the big Other is neither dead nor asleep. On the contrary, the big Other still seems to be present, but has lost its visual capacity. It can hear, but cannot see. Or more precisely, it seems to pretend to see. The subject therefore gains a special pleasure: the gaze has not disappeared, but has become hidden, vague, and impossible to fully confirm. What the subject enjoys is not darkness itself, but the “gaze within not seeing,” a look that is both present and absent.
+
+From this perspective, necrophilia, somnophilia, and amaurophilia actually share the same question: what state does the subject want the big Other to be in?
+
+Is the big Other dead, asleep, or blind? Is the big Other completely silent, or temporarily invalidated? Can the big Other still see me?
+
+Therefore, what these forms of perversion truly organize is not concrete bodily behavior, but different fantasies about the big Other. On the surface, they appear as relations between the subject and a certain object. In reality, they are relations with a certain state of the big Other. Perhaps precisely for this reason, we may summarize these three structures with a common formula: sleep with the Big Other.
+
+The subject appears to be relating to a concrete object, but in reality is trying to arrange the position of the big Other. The central question of perversion is never what the object is, but where the big Other is, and what the big Other is doing.
 `),
       {
         type: "heading",
-        text: "Perversion in Public Space: Exhibitionism, Frotteurism, and Cross-Dressing",
+        text: "Perversion in Public Space: Exhibitionism, Frotteurism, Transvestism",
       },
       ...paragraphs(`
-The core of exhibitionism is not “letting others see me” but forcing others to close their eyes, thereby proving that the Big Other is watching. Others avert their gaze because social order is present. Consequently, the exhibitionist feels: the Big Other sees me, and I see myself being seen by the Big Other.
+Exhibitionism is usually understood as a desire to be seen by others. Yet if we simply understand it as “wanting others to see oneself,” we miss the crucial point. For the exhibitionist, what truly matters is not seeing itself, but what seeing proves.
 
-The core of frotteurism is partiality. It depends upon concealment, noise, crowds, fragments of bodies, and fragments of voices. The subject feels that they are seeing or hearing something concealed on behalf of the Big Other.
+What the exhibitionist pursues is not merely the gaze of others, but the social gaze represented behind that gaze. When passersby turn away, lower their heads, avert their eyes, or show embarrassment and unease, these reactions matter not because they satisfy some simple vanity, but because they prove one thing: social order still exists. It is precisely because some norm is still operating that people feel some things should not be seen.
 
-The core of cross-dressing is not simple androgyny but compelling the Big Other to acknowledge the existence of sexual difference. Its enjoyment comes from the feeling: I see that the Big Other is pretending not to see. I know that the Big Other knows sexual difference exists. I stand at the boundary of sexual difference.
+Therefore, the paradox of exhibitionism is that although it seems on the surface to pursue being seen, in reality it confirms the existence of the gaze through the avoidance of others. When others close their eyes, this is not the disappearance of the gaze, but precisely evidence that the gaze exists. In that moment, the subject seems to obtain a certain confirmation: the big Other has seen me, and I have seen myself being seen by the big Other.
 
-The article therefore argues that cross-dressing is productive but not revolutionary. It can generate insight, yet it still presupposes the existence of the Big Other.
+If exhibitionism revolves around the gaze, then frotteurism revolves around another structure: partiality. Frotteurism rarely occurs in a completely transparent space. It depends on crowded bodies, blurred boundaries, partial contact, and bodily fragments that cannot be fully confirmed. Noise, concealment, and confusion are not obstacles, but components of the structure itself. The subject does not truly possess the whole, but constantly pursues those half-hidden fragments.
+
+Here, what desire pursues is not the complete object, but the concealed object. The subject seems to occupy a special position: what others cannot see, I see; what others cannot hear, I hear. For this reason, what frotteurism organizes is not simple bodily contact, but a fantasy of secrecy, glimpse, and exceptional position. The pleasure experienced by the subject is not that of possessing the object, but of becoming the one who discovers the hidden thing on behalf of the big Other.
+
+Transvestic fetishism further reveals the relation between perversion and sexual difference. Many people tend to understand transvestism simply as an imitation of the image of another gender, as if its significance lay merely in confusing or crossing gender boundaries. Yet perhaps things are more complex. Transvestism is attractive not because sexual difference disappears, but precisely because sexual difference still exists.
+
+The subject seems to stand on a boundary line. On the one hand, they show that gender identity is not naturally fixed. On the other hand, they also constantly remind people that sexual difference itself cannot be completely erased. The pleasure of the transvestite does not come merely from playing another identity, but from a more subtle experience: I know that the big Other is pretending not to see, and I also know that the big Other in fact knows. For this reason, transvestic fetishism does not truly abolish sexual difference, but constantly plays around it.
+
+From this perspective, transvestic fetishism may be productive, but it is not necessarily revolutionary. It can reveal society’s dependence on gender, expose the cracks behind norms, and even produce new understanding and wisdom. Yet it still presupposes the existence of the big Other. The subject can stand on the boundary precisely because the boundary itself still exists. Transvestic fetishism does not abolish the big Other, but plays an ongoing game with the big Other.
 `),
       {
         type: "heading",
-        text: "The Most Extreme Form: Pedophilia",
+        text: "The Most Serious Category: Pedophilia",
       },
       ...paragraphs(`
-Pedophilia is among the most extreme and disturbing forms of perverse structure. The reason is not simply that it violates an external moral norm but that it reveals the deepest logic of perversion itself.
+Pedophilia is one of the most extreme and disturbing forms among all structures of perversion. The reason is not merely that it violates an external moral norm, but that it reveals the deepest logic of perversion. People usually assume that evil arises from the negation of ethics, law, or sacred order, as if someone commits the most terrible acts because they no longer believe in any authority and no longer recognize any limit. Yet the situation is precisely the opposite. Such people do not believe that everything is permitted because they “do not believe in the big Other.” Rather, they believe too strongly in the existence of the big Other. They feel that once they have completely devoted themselves to the big Other, they can commit the most filthy acts and misrecognize this filth as sacrifice, sacredness, or love.
 
-People often assume that evil arises when ethical, legal, or sacred authority is denied. It is commonly imagined that the most horrifying acts become possible because someone ceases to believe in authority or limitations. Yet the opposite may be true. Such individuals do not conclude that everything is permitted because they do not believe in the Big Other. Rather, they believe too strongly in the Big Other. They imagine that once they have completely devoted themselves to the Big Other, they are entitled to commit the most obscene acts while interpreting them as sacrifice, holiness, or love.
+In this structure, the subject does not feel that he is satisfying a private desire. On the contrary, he believes that he has completely devoted himself to some higher existence. This existence may be God, truth, destiny, history, purity, love, or anything endowed with absolute legitimacy. When the subject believes that he has become the instrument of this sacred order, he no longer needs to take responsibility for his actions. In his fantasy, the actor is no longer “I,” but the big Other itself.
 
-Within this structure, the subject does not believe that they are satisfying personal desires. On the contrary, they believe that they have entirely devoted themselves to some higher being. This higher being may be God, Truth, Destiny, History, Purity, Love, or any other principle granted absolute legitimacy. Once the subject believes they have become an instrument of this sacred order, responsibility for their actions disappears. In fantasy, the agent is no longer “I” but the Big Other itself.
+It is here that perversion reaches its extreme form. The subject begins to mistake his own desire for the desire of the big Other, and his own enjoyment for the command of the big Other. He no longer says, “I want to do this,” but says, “A higher power demands that I do this.” Thus the filthiest desire receives the most sacred clothing, and the most violent impulse receives the most sublime reason. Evil no longer appears as evil, but as love, sacrifice, devotion, education, salvation, or sacred mission.
 
-It is here that perversion reaches its extreme form. The subject mistakes their own desire for the desire of the Big Other and mistakes their enjoyment for the command of the Big Other. The subject no longer says, “I want this.” Instead, the subject says, “A higher power requires this.”
+If we rewrite the famous Dostoevskian proposition, the problem is not, “If God does not exist, everything is permitted.” What is truly terrifying is another situation: if the big Other exists, only then is everything permitted. If the subject believes that God absolutely exists, and believes that he can directly represent God, then everything may instead become permitted. At that point, any act can be interpreted as part of a sacred plan, any desire can be packaged as the demand of a higher order, and any harm can be disguised as love.
 
-Thus the most obscene desires acquire the holiest appearance. The most violent impulses obtain the most elevated justifications. Evil no longer appears as evil but instead appears as love, sacrifice, devotion, education, salvation, or sacred duty.
-
-One might therefore rewrite Dostoevsky’s famous proposition. The problem is not that “if God does not exist, everything is permitted.” The truly terrifying possibility is the reverse: if the Big Other exists, everything becomes permitted. If the subject believes that God absolutely exists and that they can directly represent God, then anything can be justified. Every action becomes part of a sacred plan. Every desire can be packaged as the demand of a higher order. Every injury can be disguised as love.
-
-The fundamental illusion is that the subject completely identifies their own desire with the will of the Big Other. Responsibility for desire is transferred to an imagined absolute authority. Once this transfer is complete, the most extreme obscenity and the most extreme sanctity become intertwined. The more sacred the justification, the more effectively it conceals dark enjoyment. The more elevated the mission, the more likely it is to conceal desires that cannot be acknowledged.
+In this sense, there is a structural illusion: the subject completely identifies his own desire with the will of the big Other. The subject no longer faces responsibility for desire, but transfers responsibility onto an imaginary absolute authority. Once this transfer is complete, the most extreme filth and the most extreme sacredness begin to entangle with each other. The more sacred the name, the more it may become a cover for the darkest enjoyment. The more sublime the mission, the more it may conceal the most unacknowledged desire.
 `),
       {
         type: "heading",
-        text: "Voyeurism: Not Seeing Others, but Remaining Unseen",
+        text: "Voyeurism: Not Seeing Others, but Not Being Seen Oneself",
       },
       ...paragraphs(`
-The essence of voyeurism is not “I see someone else’s naked body” but “I am not seen.” More fundamentally, it is: I see the Big Other looking at someone else. When the victim discovers that they have been watched and experiences shame, fear, or despair, the voyeur receives confirmation that social order and the gaze of the Big Other still exist. The voyeur’s enjoyment comes from activating the gaze of the Big Other.
+Voyeurism is usually understood as a desire to see. On the surface, the voyeur seems merely to want to see bodies, scenes, or acts that should not be seen. Yet if we understand it only as an interest in visual objects, we easily overlook the truly important part.
+
+For the pleasure of voyeurism does not come from the object itself, but from a special position. In the scene of voyeurism, the subject always occupies a hidden position. They can see others, while others cannot see them. For this reason, voyeurism first organizes not seeing, but a state of not being seen. What the subject enjoys is not merely that they have obtained a visual advantage, but that they have temporarily escaped the gaze.
+
+However, things do not stop here. If voyeurism only meant “I see others while others do not see me,” it would still be merely a question of hiding and exposure. But a Lacanian analysis asks further: why does the person being watched feel shame, fear, or even despair once they discover that they have been exposed to a gaze?
+
+This reaction reveals a deeper structure. Shame never comes only from another concrete person. What is truly disturbing is not the gaze of a stranger, but the social order that suddenly appears through this gaze. The subject feels shame because, in that moment, they realize that they have entered a larger network of gazes. It is as if the entire society is looking at them, as if some gaze beyond the individual has suddenly descended.
+
+It is here that voyeurism begins to relate to the big Other. What the voyeur pursues is not merely seeing others, but seeing the big Other seeing others. The victim’s shame, panic, and confusion matter not because these emotions themselves bring pleasure, but because they prove one thing: the big Other still exists. Social norms still exist. The symbolic order that organizes desire, bodies, and behavior is still operating.
+
+Therefore, what voyeurism truly activates is not the body, but the gaze. The subject seems to say: so the big Other has always been here. So people do not live freely in the world, but always live under some invisible gaze. The victim’s shame becomes evidence of this gaze, and the voyeur gains satisfaction from that evidence.
+
+In this sense, voyeurism is less about watching an object than about watching the gaze itself. It confirms the existence of the big Other through the reaction of another, and gains pleasure from this confirmation. The subject appears to be observing others, but in reality is observing how social order manifests through the body of another.
 `),
       {
         type: "heading",
         text: "Fetishism: Toward a Critique of Capitalism",
       },
       ...paragraphs(`
-Fetishism is not merely the love of objects. It is the projection of intersubjectivity onto objects. The isolated subject cannot establish genuine relationships with others and therefore projects erotic desire, other minds, and intersubjectivity onto shoes, clothing, socks, and various commodities.
+Fetishism is often understood as a special attachment to objects. Yet if we understand it merely as “liking a certain thing,” it becomes difficult to explain why these objects possess such strong emotional power. After all, shoes are only shoes, socks are only socks, and clothes are only clothes. They do not themselves possess love, desire, or subjectivity. Why, then, can certain objects provoke such intense emotional investment?
 
-This naturally leads to Marx’s theory of commodity fetishism: human relations become relations between things; things become personified; people become objectified; desire becomes absorbed into commodities. Thus fetishism becomes the interface through which sexual liberationism connects with global capitalism. Sexual liberationism therefore does not ultimately lead to freedom. It leads to commodification, fetishization, and a capitalist economy of desire.
+The problem may not lie in the object itself, but in what the subject projects onto the object. Relations between people are always full of risk. True intimacy involves misunderstanding, refusal, waiting, jealousy, and a distance that can never be completely eliminated. Another person always has their own thoughts, their own desire, and their own world, and therefore can never be completely grasped. Objects, however, are different. Objects do not refuse, do not leave, and do not possess their own desire. For this reason, they become ideal bearers of fantasy.
+
+In the fetishistic structure, the subject does not simply love an object, but transfers onto the object what originally belonged to relations between people. Eros, intimacy, understanding, companionship, and even the imagination of “another mind” are quietly projected into the object. Shoes are no longer merely shoes, and clothes are no longer merely clothes. They begin to assume functions that originally belonged to intersubjectivity. The subject seems to love a thing, but in reality relates through the thing to some fantasized other.
+
+It is here that fetishism begins to connect with capitalism. When Marx discussed commodity fetishism, he pointed out that in capitalist society, relations between people gradually appear as relations between things. Labor is hidden behind the commodity, social relations are hidden behind price, and commodities seem to possess a life of their own. Human beings are reified, while things are personified.
+
+From the perspective of psychoanalysis, this structure does not only occur in the economic field. It also occurs in the field of desire. The subject finds it increasingly difficult to establish relations with real others, and therefore turns to commodities to organize desire. Commodities are no longer merely tools for satisfying needs. They begin to bear the functions of identity, intimacy, recognition, and love. People purchase not only commodities, but a fantasy about the self.
+
+Therefore, fetishism is by no means merely a special sexual preference. It reveals how modern capitalism absorbs desire itself. When the subject cannot organize eros through relations between people, eros begins to flow toward commodities. The object gains subjectivity, while the subject becomes increasingly object-like.
+
+This also explains why sexual liberationism so easily combines with global capitalism. Capitalism does not need to repress desire. It tends instead to produce desire, expand desire, and guide desire into commodities. Every new identity, every new experience, and every new fantasy may become a new form of consumption. Desire is no longer prohibited, but constantly stimulated, subdivided, and commercialized.
+
+Thus, sexual liberationism ultimately presents a paradoxical fate. It initially appears in the name of freedom and attempts to escape traditional restrictions on the body and desire. Yet when desire increasingly depends on commodities to organize itself, freedom begins to transform into another form of dependence. The subject appears to have more choices, yet increasingly needs consumption to confirm identity, commodities to confirm desire, and the market to confirm existence.
+
+From this perspective, fetishism is not only a psychological structure, but also a structure of the age. It constitutes the most important interface between sexual liberationism and global capitalism. What sexual liberationism finally leads to may not be freedom, but commodification, fetishization, and an erotic economy continuously produced and managed by capital.
 `),
       {
         type: "heading",
-        text: "From a Feminist Perspective",
+        text: "Placed Within a Feminist Perspective",
       },
       ...paragraphs(`
-Consequently, if women’s bodily freedom is understood merely as “I can consume, display, and choose how to use my body,” it will inevitably be recoded by global capitalism and the patriarchal gaze into a colorful nihilism.
+Therefore, if women’s bodily freedom is understood only as “I can consume, display, or choose my body,” it will be recoded by global capitalism and the patriarchal gaze, becoming a form of colorful nihilism.
 
-Contemporary liberalism tells women: you have the right to display your body, cultivate your sexuality, and choose your desires. The problem is that this “freedom” has often already been shaped in advance by digital platforms, consumer culture, the male gaze, and the beauty industry. Women appear to be making free choices, yet in reality they are frequently compelled to demonstrate their freedom through self-commodification.
+Modern liberalism tells women: you have the right to display your body, manage your sexiness, and choose your desire. But the problem is that this “freedom” is often already pre-shaped by platforms, consumerism, the male gaze, and the aesthetic industry. Women seem to be choosing freely, but in reality are compelled to prove their freedom through the form of self-commodification. True feminist sexual liberation does not mean allowing women to become objects of desire more freely. It means allowing women to reclaim the subject position from which they define desire, refuse the gaze, organize relations, and produce meaning.
 
-A genuinely feminist sexual liberation would not mean allowing women to become more freely available as objects of desire. It would mean enabling women to reclaim the position of the subject: the position from which desire is defined, the gaze is refused, relationships are organized, and meaning is produced.
-
-Patriarchal capitalism does not need a complete female subject. It needs only marketable fragments of femininity: legs, waists, faces, voices, youthfulness, gentleness, cuteness, or danger. Women are fragmented into a series of fetishes and are then encouraged to mistake that fragmentation for self-expression.
+Patriarchal capitalism does not need the complete female subject. It only needs sellable fragments of female sexuality: legs, waist, face, voice, girlishness, gentleness, cuteness, danger. Women are divided into a series of fetishes, and are then required to misrecognize this division as self-expression.
 `),
     ],
   },

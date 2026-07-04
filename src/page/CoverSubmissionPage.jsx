@@ -122,7 +122,7 @@ function CoverSubmissionPage({ language, onBack, setCurrentPage }) {
             <h1>
               {zh
                 ? "我们欢迎投稿封面照片！"
-                : "We welcome cover image submissions."}
+                : "We welcome cover image submissions!"}
             </h1>
 
             <p>
