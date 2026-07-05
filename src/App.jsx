@@ -75,8 +75,8 @@ const PAGE_ROUTES = {
   parallax: "parallax",
   "reviews-page": "reviews",
   "writing-page": "writing",
-  "monthly-theme": "magazine/june-issue",
-  "monthly-theme-zh": "magazine/june-issue",
+  "monthly-theme": "magazine/july-issue",
+  "monthly-theme-zh": "magazine/july-issue",
   "past-works": "magazine/past-works",
   "news-page": "news",
   "newsletter-page": "newsletter",
@@ -100,6 +100,7 @@ const ROUTE_PAGES = Object.entries(PAGE_ROUTES).reduce((routes, [page, route]) =
 
   return routes;
 }, {
+  "magazine/june-issue": "monthly-theme",
   "magazine/parallax": "parallax",
 });
 
@@ -2618,7 +2619,7 @@ return null;
     ) : (
       <>
         <strong>{selectedArticle.author}</strong> writes with Feminist Archive.
-        This essay appears in the monthly issue <em>June Issue</em>.
+        This essay appears in the monthly issue <em>July Issue</em>.
       </>
     )
   )}

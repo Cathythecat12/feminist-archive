@@ -80,7 +80,7 @@ const pageMeta = {
   },
   "/zh/magazine": {
     title: "杂志 | Feminist Archive",
-    description: "Feminist Archive 的中文杂志页、六月期刊、文章与书评。",
+    description: "Feminist Archive 的中文杂志页、七月期刊、文章与书评。",
   },
   "/en/parallax": {
     title: "Parallax | Feminist Archive",
@@ -100,13 +100,21 @@ const pageMeta = {
     title: "思想余温 | Feminist Archive",
     description: "Feminist Archive 旗下关于哲学、意识形态批判、历史探究与当代现实的批判性写作空间。",
   },
+  "/en/magazine/july-issue": {
+    title: "July Issue | Feminist Archive",
+    description: "The July monthly issue from Feminist Archive.",
+  },
+  "/zh/magazine/july-issue": {
+    title: "七月期刊 | Feminist Archive",
+    description: "Feminist Archive 中文七月期刊。",
+  },
   "/en/magazine/june-issue": {
-    title: "June Issue | Feminist Archive",
-    description: "The June monthly issue from Feminist Archive.",
+    title: "July Issue | Feminist Archive",
+    description: "The July monthly issue from Feminist Archive.",
   },
   "/zh/magazine/june-issue": {
-    title: "六月期刊 | Feminist Archive",
-    description: "Feminist Archive 中文六月期刊。",
+    title: "七月期刊 | Feminist Archive",
+    description: "Feminist Archive 中文七月期刊。",
   },
   "/en/magazine/past-works": {
     title: "Past Works | Feminist Archive",

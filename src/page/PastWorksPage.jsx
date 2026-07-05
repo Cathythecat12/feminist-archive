@@ -17,7 +17,7 @@ function PastWorksPage({ language, onBack, onOpenArticle, setCurrentPage }) {
           </button>
           <span>/</span>
           <button onClick={onBack}>
-            {zh ? "六月期刊" : "June Issue"}
+            {zh ? "七月期刊" : "July Issue"}
           </button>
         </div>
 

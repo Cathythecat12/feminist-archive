@@ -77,7 +77,7 @@ function MagazineMenuOverlay({ language, setCurrentPage, onClose }) {
                 {zh ? "投稿指南" : "Submission Guide"}
               </button>
               <button onClick={() => goTo("monthly-theme")}>
-                {zh ? "六月期刊" : "June Issue"}
+                {zh ? "七月期刊" : "July Issue"}
               </button>
               <button onClick={() => goTo("summer-update")}>
                 {zh ? "夏日更新" : "Summer Update"}

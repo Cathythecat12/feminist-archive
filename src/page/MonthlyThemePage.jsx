@@ -139,8 +139,8 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle, setCur
 
             <h1>
               {language === "zh"
-                ? "六月期刊"
-                : "June Issue"}
+                ? "七月期刊"
+                : "July Issue"}
             </h1>
 
             <p>
@@ -154,7 +154,7 @@ function MonthlyThemePage({ language, setLanguage, onBack, onOpenArticle, setCur
         <section className="issue-intro">
         <section className="issue-meta-strip">
   <span>ISSUE 02</span>
-  <span>JUNE 2026</span>
+  <span>JULY 2026</span>
   <span>WRITING</span>
   <span>REVIEWS</span>
   <span>FEMINISM</span>

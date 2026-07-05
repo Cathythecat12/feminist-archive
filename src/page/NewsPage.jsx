@@ -5,7 +5,7 @@ function NewsPage({ language, onBack, setCurrentPage }) {
           "印刷实验",
           "编辑通讯",
           "档案房间",
-          "六月期刊",
+          "七月期刊",
           "声音散文",
           "阅读室",
           "女性主义写作",
@@ -54,7 +54,7 @@ function NewsPage({ language, onBack, setCurrentPage }) {
         tag: "LETTER",
       },
       {
-        date: zh ? "2026 年 6 月" : "JUNE 2026",
+        date: zh ? "2026 年 7 月" : "JULY 2026",
         type: zh ? "编辑计划" : "EDITORIAL PLAN",
         title: zh ? "新的专题页正在形成" : "A new issue environment is taking shape",
         text: zh
