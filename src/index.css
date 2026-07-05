@@ -3891,25 +3891,49 @@ html[lang="zh-CN"] .issue-card h2 {
 .deep-reading-sidebar-note {
   margin: 46px 0 0;
   max-width: 280px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(183, 148, 87, 0.42);
-  color: rgba(57, 52, 47, 0.74);
-  font-size: 0.98rem;
-  line-height: 1.72;
+  padding: 0;
+  color: rgba(57, 52, 47, 0.72);
+}
+
+.deep-reading-sidebar-note p {
+  margin: 12px 0 0;
+  font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", Georgia, serif;
+  font-size: clamp(1.18rem, 1.45vw, 1.45rem);
+  line-height: 1.45;
+}
+
+.deep-reading-note-kicker {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(31, 27, 24, 0.16);
+  border-radius: 999px;
+  padding: 5px 10px 4px;
+  color: rgba(31, 27, 24, 0.58);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .deep-reading-sidebar-note button {
   appearance: none;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  color: #c9a45f;
+  border: 1px solid rgba(183, 148, 87, 0.28);
+  border-radius: 999px;
+  background: rgba(201, 164, 95, 0.08);
+  padding: 0.08em 0.45em 0.12em;
+  color: #a77f3a;
   cursor: pointer;
   font: inherit;
-  font-weight: 800;
-  letter-spacing: 0.01em;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
   text-decoration: none;
-  transition: color 0.25s ease, text-shadow 0.25s ease, transform 0.25s ease;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .parallax-inline-link {
@@ -3930,8 +3954,10 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 .deep-reading-sidebar-note button:hover {
-  color: #d8bb7a;
-  text-shadow: 0 0 16px rgba(201, 164, 95, 0.28);
+  border-color: rgba(183, 148, 87, 0.48);
+  background: rgba(201, 164, 95, 0.14);
+  color: #8c652d;
+  transform: translateY(-1px);
 }
 
 .mag-article-body {

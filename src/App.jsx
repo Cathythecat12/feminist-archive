@@ -2647,17 +2647,22 @@ return null;
     </button>
 
     {isDeepReadingArticle && (
-      <p className="deep-reading-sidebar-note">
-        {articleUsesChinese ? "本篇文章属于" : articleUsesFrench ? "Cet essai appartient à " : "This essay belongs to "}
-        <button type="button" onClick={() => setCurrentPage("deep-reading")}>
-          Deep Reading
-        </button>
-        {articleUsesChinese
-          ? "，适合想深度阅读的读者。"
-          : articleUsesFrench
-            ? ", pour les lecteurs qui souhaitent lire plus en profondeur."
-            : ", for readers who want to read in greater depth."}
-      </p>
+      <aside className="deep-reading-sidebar-note" aria-label={articleUsesChinese ? "深度阅读提示" : "Deep Reading note"}>
+        <span className="deep-reading-note-kicker">
+          {articleUsesChinese ? "阅读路径" : articleUsesFrench ? "Parcours de lecture" : "Reading Path"}
+        </span>
+        <p>
+          {articleUsesChinese ? "本篇文章属于" : articleUsesFrench ? "Cet essai appartient à " : "This essay belongs to "}
+          <button type="button" onClick={() => setCurrentPage("deep-reading")}>
+            Deep Reading
+          </button>
+          {articleUsesChinese
+            ? "，为希望进入更深层阅读的读者而设。"
+            : articleUsesFrench
+              ? ", pour les lecteurs qui souhaitent lire plus en profondeur."
+              : ", for readers who want a more sustained, layered reading experience."}
+        </p>
+      </aside>
     )}
 
     {selectedArticle.layout === "psyche" && selectedArticle.showKeyPoints && selectedArticle.keyPoints?.length > 0 && (
