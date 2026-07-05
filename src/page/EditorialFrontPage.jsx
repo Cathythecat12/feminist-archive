@@ -196,7 +196,7 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
 
       <header className="editorial-front-header">
         <nav className="editorial-front-nav editorial-front-nav-left" aria-label="Primary">
-          <button onClick={() => goToPage("editorial-front")}>{labels.home}</button>
+          <button onClick={() => goToPage("main")}>{labels.home}</button>
           <span>/</span>
           <button onClick={() => setShowMenu(true)}>{labels.menu}</button>
           <button
@@ -233,10 +233,6 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
             <div className="editorial-front-hero-copy">
               <h1>{heroArticle.title}</h1>
               {heroArticle.excerpt && <p>{heroArticle.excerpt}</p>}
-              <button onClick={() => openArticle(heroArticle)}>
-                {labels.heroButton}
-                <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
-              </button>
             </div>
           </section>
         )}
