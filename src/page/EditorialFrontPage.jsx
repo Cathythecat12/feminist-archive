@@ -86,6 +86,8 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
 
   return (
     <div className="editorial-front-page">
+      <div className="editorial-front-pull-reveal" aria-hidden="true" />
+
       <header className="editorial-front-header">
         <nav className="editorial-front-nav editorial-front-nav-left" aria-label="Primary">
           <button onClick={() => goToPage("magazine")}>{labels.magazine}</button>

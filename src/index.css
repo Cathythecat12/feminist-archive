@@ -26,6 +26,15 @@
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
+.editorial-front-pull-reveal {
+  height: clamp(150px, 22vh, 260px);
+  margin-top: calc(clamp(150px, 22vh, 260px) * -1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(245, 246, 244, 0.1)),
+    url("/images/页眉之上背景图.jpg") center / cover no-repeat;
+  pointer-events: none;
+}
+
 .editorial-front-header {
   position: relative;
   z-index: 5;
