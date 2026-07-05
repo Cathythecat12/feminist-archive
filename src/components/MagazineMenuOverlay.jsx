@@ -1,7 +1,7 @@
 import { FaInstagram, FaYoutube, FaXTwitter } from "react-icons/fa6";
 import { SiBluesky } from "react-icons/si";
 
-function MagazineMenuOverlay({ language, setCurrentPage, onClose }) {
+function MagazineMenuOverlay({ language, setCurrentPage, onClose, panelClassName = "" }) {
   const zh = language === "zh";
 
   const goTo = (page) => {
@@ -12,7 +12,7 @@ function MagazineMenuOverlay({ language, setCurrentPage, onClose }) {
   return (
     <div className="magazine-menu-overlay" onClick={onClose}>
       <div
-        className={`magazine-menu-panel ${zh ? "zh" : "en"}`}
+        className={`magazine-menu-panel ${zh ? "zh" : "en"} ${panelClassName}`}
         onClick={(event) => event.stopPropagation()}
       >
         <div className="magazine-menu-topline">

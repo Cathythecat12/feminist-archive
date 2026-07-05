@@ -8558,6 +8558,59 @@ body {
   padding-bottom: 18px;
 }
 
+.magazine-menu-panel.editorial-front-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.magazine-menu-panel.en.editorial-front-menu {
+  padding-top: clamp(24px, 3vw, 42px);
+}
+
+.magazine-menu-panel.editorial-front-menu .magazine-menu-body {
+  flex: 1;
+  align-items: center;
+  min-height: 0;
+  padding-top: clamp(28px, 3.5vw, 46px);
+  padding-bottom: clamp(24px, 3.2vw, 42px);
+}
+
+.magazine-menu-panel.en.editorial-front-menu .magazine-menu-routes {
+  gap: clamp(14px, 2.1vw, 26px);
+}
+
+.magazine-menu-panel.en.editorial-front-menu .magazine-menu-routes span {
+  font-size: clamp(2.45rem, 4vw, 4.55rem);
+}
+
+.magazine-menu-panel.editorial-front-menu .magazine-menu-routes em {
+  margin-top: 6px;
+  line-height: 1.28;
+}
+
+.magazine-menu-panel.en.editorial-front-menu .magazine-menu-side {
+  padding-top: clamp(8px, 1.4vw, 18px);
+}
+
+.magazine-menu-panel.en.editorial-front-menu .magazine-menu-secondary {
+  gap: 16px;
+}
+
+.magazine-menu-panel.en.editorial-front-menu .magazine-menu-secondary button {
+  font-size: clamp(1.46rem, 2.1vw, 2.62rem);
+}
+
+.magazine-menu-panel.en.editorial-front-menu .magazine-menu-tertiary {
+  gap: clamp(28px, 4vw, 52px);
+}
+
+.magazine-menu-panel.editorial-front-menu .magazine-menu-footer {
+  flex-shrink: 0;
+}
+
 .magazine-menu-footer p {
   margin: 0;
   max-width: 720px;
@@ -8978,6 +9031,13 @@ body {
     padding: 24px 24px 0;
   }
 
+  .magazine-menu-panel.editorial-front-menu {
+    height: auto;
+    min-height: auto;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
   .magazine-menu-topline,
   .magazine-menu-body,
   .magazine-menu-footer {
@@ -8986,6 +9046,11 @@ body {
 
   .magazine-menu-body {
     gap: 36px;
+    padding: 44px 0;
+  }
+
+  .magazine-menu-panel.editorial-front-menu .magazine-menu-body {
+    align-items: start;
     padding: 44px 0;
   }
 

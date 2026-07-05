@@ -143,6 +143,7 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
           language={language}
           setCurrentPage={setCurrentPage}
           onClose={() => setShowMenu(false)}
+          panelClassName="editorial-front-menu"
         />
       )}
 
