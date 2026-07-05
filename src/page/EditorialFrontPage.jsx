@@ -227,7 +227,19 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
 
       <main className="editorial-front-main">
         {heroArticle && (
-          <section className="editorial-front-hero">
+          <section
+            className="editorial-front-hero"
+            role="button"
+            tabIndex={0}
+            aria-label={`${labels.heroButton}: ${heroArticle.title}`}
+            onClick={() => openArticle(heroArticle)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openArticle(heroArticle);
+              }
+            }}
+          >
             <img src={heroArticle.image} alt="" aria-hidden="true" />
             <div className="editorial-front-hero-shade" />
             <div className="editorial-front-hero-copy">
