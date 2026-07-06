@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Limelight&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap");
 
 :root {
   font-family: Georgia, "Times New Roman", serif;
@@ -14,8 +14,8 @@
   --line: #d9d1c4;
   --accent: #1c1b1a;
   --soft: #ece5db;
-  --editorial-ny-font: "New York", NewYork, "NY Irvin", "Irvin-Heading",
-    "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --editorial-ny-font: "Limelight", "New York", NewYork, "NY Irvin",
+    "Irvin-Heading", "Cormorant Garamond", Georgia, "Times New Roman", serif;
 }
 
 /* Hidden magazine-style front page */
@@ -103,10 +103,10 @@
 .editorial-front-logo {
   justify-self: center;
   font-family: var(--editorial-ny-font);
-  font-size: clamp(2.15rem, 3.85vw, 4.3rem);
-  font-weight: 600;
-  line-height: 0.86;
-  letter-spacing: -0.035em;
+  font-size: clamp(2rem, 3.65vw, 4.05rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
   text-align: center;
   color: #121212;
   white-space: nowrap;
@@ -246,10 +246,10 @@
 .editorial-front-section-head h2 {
   margin: 0;
   font-family: var(--editorial-ny-font);
-  font-size: clamp(2.55rem, 4.35vw, 5.15rem);
-  font-weight: 600;
-  line-height: 0.88;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.35rem, 4vw, 4.8rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
   color: #1e1e1e;
 }
 
