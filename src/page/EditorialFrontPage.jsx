@@ -264,11 +264,11 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
                 style={{ "--front-hover": hoverColors[index % hoverColors.length] }}
                 onClick={() => openArticle(article)}
               >
-                <img src={article.image || "/images/文章素材图5.png"} alt={article.title} />
-                <div>
-                  <span>{article.category || (zh ? "文章" : "Essay")}</span>
+                <div className="editorial-front-peek-image">
+                  <img src={article.image || "/images/文章素材图5.png"} alt="" />
                   <h3>{article.title}</h3>
                 </div>
+                {article.excerpt && <p>{article.excerpt}</p>}
               </article>
             ))}
           </div>

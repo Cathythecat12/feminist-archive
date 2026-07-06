@@ -254,7 +254,6 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(18px, 2.6vw, 42px);
-  max-height: 258px;
 }
 
 .editorial-front-peek-card,
@@ -268,33 +267,55 @@
     color 220ms ease;
 }
 
+.editorial-front-peek-image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(30, 30, 30, 0.12);
+  background: #d9d5cc;
+}
+
+.editorial-front-peek-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 19, 17, 0.18);
+  transition: background 220ms ease;
+}
+
 .editorial-front-peek-card img {
   width: 100%;
   aspect-ratio: 1.55;
   object-fit: cover;
   display: block;
-  border: 1px solid rgba(30, 30, 30, 0.12);
-  filter: saturate(0.86);
-}
-
-.editorial-front-peek-card div {
-  padding-top: 14px;
-}
-
-.editorial-front-peek-card span {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #5f5c56;
-  text-transform: uppercase;
+  filter: saturate(0.86) contrast(0.96);
+  transition: transform 260ms ease, filter 260ms ease;
 }
 
 .editorial-front-peek-card h3 {
-  margin: 8px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.35rem, 1.7vw, 2.25rem);
+  position: absolute;
+  z-index: 1;
+  width: min(82%, 360px);
+  margin: 0;
+  color: #fffaf0;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.02rem, 1.32vw, 1.58rem);
+  font-weight: 500;
   line-height: 1.02;
-  color: #1c1c1c;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.44);
+}
+
+.editorial-front-peek-card p {
+  margin: 14px 0 0;
+  color: #595650;
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(0.86rem, 0.92vw, 1rem);
+  line-height: 1.36;
+  text-wrap: pretty;
 }
 
 .editorial-front-peek-card:hover,
@@ -302,9 +323,15 @@
   transform: translateY(-7px);
 }
 
-.editorial-front-peek-card:hover h3,
-.editorial-front-peek-card:focus-within h3 {
-  color: var(--front-hover);
+.editorial-front-peek-card:hover img,
+.editorial-front-peek-card:focus-within img {
+  filter: saturate(0.92) contrast(1);
+  transform: scale(1.035);
+}
+
+.editorial-front-peek-card:hover .editorial-front-peek-image::after,
+.editorial-front-peek-card:focus-within .editorial-front-peek-image::after {
+  background: rgba(20, 19, 17, 0.26);
 }
 
 .editorial-front-all {
@@ -693,7 +720,6 @@ html[lang="zh-CN"] .editorial-front-page {
 
 html[lang="zh-CN"] .editorial-front-nav,
 html[lang="zh-CN"] .editorial-front-card-meta,
-html[lang="zh-CN"] .editorial-front-peek-card span,
 html[lang="zh-CN"] .editorial-front-section-head span,
 html[lang="zh-CN"] .editorial-front-footer nav span {
   font-family: "Courier New", Courier, monospace;
@@ -772,10 +798,6 @@ html[lang="zh-CN"] .editorial-front-hero-copy p {
   .editorial-front-river,
   .editorial-front-footer {
     grid-template-columns: 1fr;
-  }
-
-  .editorial-front-peek-track {
-    max-height: 520px;
   }
 }
 
