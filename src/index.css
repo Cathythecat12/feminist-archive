@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Limelight&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Libre+Caslon+Text:wght@400;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap");
 
 :root {
   font-family: Georgia, "Times New Roman", serif;
@@ -14,8 +14,9 @@
   --line: #d9d1c4;
   --accent: #1c1b1a;
   --soft: #ece5db;
-  --editorial-ny-font: "Limelight", "New York", NewYork, "NY Irvin",
-    "Irvin-Heading", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --editorial-ny-font: "NY Irvin", "Irvin-Heading", "New York", NewYork,
+    "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --editorial-body-font: "Libre Caslon Text", Georgia, "Times New Roman", serif;
 }
 
 /* Hidden magazine-style front page */
@@ -185,11 +186,11 @@
 .editorial-front-hero-copy p {
   max-width: 820px;
   margin: 18px auto 0;
-  font-family: var(--editorial-ny-font);
-  font-size: clamp(0.95rem, 1.08vw, 1.12rem);
-  font-weight: 500;
-  line-height: 1.38;
-  letter-spacing: 0.005em;
+  font-family: var(--editorial-body-font);
+  font-size: clamp(1rem, 1.12vw, 1.22rem);
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.005em;
   text-wrap: balance;
 }
 
