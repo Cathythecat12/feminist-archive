@@ -233,8 +233,9 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
         <button
           className="editorial-front-logo"
           onClick={() => goToPage("editorial-front")}
+          aria-label="Feminist Archive"
         >
-          Feminist Archive
+          <img src="/images/LogoNY-cropped.png" alt="" aria-hidden="true" />
         </button>
 
         <nav className="editorial-front-nav editorial-front-nav-right" aria-label="Utility">
@@ -272,7 +273,13 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
 
         <section className="editorial-front-peek" aria-label={labels.peekTitle}>
           <div className="editorial-front-peek-head">
-            <h2>{labels.peekTitle}</h2>
+            <h2>
+              <img
+                className="editorial-front-peek-title-image"
+                src="/images/CR-cropped.png"
+                alt={labels.peekTitle}
+              />
+            </h2>
             <span>{labels.peekNote}</span>
           </div>
 

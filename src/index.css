@@ -102,7 +102,13 @@
 }
 
 .editorial-front-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   justify-self: center;
+  width: clamp(330px, 36vw, 560px);
+  max-width: 44vw;
+  min-height: clamp(44px, 4.4vw, 68px);
   font-family: var(--editorial-ny-font);
   font-size: clamp(2rem, 3.65vw, 4.05rem);
   font-weight: 400;
@@ -111,6 +117,12 @@
   text-align: center;
   color: #121212;
   white-space: nowrap;
+}
+
+.editorial-front-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .editorial-front-main {
@@ -252,6 +264,13 @@
   line-height: 0.9;
   letter-spacing: 0.005em;
   color: #1e1e1e;
+}
+
+.editorial-front-peek-title-image {
+  display: block;
+  width: clamp(330px, 38vw, 650px);
+  max-width: 100%;
+  height: auto;
 }
 
 .editorial-front-peek-head span,
@@ -784,9 +803,9 @@ html[lang="zh-CN"] .editorial-front-hero-copy p {
   }
 
   .editorial-front-logo {
+    width: min(86vw, 420px);
     max-width: 100%;
-    font-size: clamp(1.9rem, 9vw, 2.65rem);
-    white-space: normal;
+    min-height: 42px;
   }
 
   .editorial-front-hero {
@@ -802,6 +821,10 @@ html[lang="zh-CN"] .editorial-front-hero-copy p {
   .editorial-front-section-head {
     align-items: start;
     flex-direction: column;
+  }
+
+  .editorial-front-peek-title-image {
+    width: min(86vw, 460px);
   }
 
   .editorial-front-peek-track,
