@@ -17,6 +17,26 @@ const hoverColors = [
   "#8a7460",
 ];
 
+const peekArticleDisplayCopy = {
+  "barbie-capitalism": {
+    title: "Barbie as Commodity",
+    excerpt: "When feminism becomes a brand, who profits?",
+  },
+  "sexual-liberationism-erotic-nihilism": {
+    title: "After Liberation",
+    excerpt:
+      "Sexual freedom may end not in emancipation, but in consumption.",
+  },
+  "feminism-art-capitalism": {
+    title: "When Feminism Stops Resisting",
+    excerpt: "Capitalism rarely defeats criticism. It learns to sell it.",
+  },
+  "butler-women-subject-heterosexual-matrix": {
+    title: "Who Are “Women”?",
+    excerpt: "Identity is never simply discovered. It is produced.",
+  },
+};
+
 function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArticle }) {
   const zh = language === "zh";
   const [showMenu, setShowMenu] = useState(false);
@@ -257,20 +277,26 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
           </div>
 
           <div className="editorial-front-peek-track">
-            {peekArticles.map((article, index) => (
-              <article
-                key={article.id}
-                className="editorial-front-peek-card"
-                style={{ "--front-hover": hoverColors[index % hoverColors.length] }}
-                onClick={() => openArticle(article)}
-              >
-                <div className="editorial-front-peek-image">
-                  <img src={article.image || "/images/文章素材图5.png"} alt="" />
-                  <h3>{article.title}</h3>
-                </div>
-                {article.excerpt && <p>{article.excerpt}</p>}
-              </article>
-            ))}
+            {peekArticles.map((article, index) => {
+              const displayCopy = peekArticleDisplayCopy[article.id] || {};
+              const displayTitle = displayCopy.title || article.title;
+              const displayExcerpt = displayCopy.excerpt || article.excerpt;
+
+              return (
+                <article
+                  key={article.id}
+                  className="editorial-front-peek-card"
+                  style={{ "--front-hover": hoverColors[index % hoverColors.length] }}
+                  onClick={() => openArticle(article)}
+                >
+                  <div className="editorial-front-peek-image">
+                    <img src={article.image || "/images/文章素材图5.png"} alt="" />
+                    <h3>{displayTitle}</h3>
+                  </div>
+                  {displayExcerpt && <p>{displayExcerpt}</p>}
+                </article>
+              );
+            })}
           </div>
         </section>
 
