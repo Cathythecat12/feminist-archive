@@ -278,7 +278,7 @@
 .editorial-front-peek-image {
   position: relative;
   display: grid;
-  place-items: center;
+  place-items: start center;
   overflow: hidden;
   border: 1px solid rgba(30, 30, 30, 0.12);
   background: #d9d5cc;
@@ -288,7 +288,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(20, 19, 17, 0.18);
+  background: linear-gradient(180deg, rgba(20, 19, 17, 0.34), rgba(20, 19, 17, 0.06) 58%);
   transition: background 220ms ease;
 }
 
@@ -303,6 +303,7 @@
 
 .editorial-front-peek-card h3 {
   position: absolute;
+  top: clamp(18px, 2vw, 30px);
   z-index: 1;
   width: min(82%, 360px);
   margin: 0;
@@ -339,7 +340,7 @@
 
 .editorial-front-peek-card:hover .editorial-front-peek-image::after,
 .editorial-front-peek-card:focus-within .editorial-front-peek-image::after {
-  background: rgba(20, 19, 17, 0.26);
+  background: linear-gradient(180deg, rgba(20, 19, 17, 0.42), rgba(20, 19, 17, 0.08) 62%);
 }
 
 .editorial-front-all {
