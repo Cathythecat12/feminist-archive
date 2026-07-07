@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { submitWebsiteForm } from "../utils/formSubmit";
 
-const floatingEnvelopes = [
-  { className: "envelope-1", startX: 0.64, delay: 100, drift: 0.7 },
-  { className: "envelope-2", startX: 0.24, delay: 900, drift: 1.1 },
-  { className: "envelope-3", startX: 0.8, delay: 1500, drift: 0.86 },
-  { className: "envelope-4", startX: 0.48, delay: 2400, drift: 1.25 },
-  { className: "envelope-5", startX: 0.09, delay: 1300, drift: 0.94 },
-];
+const floatingEnvelopes = Array.from({ length: 26 }, (_, index) => ({
+  className: `envelope-${(index % 7) + 1}`,
+  startX: [0.12, 0.73, 0.42, 0.88, 0.27, 0.58, 0.04, 0.66, 0.35, 0.8, 0.18, 0.52, 0.94][index % 13],
+  delay: 120 + index * 145,
+  drift: 0.78 + (index % 5) * 0.16,
+  scale: 0.76 + (index % 6) * 0.08,
+}));
 
 const SHOW_NEWSLETTER_ARCHIVE = false;
 
@@ -27,21 +27,22 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
       const page = pageRef.current;
       if (!page) return undefined;
 
-      const pointer = { active: false, x: 0, y: 0, px: 0, py: 0 };
+      const pointer = { active: false, x: 0, y: 0, px: 0, py: 0, vx: 0, vy: 0 };
       const states = floatingEnvelopes.map((envelope, index) => {
         const node = envelopeRefs.current[index];
-        const width = node?.offsetWidth || 120;
-        const height = node?.offsetHeight || 80;
+        const width = (node?.offsetWidth || 120) * envelope.scale;
+        const height = (node?.offsetHeight || 80) * envelope.scale;
 
         return {
           x: envelope.startX * Math.max(page.clientWidth - width, 1),
-          y: -height - 80 - index * 34,
-          vx: 0,
-          vy: 16 + index * 2.4,
-          angle: index % 2 ? 12 : -14,
-          av: index % 2 ? -5 : 4,
+          y: -height - 130 - index * 22,
+          vx: ((index % 4) - 1.5) * 16,
+          vy: 35 + index * 1.6,
+          angle: ((index * 31) % 44) - 22,
+          av: index % 2 ? -18 : 16,
           width,
           height,
+          scale: envelope.scale,
           delay: envelope.delay,
           drift: envelope.drift,
           visible: false,
@@ -59,6 +60,8 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
         pointer.py = pointer.y;
         pointer.x = event.clientX - rect.left;
         pointer.y = event.clientY - rect.top + page.scrollTop;
+        pointer.vx = pointer.x - pointer.px;
+        pointer.vy = pointer.y - pointer.py;
       };
 
       const leavePointer = () => {
@@ -73,7 +76,53 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
         previous = now;
         const elapsed = now - start;
         const pageWidth = page.clientWidth;
-        const floorPadding = 32;
+        const floorPadding = 42;
+        const leftWall = 14;
+        const rightInset = 14;
+
+        for (let i = 0; i < states.length; i += 1) {
+          const a = states[i];
+          if (!a.visible) continue;
+
+          for (let j = i + 1; j < states.length; j += 1) {
+            const b = states[j];
+            if (!b.visible) continue;
+
+            const ax = a.x + a.width / 2;
+            const ay = a.y + a.height / 2;
+            const bx = b.x + b.width / 2;
+            const by = b.y + b.height / 2;
+            const minDistance = (Math.max(a.width, a.height) + Math.max(b.width, b.height)) * 0.36;
+            const dx = bx - ax;
+            const dy = by - ay;
+            const distance = Math.hypot(dx, dy) || 1;
+
+            if (distance < minDistance) {
+              const nx = dx / distance;
+              const ny = dy / distance;
+              const overlap = minDistance - distance;
+              const push = overlap * 0.52;
+              const rvx = b.vx - a.vx;
+              const rvy = b.vy - a.vy;
+              const separatingVelocity = rvx * nx + rvy * ny;
+
+              a.x -= nx * push;
+              a.y -= ny * push * 0.55;
+              b.x += nx * push;
+              b.y += ny * push * 0.55;
+
+              if (separatingVelocity < 0) {
+                const impulse = -separatingVelocity * 0.28;
+                a.vx -= nx * impulse;
+                a.vy -= ny * impulse * 0.55;
+                b.vx += nx * impulse;
+                b.vy += ny * impulse * 0.55;
+                a.av -= ny * impulse * 0.08;
+                b.av += nx * impulse * 0.08;
+              }
+            }
+          }
+        }
 
         states.forEach((state, index) => {
           const node = envelopeRefs.current[index];
@@ -84,29 +133,27 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
             node.classList.add("is-falling");
           }
 
-          state.width = node.offsetWidth;
-          state.height = node.offsetHeight;
+          state.width = (node.offsetWidth || state.width) * state.scale;
+          state.height = (node.offsetHeight || state.height) * state.scale;
 
           const floor = Math.max(
             page.scrollHeight - state.height - floorPadding,
             window.innerHeight - state.height - floorPadding
           );
-          const leftWall = 16;
-          const rightWall = Math.max(pageWidth - state.width - 16, leftWall);
-          const slowFall = state.y < floor - 24;
+          const rightWall = Math.max(pageWidth - state.width - rightInset, leftWall);
+          const airborne = state.y < floor - 2;
 
-          if (slowFall) {
-            state.vy += 38 * dt;
-            state.vx +=
-              Math.sin(now / 1150 + index * 1.8) * 20 * state.drift * dt;
-            state.av += Math.sin(now / 900 + index) * 7 * dt;
+          if (airborne) {
+            state.vy += 720 * dt;
+            state.vx += Math.sin(now / 260 + index * 2.1) * 18 * state.drift * dt;
+            state.av += Math.sin(now / 360 + index) * 18 * dt;
           } else {
-            state.vy += 28 * dt;
+            state.vy += 260 * dt;
           }
 
-          state.vx *= slowFall ? 0.992 : 0.9;
-          state.vy *= 0.995;
-          state.av *= 0.985;
+          state.vx *= airborne ? 0.996 : 0.84;
+          state.vy *= 0.998;
+          state.av *= airborne ? 0.992 : 0.82;
 
           if (pointer.active) {
             const cx = state.x + state.width / 2;
@@ -114,18 +161,16 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
             const dx = cx - pointer.x;
             const dy = cy - pointer.y;
             const distance = Math.hypot(dx, dy);
-            const radius = Math.max(state.width, state.height) * 0.98;
+            const radius = Math.max(state.width, state.height) * 1.15;
 
             if (distance < radius) {
-              const strength = (1 - distance / radius) ** 2;
+              const strength = (1 - distance / radius) ** 1.35;
               const nx = dx / (distance || 1);
               const ny = dy / (distance || 1);
-              const pointerVx = pointer.x - pointer.px;
-              const pointerVy = pointer.y - pointer.py;
 
-              state.vx += nx * strength * 980 * dt + pointerVx * strength * 0.22;
-              state.vy += ny * strength * 980 * dt + pointerVy * strength * 0.18;
-              state.av += (nx * pointerVy - ny * pointerVx) * strength * 0.18;
+              state.vx += nx * strength * 1200 * dt + pointer.vx * strength * 0.62;
+              state.vy += ny * strength * 900 * dt + pointer.vy * strength * 0.42;
+              state.av += (nx * pointer.vy - ny * pointer.vx) * strength * 0.34;
             }
           }
 
@@ -147,18 +192,18 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
 
           if (state.y > floor) {
             state.y = floor;
-            if (Math.abs(state.vy) > 22) {
-              state.vy *= -0.24;
+            if (Math.abs(state.vy) > 42) {
+              state.vy *= -0.18;
               state.av += state.vx * 0.04;
             } else {
               state.vy = 0;
             }
 
-            state.vx *= 0.82;
-            state.av *= 0.78;
+            state.vx *= 0.76;
+            state.av *= 0.74;
           }
 
-          node.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) rotate(${state.angle}deg)`;
+          node.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) rotate(${state.angle}deg) scale(${state.scale})`;
         });
 
         frame = requestAnimationFrame(tick);
@@ -178,7 +223,7 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
         {floatingEnvelopes.map((envelope, index) => (
           <div
             className={`falling-envelope ${envelope.className}`}
-            key={envelope.className}
+            key={`${envelope.className}-${index}`}
             ref={(node) => {
               envelopeRefs.current[index] = node;
             }}
@@ -333,6 +378,7 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
   </button>
 </section>
         </main>
+        <div className="fa-newsletter-envelope-landing" aria-hidden="true" />
       </div>
     );
   }
