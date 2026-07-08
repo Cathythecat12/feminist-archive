@@ -105,6 +105,23 @@
     transform 180ms ease;
 }
 
+.editorial-front-parallax-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(92px, 7.8vw, 136px);
+  margin-right: clamp(4px, 0.8vw, 12px);
+  padding: 0;
+}
+
+.editorial-front-parallax-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: invert(1) brightness(1.12) drop-shadow(0 1px 9px rgba(0, 0, 0, 0.52));
+  opacity: 0.92;
+}
+
 .editorial-front-search-trigger {
   display: inline-flex;
   align-items: center;
@@ -821,6 +838,11 @@ html[lang="zh-CN"] .editorial-front-hero-copy p {
     flex-wrap: wrap;
     gap: 8px 11px;
     font-size: 0.78rem;
+  }
+
+  .editorial-front-parallax-logo {
+    width: min(34vw, 116px);
+    margin-right: 2px;
   }
 
   .editorial-front-logo {

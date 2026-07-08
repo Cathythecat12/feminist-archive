@@ -217,6 +217,14 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
 
       <header className="editorial-front-header">
         <nav className="editorial-front-nav editorial-front-nav-left" aria-label="Primary">
+          <button
+            className="editorial-front-parallax-logo"
+            type="button"
+            aria-label="Parallax"
+            onClick={() => goToPage("parallax")}
+          >
+            <img src="/images/Parallaxlogo-cropped.png" alt="" aria-hidden="true" />
+          </button>
           <button onClick={() => goToPage("main")}>{labels.home}</button>
           <span>/</span>
           <button onClick={() => setShowMenu(true)}>{labels.menu}</button>
