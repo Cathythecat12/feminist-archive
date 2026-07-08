@@ -10,6 +10,7 @@ const pages = [
   ["en/front-page", "en", "1.0"],
   ["zh/front-page", "zh-CN", "1.0"],
   ["en/parallax", "en", "0.8", "2026-06-26"],
+  ["en/parallax/why-not-directly-feminism", "en", "0.7", "2026-07-08"],
   ["zh/parallax", "zh-CN", "0.8", "2026-06-26"],
   ["en/magazine", "en", "0.9"],
   ["zh/magazine", "zh-CN", "0.9"],

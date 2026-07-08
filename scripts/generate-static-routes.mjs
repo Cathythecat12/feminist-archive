@@ -87,6 +87,11 @@ const pageMeta = {
     description:
       "Parallax is Feminist Archive's space for philosophy, ideology critique, historical inquiry, and critical writing on contemporary life.",
   },
+  "/en/parallax/why-not-directly-feminism": {
+    title: "Why Aren't All Our Essays Directly About Feminism? | Parallax",
+    description:
+      "A note on why Parallax publishes essays on philosophy, psychoanalysis, capitalism, technology, history, sport, and contemporary culture as part of Feminist Archive's critical project.",
+  },
   "/zh/parallax": {
     title: "思想余温 | Feminist Archive",
     description: "Feminist Archive 旗下关于哲学、意识形态批判、历史探究与当代现实的批判性写作空间。",

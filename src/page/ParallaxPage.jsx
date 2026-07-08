@@ -13,6 +13,9 @@ function ParallaxPage({ language, onBack, onOpenArticle, setCurrentPage }) {
   const articles = (zh ? chineseArticles : englishArticles).filter(
     (article) => !article.hidden && isParallaxEssay(article),
   );
+  const featuredArticle =
+    englishArticles.find((article) => article.id === "pansexualism-freudian-psychoanalysis") ||
+    articles[0];
 
   return (
     <div className="parallax-page">
@@ -25,7 +28,10 @@ function ParallaxPage({ language, onBack, onOpenArticle, setCurrentPage }) {
           <button onClick={onBack}>{zh ? "返回" : "Back"}</button>
         </div>
 
-        <button className="parallax-home-link" onClick={() => setCurrentPage("parallax")}>
+        <button
+          className="parallax-home-link"
+          onClick={() => setCurrentPage("parallax-about-page")}
+        >
           {zh ? "思想余温" : "Parallax"}
         </button>
 
@@ -38,32 +44,49 @@ function ParallaxPage({ language, onBack, onOpenArticle, setCurrentPage }) {
 
       <main className="parallax-main">
         <section className="parallax-hero">
-          <div className="parallax-hero-kicker">
-            {zh ? "FEMINIST ARCHIVE / 思想副刊" : "FEMINIST ARCHIVE / CRITICAL SERIES"}
+          <div className="parallax-hero-copy">
+            <div className="parallax-hero-kicker">
+              {zh ? "FEMINIST ARCHIVE / 思想副刊" : "FEMINIST ARCHIVE / CRITICAL SERIES"}
+            </div>
+
+            <h1 className={zh ? undefined : "parallax-hero-wordmark-title"}>
+              {zh ? (
+                "思想余温"
+              ) : (
+                <img
+                  className="parallax-hero-wordmark"
+                  src="/images/parallax.png"
+                  alt="Parallax"
+                />
+              )}
+            </h1>
+            <p className="parallax-subtitle">
+              {zh
+                ? "哲学、意识形态与当代现实的批判性写作"
+                : "Philosophy, ideology, and critical writing on the present"}
+            </p>
+
+            <p className="parallax-intro">
+              {zh
+                ? "Parallax 是 Feminist Archive 用于哲学、意识形态批判、历史探究，以及当代生活批判性写作的空间。这里发布关于重要思想家、思想传统、精神分析、资本主义、媒体、劳动，以及那些塑造我们如何理解世界的日常意识形态形式的文章。"
+                : "Parallax is Feminist Archive’s space for philosophy, ideology critique, historical inquiry, and critical writing on contemporary life. It publishes essays on major thinkers, intellectual traditions, psychoanalysis, capitalism, media, labour, and the ordinary forms of ideology that shape how we see the world."}
+            </p>
           </div>
 
-          <h1 className={zh ? undefined : "parallax-hero-wordmark-title"}>
-            {zh ? (
-              "思想余温"
-            ) : (
-              <img
-                className="parallax-hero-wordmark"
-                src="/images/parallax.png"
-                alt="Parallax"
-              />
-            )}
-          </h1>
-          <p className="parallax-subtitle">
-            {zh
-              ? "哲学、意识形态与当代现实的批判性写作"
-              : "Philosophy, ideology, and critical writing on the present"}
-          </p>
-
-          <p className="parallax-intro">
-            {zh
-              ? "Parallax 是 Feminist Archive 用于哲学、意识形态批判、历史探究，以及当代生活批判性写作的空间。这里发布关于重要思想家、思想传统、精神分析、资本主义、媒体、劳动，以及那些塑造我们如何理解世界的日常意识形态形式的文章。"
-              : "Parallax is Feminist Archive’s space for philosophy, ideology critique, historical inquiry, and critical writing on contemporary life. It publishes essays on major thinkers, intellectual traditions, psychoanalysis, capitalism, media, labour, and the ordinary forms of ideology that shape how we see the world."}
-          </p>
+          {featuredArticle && (
+            <article
+              className="parallax-featured-essay"
+              onClick={() => onOpenArticle(featuredArticle)}
+            >
+              <div className="parallax-featured-image">
+                <img src={featuredArticle.image} alt="" />
+              </div>
+              <h2>
+                “Pansexualism”: The Vulgarized Interpretation of Freudian
+                Psychoanalysis as the Reduction of All Mental Activity to Sexual Desire
+              </h2>
+            </article>
+          )}
         </section>
 
         <section className="parallax-list-head">

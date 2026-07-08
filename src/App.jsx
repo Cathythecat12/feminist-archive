@@ -22,6 +22,7 @@ import DeepReadingPage from "./page/DeepReadingPage";
 import MagazineCategoryPage from "./page/MagazineCategoryPage";
 import PastWorksPage from "./page/PastWorksPage";
 import ParallaxPage from "./page/ParallaxPage";
+import ParallaxAboutPage from "./page/ParallaxAboutPage";
 import EditorialFrontPage from "./page/EditorialFrontPage";
 import { submitWebsiteForm } from "./utils/formSubmit";
 import HowWeEditPage from "./page/HowWeEditPage";
@@ -73,6 +74,7 @@ const PAGE_ROUTES = {
   "how-we-edit": "how-we-edit",
   magazine: "magazine",
   parallax: "parallax",
+  "parallax-about-page": "parallax/why-not-directly-feminism",
   "reviews-page": "reviews",
   "writing-page": "writing",
   "monthly-theme": "magazine/july-issue",
@@ -563,6 +565,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
     "monthly-theme-zh",
     "past-works",
     "parallax",
+    "parallax-about-page",
     "writing-page",
     "reviews-page",
     "archive-page",
@@ -3787,6 +3790,14 @@ Further materials are being gathered.`
         onBack={() => setCurrentPage("magazine")}
         setCurrentPage={setCurrentPage}
         onOpenArticle={(article) => openArticleFrom(article, "parallax")}
+      />
+    );
+  }
+  if (currentPage === "parallax-about-page") {
+    return renderWithToast(
+      <ParallaxAboutPage
+        language={language}
+        setCurrentPage={setCurrentPage}
       />
     );
   }
