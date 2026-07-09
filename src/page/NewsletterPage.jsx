@@ -11,7 +11,7 @@ const floatingEnvelopes = Array.from({ length: 26 }, (_, index) => ({
 
 const SHOW_NEWSLETTER_ARCHIVE = false;
 
-function NewsletterPage({ language, onBack, setCurrentPage }) {
+function LegacyNewsletterPage({ language, onBack, setCurrentPage }) {
     const zh = language === "zh";
     const [status, setStatus] = useState("");
     const pageRef = useRef(null);
@@ -383,4 +383,132 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
     );
   }
   
-  export default NewsletterPage;
+function NewsletterPage({ language, onBack, setCurrentPage }) {
+  const zh = language === "zh";
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const email = event.currentTarget.email.value;
+
+    setStatus(zh ? "正在订阅..." : "Subscribing...");
+
+    try {
+      await submitWebsiteForm({
+        type: "Newsletter subscription",
+        email,
+        language,
+        source: "newsletter-atelier-page",
+      });
+
+      setStatus(zh ? "订阅成功，谢谢。" : "Subscribed. Thank you.");
+      event.currentTarget.reset();
+    } catch {
+      setStatus(zh ? "订阅失败，请稍后再试。" : "Could not subscribe. Please try again later.");
+    }
+  };
+
+  return (
+    <div className="newsletter-atelier-page">
+      <header className="newsletter-atelier-header">
+        <button type="button" onClick={onBack}>
+          ← {zh ? "返回" : "Back"}
+        </button>
+
+        <button
+          type="button"
+          className="newsletter-atelier-brand"
+          onClick={() => setCurrentPage("editorial-front")}
+        >
+          Feminist Archive
+        </button>
+
+        <button type="button" onClick={() => setCurrentPage("donation-drive")}>
+          {zh ? "捐助" : "Donate"}
+        </button>
+      </header>
+
+      <main className="newsletter-atelier-main">
+        <section className="newsletter-atelier-hero" aria-labelledby="newsletter-atelier-title">
+          <div className="newsletter-atelier-copy">
+            <p className="newsletter-atelier-kicker">
+              {zh ? "编辑通讯" : "Editorial Letter"}
+            </p>
+
+            <h1 id="newsletter-atelier-title">
+              {zh ? "Stay with the archive." : "Stay with the archive."}
+            </h1>
+
+            <span className="newsletter-atelier-rule" aria-hidden="true" />
+
+            <p className="newsletter-atelier-lede">
+              {zh
+                ? "我们发送高质量的编辑通讯：新文章、档案片段、阅读路径与缓慢形成的思想。没有商业推销，没有空洞更新，也不会频繁轰炸你的邮箱。"
+                : "We send high-quality editorial letters: new essays, archival fragments, reading paths, and slowly formed thoughts. No commercial promotion, no empty updates, and no inbox bombardment."}
+            </p>
+
+            <form className="newsletter-atelier-form" onSubmit={handleSubmit}>
+              <input
+                name="email"
+                type="email"
+                placeholder={zh ? "你的邮箱地址" : "Your email address"}
+                required
+              />
+              <button type="submit">{zh ? "订阅" : "Subscribe"}</button>
+            </form>
+
+            <p className="newsletter-atelier-privacy">
+              {status ||
+                (zh
+                  ? "我们尊重你的隐私。你可以随时取消订阅。"
+                  : "We respect your privacy. You can unsubscribe at any time.")}
+            </p>
+
+            <blockquote>
+              {zh
+                ? "“档案不是储存之地，而是一种记忆与抵抗的实践。”"
+                : "“The archive is not a place of storage, but a practice of remembrance and resistance.”"}
+            </blockquote>
+          </div>
+
+          <figure className="newsletter-atelier-image">
+            <img src="/images/newsletter-archive-table.png" alt="" />
+          </figure>
+
+          <div className="newsletter-atelier-seal" aria-hidden="true">
+            <span>FA</span>
+            <small>The right is our common heritage.</small>
+          </div>
+        </section>
+
+        <section className="newsletter-atelier-letter" aria-labelledby="newsletter-atelier-letter-title">
+          <p className="newsletter-atelier-kicker">
+            {zh ? "为什么写信" : "Why the letter matters"}
+          </p>
+
+          <h2 id="newsletter-atelier-letter-title">
+            {zh ? "A slower way to stay close." : "A slower way to stay close."}
+          </h2>
+
+          <span className="newsletter-atelier-rule" aria-hidden="true" />
+
+          <div className="newsletter-atelier-letter-grid">
+            <p>
+              {zh
+                ? "通讯不是广告位，也不是为了填满收件箱的更新。它应该像一份可保存的小型档案：把文章、阅读线索、编辑笔记和仍在形成的思想放在一起。"
+                : "The newsletter is not an advertising slot, nor a stream of updates designed to fill an inbox. It should feel like a small archival object: essays, reading paths, editorial notes, and thoughts still taking shape, gathered with care."}
+            </p>
+
+            <p>
+              {zh
+                ? "我们宁愿少写，也不随便占用你的注意力。每封信都应当为阅读留下空间，为重新返回某个问题留下理由。"
+                : "We would rather write less than occupy your attention carelessly. Each letter should leave room for reading, and give you a reason to return to a question again."}
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+export default NewsletterPage;
