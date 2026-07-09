@@ -481,30 +481,53 @@ function NewsletterPage({ language, onBack, setCurrentPage }) {
           </div>
         </section>
 
-        <section className="newsletter-atelier-letter" aria-labelledby="newsletter-atelier-letter-title">
-          <p className="newsletter-atelier-kicker">
-            {zh ? "为什么写信" : "Why the letter matters"}
-          </p>
+        <section className="newsletter-atelier-letter" aria-labelledby="newsletter-atelier-principles-title">
+          <div className="newsletter-atelier-principles" id="newsletter-atelier-principles-title">
+            <article>
+              <span>01</span>
+              <h2>{zh ? "不制造噪音" : "No noise"}</h2>
+              <p>
+                {zh
+                  ? "通讯不是广告，也不是空洞更新。"
+                  : "The newsletter is not advertising, nor an empty update."}
+              </p>
+            </article>
 
-          <h2 id="newsletter-atelier-letter-title">
-            {zh ? "A slower way to stay close." : "A slower way to stay close."}
-          </h2>
+            <article>
+              <span>02</span>
+              <h2>{zh ? "不频繁打扰" : "No bombardment"}</h2>
+              <p>
+                {zh
+                  ? "我们宁愿少写，也不随便占用你的注意力。"
+                  : "We would rather write less than occupy your attention carelessly."}
+              </p>
+            </article>
 
-          <span className="newsletter-atelier-rule" aria-hidden="true" />
-
-          <div className="newsletter-atelier-letter-grid">
-            <p>
-              {zh
-                ? "通讯不是广告位，也不是为了填满收件箱的更新。它应该像一份可保存的小型档案：把文章、阅读线索、编辑笔记和仍在形成的思想放在一起。"
-                : "The newsletter is not an advertising slot, nor a stream of updates designed to fill an inbox. It should feel like a small archival object: essays, reading paths, editorial notes, and thoughts still taking shape, gathered with care."}
-            </p>
-
-            <p>
-              {zh
-                ? "我们宁愿少写，也不随便占用你的注意力。每封信都应当为阅读留下空间，为重新返回某个问题留下理由。"
-                : "We would rather write less than occupy your attention carelessly. Each letter should leave room for reading, and give you a reason to return to a question again."}
-            </p>
+            <article>
+              <span>03</span>
+              <h2>{zh ? "值得保存" : "Worth keeping"}</h2>
+              <p>
+                {zh
+                  ? "每封信都应当像一小份档案。"
+                  : "Each letter should feel like a small archival object."}
+              </p>
+            </article>
           </div>
+
+          <button
+            type="button"
+            className="newsletter-atelier-privacy-card"
+            onClick={() => setCurrentPage("newsletter-privacy")}
+          >
+            <span>{zh ? "读者隐私" : "Reader privacy"}</span>
+            <strong>
+              {zh
+                ? "你的邮箱只用于接收 Feminist Archive 的编辑通讯。你可以随时退出、更新，或要求我们删除。"
+                : "Your email is used only for Feminist Archive editorial letters. You may leave, update, or ask us to delete it at any time."}
+            </strong>
+            <em>{zh ? "阅读隐私说明" : "Read privacy note"}</em>
+            <i aria-hidden="true">↗</i>
+          </button>
         </section>
       </main>
     </div>
