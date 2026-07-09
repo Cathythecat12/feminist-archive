@@ -4122,6 +4122,7 @@ html[lang="zh-CN"] .issue-card h2 {
   justify-items: center;
   color: #fffaf0;
   text-align: center;
+  transform: translateY(-10vh);
 }
 
 .article-how-origins-are-made .mag-article-kicker,
@@ -4144,12 +4145,12 @@ html[lang="zh-CN"] .issue-card h2 {
 }
 
 .article-how-origins-are-made .mag-article-hero-overlay h1 {
-  max-width: min(980px, 90vw);
+  max-width: min(900px, 88vw);
   color: #fffaf0;
   font-family: "Cormorant Garamond", "Noto Serif SC", "Songti SC", Georgia, serif;
-  font-size: clamp(4rem, 7.4vw, 8.2rem);
+  font-size: clamp(3.65rem, 6.4vw, 7rem);
   font-weight: 620;
-  line-height: 0.88;
+  line-height: 0.92;
   letter-spacing: -0.04em;
   text-wrap: balance;
   text-shadow:
@@ -5607,6 +5608,7 @@ html[lang="zh-CN"] .issue-card h2 {
 
   .article-how-origins-are-made .mag-article-hero-overlay {
     padding: 112px 20px 54px;
+    transform: translateY(-4vh);
   }
 
   .article-how-origins-are-made .mag-article-kicker {
@@ -5617,8 +5619,8 @@ html[lang="zh-CN"] .issue-card h2 {
 
   .article-how-origins-are-made .mag-article-hero-overlay h1 {
     max-width: 94vw;
-    font-size: clamp(3rem, 15vw, 5rem);
-    line-height: 0.94;
+    font-size: clamp(2.85rem, 13.5vw, 4.55rem);
+    line-height: 0.98;
   }
 
   .article-how-origins-are-made .mag-article-hero p {
