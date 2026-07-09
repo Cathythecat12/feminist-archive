@@ -339,6 +339,7 @@ function DeepReadingNormalMap() {
 }
 
 const DEEP_READING_ARTICLE_IDS = [
+  "how-origins-are-made",
   "sexual-liberationism-erotic-nihilism",
   "pansexualism-freudian-psychoanalysis",
 ];
@@ -416,7 +417,7 @@ function DeepReadingPage({ language, onBack, setCurrentPage, onOpenArticle }) {
           <div className="deep-reading-section-top">
             <span>{zh ? "已上线文章" : "Now Reading"}</span>
             <h2 id="deep-reading-articles-title">
-              {zh ? "两篇进入深层理论结构的文章。" : "Two routes into difficult desire."}
+              {zh ? "进入深层理论结构的文章。" : "Three routes into difficult structures."}
             </h2>
           </div>
 

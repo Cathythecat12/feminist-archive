@@ -2150,6 +2150,7 @@ return null;
       .map((id) => currentArticles.find((article) => article.id === id))
       .filter(Boolean);
     const isImmersiveArticle = [
+      "how-origins-are-made",
       "sexual-liberationism-erotic-nihilism",
       "sexual-liberationism-erotic-nihilism-zh",
       "pansexualism-freudian-psychoanalysis",
@@ -2162,6 +2163,7 @@ return null;
       "capitalism-appropriates-football-zh",
     ].includes(selectedArticle.id);
     const isDeepReadingArticle = [
+      "how-origins-are-made",
       "sexual-liberationism-erotic-nihilism",
       "sexual-liberationism-erotic-nihilism-zh",
       "pansexualism-freudian-psychoanalysis",
@@ -2173,6 +2175,7 @@ return null;
     const isParallaxEssay =
       /FA\s*Special Essay/i.test(selectedArticle.kickerDetail || "") ||
       (selectedArticle.kickerDetail || "").includes("FA 特别文章");
+    const isParallaxBrandedArticle = selectedArticle.id === "how-origins-are-made";
     const articlePrimaryReturnPage = isParallaxEssay ? "parallax" : "monthly-theme";
 
     return (
@@ -2466,28 +2469,42 @@ return null;
                   <button
                     className="issue-menu-button"
                     onClick={() =>
-                      setCurrentPage(articleReturnPage || "monthly-theme")
+                      setCurrentPage(
+                        isParallaxBrandedArticle
+                          ? "editorial-front"
+                          : articleReturnPage || "monthly-theme"
+                      )
                     }
                   >
-                    {getArticleReturnLabel()}
+                    {isParallaxBrandedArticle ? "← HOME" : getArticleReturnLabel()}
                   </button>
                 </>
               )}
             </div>
 
             <div
-              className="mag-article-logo"
-              onClick={() => setCurrentPage("main")}
+              className={
+                isParallaxBrandedArticle
+                  ? "mag-article-logo mag-article-logo-parallax"
+                  : "mag-article-logo"
+              }
+              onClick={() => setCurrentPage(isParallaxBrandedArticle ? "parallax" : "main")}
             >
-              Feminist Archive
+              {isParallaxBrandedArticle ? "Parallax" : "Feminist Archive"}
             </div>
 
             {selectedArticle.layout !== "psyche" && (
               <button
                 className="issue-menu-button mag-article-donate-button"
-                onClick={() => setCurrentPage("donate")}
+                onClick={() =>
+                  setCurrentPage(isParallaxBrandedArticle ? "newsletter-page" : "donate")
+                }
               >
-                {articleUsesFrench ? "Soutenir" : "Donate"}
+                {isParallaxBrandedArticle
+                  ? "Newsletter"
+                  : articleUsesFrench
+                    ? "Soutenir"
+                    : "Donate"}
               </button>
             )}
           </header>
