@@ -279,18 +279,45 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
           </section>
         )}
 
-        <section className="editorial-front-peek" aria-label={labels.peekTitle}>
-          <div className="editorial-front-peek-head">
-            <h2>
-              <img
-                className="editorial-front-peek-title-image"
-                src="/images/CR-cropped.png"
-                alt={labels.peekTitle}
-              />
-            </h2>
-            <span>{labels.peekNote}</span>
+        <nav className="editorial-front-scrollbar" aria-label="Front page sections">
+          <div className="editorial-front-scrollbar-left">
+            <button type="button" onClick={() => goToPage("main")}>{labels.home}</button>
+            <span>/</span>
+            <button type="button" onClick={() => setShowMenu(true)}>{labels.menu}</button>
+            <span>/</span>
+            <button
+              type="button"
+              aria-label={labels.search}
+              onClick={() => setShowSearch(true)}
+            >
+              <Search size={19} strokeWidth={1.8} aria-hidden="true" />
+            </button>
           </div>
 
+          <button
+            type="button"
+            className="editorial-front-scrollbar-logo"
+            onClick={() => goToPage("editorial-front")}
+          >
+            Feminist Archive
+          </button>
+
+          <div className="editorial-front-scrollbar-right">
+            <button type="button" onClick={() => goToPage("newsletter-page")}>
+              {labels.newsletter}
+            </button>
+            <span>/</span>
+            <button type="button" onClick={() => setLanguage(zh ? "en" : "zh")}>
+              {labels.switchLanguage}
+            </button>
+            <span>/</span>
+            <button type="button" onClick={() => goToPage("parallax")}>
+              {labels.parallax}
+            </button>
+          </div>
+        </nav>
+
+        <section className="editorial-front-peek" aria-label={labels.peekTitle}>
           <div className="editorial-front-peek-track">
             {peekArticles.map((article, index) => {
               const displayCopy = peekArticleDisplayCopy[article.id] || {};

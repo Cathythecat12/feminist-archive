@@ -164,6 +164,72 @@
   padding-bottom: clamp(56px, 8vw, 120px);
 }
 
+.editorial-front-scrollbar {
+  position: sticky;
+  top: 0;
+  z-index: 16;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 clamp(18px, 3vw, 62px);
+  border-top: 1px solid rgba(21, 21, 19, 0.12);
+  border-bottom: 1px solid rgba(21, 21, 19, 0.16);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+}
+
+.editorial-front-scrollbar-left,
+.editorial-front-scrollbar-right {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.editorial-front-scrollbar-right {
+  justify-content: flex-end;
+}
+
+.editorial-front-scrollbar button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: #151515;
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(0.86rem, 1vw, 1.02rem);
+  font-weight: 760;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 180ms ease, opacity 180ms ease;
+}
+
+.editorial-front-scrollbar button:hover,
+.editorial-front-scrollbar button:focus-visible {
+  color: #0a6a59;
+}
+
+.editorial-front-scrollbar span {
+  color: rgba(21, 21, 19, 0.48);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+}
+
+.editorial-front-scrollbar-logo {
+  justify-self: center;
+  color: #0a6a59 !important;
+  font-family: var(--editorial-ny-font) !important;
+  font-size: clamp(1.7rem, 2.5vw, 2.55rem) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  text-transform: none !important;
+}
+
 .editorial-front-hero {
   position: relative;
   display: grid;
@@ -269,7 +335,7 @@
   position: relative;
   max-width: 1920px;
   margin: 0 auto;
-  padding: clamp(18px, 2.2vw, 32px) clamp(22px, 3.6vw, 62px) 0;
+  padding: clamp(18px, 2.2vw, 30px) clamp(22px, 3.6vw, 62px) 0;
   overflow: hidden;
 }
 
@@ -319,7 +385,7 @@
 .editorial-front-peek-track {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(18px, 2.6vw, 42px);
+  gap: clamp(16px, 2vw, 32px);
 }
 
 .editorial-front-peek-card,
@@ -352,7 +418,7 @@
 
 .editorial-front-peek-card img {
   width: 100%;
-  aspect-ratio: 1.55;
+  aspect-ratio: 1.74;
   object-fit: cover;
   display: block;
   filter: saturate(0.86) contrast(0.96);
@@ -377,7 +443,7 @@
 }
 
 .editorial-front-peek-card p {
-  margin: 14px 0 0;
+  margin: 11px 0 0;
   color: #595650;
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(0.86rem, 0.92vw, 1rem);
@@ -404,7 +470,7 @@
 .editorial-front-all {
   max-width: 1920px;
   margin: 0 auto;
-  padding: clamp(70px, 8vw, 126px) clamp(22px, 3.6vw, 62px) 0;
+  padding: clamp(46px, 5.2vw, 82px) clamp(22px, 3.6vw, 62px) 0;
 }
 
 .editorial-front-section-head {
@@ -418,21 +484,21 @@
 
 .editorial-front-river {
   display: grid;
-  gap: clamp(24px, 2.9vw, 52px);
+  gap: clamp(20px, 2.2vw, 36px);
 }
 
 .editorial-front-river {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  row-gap: clamp(68px, 8vw, 118px);
+  row-gap: clamp(44px, 5vw, 70px);
 }
 
 .editorial-front-card {
   position: relative;
   min-width: 0;
-  padding: 0 0 22px;
+  padding: 0;
   border: 1px solid transparent;
   background: rgba(255, 255, 252, 0);
-  text-align: center;
+  text-align: left;
   transition:
     background 220ms ease,
     border-color 220ms ease,
@@ -442,10 +508,10 @@
 
 .editorial-front-card:hover,
 .editorial-front-card:focus-within {
-  transform: translateY(-8px);
-  border-color: rgba(26, 26, 26, 0.13);
-  background: rgba(255, 255, 252, 0.66);
-  box-shadow: 0 20px 42px rgba(28, 31, 28, 0.08);
+  transform: translateY(-5px);
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
 }
 
 .editorial-front-card-image {
@@ -455,7 +521,7 @@
 
 .editorial-front-card-image img {
   width: 100%;
-  aspect-ratio: 1.33;
+  aspect-ratio: 1.78;
   object-fit: cover;
   display: block;
   filter: saturate(0.88);
@@ -471,17 +537,19 @@
 }
 
 .editorial-front-card-meta {
-  justify-content: center;
-  margin: 20px 12px 0;
-  color: #0a6a59;
+  justify-content: flex-start;
+  margin: 16px 0 0;
+  color: #151515;
+  font-size: clamp(0.9rem, 1vw, 1.05rem);
+  letter-spacing: 0.08em;
 }
 
 .editorial-front-card h3 {
-  margin: 14px auto 0;
+  margin: 16px 0 0;
   max-width: 94%;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.65rem, 2.05vw, 2.85rem);
-  font-weight: 500;
+  font-size: clamp(1.82rem, 2.28vw, 3rem);
+  font-weight: 760;
   line-height: 1.02;
   color: #161616;
   text-wrap: balance;
@@ -497,19 +565,20 @@
 }
 
 .editorial-front-card p {
-  margin: 16px auto 0;
-  max-width: 86%;
-  color: #3f3f3d;
-  font-size: clamp(0.98rem, 1vw, 1.14rem);
-  line-height: 1.48;
+  margin: 14px 0 0;
+  max-width: 95%;
+  color: #202020;
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1rem, 1.18vw, 1.26rem);
+  line-height: 1.38;
 }
 
 .editorial-front-card-bottom {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
-  margin: 20px auto 0;
+  margin: 18px 0 0;
   color: #6a6761;
   font-size: 0.98rem;
   font-weight: 700;
@@ -817,6 +886,23 @@ html[lang="zh-CN"] .editorial-front-hero-copy p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .editorial-front-scrollbar {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .editorial-front-scrollbar-left,
+  .editorial-front-scrollbar-right {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .editorial-front-scrollbar-logo {
+    grid-row: 1;
+  }
+
   .editorial-front-footer {
     grid-template-columns: 1fr 1fr;
   }
@@ -874,6 +960,25 @@ html[lang="zh-CN"] .editorial-front-hero-copy p {
   .editorial-front-river,
   .editorial-front-footer {
     grid-template-columns: 1fr;
+  }
+
+  .editorial-front-scrollbar {
+    position: sticky;
+    min-height: 0;
+  }
+
+  .editorial-front-scrollbar button {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  .editorial-front-scrollbar-logo {
+    font-size: clamp(1.45rem, 9vw, 2.15rem) !important;
+  }
+
+  .editorial-front-card-image img,
+  .editorial-front-peek-card img {
+    aspect-ratio: 1.62;
   }
 }
 
