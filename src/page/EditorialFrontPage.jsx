@@ -41,6 +41,7 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
   const zh = language === "zh";
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showScrollNav, setShowScrollNav] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const articles = (zh ? chineseArticles : englishArticles).filter(
     (article) => !article.hidden,
@@ -86,6 +87,22 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
     window.addEventListener("keydown", handleEsc);
 
     return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
+  useEffect(() => {
+    const updateScrollNav = () => {
+      const header = document.querySelector(".editorial-front-header");
+      setShowScrollNav(Boolean(header && header.getBoundingClientRect().bottom <= 0));
+    };
+
+    updateScrollNav();
+    window.addEventListener("scroll", updateScrollNav, { passive: true });
+    window.addEventListener("resize", updateScrollNav);
+
+    return () => {
+      window.removeEventListener("scroll", updateScrollNav);
+      window.removeEventListener("resize", updateScrollNav);
+    };
   }, []);
 
   const openArticle = (article) => {
@@ -279,7 +296,11 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
           </section>
         )}
 
-        <nav className="editorial-front-scrollbar" aria-label="Front page sections">
+        <nav
+          className={`editorial-front-scrollbar${showScrollNav ? " is-visible" : ""}`}
+          aria-label="Front page sections"
+          aria-hidden={!showScrollNav}
+        >
           <div className="editorial-front-scrollbar-left">
             <button type="button" onClick={() => goToPage("main")}>{labels.home}</button>
             <span>/</span>
