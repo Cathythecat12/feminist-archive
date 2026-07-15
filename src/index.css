@@ -6024,18 +6024,24 @@ border: 1px solid #f0ddc5;
 .article-parallax-note {
   margin: 34px 0 0;
   padding: clamp(22px, 3vw, 34px);
-  border: 1px solid rgba(34, 44, 38, 0.18);
+  border: 1px solid rgba(42, 74, 58, 0.16);
   background:
-    linear-gradient(135deg, rgba(255, 252, 243, 0.94), rgba(237, 229, 211, 0.72)),
-    #f7f0df;
+    radial-gradient(circle at 84% 18%, rgba(222, 232, 213, 0.52), transparent 34%),
+    linear-gradient(135deg, rgba(249, 240, 224, 0.96), rgba(232, 226, 207, 0.86)),
+    #f6ead8;
   box-shadow: 0 18px 42px rgba(50, 42, 28, 0.08);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease,
+    background 220ms ease;
 }
 
 .article-parallax-note p {
   max-width: 760px;
   margin: 0;
   color: #27231d;
-  font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  font-family: "Libre Caslon Text", Georgia, "Times New Roman", serif;
   font-size: clamp(1.05rem, 1.35vw, 1.24rem);
   line-height: 1.8;
 }
@@ -6070,6 +6076,17 @@ border: 1px solid #f0ddc5;
   background: #0b574a;
   color: #fffaf0;
   transform: translateY(-2px);
+}
+
+.article-parallax-note:hover,
+.article-parallax-note:focus-within {
+  border-color: rgba(11, 87, 74, 0.34);
+  background:
+    radial-gradient(circle at 84% 18%, rgba(215, 232, 210, 0.68), transparent 36%),
+    linear-gradient(135deg, rgba(250, 237, 216, 0.98), rgba(228, 224, 203, 0.94)),
+    #f5e7d1;
+  box-shadow: 0 28px 62px rgba(50, 42, 28, 0.14);
+  transform: translateY(-4px);
 }
 
 .article-support-label {

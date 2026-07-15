@@ -2915,8 +2915,8 @@ return null;
 {isParallaxBrandedArticle && (
   <aside className="article-parallax-note" aria-label="Parallax note">
     <p>
-      这篇文章属于 <strong>Parallax</strong>，Parallax 是 Feminist Archive
-      的子期刊。
+      This essay belongs to <strong>Parallax</strong>, the sister journal of
+      Feminist Archive.
     </p>
     <a
       href="/en/parallax"
@@ -2926,7 +2926,7 @@ return null;
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }}
     >
-      阅读 Parallax 全部文章
+      Read all Parallax essays
     </a>
   </aside>
 )}
