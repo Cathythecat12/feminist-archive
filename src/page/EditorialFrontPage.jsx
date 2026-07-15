@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Bookmark, Search, X } from "lucide-react";
-import { FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
+import { ArrowRight, Bookmark, Languages, Search, X } from "lucide-react";
+import { FaInstagram, FaLinkedinIn, FaXTwitter, FaYoutube } from "react-icons/fa6";
 import { SiBluesky } from "react-icons/si";
 import MagazineMenuOverlay from "../components/MagazineMenuOverlay";
 import { articles as englishArticles } from "../data/articles-en";
@@ -41,6 +41,7 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
   const zh = language === "zh";
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [showScrollNav, setShowScrollNav] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const articles = (zh ? chineseArticles : englishArticles).filter(
@@ -80,6 +81,7 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
       if (event.key === "Escape") {
         setShowMenu(false);
         setShowSearch(false);
+        setShowLanguageMenu(false);
         setSearchQuery("");
       }
     };
@@ -122,6 +124,11 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
     });
   };
 
+  const openChineseEdition = () => {
+    setLanguage("zh");
+    setShowLanguageMenu(false);
+  };
+
   const labels = zh
     ? {
         archive: "归档",
@@ -139,6 +146,7 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
         searchPlaceholder: "搜索标题、作者、关键词、正文……",
         searchEmpty: "没有找到相关文章。",
         searchHint: "输入关键词，查找 Feminist Archive 文章。",
+        languageMenu: "语言版本",
         footerTagline: "一个独立的女性主义理论、文章与档案写作平台。",
         sections: "栏目",
         support: "支持我们",
@@ -162,6 +170,7 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
         searchPlaceholder: "Search titles, authors, keywords, text...",
         searchEmpty: "No essays found.",
         searchHint: "Type a keyword to search Feminist Archive essays.",
+        languageMenu: "Language editions",
         footerTagline:
           "An independent journal of feminist theory, essays, and archival writing.",
         sections: "Sections",
@@ -266,9 +275,12 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
         <nav className="editorial-front-nav editorial-front-nav-right" aria-label="Utility">
           <button onClick={() => goToPage("newsletter-page")}>{labels.newsletter}</button>
           <span>/</span>
-          <button onClick={() => setLanguage(zh ? "en" : "zh")}>
-            {labels.switchLanguage}
-          </button>
+          <LanguageEditionMenu
+            labels={labels}
+            open={showLanguageMenu}
+            onToggle={() => setShowLanguageMenu((value) => !value)}
+            onOpenChinese={openChineseEdition}
+          />
         </nav>
       </header>
 
@@ -328,9 +340,12 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
               {labels.newsletter}
             </button>
             <span>/</span>
-            <button type="button" onClick={() => setLanguage(zh ? "en" : "zh")}>
-              {labels.switchLanguage}
-            </button>
+            <LanguageEditionMenu
+              labels={labels}
+              open={showLanguageMenu}
+              onToggle={() => setShowLanguageMenu((value) => !value)}
+              onOpenChinese={openChineseEdition}
+            />
             <span>/</span>
             <button type="button" onClick={() => goToPage("parallax")}>
               {labels.parallax}
@@ -434,6 +449,53 @@ function EditorialFrontPage({ language, setLanguage, setCurrentPage, onOpenArtic
           </div>
         </nav>
       </footer>
+    </div>
+  );
+}
+
+function LanguageEditionMenu({ labels, open, onToggle, onOpenChinese }) {
+  return (
+    <div className="editorial-front-language">
+      <button
+        type="button"
+        className="editorial-front-language-trigger"
+        aria-label={labels.languageMenu}
+        aria-expanded={open}
+        onClick={onToggle}
+      >
+        <Languages size={21} strokeWidth={1.7} aria-hidden="true" />
+      </button>
+
+      {open && (
+        <div className="editorial-front-language-panel" role="menu">
+          <span>{labels.languageMenu}</span>
+          <button type="button" role="menuitem" onClick={onOpenChinese}>
+            中文版
+          </button>
+
+          <em>Follow us in other languages</em>
+          <a
+            href="https://bsky.app/profile/feministarchivefr.bsky.social"
+            target="_blank"
+            rel="noopener noreferrer"
+            role="menuitem"
+          >
+            <SiBluesky aria-hidden="true" />
+            Française
+          </a>
+          <a
+            href="https://x.com/FeministArchiEs"
+            target="_blank"
+            rel="noopener noreferrer"
+            role="menuitem"
+          >
+            <FaXTwitter aria-hidden="true" />
+            Español
+          </a>
+
+          <p>We are working to expand more language sections in the future.</p>
+        </div>
+      )}
     </div>
   );
 }
