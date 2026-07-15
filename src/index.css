@@ -3997,9 +3997,96 @@ html[lang="zh-CN"] .issue-card h2 {
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.mag-article-socials a:hover {
+.mag-article-socials a:hover,
+.parallax-x-trigger:hover,
+.parallax-x-trigger:focus-visible {
   opacity: 1;
   transform: translateY(-1px);
+}
+
+.parallax-x-menu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.parallax-x-trigger {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  opacity: 0.82;
+  cursor: pointer;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.parallax-x-panel {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: -6px;
+  z-index: 90;
+  display: grid;
+  width: min(320px, calc(100vw - 36px));
+  padding: 12px;
+  border: 1px solid rgba(245, 240, 224, 0.22);
+  background: rgba(22, 19, 14, 0.92);
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(16px);
+  animation: articleSocialPanelIn 180ms ease both;
+}
+
+.parallax-x-panel::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid rgba(245, 240, 224, 0.22);
+  border-left: 1px solid rgba(245, 240, 224, 0.22);
+  background: rgba(22, 19, 14, 0.92);
+  transform: rotate(45deg);
+}
+
+.mag-article-socials .parallax-x-panel a {
+  width: 100%;
+  height: auto;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(245, 240, 224, 0.12);
+  color: #fffaf0;
+  opacity: 1;
+}
+
+.mag-article-socials .parallax-x-panel a:last-child {
+  border-bottom: 0;
+}
+
+.parallax-x-panel span {
+  display: grid;
+  gap: 3px;
+}
+
+.parallax-x-panel strong {
+  font-family: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.parallax-x-panel em {
+  color: rgba(255, 250, 240, 0.72);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.74rem;
+  font-style: normal;
+  line-height: 1.35;
 }
 
 .mag-article-socials svg {
@@ -4024,6 +4111,18 @@ html[lang="zh-CN"] .issue-card h2 {
   height: 20px;
   fill: currentColor;
   stroke: none;
+}
+
+@keyframes articleSocialPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .mag-article-logo {
@@ -5920,6 +6019,57 @@ border: 1px solid #f0ddc5;
   grid-template-columns: 1.25fr 0.75fr;
   gap: 42px;
   align-items: center;
+}
+
+.article-parallax-note {
+  margin: 34px 0 0;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid rgba(34, 44, 38, 0.18);
+  background:
+    linear-gradient(135deg, rgba(255, 252, 243, 0.94), rgba(237, 229, 211, 0.72)),
+    #f7f0df;
+  box-shadow: 0 18px 42px rgba(50, 42, 28, 0.08);
+}
+
+.article-parallax-note p {
+  max-width: 760px;
+  margin: 0;
+  color: #27231d;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  font-size: clamp(1.05rem, 1.35vw, 1.24rem);
+  line-height: 1.8;
+}
+
+.article-parallax-note strong {
+  color: #0b574a;
+  font-weight: 700;
+}
+
+.article-parallax-note a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  padding: 11px 16px;
+  border: 1px solid rgba(11, 87, 74, 0.38);
+  background: rgba(11, 87, 74, 0.08);
+  color: #0b574a;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.article-parallax-note a:hover,
+.article-parallax-note a:focus-visible {
+  background: #0b574a;
+  color: #fffaf0;
+  transform: translateY(-2px);
 }
 
 .article-support-label {

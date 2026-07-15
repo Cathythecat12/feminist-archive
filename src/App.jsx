@@ -397,6 +397,7 @@ function MainApp() {
   const [showNewsletter, setShowNewsletter] = useState(false);
   const [showArticleShare, setShowArticleShare] = useState(false);
   const [showArticleMenu, setShowArticleMenu] = useState(false);
+  const [showParallaxSocialMenu, setShowParallaxSocialMenu] = useState(false);
   const [articleShareVisible, setArticleShareVisible] = useState(false);
   const [activeGlossaryKey, setActiveGlossaryKey] = useState("");
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
@@ -637,6 +638,7 @@ const homepageArchiveArticles = filteredArticles.slice(0, HOME_ARCHIVE_LIMIT);
   const openArticleFrom = (article, returnPage = currentPage) => {
     setSelectedArticle(article);
     setActiveGlossaryKey("");
+    setShowParallaxSocialMenu(false);
     setArticleReturnPage(returnPage);
     setCurrentPage("article-detail");
     syncArticleUrl(article, getArticleLanguage(article));
@@ -2454,16 +2456,65 @@ return null;
                       </svg>
                     </a>
 
-                    <a
-                      href="https://x.com/FeministArchiv"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="X"
-                    >
-                      <svg className="mag-social-x" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M4.8 4.8h4.15l4.05 5.35 4.78-5.35h1.95l-5.82 6.52 6.02 7.88h-4.16l-4.38-5.75-5.12 5.75H4.35l6.24-7.02L4.8 4.8Z" />
-                      </svg>
-                    </a>
+                    {isParallaxBrandedArticle ? (
+                      <div className="parallax-x-menu">
+                        <button
+                          type="button"
+                          className="parallax-x-trigger"
+                          aria-label="Parallax X links"
+                          aria-expanded={showParallaxSocialMenu}
+                          onClick={() => setShowParallaxSocialMenu((value) => !value)}
+                        >
+                          <svg className="mag-social-x" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4.8 4.8h4.15l4.05 5.35 4.78-5.35h1.95l-5.82 6.52 6.02 7.88h-4.16l-4.38-5.75-5.12 5.75H4.35l6.24-7.02L4.8 4.8Z" />
+                          </svg>
+                        </button>
+
+                        {showParallaxSocialMenu && (
+                          <div className="parallax-x-panel" role="menu">
+                            <a
+                              href="https://x.com/parallaxessay"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              role="menuitem"
+                            >
+                              <svg className="mag-social-x" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4.8 4.8h4.15l4.05 5.35 4.78-5.35h1.95l-5.82 6.52 6.02 7.88h-4.16l-4.38-5.75-5.12 5.75H4.35l6.24-7.02L4.8 4.8Z" />
+                              </svg>
+                              <span>
+                                <strong>Parallax: Philosophy and Reality</strong>
+                                <em>Philosophy and reality</em>
+                              </span>
+                            </a>
+                            <a
+                              href="https://x.com/FeministArchiv"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              role="menuitem"
+                            >
+                              <svg className="mag-social-x" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4.8 4.8h4.15l4.05 5.35 4.78-5.35h1.95l-5.82 6.52 6.02 7.88h-4.16l-4.38-5.75-5.12 5.75H4.35l6.24-7.02L4.8 4.8Z" />
+                              </svg>
+                              <span>
+                                <strong>Feminist Archive</strong>
+                                <em>Parallax’s mirror journal, related to feminism</em>
+                              </span>
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <a
+                        href="https://x.com/FeministArchiv"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="X"
+                      >
+                        <svg className="mag-social-x" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M4.8 4.8h4.15l4.05 5.35 4.78-5.35h1.95l-5.82 6.52 6.02 7.88h-4.16l-4.38-5.75-5.12 5.75H4.35l6.24-7.02L4.8 4.8Z" />
+                        </svg>
+                      </a>
+                    )}
                   </nav>
 
                   <button
@@ -2623,10 +2674,16 @@ return null;
   {selectedArticle.sidebarText || (
     isParallaxEssay ? (
       <>
-        <strong>{selectedArticle.author}</strong> writes with Feminist Archive.
+        {isParallaxBrandedArticle ? null : (
+          <>
+            <strong>{selectedArticle.author}</strong> writes with Feminist Archive.
+          </>
+        )}
         {articleUsesChinese
           ? " 本文属于 FA 特别文章，隶属于 "
-          : " This essay is part of FA Special Essay and belongs to "}
+          : isParallaxBrandedArticle
+            ? "This essay is part of FA Special Essay and belongs to "
+            : " This essay is part of FA Special Essay and belongs to "}
         <button
           type="button"
           className="parallax-inline-link"
@@ -2855,6 +2912,24 @@ return null;
       : "Feminist Archive is an independent publication for theory, archival writing, and long-form feminist thought."}
   </p>
 </footer>
+{isParallaxBrandedArticle && (
+  <aside className="article-parallax-note" aria-label="Parallax note">
+    <p>
+      这篇文章属于 <strong>Parallax</strong>，Parallax 是 Feminist Archive
+      的子期刊。
+    </p>
+    <a
+      href="/en/parallax"
+      onClick={(event) => {
+        event.preventDefault();
+        setCurrentPage("parallax");
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }}
+    >
+      阅读 Parallax 全部文章
+    </a>
+  </aside>
+)}
 <section className="article-circulation">
   
 
