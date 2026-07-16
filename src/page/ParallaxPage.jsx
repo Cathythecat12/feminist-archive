@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { SiBluesky } from "react-icons/si";
 import { articles as englishArticles } from "../data/articles-en";
@@ -10,6 +11,7 @@ const isParallaxEssay = (article) => {
 
 function ParallaxPage({ language, onBack, onOpenArticle, setCurrentPage }) {
   const zh = language === "zh";
+  const [lightMode, setLightMode] = useState(false);
   const articles = (zh ? chineseArticles : englishArticles).filter(
     (article) => !article.hidden && isParallaxEssay(article),
   );
@@ -18,7 +20,7 @@ function ParallaxPage({ language, onBack, onOpenArticle, setCurrentPage }) {
     articles[0];
 
   return (
-    <div className="parallax-page">
+    <div className={`parallax-page${lightMode ? " is-light" : ""}`}>
       <header className="parallax-topbar">
         <div className="parallax-topbar-left">
           <button onClick={() => setCurrentPage("magazine")}>
@@ -38,6 +40,15 @@ function ParallaxPage({ language, onBack, onOpenArticle, setCurrentPage }) {
         <div className="parallax-topbar-right">
           <button onClick={() => setCurrentPage("newsletter-page")}>
             {zh ? "通讯" : "Newsletter"}
+          </button>
+          <span>/</span>
+          <button
+            type="button"
+            className="parallax-mode-toggle"
+            onClick={() => setLightMode((value) => !value)}
+            aria-pressed={lightMode}
+          >
+            {lightMode ? "Dark mode" : "Bright mode"}
           </button>
         </div>
       </header>

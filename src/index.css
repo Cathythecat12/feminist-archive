@@ -19337,6 +19337,28 @@ p {
   padding: 0;
 }
 
+.parallax-mode-toggle {
+  color: #f2d884 !important;
+  text-shadow:
+    0 0 8px rgba(242, 216, 132, 0.52),
+    0 0 20px rgba(242, 216, 132, 0.36),
+    0 0 38px rgba(242, 216, 132, 0.18);
+  transition:
+    color 220ms ease,
+    text-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.parallax-mode-toggle:hover,
+.parallax-mode-toggle:focus-visible {
+  color: #ffe9a6 !important;
+  text-shadow:
+    0 0 10px rgba(255, 233, 166, 0.72),
+    0 0 28px rgba(255, 233, 166, 0.5),
+    0 0 52px rgba(255, 233, 166, 0.28);
+  transform: translateY(-1px);
+}
+
 .parallax-home-link {
   color: rgba(236, 233, 223, 0.9) !important;
   font-family: "Cormorant Garamond", Georgia, serif !important;
@@ -19742,6 +19764,170 @@ p {
   border-color: rgba(215, 193, 138, 0.6);
   background: rgba(215, 193, 138, 0.06);
   color: #d7c18a;
+}
+
+.parallax-page.is-light {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(231, 218, 180, 0.38), transparent 30%),
+    radial-gradient(circle at 16% 0%, rgba(231, 224, 206, 0.62), transparent 34%),
+    linear-gradient(180deg, #f8f1e3 0%, #f2eadc 46%, #efe4d2 100%);
+  color: #27231d;
+}
+
+.parallax-page.is-light .parallax-topbar {
+  border-bottom-color: rgba(48, 43, 34, 0.12);
+  background: rgba(250, 244, 232, 0.86);
+  box-shadow: 0 10px 32px rgba(64, 50, 32, 0.06);
+}
+
+.parallax-page.is-light .parallax-topbar-left,
+.parallax-page.is-light .parallax-topbar-right {
+  color: rgba(51, 45, 36, 0.72);
+}
+
+.parallax-page.is-light .parallax-home-link {
+  color: rgba(35, 31, 25, 0.88) !important;
+}
+
+.parallax-page.is-light .parallax-mode-toggle {
+  color: #6f4f15 !important;
+  text-shadow:
+    0 0 8px rgba(214, 166, 68, 0.38),
+    0 0 22px rgba(214, 166, 68, 0.22);
+}
+
+.parallax-page.is-light .parallax-mode-toggle:hover,
+.parallax-page.is-light .parallax-mode-toggle:focus-visible {
+  color: #9a6d15 !important;
+  text-shadow:
+    0 0 12px rgba(214, 166, 68, 0.46),
+    0 0 30px rgba(214, 166, 68, 0.28);
+}
+
+.parallax-page.is-light .parallax-hero {
+  border-bottom-color: rgba(62, 54, 40, 0.14);
+  background:
+    linear-gradient(90deg, rgba(250, 244, 232, 0.98) 0%, rgba(247, 238, 220, 0.94) 52%, rgba(231, 220, 197, 0.88) 100%),
+    radial-gradient(circle at 66% 56%, rgba(172, 132, 48, 0.16), transparent 30%);
+}
+
+.parallax-page.is-light .parallax-hero::before {
+  background:
+    linear-gradient(90deg, transparent 0 58%, rgba(205, 181, 120, 0.16) 58% 59%, rgba(231, 215, 176, 0.45) 59% 70%, rgba(246, 237, 219, 0.56) 70%),
+    linear-gradient(166deg, transparent 0 54%, rgba(180, 137, 48, 0.18) 54.2%, rgba(180, 137, 48, 0.05) 58%, transparent 69%),
+    radial-gradient(ellipse at 68% 54%, rgba(210, 180, 104, 0.2), transparent 22%),
+    linear-gradient(180deg, #f6eddd 0%, #efe3d0 100%);
+}
+
+.parallax-page.is-light .parallax-hero::after {
+  opacity: 0.38;
+  background:
+    radial-gradient(ellipse at 72% 58%, transparent 0 22%, rgba(121, 91, 44, 0.1) 50%, rgba(121, 91, 44, 0.16) 100%),
+    repeating-linear-gradient(0deg, rgba(95, 72, 35, 0.025) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(95, 72, 35, 0.018) 0 1px, transparent 1px 4px);
+  mix-blend-mode: multiply;
+}
+
+.parallax-page.is-light .parallax-hero-kicker,
+.parallax-page.is-light .parallax-list-head,
+.parallax-page.is-light .parallax-card-meta,
+.parallax-page.is-light .parallax-footer span {
+  color: rgba(80, 69, 50, 0.58);
+}
+
+.parallax-page.is-light .parallax-hero h1 {
+  color: #2f2a22;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.62),
+    0 20px 42px rgba(92, 68, 32, 0.16);
+}
+
+.parallax-page.is-light .parallax-hero-wordmark {
+  filter:
+    invert(1)
+    sepia(0.3)
+    saturate(0.8)
+    hue-rotate(345deg)
+    brightness(0.54)
+    drop-shadow(0 18px 34px rgba(92, 68, 32, 0.14));
+}
+
+.parallax-page.is-light .parallax-subtitle {
+  color: rgba(39, 35, 29, 0.82);
+}
+
+.parallax-page.is-light .parallax-intro,
+.parallax-page.is-light .parallax-card p,
+.parallax-page.is-light .parallax-about p {
+  color: rgba(54, 48, 39, 0.68);
+}
+
+.parallax-page.is-light .parallax-featured-image {
+  border-color: rgba(78, 65, 42, 0.14);
+  background: #e3d8c4;
+  box-shadow: 0 26px 72px rgba(86, 66, 34, 0.14);
+}
+
+.parallax-page.is-light .parallax-featured-image img,
+.parallax-page.is-light .parallax-card-image img {
+  filter: saturate(0.76) contrast(1.02) brightness(1.02);
+}
+
+.parallax-page.is-light .parallax-featured-essay h2,
+.parallax-page.is-light .parallax-card h2 {
+  color: rgba(39, 35, 29, 0.86);
+}
+
+.parallax-page.is-light .parallax-featured-essay:hover h2,
+.parallax-page.is-light .parallax-card:hover h2,
+.parallax-page.is-light .parallax-about-label,
+.parallax-page.is-light .parallax-card-footer em,
+.parallax-page.is-light .parallax-footer button:hover {
+  color: #8a6419;
+}
+
+.parallax-page.is-light .parallax-card {
+  border-color: rgba(82, 69, 45, 0.1);
+  background: rgba(255, 252, 245, 0.44);
+}
+
+.parallax-page.is-light .parallax-card:hover {
+  border-color: rgba(138, 100, 25, 0.24);
+  background: rgba(255, 252, 245, 0.72);
+  box-shadow: 0 26px 68px rgba(86, 66, 34, 0.12);
+}
+
+.parallax-page.is-light .parallax-card-image {
+  background: #e3d8c4;
+}
+
+.parallax-page.is-light .parallax-card-footer {
+  color: rgba(54, 48, 39, 0.5);
+}
+
+.parallax-page.is-light .parallax-about {
+  border-top-color: rgba(82, 69, 45, 0.14);
+  border-bottom-color: rgba(82, 69, 45, 0.1);
+}
+
+.parallax-page.is-light .parallax-footer {
+  background: #eadfca;
+  border-top: 1px solid rgba(82, 69, 45, 0.12);
+}
+
+.parallax-page.is-light .parallax-footer button,
+.parallax-page.is-light .parallax-footer a {
+  color: rgba(39, 35, 29, 0.82);
+}
+
+.parallax-page.is-light .parallax-footer a {
+  border-color: rgba(82, 69, 45, 0.16);
+}
+
+.parallax-page.is-light .parallax-footer a:hover {
+  border-color: rgba(138, 100, 25, 0.42);
+  background: rgba(138, 100, 25, 0.08);
+  color: #8a6419;
 }
 
 .parallax-about-page-main {
