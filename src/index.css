@@ -4379,6 +4379,25 @@ html[lang="zh-CN"] .issue-card h2 {
   font-weight: inherit;
 }
 
+.article-pansexualism-freudian-psychoanalysis .mag-article-content p {
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+}
+
+.article-pansexualism-freudian-psychoanalysis .mag-article-content .article-section-heading:first-child + p::first-letter,
+.article-pansexualism-freudian-psychoanalysis .mag-article-content p:first-child::first-letter {
+  float: left;
+  margin: 0.02em 0.16em 0 0;
+  padding-right: 0;
+  color: #050505;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(8.4rem, 12vw, 12.8rem);
+  font-weight: 700;
+  line-height: 0.66;
+  letter-spacing: -0.1em;
+}
+
 :is(.article-sexual-liberationism-erotic-nihilism-zh, .article-sexual-liberationism-erotic-nihilism, .article-pansexualism-freud-vulgarized-zh, .article-pansexualism-freudian-psychoanalysis) .psyche-article-footer {
   max-width: none;
   background:
@@ -5946,6 +5965,13 @@ html[lang="zh-CN"] .issue-card h2 {
     margin-right: 0.12em;
     font-size: clamp(5.2rem, 24vw, 7.1rem);
     line-height: 0.74;
+  }
+
+  .article-pansexualism-freudian-psychoanalysis .mag-article-content .article-section-heading:first-child + p::first-letter,
+  .article-pansexualism-freudian-psychoanalysis .mag-article-content p:first-child::first-letter {
+    margin-right: 0.13em;
+    font-size: clamp(5.8rem, 27vw, 8rem);
+    line-height: 0.7;
   }
 
   .article-how-origins-are-made .mag-article-header {
