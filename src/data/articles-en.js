@@ -1150,8 +1150,8 @@ According to Michel Foucault, power in modern society no longer operates primari
       "symbolic enclosure",
       "luxury",
     ],
-    sidebarText:
-      "This essay belongs to Parallax, the sister journal of Feminist Archive.",
+    hideSidebarText: true,
+    hideArticleEndnote: true,
     footerVariant: "parallax",
     supportVariant: "parallax-social",
     contentBlocks: [
@@ -1174,7 +1174,7 @@ On the one hand, the black four-petaled floral motif adopted by Molly Tea does i
       {
         type: "image",
         src: "/images/lv-molly-tea-logo-comparison.jpg",
-        variant: "wide",
+        variant: "logo-comparison",
         caption:
           "A visual comparison circulated in public discussions of the Louis Vuitton and Molly Tea dispute.",
       },

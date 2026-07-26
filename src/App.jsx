@@ -2192,7 +2192,9 @@ return null;
         />
 {showArticleShare && (
   <div
-    className="article-share-modal"
+    className={`article-share-modal ${
+      usesParallaxArticleFooter ? "is-parallax-share" : ""
+    }`}
     onClick={() => setShowArticleShare(false)}
   >
     <div
@@ -2207,19 +2209,27 @@ return null;
       </button>
 
       <div className="article-share-modal-label">
-        {articleShareUsesChinese ? "转发 / 保存" : "SHARE / CIRCULATE"}
+        {articleShareUsesChinese
+          ? "转发 / 保存"
+          : usesParallaxArticleFooter
+            ? "PARALLAX / CIRCULATE"
+            : "SHARE / CIRCULATE"}
       </div>
 
       <h2>
         {articleShareUsesChinese
           ? "让这篇文章继续流动。"
-          : "Let this essay continue its journey."}
+          : usesParallaxArticleFooter
+            ? "Let this Parallax essay continue its journey."
+            : "Let this essay continue its journey."}
       </h2>
 
       <p>
         {articleShareUsesChinese
           ? "欢迎自由转发、保存与引用此文。Feminist Archive 为公共阅读而存在。"
-          : "You are warmly welcome to share, save, and quote this essay. Feminist Archive is built for public reading."}
+          : usesParallaxArticleFooter
+            ? "You are warmly welcome to share, save, and quote this essay. Parallax is built for public reading and critical circulation."
+            : "You are warmly welcome to share, save, and quote this essay. Feminist Archive is built for public reading."}
       </p>
 
       {articleShareUsesChinese ? (
@@ -2674,6 +2684,7 @@ return null;
     </div>
   )}
 
+  {!selectedArticle.hideSidebarText && (
   <p>
   {selectedArticle.sidebarText || (
     isParallaxEssay ? (
@@ -2705,6 +2716,7 @@ return null;
     )
   )}
 </p>
+  )}
 
     <div className="mag-article-info">
       <span>{selectedArticle.date}</span>
@@ -2927,6 +2939,7 @@ return null;
     )}
 
   
+    {!selectedArticle.hideArticleEndnote && (
     <footer className="article-endnote">
   <div>
     <span>{language === "zh" ? "发布者" : "Published by"}</span>
@@ -2943,7 +2956,8 @@ return null;
       : "Feminist Archive is an independent publication for theory, archival writing, and long-form feminist thought."}
   </p>
 </footer>
-{isParallaxBrandedArticle && (
+    )}
+{selectedArticle.id === "how-origins-are-made" && (
   <aside className="article-parallax-note" aria-label="Parallax note">
     <p>
       This essay belongs to <strong>Parallax</strong>, the sister journal of
@@ -2961,16 +2975,18 @@ return null;
     </a>
   </aside>
 )}
+{!usesParallaxSocialCta && (
 <section className="article-circulation">
   
 
   <div className="article-circulation-line bottom"></div>
 </section>
+)}
 {usesParallaxSocialCta ? (
   <section className="article-parallax-social-cta" aria-label="Follow Parallax">
     <div className="article-parallax-social-copy">
       <span>PARALLAX / SOCIAL MEDIA</span>
-      <h2>Welcome to follow our social media.</h2>
+      <h2>Follow our social media.</h2>
       <p>
         Follow Parallax for essays on philosophy, ideology critique, symbolic
         life, capitalism, media, and the present.

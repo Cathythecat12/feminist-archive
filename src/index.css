@@ -20187,14 +20187,14 @@ p {
 }
 
 .article-louis-vuitton-sues-molly-tea-over-a-similar-logo .article-highlight {
-  margin: 58px auto 62px;
-  max-width: 870px;
+  margin: 50px auto 54px;
+  max-width: 900px;
   color: var(--article-highlight-color, #8b594a);
   font-family: "Cormorant Garamond", "Libre Caslon Text", Georgia, serif;
-  font-size: clamp(2.05rem, 3.55vw, 4.1rem);
+  font-size: clamp(1.85rem, 2.65vw, 3.05rem);
   font-weight: 600;
-  line-height: 1.06;
-  letter-spacing: -0.025em;
+  line-height: 1.14;
+  letter-spacing: -0.012em;
   text-align: left;
 }
 
@@ -20233,6 +20233,16 @@ p {
   max-width: 1000px;
   margin-left: clamp(-84px, -5vw, -36px);
   margin-right: clamp(-84px, -5vw, -36px);
+}
+
+.article-louis-vuitton-sues-molly-tea-over-a-similar-logo .article-image-block.is-logo-comparison {
+  max-width: 660px;
+  margin-top: 50px;
+  margin-bottom: 56px;
+}
+
+.article-louis-vuitton-sues-molly-tea-over-a-similar-logo .article-image-block.is-logo-comparison img {
+  box-shadow: 0 16px 42px rgba(53, 35, 27, 0.1);
 }
 
 .article-louis-vuitton-sues-molly-tea-over-a-similar-logo .article-image-pair {
@@ -20306,6 +20316,67 @@ p {
   font-weight: 650;
   line-height: 0.98;
   letter-spacing: -0.035em;
+}
+
+.article-share-modal.is-parallax-share {
+  background:
+    radial-gradient(circle at 50% 24%, rgba(202, 130, 145, 0.16), transparent 34%),
+    rgba(28, 19, 16, 0.62);
+  backdrop-filter: blur(20px) saturate(0.92);
+}
+
+.article-share-modal.is-parallax-share .article-share-card {
+  width: min(650px, 88vw);
+  padding: clamp(38px, 5vw, 56px);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(202, 130, 145, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(252, 244, 235, 0.98), rgba(236, 219, 209, 0.98));
+  border: 1px solid rgba(114, 72, 58, 0.24);
+  box-shadow:
+    0 38px 120px rgba(30, 19, 15, 0.34),
+    inset 0 0 0 1px rgba(255, 250, 244, 0.62);
+}
+
+.article-share-modal.is-parallax-share .article-share-card::before {
+  border-color: rgba(114, 72, 58, 0.14);
+}
+
+.article-share-modal.is-parallax-share .article-share-modal-label {
+  color: #8b594a;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.2em;
+}
+
+.article-share-modal.is-parallax-share .article-share-card h2 {
+  max-width: 520px;
+  color: #261b17;
+  font-size: clamp(2.65rem, 5vw, 4.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+}
+
+.article-share-modal.is-parallax-share .article-share-card p {
+  max-width: 540px;
+  color: #654f45;
+  font-family: "Libre Caslon Text", Georgia, serif;
+  font-size: 1.03rem;
+  line-height: 1.68;
+}
+
+.article-share-modal.is-parallax-share .article-share-modal-actions button,
+.article-share-modal.is-parallax-share .article-share-modal-actions a {
+  background: rgba(255, 250, 243, 0.54);
+  border-color: rgba(123, 78, 64, 0.25);
+  color: #5c372e;
+}
+
+.article-share-modal.is-parallax-share .article-share-modal-actions button:hover,
+.article-share-modal.is-parallax-share .article-share-modal-actions a:hover {
+  background: rgba(255, 250, 243, 0.86);
+  border-color: rgba(188, 117, 128, 0.5);
+  box-shadow: 0 16px 34px rgba(80, 47, 38, 0.12);
 }
 
 .article-parallax-social-copy p {
