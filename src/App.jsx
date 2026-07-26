@@ -2177,7 +2177,11 @@ return null;
     const isParallaxEssay =
       /FA\s*Special Essay/i.test(selectedArticle.kickerDetail || "") ||
       (selectedArticle.kickerDetail || "").includes("FA 特别文章");
-    const isParallaxBrandedArticle = selectedArticle.id === "how-origins-are-made";
+    const usesParallaxArticleFooter = selectedArticle.footerVariant === "parallax";
+    const isParallaxBrandedArticle =
+      selectedArticle.id === "how-origins-are-made" || usesParallaxArticleFooter;
+    const usesParallaxSocialCta =
+      selectedArticle.supportVariant === "parallax-social";
     const articlePrimaryReturnPage = isParallaxEssay ? "parallax" : "monthly-theme";
 
     return (
@@ -2851,10 +2855,37 @@ return null;
             }
 
             if (block.type === "image") {
+              const imageClassName = [
+                "article-image-block",
+                block.variant ? `is-${block.variant}` : "",
+              ]
+                .filter(Boolean)
+                .join(" ");
+
               return (
-                <figure key={index} className="article-image-block">
+                <figure key={index} className={imageClassName}>
                   <img src={block.src} alt="" />
                   {block.caption && <figcaption>{block.caption}</figcaption>}
+                </figure>
+              );
+            }
+
+            if (block.type === "imagePair") {
+              const pairClassName = [
+                "article-image-pair",
+                block.variant ? `is-${block.variant}` : "",
+              ]
+                .filter(Boolean)
+                .join(" ");
+
+              return (
+                <figure key={index} className={pairClassName}>
+                  {(block.images || []).map((image) => (
+                    <div key={image.src} className="article-image-pair-item">
+                      <img src={image.src} alt="" />
+                      {image.caption && <figcaption>{image.caption}</figcaption>}
+                    </div>
+                  ))}
                 </figure>
               );
             }
@@ -2935,59 +2966,84 @@ return null;
 
   <div className="article-circulation-line bottom"></div>
 </section>
-<section className="article-support-block">
-  <div className="article-support-copy">
-    <div className="article-support-label">
-      {language === "zh"
-        ? "支持 FEMINIST ARCHIVE"
-        : "SUPPORT FEMINIST ARCHIVE"}
+{usesParallaxSocialCta ? (
+  <section className="article-parallax-social-cta" aria-label="Follow Parallax">
+    <div className="article-parallax-social-copy">
+      <span>PARALLAX / SOCIAL MEDIA</span>
+      <h2>Welcome to follow our social media.</h2>
+      <p>
+        Follow Parallax for essays on philosophy, ideology critique, symbolic
+        life, capitalism, media, and the present.
+      </p>
     </div>
 
-    <h2 className="support-reveal">
-      {language === "zh"
-        ? "让女性主义写作保持开放。"
-        : "Keep feminist writing open."}
-    </h2>
-
-    <p className="support-reveal delay-1">
-      {language === "zh"
-        ? "Feminist Archive 是一个独立、非营利性的出版项目。我们希望文章、档案与编辑工作能够保持免费开放，因为严肃的女性主义思想应当继续属于公共阅读。"
-        : "Feminist Archive is an independent, non-profit publication. We keep our essays, archives, and editorial work freely accessible because we believe serious feminist thought should remain open to the public."}
-    </p>
-
-    <p className="support-reveal delay-2">
-      {language === "zh"
-        ? "如果这个平台对你的阅读生活有意义，你可以通过一份小额捐助支持它继续存在。"
-        : "If this platform matters to your reading life, you may support its continuation through a small donation."}
-    </p>
-  </div>
-
-  <div className="article-support-actions">
     <a
-      href="https://ko-fi.com/feministarchive"
+      className="article-parallax-x-card"
+      href="https://x.com/parallaxessay"
       target="_blank"
       rel="noopener noreferrer"
     >
-      {language === "zh" ? "通过 Ko-fi 支持" : "Support on Ko-fi"}
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4.8 4.8h4.15l4.05 5.35 4.78-5.35h1.95l-5.82 6.52 6.02 7.88h-4.16l-4.38-5.75-5.12 5.75H4.35l6.24-7.02L4.8 4.8Z" />
+      </svg>
+      <span>@parallaxessay</span>
     </a>
+  </section>
+) : (
+  <section className="article-support-block">
+    <div className="article-support-copy">
+      <div className="article-support-label">
+        {language === "zh"
+          ? "支持 FEMINIST ARCHIVE"
+          : "SUPPORT FEMINIST ARCHIVE"}
+      </div>
 
-    <a
-      href="https://buymeacoffee.com/feministarchive"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {language === "zh" ? "通过 Buy Me a Coffee 支持" : "Buy Me a Coffee"}
-    </a>
+      <h2 className="support-reveal">
+        {language === "zh"
+          ? "让女性主义写作保持开放。"
+          : "Keep feminist writing open."}
+      </h2>
 
-    <a
-      href="https://www.ifdian.net/a/FeministArchive"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {language === "zh" ? "通过爱发电支持" : "Support on Afdian"}
-    </a>
-  </div>
-</section>
+      <p className="support-reveal delay-1">
+        {language === "zh"
+          ? "Feminist Archive 是一个独立、非营利性的出版项目。我们希望文章、档案与编辑工作能够保持免费开放，因为严肃的女性主义思想应当继续属于公共阅读。"
+          : "Feminist Archive is an independent, non-profit publication. We keep our essays, archives, and editorial work freely accessible because we believe serious feminist thought should remain open to the public."}
+      </p>
+
+      <p className="support-reveal delay-2">
+        {language === "zh"
+          ? "如果这个平台对你的阅读生活有意义，你可以通过一份小额捐助支持它继续存在。"
+          : "If this platform matters to your reading life, you may support its continuation through a small donation."}
+      </p>
+    </div>
+
+    <div className="article-support-actions">
+      <a
+        href="https://ko-fi.com/feministarchive"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {language === "zh" ? "通过 Ko-fi 支持" : "Support on Ko-fi"}
+      </a>
+
+      <a
+        href="https://buymeacoffee.com/feministarchive"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {language === "zh" ? "通过 Buy Me a Coffee 支持" : "Buy Me a Coffee"}
+      </a>
+
+      <a
+        href="https://www.ifdian.net/a/FeministArchive"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {language === "zh" ? "通过爱发电支持" : "Support on Afdian"}
+      </a>
+    </div>
+  </section>
+)}
 {showArticleNewsletterSignup && (
   <section className="article-newsletter-block" aria-labelledby="article-newsletter-title">
     <div className="article-newsletter-copy">
@@ -3054,7 +3110,34 @@ return null;
 )}
   </article>
 </main>
-{(selectedArticle.layout === "psyche" || isImmersiveArticle) && (
+{usesParallaxArticleFooter && (
+  <footer className="parallax-article-footer">
+    <div className="parallax-article-footer-brand">
+      <span>Parallax</span>
+      <p>
+        Philosophy, ideology critique, historical inquiry, and critical writing
+        on contemporary life.
+      </p>
+    </div>
+
+    <nav className="parallax-article-footer-links" aria-label="Parallax footer links">
+      <button type="button" onClick={() => setCurrentPage("parallax")}>
+        Read Parallax
+      </button>
+      <button type="button" onClick={() => setCurrentPage("newsletter-page")}>
+        Newsletter
+      </button>
+      <a
+        href="https://x.com/parallaxessay"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        X / @parallaxessay
+      </a>
+    </nav>
+  </footer>
+)}
+{!usesParallaxArticleFooter && (selectedArticle.layout === "psyche" || isImmersiveArticle) && (
   <footer className="psyche-article-footer">
     <div className="psyche-footer-brand">
       <div className="psyche-footer-logo">Feminist Archive</div>

@@ -1132,6 +1132,269 @@ According to Michel Foucault, power in modern society no longer operates primari
   },
 
   {
+    id: "louis-vuitton-sues-molly-tea-over-a-similar-logo",
+    title: "Louis Vuitton Sues Molly Tea Over a Similar Logo",
+    category: "Writing",
+    kickerDetail: "FA Special Essay",
+    author: "Parallax",
+    date: "27 July 2026",
+    readTime: "12 min read",
+    image: "/images/lv-molly-tea-cover.png",
+    excerpt:
+      "How modern capitalism first privatizes public symbols, then uses the social associations it creates to justify that privatization.",
+    tags: [
+      "Louis Vuitton",
+      "Molly Tea",
+      "trademark",
+      "capitalism",
+      "symbolic enclosure",
+      "luxury",
+    ],
+    sidebarText:
+      "This essay belongs to Parallax, the sister journal of Feminist Archive.",
+    footerVariant: "parallax",
+    supportVariant: "parallax-social",
+    contentBlocks: [
+      ...paragraphs(`
+On June 29, 2026, the Intermediate People’s Court of Suzhou, Jiangsu Province, issued its first instance judgment in the trademark infringement dispute between Louis Vuitton and the Chinese tea chain Molly Tea (Moliyinaibai).
+`),
+      {
+        type: "image",
+        src: "/images/lv-molly-tea-cups.jpeg",
+        variant: "float-right",
+        caption: "Molly Tea’s floral branding in product presentation.",
+      },
+      ...paragraphs(`
+The court held that the four-petaled floral motif used by Molly Tea and one of its franchise stores in their business operations infringed seven figurative trademarks registered by Louis Vuitton. Both defendants were ordered to cease the infringing acts. The company operating the Molly Tea brand was ordered to pay a total of RMB 10.3 million in damages and reasonable legal expenses, and to publish an official statement across multiple platforms. Shortly after the judgment, the company’s founder announced that an appeal would be filed, meaning the case remains legally unresolved.
+
+The lawsuit immediately sparked widespread debate.
+
+On the one hand, the black four-petaled floral motif adopted by Molly Tea does indeed remind some consumers of the iconic floral elements found in Louis Vuitton’s famous Monogram pattern. Although the two designs are not identical, and the products belong to different market categories, Molly Tea incorporated the motif extensively throughout its stores, packaging, and overall brand identity. Its minimalist repetition and “accessible luxury” aesthetic inevitably strengthened this association.
+`),
+      {
+        type: "image",
+        src: "/images/lv-molly-tea-logo-comparison.jpg",
+        variant: "wide",
+        caption:
+          "A visual comparison circulated in public discussions of the Louis Vuitton and Molly Tea dispute.",
+      },
+      ...paragraphs(`
+On the other hand, four-petaled flowers, rosettes, cross-shaped floral ornaments, and symmetrical geometric motifs have existed throughout human decorative history for centuries. Similar forms appear extensively in traditional Chinese textiles, architecture, ceramics, and countless other cultural artifacts. Many therefore question why a modern luxury corporation should be able, through trademark law, to claim such an expansive exclusive right over a basic floral structure that originates in humanity’s shared cultural heritage.
+`),
+      {
+        type: "imagePair",
+        variant: "archival",
+        images: [
+          {
+            src: "/images/lv-molly-tea-garden-motif.jpeg",
+            caption: "A design commonly found in traditional Chinese gardens.",
+          },
+          {
+            src: "/images/lv-molly-tea-jasmine-flower.jpeg",
+            caption: "This pattern is also very common in nature.",
+          },
+        ],
+      },
+      ...paragraphs(`
+The public debate has largely revolved around two positions, both of which are overly simplistic.
+
+One argues that Molly Tea was clearly exploiting Louis Vuitton’s established visual prestige, borrowing a similar floral motif to create an aura of sophistication, and that Louis Vuitton therefore has every right to prevent others from free-riding on its reputation.
+
+The other contends that Louis Vuitton invented neither flowers nor geometric symmetry. According to this view, the very idea that a luxury brand can monopolize forms rooted in public cultural history simply because it registered them as trademarks reveals the absurdity of the capitalist intellectual property system itself.
+
+The more interesting question lies elsewhere.
+`),
+      {
+        type: "highlight",
+        color: "#8b594a",
+        text:
+          "How does modern capitalism transform symbols that once belonged to public culture into private property? And how does it then rely on the very social associations it has produced to justify that privatization as legitimate?",
+      },
+      {
+        type: "heading",
+        text: "What Does Trademark Law Protect?",
+      },
+      ...paragraphs(`
+Trademark rights, at least in theory, do not protect beauty, creativity, or cultural meaning as such. They protect the ability of consumers to identify the commercial source of goods or services. In other words, the law does not grant Louis Vuitton rights over all flowers. It grants protection over particular signs insofar as those signs enable consumers to recognize goods as coming from Louis Vuitton.
+
+This distinction is important. Trademark law is not supposed to protect a company’s metaphysical ownership of a symbol. It is concerned with whether consumers are likely to be confused about which commercial entity stands behind a product.
+
+From this perspective, there are practical reasons for trademark protection. If any company could use signs that closely resemble another brand’s identifying marks, consumers might be misled, and companies would lose control over the reputational value they have built.
+
+The problem arises when trademark protection expands beyond preventing confusion and begins to protect the symbolic territory that capital has accumulated around itself.
+`),
+      {
+        type: "heading",
+        text: "How Capital Appropriates Public Symbols",
+      },
+      ...paragraphs(`
+Capital does not have to create a symbol from nothing in order to transform it into its own asset.
+
+Most symbols used by major brands are not invented ex nihilo. Flowers, stars, animals, geometric ornaments, colors, initials, patterns, and architectural forms all come from a shared visual repertoire. They have circulated through religion, craft, folk art, fashion, architecture, and everyday life long before any modern corporation registered them as trademarks.
+
+What capital does is select a visual element from this public repertoire, stylize it, repeat it, attach it to commodities, and invest enormous advertising resources into making the public associate it with a particular brand. Over time, what once belonged to the commons begins to appear as the private signature of a corporation.
+
+The graphic form itself may have public origins, but its commercial meaning becomes privately owned.
+
+This is, in effect, an enclosure movement of symbols.
+
+Historical enclosure movements transformed common land into private property. Modern branding transforms common signs into corporate assets. The object being enclosed is no longer only land, labor, or material resources, but attention, association, recognition, and meaning.
+
+Trademark protection is therefore not entirely without justification, but it is never neutral. It stands at the intersection of law, memory, consumer psychology, and capital’s capacity to reshape public perception.
+`),
+      {
+        type: "heading",
+        text: "Capital First Creates Associations, Then Uses Those Associations to Justify Its Rights",
+      },
+      ...paragraphs(`
+The most problematic aspect of this issue is a self-reinforcing cycle.
+
+Through sustained investment, luxury brands repeatedly expose the public to particular symbols. They place those symbols on handbags, storefronts, advertisements, celebrity bodies, airport boutiques, red carpets, fashion magazines, and social media feeds. Gradually, consumers come to associate those symbols with luxury, status, refinement, exclusivity, and prestige.
+
+After years of such dissemination, the brand can then turn around and argue that because consumers now associate the symbol with the brand, the symbol must legally belong to the brand.
+
+Yet this association is not a natural fact. It is the product of capital’s own communicative power.
+
+A closed circuit is thus formed: capitalist communication produces symbolic associations; symbolic associations generate legal rights; and legal rights, in turn, further reinforce capital’s monopoly over the symbol.
+
+Law appears merely to acknowledge an existing consumer association, but that association was itself produced by unequal advertising power, market saturation, and the systematic occupation of public visual space.
+`),
+      {
+        type: "heading",
+        text: "Consumer Associations Are Real, but They Are Also Socially Produced",
+      },
+      ...paragraphs(`
+Critiquing capitalism does not mean denying that consumers genuinely make associations between signs and brands. Many people do see a four-petaled floral motif and think of Louis Vuitton. This perception is real, and trademark law cannot simply ignore it.
+
+But the reality of an association does not mean the association is natural, innocent, or politically neutral.
+
+In consumer society, our perceptions are continuously trained. We are taught to read colors, patterns, fonts, packaging, and spatial design as indicators of class, taste, price, and identity. Branding does not simply reflect desire; it educates desire. It teaches us what to admire, what to recognize, what to envy, and what to consume.
+
+Consequently, when people say that a symbol “makes them think of Louis Vuitton,” that statement reveals not only the strength of Louis Vuitton’s trademark. It also reveals the depth to which capital has organized visual memory.
+
+There are therefore at least three kinds of association at work: association caused by genuine copying, association caused by shared cultural form, and association produced by the brand’s long-term occupation of public perception.
+
+Trademark discussions often conflate these three.
+`),
+      {
+        type: "heading",
+        text: "Molly Tea Is Not Entirely Innocent",
+      },
+      ...paragraphs(`
+Criticizing Louis Vuitton and the modern trademark system does not require portraying Molly Tea as a purely innocent victim.
+
+Modern commercial design is highly strategic. Brands understand that certain colors, forms, and minimalist visual systems evoke sophistication. A tea chain that adopts a black floral motif, repeats it across packaging and retail environments, and pairs it with a clean, luxury-adjacent aesthetic is not operating outside the logic of branding. It too is participating in the commodification of symbolic value.
+
+A single graphic element can therefore have multiple origins at once. It may derive from public culture, resemble a luxury trademark, and be strategically used by another commercial actor to borrow an aura of refinement.
+
+Molly Tea may never have copied Louis Vuitton in a mechanical or literal sense. Yet it likely benefited from a visual atmosphere that Louis Vuitton helped make legible as luxury.
+
+This is precisely why the case is interesting. It is not a simple story of an innocent small brand against an evil corporation. It is a case of double commercial appropriation.
+
+Louis Vuitton appropriates the flower by transforming it into a luxury sign. Molly Tea may then appropriate the luxury atmosphere attached to that sign in order to elevate the symbolic value of milk tea.
+
+The second appropriation does not cancel the first. Instead, it reveals the structure of contemporary branding itself.
+
+Throughout this entire chain of transformations, what is most easily forgotten is the flower’s original status as part of the commons.
+`),
+      {
+        type: "heading",
+        text: "Luxury Brands Sell Social Difference",
+      },
+      ...paragraphs(`
+Luxury brands do not primarily sell material utility. A Louis Vuitton bag is not simply a container. It is a portable sign of distinction.
+
+Luxury symbols function because they condense social difference into visible form. They allow class, taste, aspiration, and exclusion to be read at a glance. The Monogram pattern does not merely identify a producer; it identifies a social fantasy.
+
+This is why luxury brands are so protective of their signs. If the same visual structure appears on a mass-market milk tea cup, the symbolic distance between luxury and everyday consumption begins to shrink. The brand fears not only confusion but devaluation.
+
+Trademark dilution, in this sense, is not merely legal. It is social. It threatens the hierarchy that luxury depends upon.
+
+Luxury brands therefore demand the right to control not only who may use a symbol, but also who may approach the aura that surrounds it.
+
+Brands become embedded desire. We no longer desire an object simply because of what it does. We desire it because of what its sign says about us.
+
+In Marxist terms, this is commodity fetishism in an intensified symbolic form. Social relations between people appear as relations between things; and now, more specifically, as relations between signs.
+`),
+      {
+        type: "image",
+        src: "/images/lv-molly-tea-luxury-ad.jpeg",
+        variant: "wide",
+        caption:
+          "Luxury branding and premium tea aesthetics meet within the same symbolic field.",
+      },
+      {
+        type: "heading",
+        text: "Capitalism Begins to Appropriate Meaning",
+      },
+      ...paragraphs(`
+Early capitalism primarily appropriated land, labor, and commodities. Contemporary capitalism increasingly appropriates meaning.
+
+It does not merely produce goods. It produces cultural codes. It organizes how people interpret visual forms, emotional atmospheres, lifestyles, and identities. The commodity becomes only one part of a broader semiotic machine.
+
+The symbolic world is gradually divided according to brand ownership. A color belongs to one company. A shape belongs to another. A phrase, a scent, a packaging style, or a decorative motif becomes legally and commercially attached to a private actor.
+
+This may be described as the privatization of meaning.
+`),
+      {
+        type: "heading",
+        text: "Where Should Trademark Protection End?",
+      },
+      ...paragraphs(`
+Criticizing the trademark system does not mean abolishing all trademark protection. Without some protection, counterfeit goods and deliberate deception would be difficult to regulate.
+
+The real issue is the proper boundary of trademark rights.
+
+Law should protect consumers against confusion. It should not allow corporations to monopolize cultural forms so broadly that public symbols become permanently enclosed within private ownership.
+
+Determining infringement should therefore require careful attention not only to visual similarity and market association, but also to the cultural origin of the symbol, the degree of transformation, the difference between product categories, and the possibility that consumer association has been manufactured by the brand’s own market power.
+
+Nor can the defense of “public culture” be used carelessly by every commercial actor. When another company uses shared cultural forms in ways that clearly borrow prestige from an existing brand, it too participates in symbolic appropriation.
+
+Both Louis Vuitton and Molly Tea can therefore be criticized, though not in the same way.
+`),
+      {
+        type: "heading",
+        text: "Who Owns Our Associations?",
+      },
+      ...paragraphs(`
+This controversy ultimately points to a question far deeper than trademark law itself: who owns our associations?
+
+When people see a flower, why do they think of Louis Vuitton? When they see a particular arrangement of petals, why does it appear luxurious? When a tea brand uses similar visual language, why does it feel like borrowing prestige?
+
+These reactions are not spontaneous. They are historical products of advertising, repetition, consumer training, and legal reinforcement.
+
+Capital does not simply respond to perception. It creates perception, then presents that perception as evidence of its rights.
+
+Once a brand has secured symbolic dominance, it can claim that public recognition proves private ownership. But the recognition itself was produced through the brand’s unequal capacity to occupy public consciousness.
+
+Public culture rarely has comparable means to defend itself. It has no advertising budget, no legal department, no global marketing machine, and no trademark portfolio.
+
+Legal systems recognize private ownership far more easily than they recognize the diffuse rights of cultural memory.
+`),
+      {
+        type: "heading",
+        text: "Can We Still See a Flower That Belongs to No Company?",
+      },
+      ...paragraphs(`
+The dispute between Louis Vuitton and Molly Tea offers a revealing glimpse into the symbolic order of contemporary capitalism.
+
+Capital appropriates forms from public culture, invests them with commercial meaning, and then uses the associations it has produced to justify exclusive ownership. Other companies may then attempt to borrow not the original symbol itself, but the prestige accumulated around it.
+
+No party in this process is entirely innocent. But the deeper problem is structural.
+
+A flower becomes a logo. A logo becomes a luxury sign. A luxury sign becomes legal property. Legal property then rewrites our memory of the flower itself.
+
+At the surface level, this is a trademark dispute. At a deeper level, it is a struggle over who has the power to organize meaning.
+
+Counterfeiting and consumer deception should not be defended. But neither should we accept a world in which every publicly inherited form gradually becomes a corporate asset once enough capital has been invested in making us recognize it.
+
+The immediate question before the court is whether two floral motifs are legally similar. The deeper question is whether, in a world whose symbolic landscape has been thoroughly encoded by brands, we are still capable of seeing a flower that belongs to no company at all.
+`),
+    ],
+  },
+
+  {
     id: "pansexualism-freudian-psychoanalysis",
     title:
       "“Pansexualism”: The Vulgarized Interpretation of Freudian Psychoanalysis as the Reduction of All Mental Activity to Sexual Desire",
