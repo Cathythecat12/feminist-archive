@@ -10,6 +10,7 @@ const rootDir = join(__dirname, "..");
 const distDir = join(rootDir, "dist");
 const siteUrl = "https://feministarchivejournal.org";
 const siteName = "Feminist Archive";
+const parallaxSiteName = "Parallax";
 const defaultImage = "/images/social-preview.jpg";
 const defaultDescription =
   "Feminist Archive is an independent platform for feminist theory, essays, reviews, archival writing, reading guides, and public feminist scholarship.";
@@ -285,6 +286,7 @@ function applyMeta(template, meta, path) {
   const description = escapeHtml(meta.description || defaultDescription);
   const pageUrl = escapeHtml(`${siteUrl}${path}`);
   const imageUrl = escapeHtml(absoluteUrl(meta.image));
+  const brandName = escapeHtml(meta.siteName || siteName);
   const locale = path.startsWith("/zh") ? "zh_CN" : path.startsWith("/fr") ? "fr_FR" : "en_US";
   let html = template
     .replace(/<html lang="[^"]*">/i, `<html lang="${path.startsWith("/zh") ? "zh-CN" : path.startsWith("/fr") ? "fr" : "en"}">`)
@@ -305,9 +307,13 @@ function applyMeta(template, meta, path) {
   }
 
   html = replaceMeta(html, "name", "description", `<meta name="description" content="${description}" />`);
+  html = replaceMeta(html, "name", "author", `<meta name="author" content="${brandName}" />`);
+  html = replaceMeta(html, "name", "application-name", `<meta name="application-name" content="${brandName}" />`);
+  html = replaceMeta(html, "name", "apple-mobile-web-app-title", `<meta name="apple-mobile-web-app-title" content="${brandName}" />`);
+  html = replaceMeta(html, "name", "DC.title", `<meta name="DC.title" content="${brandName}" />`);
   html = replaceMeta(html, "property", "og:type", `<meta property="og:type" content="${escapeHtml(meta.type || "website")}" />`);
   html = replaceMeta(html, "property", "og:locale", `<meta property="og:locale" content="${locale}" />`);
-  html = replaceMeta(html, "property", "og:site_name", `<meta property="og:site_name" content="${siteName}" />`);
+  html = replaceMeta(html, "property", "og:site_name", `<meta property="og:site_name" content="${brandName}" />`);
   html = replaceMeta(html, "property", "og:title", `<meta property="og:title" content="${title}" />`);
   html = replaceMeta(html, "property", "og:description", `<meta property="og:description" content="${description}" />`);
   html = replaceMeta(html, "property", "og:url", `<meta property="og:url" content="${pageUrl}" />`);
@@ -317,36 +323,12 @@ function applyMeta(template, meta, path) {
   html = replaceMeta(html, "name", "twitter:description", `<meta name="twitter:description" content="${description}" />`);
   html = replaceMeta(html, "name", "twitter:image", `<meta name="twitter:image" content="${imageUrl}" />`);
 
-  html = upsertHeadTag(
-    html,
-    /<meta property="og:image:secure_url" content="[^"]*"\s*\/?>/i,
-    `<meta property="og:image:secure_url" content="${imageUrl}" />`
-  );
-  html = upsertHeadTag(
-    html,
-    /<meta property="og:image:url" content="[^"]*"\s*\/?>/i,
-    `<meta property="og:image:url" content="${imageUrl}" />`
-  );
-  html = upsertHeadTag(
-    html,
-    /<meta property="og:image:type" content="[^"]*"\s*\/?>/i,
-    `<meta property="og:image:type" content="image/jpeg" />`
-  );
-  html = upsertHeadTag(
-    html,
-    /<meta property="og:image:width" content="[^"]*"\s*\/?>/i,
-    `<meta property="og:image:width" content="1536" />`
-  );
-  html = upsertHeadTag(
-    html,
-    /<meta property="og:image:height" content="[^"]*"\s*\/?>/i,
-    `<meta property="og:image:height" content="1024" />`
-  );
-  html = upsertHeadTag(
-    html,
-    /<meta property="og:image:alt" content="[^"]*"\s*\/?>/i,
-    `<meta property="og:image:alt" content="${title}" />`
-  );
+  html = replaceMeta(html, "property", "og:image:secure_url", `<meta property="og:image:secure_url" content="${imageUrl}" />`);
+  html = replaceMeta(html, "property", "og:image:url", `<meta property="og:image:url" content="${imageUrl}" />`);
+  html = replaceMeta(html, "property", "og:image:type", `<meta property="og:image:type" content="image/jpeg" />`);
+  html = replaceMeta(html, "property", "og:image:width", `<meta property="og:image:width" content="1536" />`);
+  html = replaceMeta(html, "property", "og:image:height", `<meta property="og:image:height" content="1024" />`);
+  html = replaceMeta(html, "property", "og:image:alt", `<meta property="og:image:alt" content="${title}" />`);
 
   return html;
 }
@@ -359,6 +341,18 @@ async function writeRoute(template, path, meta) {
 
 const template = await readFile(join(distDir, "index.html"), "utf8");
 
+function getArticleSiteName(article) {
+  if (
+    article.publication === parallaxSiteName ||
+    article.footerVariant === "parallax" ||
+    article.author === parallaxSiteName
+  ) {
+    return parallaxSiteName;
+  }
+
+  return siteName;
+}
+
 for (const [path, meta] of Object.entries(pageMeta)) {
   await writeRoute(template, path, {
     type: "website",
@@ -368,9 +362,11 @@ for (const [path, meta] of Object.entries(pageMeta)) {
 }
 
 for (const article of englishArticles) {
+  const articleSiteName = getArticleSiteName(article);
   await writeRoute(template, `/en/articles/${article.id}`, {
     type: "article",
-    title: `${article.title} | ${siteName}`,
+    siteName: articleSiteName,
+    title: `${article.title} | ${articleSiteName}`,
     description: stripText(article.excerpt || article.subtitle || article.title),
     image: article.image || defaultImage,
     preloadImage: Boolean(article.image),
